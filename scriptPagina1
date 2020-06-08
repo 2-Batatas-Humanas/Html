@@ -1,0 +1,724 @@
+var pers = {
+    nome: null,
+    atributos: {
+        strength: 10,
+        agility: 10,
+        intelligence: 10,
+        will: 10
+    },
+    caract: {
+        perception: 10,
+        defense: 10,
+        health: 10,
+        healing_rate: 2,
+        size: 1,
+        speed: 10,
+        power: 0,
+        damage: 0,
+        insanity: 0,
+        corruption: 0,
+        level: 1
+    },
+    desc: {
+        personal: null,
+        idade: null,
+        ancest: null,
+        prof: [],
+        linguas: []
+    },
+    talentos: {
+        ancest: {}
+    },
+    armas: {},
+    escudos: {},
+    armaduras: {},
+    bolsa: {},
+    dinheiro:{
+        MA: 0,
+        CC: 0,
+        XP: 0,
+        CO: 0
+    },
+    magico: false,
+};
+
+var set = {
+    strength: function(value){
+        pers.atributos.strength = parseInt(value);
+    },
+    agility: function(value){
+        pers.atributos.agility = parseInt(value);
+    },
+    intelligence: function(value){
+        pers.atributos.intelligence = parseInt(value);
+    },
+    will: function (value) {
+        pers.atributos.will = parseInt(value);
+    },
+    perception: function(value, atributo = null){
+        if(atributo != null){
+            pers.caract.perception = pers.atributos[atributo] + parseInt(value);
+        } else{
+            pers.caract.perception = parseInt(value);
+        }
+    },
+    defense: function(value, atributo = null){
+        if(atributo != null){
+            pers.caract.defense = pers.atributos[atributo] + parseInt(value);
+        } else{
+            pers.caract.defense = parseInt(value);
+        }
+    },
+    health: function(value, atributo = null){
+        if(atributo != null){
+            pers.caract.health = pers.atributos[atributo] + parseInt(value);
+        } else{
+            pers.caract.health = parseInt(value);
+        }
+    },
+    healing_rate: function(){
+        pers.caract.healing_rate = Math.floor(pers.caract.health/4);
+    },
+    size: function(value){
+        pers.caract.size = parseInt(value);
+    },
+    speed: function(value){
+        pers.caract.speed = parseInt(value);
+    },
+    power: function(value){
+        pers.caract.power = parseInt(value);
+    },
+    damage: function(value){
+        pers.caract.damage = parseInt(value);
+    },
+    insanity: function(value){
+        pers.caract.insanity = parseInt(value);
+    },
+    corruption: function(value){
+        pers.caract.corruption = parseInt(value);
+    },
+    level: function(value){
+        pers.caract.level = parseInt(value);
+    },
+    lingua: function(value, pos){
+        pers.desc.linguas[pos] = value;
+    },
+    ancest: function(value){
+        pers.desc.ancest = value;
+    },
+    prof: function(value, pos){
+        pers.desc.prof[pos] = value;
+    },
+    talento: function(tipo, nome, value){
+        pers.talentos[tipo][nome] = value;
+    },
+    personal: function(value){
+        pers.desc.personal = value; 
+    },
+    idade: function(value){
+        pers.desc.idade = parseInt(value);
+    },
+    religiao: function(value){
+        pers.desc.religiao = value;
+    },
+    estatura: function(value){
+        pers.desc.estatura = value;
+    },
+    aparencia: function(value){
+        pers.desc.aparencia = value;
+    },
+    antecedente: function(value){
+        pers.desc.antecedente = value;
+    },
+    odioAnao: function(value){
+        pers.desc.odioAnao = value;
+    },
+    funcaoAutomata: function(value){
+        pers.desc.funcaoAutomata = value;
+    },
+    formaAutomata: function(value){
+        pers.desc.formaAutomata = value;
+    },
+    ancestAparente: function(value){
+        pers.desc.ancestAparente = value;
+    },
+    generoAparente: function(value){
+        pers.desc.generoAparente = value;
+    },
+    peculiaridadeChangeling: function(value){
+        pers.desc.peculiaridadeChangeling = value;
+    },
+    aspectoCarac: function(value){
+        pers.desc.aspectoCarac = value;
+    },
+    habitoEstranho: function(value){
+        pers.desc.habitoEstranho = value;
+    },
+    itemBolsa: function(nome, value){
+        pers.bolsa[nome] = value;
+    },
+    dinheiro: function(moeda, valor){
+        pers.dinheiro[moeda] = parseInt(valor);
+    }
+};
+
+var atts = ["Força", "Agilidade", "Inteligência", "Vontade"];
+var attsIng = ["strength", "agility", "intelligence", "will"];
+
+function addAtributo(id, add){
+    var index = id[id.length - 1];
+    var value = pers.atributos[attsIng[index]];
+    var output = document.querySelector("#" + id);
+    output.innerHTML = "" + (value + add);
+    set[attsIng[index]](value + add);
+}
+
+function changeAtributos(divId){
+    var div = document.querySelector("#" + divId);
+
+    for(var i = 0; i < 4; i++){
+        var divAux = document.createElement("div");
+        divAux.style.display = "flex";
+        divAux.style.flexFlow = "row wrap";
+        
+        var span = document.createElement("span");
+        span.style.boxSizing = "border-box";
+        span.style.marginLeft = "50px";
+        span.style.marginRight = "10px";
+        span.innerHTML = atts[i];
+
+        var plus = document.createElement("button");
+        plus.innerHTML = "+";
+        plus.style.fontSize = "Larger";
+        plus.style.borderRadius = "50%";
+        plus.setAttribute("onclick", `addAtributo("att${i}", 1)`);
+        plus.style.marginLeft = "10px";
+
+        var minus = document.createElement("button");
+        minus.innerHTML = "-";
+        minus.style.fontSize = "Larger";
+        minus.style.borderRadius = "50%";
+        minus.setAttribute("onclick", `addAtributo("att${i}", -1)`);
+        minus.style.marginRight = "10px";
+
+        var value = document.createElement("span");
+        value.innerHTML = pers.atributos[attsIng[i]];
+        value.id = `att${i}`;
+
+        divAux.appendChild(span);
+        divAux.appendChild(minus);
+        divAux.appendChild(value);
+        divAux.appendChild(plus);
+
+        div.appendChild(divAux);
+    }
+}
+
+function textAreaDescItem(item, id){
+    var input = document.querySelector("#" + id);
+    pers.desc[item] = input.value;
+    console.log(pers.desc[item]);
+}
+
+function createInput(label, type, id, whereId, oninput,placeholder = null, item = null, value = null, min = null, max = null, step = null){
+    var div = document.querySelector("#" + whereId);
+
+    var text = document.createElement("label");
+    text.innerHTML = label;
+    text.for = id;
+    if(type != "textarea"){
+        var input = document.createElement("input");
+        input.type = type;
+        input.setAttribute("oninput", oninput);
+        if(value != null){
+            input.value = value;
+            if(min != null){
+                input.min = min;
+            }
+            if(max != null){
+                input.max = max;
+            }
+            if(step != null){
+                input.step = step;
+            }
+        }
+        else{
+            if(placeholder != null){
+                input.placeholder = placeholder;
+            }
+        }
+        input.id = id;
+        div.appendChild(text);
+        div.appendChild(input);
+    }
+    else{
+        var input = document.createElement("textarea");
+        input.style.marginTop = "10px";
+        input.style.marginLeft = "5px";
+        input.style.marginRight = "5px";
+        if(placeholder != null){
+            input.placeholder = placeholder;
+        }
+        var sendButton = document.createElement("button");
+        sendButton.innerHTML = "Enviar";
+        sendButton.setAttribute("onclick", `textAreaDescItem("${item}", "${id}")`);
+        input.id = id;
+        div.appendChild(text);
+        div.appendChild(input);
+        div.appendChild(sendButton);
+    }
+}
+
+function appendEmptyP(id){
+    var place = document.querySelector("#" + id);
+
+    var emptyP = document.createElement("p");
+    emptyP.innerHTML = "";
+
+    place.appendChild(emptyP);
+    
+}
+
+function putItemBolsa(inputId, nome){
+    var input = document.querySelector("#" + inputId);
+    set.itemBolsa(nome, input.value);
+}
+
+function descItemBolsa(divId, nomeId){
+    var div = document.querySelector("#" + divId);
+
+    var nomeInput = document.querySelector("#" + nomeId);
+    var nome = nomeInput.value;
+
+    inputId = nome + "-Bolsa";
+    var textArea = document.createElement("textarea");
+    textArea.id = inputId;
+
+    var label = document.createElement("label");
+    label.for = inputId;
+    label.innerHTML = "Coloque a descrição do item: "
+
+    var button = document.createElement("button");
+    button.setAttribute("onclick", `putItemBolsa("${inputId}", "${nome}")`);
+    button.innerHTML = "Enviar";
+
+    div.appendChild(label);
+    div.appendChild(textArea);
+    div.appendChild(button);
+}
+
+function changeDinheiro(divId, moeda){
+    var div = document.querySelector("#" + divId);
+
+    var input = document.createElement("input");
+    input.id = `${divId}-${moeda}`; 
+    input.type = "number";
+    input.value = pers.dinheiro[moeda];
+    input.setAttribute("oninput", `set.dinheiro("${moeda}", this.value)`);
+
+    var label = document.createElement("label");
+    label.innerHTML = "Coloque o valor";
+    label.for = `${divId}-${moeda}`;
+
+    div.appendChild(label);
+    div.appendChild(input);
+}
+
+function handleCheckList(divId, boxId){
+    var div = document.querySelector("#" + divId);
+    var input = document.querySelector("#" + boxId);
+
+    if(input.checked){
+        switch(input.value){
+            case "insanity":
+                createInput("Nível de Insanidade: ", "number", `${boxId}-Input`, divId, "set.insanity(this.value)", null, null, pers.caract.insanity, 0);
+                break;
+            case "corruption":
+                createInput("Nível de Corrupção: ", "number", `${boxId}-Input`, divId, "set.corruption(this.value)", null, null, pers.caract.corruption, 0);
+                break;
+            case "prof":
+                div.innerHTML += "<span>Coloque a nova profissão no campo de profissões abaixo</span>";
+                break;
+            case "lingua":
+                createInput("Nova língua: ", "text", `${boxId}-Input`, divId, `set.lingua(this.value, ${pers.desc.linguas.length})`, "Coloque a lingua");
+                break;
+            case "lingua-0":
+            case "lingua-1":
+            case "lingua-2":
+            case "lingua-3":
+            case "lingua-4":
+            case "lingua-5":
+            case "lingua-6":
+                var num = parseInt(input.value.slice(7));
+                if(num < pers.desc.linguas.length){
+                    createInput("Altere a lingua para que fique como o exemplo: ", "text", `${boxId}-Input`, divId, `set.lingua(this.value, ${num})`, "Língua comum(ler, escrever e falar)");
+                }
+                break;
+            case "bolsa":
+                var newInput = document.createElement("input");
+                newInput.placeholder = "Coloque o nome do item";
+                theId = `${boxId}-Item`;
+                newInput.id = theId;
+
+                var label = document.createElement("label");
+                label.for = theId;
+                label.innerHTML = "Nome do item: ";
+
+                var button = document.createElement("button");
+                button.innerHTML = "Enviar";
+                button.setAttribute("onclick", `descItemBolsa("${divId}","${theId}")`)
+
+                div.appendChild(label);
+                div.appendChild(newInput);
+                div.appendChild(button);
+                break;
+            case "dinheiro":
+                var newInput = document.createElement("input");
+                someId = `${boxId}-Input`
+                newInput.id = someId;
+                newInput.setAttribute("list",`${boxId}-datalist`);
+                newInput.setAttribute("oninput", `changeDinheiro("${divId}", this.value)`);
+
+                var label = document.createElement("label");
+                label.for = someId;
+                label.innerHTML = "Coloque a sigla da moeda que você quer adicionar: ";
+                
+                var datalist = document.createElement("datalist");
+                datalist.id = `${boxId}-datalist`;
+                datalist.innerHTML = "<option>MA</option><option>CC</option><option>XP</option><option>CO</option>";
+                
+                div.appendChild(label);
+                div.appendChild(newInput);
+                div.appendChild(datalist);
+        }
+    }
+}
+
+function createChecklist(divId, checkList, tipo){
+    var div = document.querySelector("#" + divId);
+    for(check in checkList){
+        var divCheck = document.createElement("div");
+        divCheck.id = `${check}_${tipo}`;
+
+        var input = document.createElement("input");
+        input.type = "checkbox";
+        input.value = checkList[check];
+        input.id = `${check}-${tipo}`;
+        input.setAttribute("onclick",`handleCheckList("${divCheck.id}", this.id)`);
+
+        var label = document.createElement("label");
+        label.for = `${check}-${tipo}`;
+        label.innerHTML = check;
+
+        divCheck.appendChild(label);
+        divCheck.appendChild(input);
+        div.appendChild(divCheck);
+    }
+}
+
+function setAncOptions(anc){
+    var divName = "divExtra";
+    var div = document.querySelector("#" + divName);
+
+    switch(anc){
+        case "Humano":
+            set.strength(10);
+            set.agility(10);
+            set.intelligence(10);
+            set.will(10);
+            set.perception(0, "intelligence");
+            set.defense(0, "agility");
+            set.health(0, "strength");
+            set.healing_rate();
+            set.size(1);
+            set.speed(10);
+            set.power(0);
+            set.damage(0);
+            set.insanity(0);
+            set.corruption(0);
+            set.lingua("Comum", 0);
+            set.level(1);
+            div.innerHTML = "<p>Aumente em 1 um atributo:</p>";
+            changeAtributos(divName);
+            div.innerHTML += "<p>Coloque as informações abaixo:</p>"
+            createInput("Personalidade Humana: ", "textarea", "personalId", divName, "set.personal(this.value)","Descrição da personalidade", "personal");
+            appendEmptyP(divName);
+            createInput("Religião Humana: ", "textarea", "religiaoId", divName, "set.religiao(this.value)","Descrição da religião", "religiao");
+            appendEmptyP(divName);
+            createInput("Idade Humana: ", "number", "idadeId", divName, "set.idade(this.value)", null, null, 25, 0);
+            appendEmptyP(divName);
+            createInput("Estatura Humana: ", "textarea", "estaturaId", divName, "set.estatura(this.value)","Descrição da estatura", "estatura");
+            appendEmptyP(divName);
+            createInput("Aparência Humana: ", "textarea", "aparenciaId", divName, "set.aparencia(this.value)","Descrição da aparência", "aparencia");
+            appendEmptyP(divName);
+            div.innerHTML += "<p>Para o antecedente, coloque a descrição e depois marque se esse antecedente muda alguma das características da checklist:</p>"
+            createInput("Antecedente Humano: ", "textarea", "antecedId", divName, "set.anteced(this.value)","Descrição da antecedente", "anteced");
+            checkList = {
+                "Insanidade": "insanity",
+                "Corrupção": "corruption",
+                "Nova_profissão": "prof",
+                "Novo_idioma": "lingua",
+                "Ler_idioma_comum": "lingua-0",
+                "Item": "bolsa",
+                "Dinheiro": "dinheiro"
+            }
+            createChecklist(divName, checkList, "Humano");
+            break;
+        case "Anão":
+            set.strength(10);
+            set.agility(9);
+            set.intelligence(10);
+            set.will(10);
+            set.perception(1, "intelligence");
+            set.defense(0, "agility");
+            set.health(4, "strength");
+            set.healing_rate();
+            set.size(0.5);
+            set.speed(8);
+            set.power(0);
+            set.damage(0);
+            set.insanity(0);
+            set.corruption(0);
+            set.lingua("Comum", 0);
+            set.lingua("Anão(ler e escrever)", 1);
+            set.level(1);
+            set.talento("ancest","Constituição Robusta","Um anão toma metade do dano por veneno. Ele pode fazer jogadas de desafio com 1 dádiva para evitar ou remover a aflição envenenado");
+            set.talento("ancest","Criatura Odiada","O jogador escolhe uma criatura da tabela de Ódio. Este ódio concede 1 dádiva em jogadas de ataque do anão contra a criatura escolhida");
+            set.talento("ancest","Visão no Escuro","Enxerga em áreas obscurecidas por sombras e escuridão com um alcance médio como se estivessem iluminadas. Além desta distância, a escuridão é tratada como sombras e sombras como iluminado");
+            div.innerHTML += "<p>Coloque as informações abaixo:</p>"
+            createInput("Ódio Anão: ", "text", "odioAnaoId", divName, "set.odioAnao(this.value)", "Coloque o odio anão aqui");
+            appendEmptyP(divName);
+            createInput("Personalidade Anã: ", "textarea", "personalId", divName, "set.personal(this.value)", "Coloque a personalidade aqui", "personal");
+            appendEmptyP(divName);
+            createInput("Idade: ", "number", "idadeId", divName, "set.idade(this.value)", null, null, 50, 0);
+            appendEmptyP(divName);
+            createInput("Estatura Anã: ", "textarea", "estaturaId", divName, "set.estatura(this.value)", "Coloque a estatura aqui", "estatura");
+            appendEmptyP(divName);
+            createInput("Aparência Anã: ", "textarea", "aparenciaId", divName, "set.aparencia(this.value)", "Coloque a aparência aqui", "aparencia");
+            appendEmptyP(divName);
+            div.innerHTML += "<p>Para o antecedente, coloque a descrição e depois marque se esse antecedente muda alguma das características da checklist:</p>"
+            createInput("Antecedente Anão: ", "textarea", "antecedId", divName, "set.anteced(this.value)", "Coloque a antecedente aqui", "anteced");
+            checkList = {
+                "Corrupção": "corruption",
+                "Nova_profissão": "prof",
+                "Novo_idioma": "lingua",
+                "Item": "bolsa",
+                "Arma": "arma",
+                "Dinheiro": "dinheiro"
+            }
+            createChecklist(divName, checkList, "Anao");
+            break;
+        case "Autômato":
+            set.strength(9);
+            set.agility(8);
+            set.intelligence(9);
+            set.will(9);
+            set.perception(0, "intelligence");
+            set.defense(13);
+            set.health(0, "strength");
+            set.healing_rate();
+            set.size(1);
+            set.speed(8);
+            set.power(0);
+            set.damage(0);
+            set.insanity(0);
+            set.corruption(0);
+            set.lingua("Comum", 0);
+            set.level(1);
+            set.talento("ancest","Imune","dano por doença e veneno; adormecido, doente, envenenado e fatigado");
+            set.talento("ancest","Chave","Um autômato tem uma chave em algum lugar de seu corpo que não pode alcançar. Quando a chave é virada e está rodando, ele é uma criatura. Quando a chave para, ele se torna um objeto. Essa chave para de rodar quando o autômato fica incapacitado. Ela também para ao final da rodada se o autômato teve um total de 0 ou menos em uma jogada de ataque ou de desafio. Enquanto é um objeto, não é possível utilizar ações, se mover, falar ou observar os arredores. Qualquer criatura que possa alcançar o autômato, pode utilizar uma ação para dar corda nele. Se o autômato não estiver incapacitado, se torna uma criatura novamente. Caso esteja incapacitado, o jogador joga 1d6. Para um resultado de 3 ou menos, não há efeito. Para 4 ou mais, o autômato cura 1 de dano e se torna uma criatura no fim da rodada. Embora seja um objeto enquanto está incapacitado, o autômato ainda está sujeito as regras para criaturas incapacitadas");
+            set.talento("ancest","Corpo Mecânico","Um autômato não come, bebe ou respira. Ele não envelhece e não pode ser transformado em uma criatura morta-viva. Seu corpo mecânico o impossibilita de nadar, então ele afunda quando submerso em líquido");
+            set.talento("ancest","Reparando Dano","Enquanto é uma criatura, o autômato se cura de dano como qualquer outra criatura. Caso seja um objeto, uma criatura pode utilizar uma ação para repará-lo com um kit de ferramentas. A criatura precisa trabalhar por no mínimo 4 horas. Ao fim deste período, ela faz um teste de intelecto com 1 perdição. Caso seja bem-sucedida, o autômato cura uma quantidade de dano igual sua taxa de cura");
+            break;
+        case "Changeling":
+            set.strength(9);
+            set.agility(10);
+            set.intelligence(10);
+            set.will(10);
+            set.perception(1, "intelligence");
+            set.defense(0, "agility");
+            set.health(0, "strength");
+            set.healing_rate();
+            set.size(1);
+            set.speed(10);
+            set.power(0);
+            set.damage(0);
+            set.insanity(0);
+            set.corruption(0);
+            set.lingua("Comum", 0);
+            set.level(1);
+            set.talento("ancest","Imune","dano por doença; doente e encantado");
+            set.talento("ancest","Roubar Identidade","Pode utilizar uma ação para alterar sua aparência e copiar a de uma criatura viva que tenha visto a curta distância. O alvo precisa ter Tamanho 1 ou 1/2 e ter uma forma humanoide de carne e sangue. O corpo do changeling muda para que se pareça com o alvo; no entanto, roupas e bens permanecem inalterados. O efeito dura até que o talento seja utilizado novamente. Caso fique incapacitado ou toque um objeto feito de ferro, o changeling retorna à sua aparência normal imediatamente");
+            set.talento("ancest","Visão nas Sombras","Enxerga em áreas obscurecidas por sombras como se estivessem iluminadas");
+            set.talento("ancest","Vulnerabilidade a Ferro","Fica debilitado quando em contato com ferro");
+
+            break;
+        case "Goblin":
+            set.strength(8);
+            set.agility(12);
+            set.intelligence(10);
+            set.will(9);
+            set.perception(1, "intelligence");
+            set.defense(0, "agility");
+            set.health(0, "strength");
+            set.healing_rate();
+            set.size(0.5);
+            set.speed(10);
+            set.power(0);
+            set.damage(0);
+            set.insanity(0);
+            set.corruption(0);
+            set.lingua("Comum", 0);
+            set.lingua("Élfica", 1);
+            set.level(1);
+            set.talento("ancest","Imune","dano por doença; doente, encantado");
+            set.talento("ancest","Furtivo","Quando faz uma jogada para se esconder e mover-se silenciosamente, o goblin faz a jogada de desafio de Agilidade com 1 dádiva");
+            set.talento("ancest","Visão nas Sombras","Enxerga em áreas obscurecidas por sombras como se estivessem iluminadas");
+            set.talento("ancest","Vulnerabilidade a Ferro","Fica debilitado quando em contato com ferro");
+            break;
+        case "Orc":
+            set.strength(11);
+            set.agility(10);
+            set.intelligence(9);
+            set.will(9);
+            set.perception(1, "intelligence");
+            set.defense(0, "agility");
+            set.health(0, "strength");
+            set.healing_rate();
+            set.size(1);
+            set.speed(12);
+            set.power(0);
+            set.damage(0);
+            set.insanity(0);
+            set.corruption(1);
+            set.lingua("Comum", 0);
+            set.lingua("Dialeto Sombrio");
+            set.level(1);
+            set.talento("ancest","Visão nas Sombras","Enxerga em áreas obscurecidas por sombras como se estivessem iluminadas");
+            break;
+        default:
+            set.strength(0);
+            set.agility(0);
+            set.intelligence(0);
+            set.will(0);
+            set.perception(0);
+            set.defense(0);
+            set.health(0);
+            set.healing_rate();
+            set.size(0);
+            set.speed(0);
+            set.power(0);
+            set.damage(0);
+            set.insanity(0);
+            set.corruption(0);
+            set.level(0);
+            pers.desc.linguas = [];
+            pers.talentos = {};
+    }
+    console.log(pers);
+}
+
+function displayTiposProf(){
+    var numProf = document.querySelector("#numProf");
+    var value = numProf.value;
+    var divProf = document.querySelector("#divProf");
+    divProf.innerHTML = "<br>";
+    pers.desc.prof = [];
+
+    for(var i = 0; i < value; i++){
+        var div = document.createElement("div");
+        div.id = `profDiv${i}`;
+        var label = document.createElement("label");
+        label.innerHTML = "Escolha o tipo da sua profissão número " + (i + 1) + ":";
+        label.for = `buttonD${i}N1`;
+        div.appendChild(label);
+
+        var button1 = document.createElement("button");
+        button1.innerHTML = "Acadêmica";
+        button1.id = `buttonD${i}N1`;
+        button1.setAttribute("onclick",`inputProf(${i},1)`);
+
+        var button2 = document.createElement("button");
+        button2.innerHTML = "Comum";
+        button2.id = `buttonD${i}N2`;
+        button2.setAttribute("onclick",`inputProf(${i},2)`);
+
+        var button3 = document.createElement("button");
+        button3.innerHTML = "Criminosa";
+        button3.id = `buttonD${i}N3`;
+        button3.setAttribute("onclick",`inputProf(${i},3)`);
+
+        var button4 = document.createElement("button");
+        button4.innerHTML = "Marcial";
+        button4.id = `buttonD${i}N4`;
+        button4.setAttribute("onclick",`inputProf(${i},4)`);
+
+        var button5 = document.createElement("button");
+        button5.innerHTML = "Religiosa";
+        button5.id = `buttonD${i}N5`;
+        button5.setAttribute("onclick",`inputProf(${i},5)`);
+
+        var button6 = document.createElement("button");
+        button6.innerHTML = "Selvagem";
+        button6.id = `buttonD${i}N6`;
+        button6.setAttribute("onclick",`inputProf(${i},6)`);
+
+        div.appendChild(button1);
+        div.appendChild(button2);
+        div.appendChild(button3);
+        div.appendChild(button4);
+        div.appendChild(button5);
+        div.appendChild(button6);
+
+        divProf.appendChild(div);
+        divProf.innerHTML += "<br>";
+    }
+}
+
+function inputProf(divNum, button){
+    var div = document.querySelector(`#profDiv${divNum}`);
+    
+    for(i = 1; i <= 6; i++){
+        var exInput = document.querySelector(`#profInputD${divNum}N${i}`);
+        if(exInput != null){
+            var exLabel = document.querySelector(`#profLabelD${divNum}N${i}`);
+            div.removeChild(exLabel);
+            div.removeChild(exInput);
+            break;
+        }
+    }
+
+    var label = document.createElement("label");
+    label.id = `profLabelD${divNum}N${button}`;
+    label.for = `profInputD${divNum}N${button}`;
+    label.innerHTML = "<br>Insira a sua profissão e/ou descrição da sua profissão do tipo ";
+    switch(button){
+        case 1:
+            label.innerHTML += "Acadêmica";
+            break;
+        case 2:
+            label.innerHTML += "Comum";
+            break;
+        case 3:
+            label.innerHTML += "Criminosa";
+            break;
+        case 4:
+            label.innerHTML += "Marcial";
+            break;
+        case 5:
+            label.innerHTML += "Religiosa";
+            break;
+        default:
+            label.innerHTML += "Selvagem";
+    }
+    label.innerHTML += ": ";
+
+    var input = document.createElement("input");
+    input.type = "text";
+    input.id = `profInputD${divNum}N${button}`;
+    input.placeholder = "Coloque o texto aqui"
+    input.setAttribute("oninput",`set.prof(this.value,${divNum})`);
+
+    div.appendChild(label);
+    div.appendChild(input);
+}
