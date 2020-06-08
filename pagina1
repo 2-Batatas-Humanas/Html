@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Criar Personagem - RPG</title>
+        <link type="text/css" rel="stylesheet" href="Style/cssPage1.css">
+        <script src="Script/jsPage1.js"></script>
+    </head>
+    <body>
+        <h1 id="first_heading">Crie seu personagem</h1>
+        <div id="maindiv">
+            <label for="ancestralidade">Selecione a ancestralidade do seu personagem:</label>
+            <input id="ancestralidade" list="ancestralidadeList" oninput="set.ancest(this.value); setAncOptions(this.value)" placeholder="Ancestralidade">
+            <datalist id="ancestralidadeList">
+                <option>Humano</option>
+                <option>Anão</option>
+                <option>Autômato</option>
+                <option>Changeling</option>
+                <option>Goblin</option>
+                <option>Orc</option>
+            </datalist>
+            <div id="divExtra"></div>
+            <hr>
+            <label for="numProf">Quantas profissões o seu personagem tem?</label>
+            <input id="numProf" type="number" value="0" min="0" oninput="displayTiposProf()">
+            <div id="divProf"></div>
+            <hr>
+            <label for="riqueza">Qual é o nível de riqueza do seu personagem?</label>
+            <input id="riqueza" list="opcoesRiqueza" placeholder="Nível de riqueza">
+            <datalist id="opcoesRiqueza">
+                <option>Desprovido</option>
+                <option>Pobre</option>
+                <option>Modesto</option>
+                <option>Confortável</option>
+                <option>Abastado</option>
+                <option>Rico</option>
+            </datalist>
+        </div>
+    </body>
+</html>
