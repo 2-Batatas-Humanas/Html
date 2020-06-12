@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Criar Personagem - RPG</title>
+        <link type="text/css" rel="stylesheet" href="Style/paginaAncestralidade.css">
+        <script src="Script/paginaAncestralidade.js"></script>
+        <script src="Script/funcoesAuxiliares.js"></script>
+        <script src="Script/ancestralidades.js"></script>
+        <script src="Script/trilhas.js"></script>
+        <script src="Script/magias.js"></script>
+    </head>
+    <body>
+        <h1 id="first_heading">Crie seu personagem</h1>
+        <label for="ancestry">Selecione uma ancestralidade:</label>
+        <select id="ancestry">
+            <option value="human">Humano</option>
+            <option value="dwarf">Anão</option>
+            <option value="clockwork">Autômato</option>
+            <option value="changeling">Changeling</option>
+            <option value="goblin">Goblin</option>
+            <option value="orc">Orc</option>
+        </select>
+        <button onclick="setAncestry()">Ok</button>
+        <div id="ancestrySet"></div>
+        <p>Aperte o botão quando responder tudo:</p>
+        <button onclick="createCharacter()">Próxima página</button>
+    </body>
+</html>
