@@ -557,6 +557,41 @@ class Orc extends Character{
     }
 }
 
+class Yerath extends Character{
+    constructor(name, caste, age, personality, background){
+        super(name, personality, age, background, 9, 10, 10, 9, 10, 10, 1, 9, 12, 0);
+        
+        this._caste = caste;
+    }
+    // Getting and setting new ancestry-specific properties:
+    get caste(){
+        return this._caste;
+    }
+    set caste(newCaste){
+        this._caste = newCaste;
+    }
+    // Overriding properties setters:
+    set strength(value){
+        super.health = super.health - super.strength + value;
+        super.strength = value;
+    }
+    set intellect(value){
+        super.perception = super.perception - super.intellect + value;
+        super.intellect = value;
+    }
+    // New ascentry-specific methods:
+    level4(){
+        super._defense = super._defense + 1;
+        super._health = super._health + 1;
+    }
+    levelUp(){
+        super.level = super.level + 1;
+        if(super.level == 4){
+            this.level4();
+        }
+    }
+}
+
 function parseJsonBackToAncestryClassObject(ancestry, jsonObject){
     
 }
@@ -575,9 +610,12 @@ var goblin = new Goblin("Greeny", "Angry and sneaky", 15, "Robbery and assault",
 
 var orc = new Orc("Construtor", "Kill.", 21, "You received an education. You know how to read the Common Tongue.", "You are corpulent.", "You are ugly. You have thick tusks jutting from your broad jaw, a sloping forehead, and tiny eyes set deep in your skull.");
 
+var yerath = new Yerath("HarleyQuinn", "Soldier", 12, "Buzzly", "Bee happy");
+
 console.log(human);
 console.log(changeling);
 console.log(clockwork);
 console.log(dwarf);
 console.log(goblin);
 console.log(orc);
+console.log(yerath);
