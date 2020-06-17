@@ -164,6 +164,7 @@ function setOrc(){
 
 function setYerath(){
     id = "ancestrySet";
+    emptyDiv(id);
     createNewInput(id, "Qual é o nome do seu personagem? ", "name", "text");
     addBrToDiv(id);
     createTextareaInput(id, "Qual é a personalidade do seu personagem? ", "personality");
