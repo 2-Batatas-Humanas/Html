@@ -246,7 +246,76 @@ traditions ={
         attribute: "will",
         darkMagic: false,
         spells: {
-            
+            "Criar água":{
+                description:"O conjurador toca o alvo, que se enche de água fresca e limpa.",
+                target:"Um copo, vasilha ou recipiente similar ao alcance do jogador",
+                type:"UT",
+                level:"0"
+            },
+            "Congelar":{
+                description:"A temperatura cai ao redor do alvo. O conjurador faz uma jogada de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, ele sofre 1d3 de dano e fica imobilizado por 1 rodada. Jogada de Ataque 20+ O alvo sofre 1d3 de dano adicional. ",
+                target:"Uma criatura a curta distância",
+                type:"AT",
+                level:"0"
+            },
+            "Afogar":{
+                description:"Água se acumula nos pulmões do alvo ou em um órgão similar. O alvo deve fazer uma jogada de desafio de Força; caso fracasse, ele sofre 1d6+2 de dano e fica debilitado. Ao final de cada rodada que o alvo está debilitado devido a este efeito, ele deve fazer uma jogada de desafio de Força com 1 dádiva para tentar remover a aflição. Depois de três fracassos, o alvo sufoca e morre.",
+                target:"Uma criatura a curta distância que respire ar.",
+                type:"AT",
+                level:"1"
+            },
+            "Explosão de gelo":{
+                description:"O conjurador arremessa fragmentos de gelo dentados que causam 2d6+2 de dano a tudo na área; ou metade do dano, caso a criatura seja bem-sucedida em uma jogada de desafio de Agilidade. O chão na área se torna terreno difícil durante uma 1 rodada.",
+                area:" Um cone com 3 metros de comprimento, originado de um ponto ao alcance do conjurador.",
+                type:"AT",
+                level:"1"
+            },
+            "Fonte da vida":{
+                description:"Águas curativas obscurecem parcialmente a área enquanto a magia durar. Cada criatura viva na área não precisa beber água até que tenha completado um descanso. Além disso, quando uma criatura na área cura dano, ela cura 1d3 de dano adicional.",
+                target:"Um hemisfério com raio 2 metros, centrado em um ponto no solo a curta distância.",
+                duration:"1 minuto",
+                type:"UT",
+                level:"1"
+            },
+            "Gêiser":{
+                description:"Uma coluna de água escaldante emerge da área, sobe 2d6 metros antes de cair no chão cobrindo metade desta quantidade de metros de área, extinguindo chamas que não estejam protegidas. A força da água move objetos de Tamanho 1 ou menor, que não sejam fixos, 1d6 metros para longe do ponto de origem; enquanto cada criatura na área sofre 2d6+2 de dano das águas quentes e deve fazer uma jogada de desafio de agilidade. Caso fracasse, a criatura fica prostrada, e caso seja bem-sucedida, sofre apenas metade do dano.",
+                area:"Um círculo com 5 metros de raio, centrado em um ponto no solo a média distância",
+                type:"AT",
+                level:"2"
+            },
+            "Onda":{
+                description:"Água preenche a área enquanto durar a magia. A água obscurece parcialmente qualquer coisa em seu espaço e atrás dela, fornecendo metade de cobertura. A água também extingue quaisquer chamas na área. Quando o efeito termina, a linha de água dobra e cai para longe do conjurador ou na sua direção, como ele desejar, cobrindo uma área com 10 metros de comprimento e 10 metros de largura. Cada criatura na área sofre 1d6 de dano e deve fazer uma jogada de desafio de Força. Caso fracasse, ela fica prostrada; caso seja bem-sucedida, sofre metade do dano. A água então se espalha por mais 10 metros em todas as direções, extinguindo quaisquer chamas que tocar.",
+                area:" Uma linha com 10 metros de comprimento, 10 metros de altura e 1 metro de largura originada de um ponto no solo a média distância.",
+                duration:"1 rodada",
+                type:"AT",
+                level:"2"
+            },
+            "Esfera de água":{
+                description:"Água preenche a área e permanece até o fim da magia. Cada vez que o conjurador utiliza uma ação para se concentrar na magia, ele pode mover a esfera e tudo dentro dela até 5 metros em qualquer direção. Cada criatura na área quando o personagem conjura esta magia fica presa na esfera, assim como qualquer criatura cujo espaço seja coberto pela esfera. Ao fim de cada rodada, até o fim do efeito, cada criatura que respira ar presa dentro da esfera precisa obter um sucesso em uma jogada de desafio de Força ou sofre 2d6 de dano. Uma criatura presa por este efeito pode utilizar uma ação para fazer uma jogada de desafio de Força. Caso seja bem-sucedida, ela nada para a liberdade e cai em um espaço aberto de sua escolha a 1 metro da esfera.",
+                area:"Uma esfera com 3 metros de raio, centrada em um ponto a média distância.",
+                duration:"Concentração, até 1 minuto.",
+                type:"AT",
+                level:"3"
+            },
+            "Força das mares":{
+                description:"Cada alvo deve fazer uma jogada de desafio de Força. Caso fracasse, o alvo é movido 2d6 metros para perto ou longe do conjurador (à escolha dele) e fica pasmo por 1 rodada. Caso seja bem-sucedido, o alvo é movido apenas metade da distância.",
+                area:"Qualquer quantidade de criaturas a média distância.",
+                type:"AT",
+                level:"3"
+            },
+            "Onda de frio":{
+                description:"Frio letal se dispersa pela área, congelando instantaneamente água e líquidos a base de água, incluindo poções. O frio causa 7d6 de dano a tudo na área. Criaturas na área sofrem metade do dano, caso obtenham sucesso em uma jogada de desafio de Força. Uma criatura que fique incapacitada por este dano congela e morre instantaneamente.",
+                area:" Um cone com 8 metros de comprimento, originado de um ponto ao alcance do conjurador.",
+                type:"AT",
+                level:"4"
+            },
+            "Compelir gênio da água":{
+                description:"No fim da rodada que o personagem conjurou a magia, o alvo se torna um gênio da água de Tamanho 2. O conjurador não pode terminar voluntariamente esta magia. Quando o gênio surge, o conjurador faz uma jogada de ataque de Vontade contra a Vontade do gênio. O gênio fica compelido enquanto durar a magia, caso o conjurador seja bem-sucedido; caso ele fracasse, o gênio se torna hostil.",
+                area:"Um cubo de gelo, neve ou água, com 2 metros de lado, originado de um ponto a longa distância.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"5"
+            }    
         }
     },
     "Alteração": {
