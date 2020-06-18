@@ -39,7 +39,7 @@ function setDwarf(){
     createNewInput(id, "Qual é o nome do seu personagem? ", "name", "text");
     addBrToDiv(id);
     createOptionsInput(id, "Qual é o ódio anão do seu personagem(criatura odiada)? ", "hatred", 
-    ["Ogros", "Trogloditas", "Homens-Fera", "Orc", "Goblins", "Elfos", "Trolls", "Gigantes", "Dragões", "Demônios"], 
+    ["Ogros", "Trogloditas", "Homens-Fera", "Orcs", "Goblins", "Elfos", "Trolls", "Gigantes", "Dragões", "Demônios"], 
     ["Ogres", "Troglodytes", "Beastmen", "Orcs", "Goblins", "Elves", "Trolls", "Giants", "Dragons", "Demons"]);
     addBrToDiv(id);
     createTextareaInput(id, "Qual é a personalidade do seu personagem? ", "personality");
@@ -100,8 +100,8 @@ function setChangeling(){
     createNewInput(id, "Qual é a idade real do seu personagem? ", "age", "number", null, 25, 0);
     addBrToDiv(id);
     createOptionsInput(id, "Selecione a ancestralidade aparente do seu personagem: ", "apparentAncestry", 
-    ["Goblin", "Anão", "Humano", "Orc", "Outro"], 
-    ["goblin" , "dwarf", "human", "orc", "other"]);
+    ["Goblin", "Anão", "Humano", "Orc", "Yerath", "Outra"], 
+    ["goblin" , "dwarf", "human", "orc", "yerath", "other"]);
     addBrToDiv(id);
     createNewInput(id, "Qual é a idade aparente do seu personagem? ", "apparentAge", "number", null, 25, 0);
     addBrToDiv(id);
@@ -173,7 +173,7 @@ function setYerath(){
     addBrToDiv(id);
     createTextareaInput(id, "Qual é sua casta(caste)? ", "caste");
     addBrToDiv(id, 1);
-    createOptionsInput(id, "Qual desses é sua casta? ", "casteOption", 
+    createOptionsInput(id, "Qual desses é sua casta? ", "casteChoice", 
     ["Drone", "Scout", "Soldier"], 
     ["profession laborer+2 strength+1 will", "profession guide+1 agility+1 perception", "profession soldier+2 strength+13 defense"]);
     addBrToDiv(id);
@@ -237,9 +237,7 @@ function createCharacter(){
                 };
                 escolhas = {
                     raisedAttribute: document.querySelector("#raisedAttribute").value,
-                    professionLanguageChoice: {
-                        option: document.querySelector("#professionLanguageChoice").value
-                    } 
+                    profLangChoice: document.querySelector("#professionLanguageChoice").value
                 };
                 var backgroundChange = document.querySelector("#backgroundChange").value;
                 if(personagem.name == "" || personagem.personality == "" || personagem.religion == "" || personagem.age == "" || personagem.build == "" || personagem.appearance == "" || personagem.background == ""){
@@ -250,7 +248,7 @@ function createCharacter(){
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
                 }
-                localStorage.setItem("new human", JSON.stringify(personagem));
+                localStorage.setItem("character", JSON.stringify(personagem));
                 localStorage.setItem("choices", JSON.stringify(escolhas));
                 break;
             case "dwarf":
@@ -274,7 +272,7 @@ function createCharacter(){
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
                 }
-                localStorage.setItem("new dwarf", JSON.stringify(personagem));
+                localStorage.setItem("character", JSON.stringify(personagem));
                 localStorage.setItem("choices", JSON.stringify(escolhas));
                 break;
             case "clockwork":
@@ -302,7 +300,7 @@ function createCharacter(){
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
                 }
-                localStorage.setItem("new clockwork", JSON.stringify(personagem));
+                localStorage.setItem("character", JSON.stringify(personagem));
                 localStorage.setItem("choices", JSON.stringify(escolhas));
                 break;
             case "changeling":
@@ -329,7 +327,7 @@ function createCharacter(){
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
                 }
-                localStorage.setItem("new changeling", JSON.stringify(personagem));
+                localStorage.setItem("character", JSON.stringify(personagem));
                 localStorage.setItem("choices", JSON.stringify(escolhas));
                 break;
             case "goblin":
@@ -353,7 +351,7 @@ function createCharacter(){
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
                 }
-                localStorage.setItem("new goblin", JSON.stringify(personagem));
+                localStorage.setItem("character", JSON.stringify(personagem));
                 localStorage.setItem("choices", JSON.stringify(escolhas));
                 break;
             case "orc":
@@ -376,7 +374,7 @@ function createCharacter(){
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
                 }
-                localStorage.setItem("new orc", JSON.stringify(personagem));
+                localStorage.setItem("character", JSON.stringify(personagem));
                 localStorage.setItem("choices", JSON.stringify(escolhas));
                 break;
             case "yerath":
@@ -389,7 +387,7 @@ function createCharacter(){
                     background: document.querySelector("#background").value
                 };
                 escolhas = {
-                    casteChoice: document.querySelector("#casteOption").value
+                    casteChoice: document.querySelector("#casteChoice").value
                 }
                 var backgroundChange = document.querySelector("#backgroundChange").value;
                 if(personagem.name == "" || personagem.caste == "" || personagem.personality == "" || personagem.age == "" || personagem.background == ""){
@@ -400,7 +398,7 @@ function createCharacter(){
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
                 }
-                localStorage.setItem("new yerath", JSON.stringify(personagem));
+                localStorage.setItem("character", JSON.stringify(personagem));
                 localStorage.setItem("choices", JSON.stringify(escolhas));
                 break;
             default:
@@ -410,6 +408,6 @@ function createCharacter(){
     }
     if(canChangePage){
         console.log("Character created");
-        //window.location.href = 'paginaExtras.html';
+        window.location.href = 'professions.html';
     }
 }
