@@ -253,10 +253,11 @@ traditions ={
                 level:"0"
             },
             "Congelar":{
-                description:"A temperatura cai ao redor do alvo. O conjurador faz uma jogada de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, ele sofre 1d3 de dano e fica imobilizado por 1 rodada. Jogada de Ataque 20+ O alvo sofre 1d3 de dano adicional. ",
+                description:"A temperatura cai ao redor do alvo. O conjurador faz uma jogada de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, ele sofre 1d3 de dano e fica imobilizado por 1 rodada.",
                 target:"Uma criatura a curta distância",
                 type:"AT",
-                level:"0"
+                level:"0",
+                attackRoll20:"O alvo sofre 1d3 de dano adicional."
             },
             "Afogar":{
                 description:"Água se acumula nos pulmões do alvo ou em um órgão similar. O alvo deve fazer uma jogada de desafio de Força; caso fracasse, ele sofre 1d6+2 de dano e fica debilitado. Ao final de cada rodada que o alvo está debilitado devido a este efeito, ele deve fazer uma jogada de desafio de Força com 1 dádiva para tentar remover a aflição. Depois de três fracassos, o alvo sufoca e morre.",
@@ -322,7 +323,83 @@ traditions ={
         attribute: "will",
         darkMagic: false,
         spells: {
-            
+            "Compreensão":{
+                description:"O conjurador toca o alvo. Dado que este saiba ao menos 1 idioma, o conjurador pode se comunicar com o alvo enquanto mantém contato físico com ele, independente de compartilharem um idioma mútuo.",
+                target:"O conjurador e uma criatura ao alcance do conjurador.",
+                duration:"Concentração, até 1 minuto.",
+                type:"UT",
+                level:"0"
+            },
+            "Distorcer aparência":{
+                description:"O conjurador toca um alvo e torna sua aparência indistinta. Pela duração da magia, quando o alvo tentar se esconder, ele faz suas jogadas de desafio de Agilidade com 1 dádiva; criaturas que veem o alvo e atacam sua Defesa ou Agilidade fazem suas jogadas de ataque com 1 perdição.",
+                target:"Uma criatura ao alcance do conjurador.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"0"
+            },
+            "Adaptação subaquática":{
+                description:"O conjurador toca o alvo. Pela duração da magia, o alvo pode respirar água tão facilmente quanto respira ar, se mover até seu Deslocamento total enquanto nada e não precisa fazer jogadas de desafio para nadar.",
+                target:"Uma criatura ao alcance do conjurador.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"1"
+            },
+            "Ampliar os sentidos":{
+                description:"O conjurador toca o alvo. Pela duração da magia, o alvo recebe um bônus de +5 para sua Percepção e pode enxergar em áreas obscurecidas por sombras ou escuridão como se estivessem iluminadas; no entanto, o alvo faz jogadas de desafio para resistir a ficar cego ou surdo com 1 perdição.",
+                target:"Uma criatura ao alcance do conjurador.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"1"
+            },
+            "Escalada de aranha":{
+                description:"O conjurador toca o alvo. Pela duração da magia, o alvo pode se mover até seu Deslocamento total por paredes, tetos ou outras áreas horizontais, não precisa fazer uma jogada de desafio para escalar.",
+                target:"Uma criatura ao alcance do conjurador.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"1"
+            },
+            "Aprimorar atributo":{
+                description:"O conjurador toca o alvo. Ele escolhe Força, Agilidade, Intelecto ou Vontade. Pela duração da magia, quando o alvo faz uma jogada de ataque ou de desafio utilizando o atributo escolhido, ele faz a jogada com 1 dádiva.",
+                target:"Uma criatura ao alcance do conjurador.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"2"
+            },
+            "Aprimorar defesa":{
+                description:"O conjurador toca o alvo. Pela duração da magia, o alvo ganha um bônus de +5 para sua Saúde, jogadas de ataque contra o alvo são feitas com 1 perdição.",
+                target:"Uma criatura ao alcance do conjurador.",
+                duratiom:"1 minuto.",
+                type:"UT",
+                level:"2"
+            },
+            "Alterar tamanho":{
+                description:"O conjurador toca o alvo, ele cresce ou encolhe e se mantém em seu novo Tamanho enquanto durar a magia. Tudo que o alvo veste e carrega também cresce ou encolhe para se acomodar a nova forma, mas se esses objetos deixarem de estar na posse do alvo, eles imediatamente voltam ao tamanho normal. Se o alvo cresce, seu Tamanho duplica e ele recebe um bônus de +10 para sua Saúde. Os ataques de sua arma causam 1d6 de dano adicional, caso seu novo Tamanho seja 3 ou menos, ou 2d6 de dano adicional, caso seu novo Tamanho seja 4 ou mais. Se o espaço que o alvo ocupa não é grande o bastante para acomodar seu novo Tamanho, ele sofre 5d6 de dano e o efeito termina imediatamente. Se o alvo encolhe, seu Tamanho é dividido pela metade. Ele causa metade do dano com ataques de armas, faz jogadas de ataque e desafio de Força com 1 perdição e faz jogadas de ataque e desafio de Agilidade com 1 dádiva.",
+                target:"Uma criatura ao alcance do conjurador.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"3"
+            },
+            "Regeneração":{
+                description:"O conjurador toca o alvo. Ao fim de cada rodada enquanto durar a magia, o alvo cura uma quantidade de dano igual à metade de sua taxa de cura.",
+                target:"Uma criatura viva ao alcance do conjurador.",
+                duration:"1 minuto",
+                type:"UT",
+                level:"3"
+            },
+            "Maleabilidade":{
+                description:"O conjurador toca o alvo. Enquanto durar a magia, o alvo pode se mover até seu Deslocamento total por terreno difícil, espaços ocupados por outras criaturas independentemente de seu Tamanho e livremente por aberturas de pelo menos 2,5 cm de largura. Da mesma maneira, pela duração da magia, o alvo não pode ficar prostrado e é imune as aflições agarrado, imobilizado e lento.",
+                target:"Uma criatura ao alcance do conjurador.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"4"
+            },
+            "Despertar o potencial":{
+                description:"O conjurador toca o alvo. Ele escolhe Força, Agilidade, Intelecto ou Vontade e joga 1d6. O alvo recebe um bônus para o atributo escolhido igual ao resultado da jogada, até o valor máximo de 20, enquanto durar a magia. O efeito também afeta quaisquer características relacionadas ao atributo.",
+                target:"Uma criatura ao alcance do conjurador.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"5"
+            }
         }
     },
     "Ar": {
