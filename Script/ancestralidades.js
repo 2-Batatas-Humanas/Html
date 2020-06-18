@@ -1,25 +1,26 @@
 class Character{
-    constructor(name, personality, age, background, strength, agility, intellect, will, perception, speed, size, health, defense, corruption){
+    constructor(name, personality, age, religion, background, strength, agility, intellect, will, perception, defense, health, size, speed, power, damage, insanity, corruption, level){
         this._name = name;
         this._personality = personality;
         this._age = age;
+        this._religion = religion;
         this._background = background;
         this._strength = strength;
         this._agility = agility;
         this._intellect = intellect;
         this._will = will;
         this._perception = perception;
-        this._speed = speed;
-        this._size = size;
-        this._health = health;
         this._defense = defense;
+        this._health = health;
+        this._size = size;
+        this._speed = speed;
+        this._power = power;
+        this._damage = damage;
+        this._insanity = insanity;
         this._corruption = corruption;
+        this._level = level;
 
-        this._damage = 0;
         this._healingRate = Math.floor(health/4);
-        this._power = 0;
-        this._insanity = 0;
-        this._level = 1;
         this._languageList = {
             "Língua Comum": {
                 speakable: true,
@@ -34,24 +35,48 @@ class Character{
         this._talents["expertPath"] = {};
         this._talents["masterPath"] = {};
     }
-    // Imutable properties:
+    // Most likely immutable properties
     get name(){
         return this._name;
+    }
+    set name(name){
+        this._name = name;
     }
     get personality(){
         return this._personality;
     }
+    set personality(personality){
+        this._personality = personality;
+    }
     get age(){
         return this._age;
+    }
+    set age(age){
+        this._age = age;
+    }
+    get religion(){
+        return this._religion;
+    }
+    set religion(religion){
+        this._religion = religion;
     }
     get background(){
         return this._background;
     }
+    set background(background){
+        this._background = background;
+    }
     get speed(){
         return this._speed;
     }
+    set speed(speed){
+        this._speed = speed;
+    }
     get size(){
         return this._size;
+    }
+    set size(size){
+        this._size = size;
     }
     // Special case: all ancestries have healing rate = current health / 4 -> round down(floor)
     get healingRate(){
@@ -182,37 +207,15 @@ class Character{
 }
 
 class Human extends Character{
-    constructor(name, personality, age, background, raisedAttribute, additionalLanguageOrProfession, size, religion, build, appearance){
-        switch(raisedAttribute){
-            case "strength":
-                super(name, personality, age, background, 11, 10, 10, 10, 10, 10, size, 11, 10, 0);
-                break;
-            case "agility":
-                super(name, personality, age, background, 10, 11, 10, 10, 10, 10, size, 10, 11, 0);
-                break;
-            case "intellect":
-                super(name, personality, age, background, 10, 10, 11, 10, 11, 10, size, 10, 10, 0);
-                break;
-            default: //will
-                super(name, personality, age, background, 10, 10, 10, 11, 10, 10, size, 10, 10, 0);
-        }
-        this._religion = religion;
+    constructor(name, personality, age, religion, background, size, build, appearance, additionalAttCharacts){
+        super(name, personality, age, religion, background,
+            10+additionalAttCharacts.strength, 10+additionalAttCharacts.agility, 10+additionalAttCharacts.intellect, 10+additionalAttCharacts.will,
+            10+additionalAttCharacts.intellect, 10+additionalAttCharacts.agility, 10+additionalAttCharacts.strength, size, 10,
+            additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
         this._build = build;
         this._appearance = appearance;
-        
-        if(additionalLanguageOrProfession.option == "language"){
-            super.addSpeakedLanguage(additionalLanguageOrProfession.value);
-        } else{ // additionalLanguageOrProfession.option == "profession"
-            super.addProfession(additionalLanguageOrProfession.value);
-        }
     }
     // Getting and setting new ancestry-specific properties:
-    get religion(){
-        return this._religion;
-    }
-    set religion(newReligion){
-        this._religion = newReligion;
-    }
     get build(){
         return this._build;
     }
@@ -251,8 +254,11 @@ class Human extends Character{
 }
 
 class Changeling extends Character{
-    constructor(name, personality, trueAge, background, apparentGender, apparentAncestry, apparentAge, apparentBuild, apparentAppearence, quirk){  
-        super(name, personality, trueAge, background, 9, 10, 10, 10, 11, 10, 1, 9, 10, 0);
+    constructor(name, personality, trueAge, religion, background, apparentGender, apparentAncestry, apparentAge, apparentBuild, apparentAppearence, quirk, additionalAttCharacts){  
+        super(name, personality, trueAge, religion, background,
+            additionalAttCharacts.strength+9, additionalAttCharacts.agility+10, additionalAttCharacts.intellect+10, additionalAttCharacts.will+10,
+            additionalAttCharacts.intellect+11, additionalAttCharacts.agility+10, additionalAttCharacts.strength+10,
+            1, 10, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
         
         this._apparentGender = apparentGender;
         this._apparentAncestry = apparentAncestry;
@@ -329,8 +335,11 @@ class Changeling extends Character{
 }
 
 class Clockwork extends Character{
-    constructor(name, personality, age, background, purpose, form, appearance, locationKey){  
-        super(name, personality, age, background, 9, 8, 9, 9, 9, 8, 1, 9, 13, 0);
+    constructor(name, personality, age, religion, background, purpose, form, appearance, locationKey, additionalAttCharacts){  
+        super(name, personality, age, religion, background,
+            additionalAttCharacts.strength+9, additionalAttCharacts.agility+8, additionalAttCharacts.intellect+9, additionalAttCharacts.will+9,
+            additionalAttCharacts.intellect+9, 13, additionalAttCharacts.strength+9,
+            1, 8, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
         
         this._purpose = purpose;
         this._form = form;
@@ -389,8 +398,11 @@ class Clockwork extends Character{
 }
 
 class Dwarf extends Character{
-    constructor(name, personality, age, background, build, appearance, hatred){  
-        super(name, personality, age, background, 10, 9, 10, 10, 11, 8, 0.5, 14, 9, 0);
+    constructor(name, personality, age, religion, background, build, appearance, hatred, additionalAttCharacts){  
+        super(name, personality, age, religion, background,
+            additionalAttCharacts.strength+10, additionalAttCharacts.agility+9, additionalAttCharacts.intellect+10, additionalAttCharacts.will+10,
+            additionalAttCharacts.intellect+11, additionalAttCharacts.agility+9, additionalAttCharacts.strength+14,
+            0.5, 8, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
         
         this._build = build
         this._appearance = appearance;
@@ -449,8 +461,11 @@ class Dwarf extends Character{
 }
 
 class Goblin extends Character{
-    constructor(name, personality, age, background, build, distinctiveAppearance, oddHabit){  
-        super(name, personality, age, background, 8, 12, 10, 9, 11, 10, 0.5, 8, 12, 0);
+    constructor(name, personality, age, religion, background, build, distinctiveAppearance, oddHabit, additionalAttCharacts){  
+        super(name, personality, age, religion, background,
+            additionalAttCharacts.strength+8, additionalAttCharacts.agility+12, additionalAttCharacts.intellect+10, additionalAttCharacts.will+9,
+            additionalAttCharacts.intellect+11, additionalAttCharacts.agility+12, additionalAttCharacts.strength+8,
+            0.5, 10, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
         
         this._build = build
         this._distinctiveAppearance = distinctiveAppearance;
@@ -508,8 +523,11 @@ class Goblin extends Character{
 }
 
 class Orc extends Character{
-    constructor(name, personality, age, background, build, appearance){  
-        super(name, personality, age, background, 11, 10, 9, 9, 11, 12, 1, 11, 10, 1);
+    constructor(name, personality, age, religion, background, build, appearance, additionalAttCharacts){  
+        super(name, personality, age, religion, background,
+            additionalAttCharacts.strength+11, additionalAttCharacts.agility+10, additionalAttCharacts.intellect+9, additionalAttCharacts.will+9,
+            additionalAttCharacts.intellect+10, additionalAttCharacts.agility+10, additionalAttCharacts.strength+11,
+            1, 12, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption+1, additionalAttCharacts.level);
         
         this._build = build
         this._appearance = appearance;
@@ -558,8 +576,11 @@ class Orc extends Character{
 }
 
 class Yerath extends Character{
-    constructor(name, caste, age, personality, background){
-        super(name, personality, age, background, 9, 10, 10, 9, 10, 10, 1, 9, 12, 0);
+    constructor(name, caste, age, religion, personality, background, additionalAttCharacts){
+        super(name, personality, age, religion, background, 
+            additionalAttCharacts.strength+9, additionalAttCharacts.agility+10, additionalAttCharacts.intellect+10, additionalAttCharacts.will+9,
+            additionalAttCharacts.intellect+10, 12, additionalAttCharacts.strength+9,
+            1, 10, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
         
         this._caste = caste;
     }
@@ -593,24 +614,115 @@ class Yerath extends Character{
 }
 
 function parseJsonBackToAncestryClassObject(ancestry, jsonObject){
-    
+    switch(ancestry){
+        case "human":
+            break;
+        case "dwarf":
+            
+            break;
+        case "clockwork":
+
+            break;
+        case "changeling":
+
+            break;
+        case "goblin":
+
+            break;
+        case "orc":
+
+            break;
+        default:
+            console.log("Unable to get ancestry object - " + ancestry + " isn't an ancestry");
+    }
 }
 
 
+console.log("Ancestry examples:");
 
-var human = new Human("Example 1", "Crazy", 20, "Came from a mafia", "strength", {option: "profession", value: "Thief"}, 0.5, "None", "Very very weak", "Handsome af");
+var human = new Human("Example 1", "Crazy", 20, "None", "Came from a mafia", 0.5, "Very very weak", "Handsome af", {
+    strength: 0,
+    agility: 1,
+    intellect: 0,
+    will: 0,
+    damage: 0,
+    power: 0,
+    insanity: 0,
+    corruption: 0,
+    level: 1
+});
 
-var changeling = new Changeling("Example 2", "Cool", 30, "Kidnapped and used for slavor", "female", "orc", 12, "Strong af", "Ugly as hell", "Doesn't have fingernails or hair when changing their form");
+var changeling = new Changeling("Example 2", "Cool", 30, "Dama da noite", "Kidnapped and used for slavor", "female", "orc", 12, "Strong af", "Ugly as hell", "Doesn't have fingernails or hair when changing their form", {
+    strength: 0,
+    agility: 0,
+    intellect: 0,
+    will: 0,
+    damage: 0,
+    power: 0,
+    insanity: 0,
+    corruption: 0,
+    level: 1
+});
 
-var clockwork = new Clockwork("Robot 1", "Fluid", 150, "Came from a rich family", "kill everyone", "great form", "Strange", "Anckle");
+var clockwork = new Clockwork("Robot 1", "Fluid", 150, "Pai morte", "Came from a rich family", "kill everyone", "great form", "Strange", "Anckle", {
+    strength: 0,
+    agility: 0,
+    intellect: 0,
+    will: 0,
+    damage: 0,
+    power: 0,
+    insanity: 0,
+    corruption: 0,
+    level: 1
+});
 
-var dwarf = new Dwarf("Sneezy", "ATCHOU!", 50, "Snow white", "Weak", "Sick", "Orcs");
+var dwarf = new Dwarf("Sneezy", "ATCHOU!", 50, "Winter is coming", "Snow white", "Weak", "Sick", "Orcs", {
+    strength: 0,
+    agility: 0,
+    intellect: 0,
+    will: 0,
+    damage: 0,
+    power: 0,
+    insanity: 0,
+    corruption: 0,
+    level: 1
+});
 
-var goblin = new Goblin("Greeny", "Angry and sneaky", 15, "Robbery and assault", "Small", "Big nose", "Speak in lies");
+var goblin = new Goblin("Greeny", "Angry and sneaky", 15, "Lord Voldemort", "Robbery and assault", "Small", "Big nose", "Speak in lies", {
+    strength: 0,
+    agility: 0,
+    intellect: 0,
+    will: 0,
+    damage: 0,
+    power: 0,
+    insanity: 0,
+    corruption: 0,
+    level: 1
+});
 
-var orc = new Orc("Construtor", "Kill.", 21, "You received an education. You know how to read the Common Tongue.", "You are corpulent.", "You are ugly. You have thick tusks jutting from your broad jaw, a sloping forehead, and tiny eyes set deep in your skull.");
+var orc = new Orc("Construtor", "Kill.", 21, "None", "You received an education. You know how to read the Common Tongue.", "You are corpulent.", "You are ugly. You have thick tusks jutting from your broad jaw, a sloping forehead, and tiny eyes set deep in your skull.", {
+    strength: 0,
+    agility: 0,
+    intellect: 0,
+    will: 0,
+    damage: 0,
+    power: 0,
+    insanity: 0,
+    corruption: 0,
+    level: 1
+});
 
-var yerath = new Yerath("HarleyQuinn", "Soldier", 12, "Buzzly", "Bee happy");
+var yerath = new Yerath("HarleyQuinn", "Soldier", 12, "Herself", "Buzzly", "Bee happy", {
+    strength: 0,
+    agility: 0,
+    intellect: 0,
+    will: 0,
+    damage: 0,
+    power: 0,
+    insanity: 0,
+    corruption: 0,
+    level: 1
+});
 
 console.log(human);
 console.log(changeling);
