@@ -139,7 +139,7 @@ function nextPage(){
             }
             character.professions.push(name);
         }
-        else if(choices.backgroundChange != "profession artisan"){
+        else if(choices.backgroundChange == "profession" || choices.backgroundChange == "1d6 insanity+profession"){
             var type = document.querySelector("#backgroundProfessionType").value;
             var name = document.querySelector("#backgroundProfessionName").value;
             var religiousExtra = document.querySelector("#backgroundProfessionReligiousExtra").checked;
