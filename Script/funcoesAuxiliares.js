@@ -47,6 +47,22 @@ function showAttributes(divId, strength, agility, intelligence, will){
 
 // Creating Input:
 
+//Checkbox
+function createCheckbox(divId, labelText, checkboxId){
+    var div = document.querySelector("#" + divId);
+
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = checkboxId;
+    
+    var label = document.createElement("label");
+    label.for = checkboxId;
+    label.innerHTML = labelText;
+
+    div.appendChild(label);
+    div.appendChild(checkbox);
+}
+
 //Textarea
 function createTextareaInput(divId, labelText, textareaId, placeholder = null){
     var div = document.querySelector("#" + divId);
