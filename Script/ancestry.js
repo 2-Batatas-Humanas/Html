@@ -12,7 +12,7 @@ function setHuman(){
     ["1", "1/2"], 
     [1, 0.5]);
     addBrToDiv(id);
-    createOptionsInput(id, "Você deseja adicionar uma profissão ou uma Idioma?(A profissão ou idioma será adicionada na próxima página) ", "professionLanguageChoice", 
+    createOptionsInput(id, "Você deseja adicionar uma profissão ou uma Idioma?(A profissão ou idioma será adicionada nas próximas páginas) ", "professionLanguageChoice", 
     ["Profissão", "Idioma"], 
     ["profession", "language"]);
     addBrToDiv(id);
