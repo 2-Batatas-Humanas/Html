@@ -46,6 +46,8 @@ function setDwarf(){
     addBrToDiv(id);
     createNewInput(id, "Qual é a idade do seu personagem? ", "age", "number", null, 25, 0);
     addBrToDiv(id);
+    createTextareaInput(id, "Qual é a religião do seu personagem? ", "religion", "Se não tiver religião coloque: O personagem não tem religião.");
+    addBrToDiv(id);
     createTextareaInput(id, "Qual é a estatura do seu personagem? ", "build");
     addBrToDiv(id);
     createTextareaInput(id, "Qual é a aparência do seu personagem? ", "appearance");
@@ -78,6 +80,8 @@ function setClockwork(){
     addBrToDiv(id);
     createNewInput(id, "Qual é a idade do seu personagem? ", "age", "number", null, 25, 0);
     addBrToDiv(id);
+    createTextareaInput(id, "Qual é a religião do seu personagem? ", "religion", "Se não tiver religião coloque: O personagem não tem religião.");
+    addBrToDiv(id);
     createTextareaInput(id, "Qual é a aparência do seu personagem? ", "appearance");
     addBrToDiv(id);
     createNewInput(id, "Onde fica localizada a chave usada para ligar seu personagem? ", "locationKey", "text");
@@ -98,6 +102,8 @@ function setChangeling(){
     createTextareaInput(id, "Qual é a personalidade do seu personagem? ", "personality");
     addBrToDiv(id);
     createNewInput(id, "Qual é a idade real do seu personagem? ", "age", "number", null, 25, 0);
+    addBrToDiv(id);
+    createTextareaInput(id, "Qual é a religião do seu personagem? ", "religion", "Se não tiver religião coloque: O personagem não tem religião.");
     addBrToDiv(id);
     createOptionsInput(id, "Selecione a ancestralidade aparente do seu personagem: ", "apparentAncestry", 
     ["Goblin", "Anão", "Humano", "Orc", "Yerath", "Outra"], 
@@ -133,6 +139,8 @@ function setGoblin(){
     addBrToDiv(id);
     createNewInput(id, "Qual é a idade do seu personagem? ", "age", "number", null, 25, 0);
     addBrToDiv(id);
+    createTextareaInput(id, "Qual é a religião do seu personagem? ", "religion", "Se não tiver religião coloque: O personagem não tem religião.");
+    addBrToDiv(id);
     createTextareaInput(id, "Qual é a estatura do seu personagem?", "build");
     addBrToDiv(id);
     createTextareaInput(id, "Qual é o antecedente do seu personagem?", "background");
@@ -150,6 +158,8 @@ function setOrc(){
     createTextareaInput(id, "Qual é a personalidade do seu personagem? ", "personality");
     addBrToDiv(id);
     createNewInput(id, "Qual é a idade do seu personagem? ", "age", "number", null, 25, 0);
+    addBrToDiv(id);
+    createTextareaInput(id, "Qual é a religião do seu personagem? ", "religion", "Se não tiver religião coloque: O personagem não tem religião.");
     addBrToDiv(id);
     createTextareaInput(id, "Qual é a estatura do seu personagem? ", "build");
     addBrToDiv(id);
@@ -170,6 +180,8 @@ function setYerath(){
     createTextareaInput(id, "Qual é a personalidade do seu personagem? ", "personality");
     addBrToDiv(id);
     createNewInput(id, "Qual é a idade do seu personagem? ", "age", "number", null, 25, 0);
+    addBrToDiv(id);
+    createTextareaInput(id, "Qual é a religião do seu personagem? ", "religion", "Se não tiver religião coloque: O personagem não tem religião.");
     addBrToDiv(id);
     createTextareaInput(id, "Qual é sua casta(caste)? ", "caste");
     addBrToDiv(id, 1);
@@ -258,13 +270,14 @@ function createCharacter(){
                     hatred: document.querySelector("#hatred").value,
                     personality: document.querySelector("#personality").value,
                     age: document.querySelector("#age").value,
+                    religion: document.querySelector("#religion").value,
                     build: document.querySelector("#build").value,
                     appearance: document.querySelector("#appearance").value,
                     background: document.querySelector("#background").value
                 };
                 escolhas = {};
                 var backgroundChange = document.querySelector("#backgroundChange").value;
-                if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.build == "" || personagem.appearance == "" || personagem.background == ""){
+                if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.build == "" || personagem.appearance == "" || personagem.background == ""){
                     alert("Coloque todas as informações do seu personagem");
                     canChangePage = false;
                     break;
@@ -284,6 +297,7 @@ function createCharacter(){
                     form: document.querySelector("#form").value,
                     locationKey: document.querySelector("#locationKey").value,
                     age: document.querySelector("#age").value,
+                    religion: document.querySelector("#religion").value,
                     appearance: document.querySelector("#appearance").value,
                     background: document.querySelector("#background").value
                 };
@@ -292,7 +306,7 @@ function createCharacter(){
                     formChange: document.querySelector("#formChange")
                 };
                 var backgroundChange = document.querySelector("#backgroundChange").value;
-                if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.appearance == "" || personagem.background == "" || personagem.locationKey == ""){
+                if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.appearance == "" || personagem.background == "" || personagem.locationKey == ""){
                     alert("Coloque todas as informações do seu personagem");
                     canChangePage = false;
                     break;
@@ -315,11 +329,12 @@ function createCharacter(){
                     apparentGender: document.querySelector("#apparentGender").value,
                     quirk: document.querySelector("#quirk").value,
                     age: document.querySelector("#age").value,
+                    religion: document.querySelector("#religion").value,
                     background: document.querySelector("#background").value
                 };
                 escolhas = {};
                 var backgroundChange = document.querySelector("#backgroundChange").value;
-                if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.quirk == "" || personagem.apparentBuild == "" || personagem.apparentAppearance == "" || personagem.background == ""){
+                if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.quirk == "" || personagem.apparentBuild == "" || personagem.apparentAppearance == "" || personagem.background == ""){
                     alert("Coloque todas as informações do seu personagem");
                     canChangePage = false;
                     break;
@@ -336,6 +351,7 @@ function createCharacter(){
                     name: nameInput.value,
                     personality: document.querySelector("#personality").value,
                     age: document.querySelector("#age").value,
+                    religion: document.querySelector("#religion").value,
                     build: document.querySelector("#build").value,
                     distinctiveAppearance: document.querySelector("#distinctiveAppearance").value,
                     oddHabit: document.querySelector("#oddHabit"),
@@ -343,7 +359,7 @@ function createCharacter(){
                 };
                 escolhas = {};
                 var backgroundChange = document.querySelector("#backgroundChange").value;
-                if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.build == "" || personagem.distinctiveAppearance == "" || personagem.oddHabit == "" || personagem.background == ""){
+                if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.build == "" || personagem.distinctiveAppearance == "" || personagem.oddHabit == "" || personagem.background == ""){
                     alert("Coloque todas as informações do seu personagem");
                     canChangePage = false;
                     break;
@@ -360,13 +376,14 @@ function createCharacter(){
                     name: nameInput.value,
                     personality: document.querySelector("#personality").value,
                     age: document.querySelector("#age").value,
+                    religion: document.querySelector("#religion").value,
                     build: document.querySelector("#build").value,
                     appearance: document.querySelector("#appearance").value,
                     background: document.querySelector("#background").value
                 };
                 escolhas = {};
                 var backgroundChange = document.querySelector("#backgroundChange").value;
-                if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.build == "" || personagem.appearance == "" || personagem.background == ""){
+                if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.build == "" || personagem.appearance == "" || personagem.background == ""){
                     alert("Coloque todas as informações do seu personagem");
                     canChangePage = false;
                     break;
@@ -384,13 +401,14 @@ function createCharacter(){
                     caste: document.querySelector("#caste").value,
                     personality: document.querySelector("#personality").value,
                     age: document.querySelector("#age").value,
+                    religion: document.querySelector("#religion").value,
                     background: document.querySelector("#background").value
                 };
                 escolhas = {
                     casteChoice: document.querySelector("#casteChoice").value
                 }
                 var backgroundChange = document.querySelector("#backgroundChange").value;
-                if(personagem.name == "" || personagem.caste == "" || personagem.personality == "" || personagem.age == "" || personagem.background == ""){
+                if(personagem.name == "" || personagem.caste == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.background == ""){
                     alert("Coloque todas as informações do seu personagem");
                     canChangePage = false;
                     break;
