@@ -583,6 +583,7 @@ class Yerath extends Character{
             1, 10, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
         
         this._caste = caste;
+        super.addSpeakedLanguage("yerath");
     }
     // Getting and setting new ancestry-specific properties:
     get caste(){
