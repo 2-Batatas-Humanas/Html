@@ -4,7 +4,7 @@ choices = JSON.parse(localStorage.getItem("choices"));
 if(!choices) console.log("Couldn't load choices");
 
 character.professions = [];
-choices.languages = [];
+choices.readWriteAdds = 0;
 choices.numProfsChosen = 0;
 
 function checkProfessionsInChoices(){
@@ -14,7 +14,7 @@ function checkProfessionsInChoices(){
         div.id = "humanProfession";
 
         let span = document.createElement("span");
-        span.innerHTML = "Profissão extra adquirida pela escolha entre profissão e idioma de humano:<br>";
+        span.innerHTML = "Profissão extra adquirida pela escolha entre profissão e idioma:<br>";
         div.appendChild(span);
 
         professionsDiv.appendChild(div);
@@ -65,7 +65,7 @@ function checkProfessionsInChoices(){
                 break;
             case "profession academic":
                 createNewInput("professions", "Profissão do tipo acadêmica adquirida pelo antecedente do personagem. Coloque o nome: ", "backgroundProfession", "text");
-                choices.languages[0] = "read write";
+                choices.readWriteAdds++;
                 break;
             
         }
@@ -126,7 +126,7 @@ function nextPage(){
             return
         }
         if(type == "academic" || (type == "religious" && religiousExtra)){
-            choices.languages.push("read write"); 
+            choices.readWriteAdds++; 
         }
         character.professions.push(name);
     }
@@ -148,7 +148,7 @@ function nextPage(){
                 return
             }
             if(type == "academic" || (type == "religious" && religiousExtra)){
-                choices.languages.push("read write"); 
+                choices.readWriteAdds++; 
             }
             character.professions.push(name);
         }   
@@ -162,11 +162,11 @@ function nextPage(){
             return
         }
         if(type == "academic" || (type == "religious" && religiousExtra)){
-            choices.languages.push("read write"); 
+            choices.readWriteAdds++; 
         }
         character.professions.push(name);
     }
     localStorage.setItem("character", JSON.stringify(character));
     localStorage.setItem("choices", JSON.stringify(choices));
-    //window.location.href = "languages.html";
+    window.location.href = "extras.html";
 }
