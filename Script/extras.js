@@ -131,6 +131,34 @@ function checkLangInStorage(){
     
 }
 
+function setWealth(){
+    let id = "wealthDiv";
+    let wealth = document.querySelector("#wealth").value;
+    emptyDiv(id);
+    switch(wealth){
+        case "destitute":
+            createOptionsInput(id, "Qual arma você escolhe? ", "wealthWeapon",
+            ["Porrete", "Funda com 20 pedras"],
+            ["club", "sling"]);
+            break;
+        case "poor":
+            createOptionsInput(id, "Qual arma você escolhe? ", "wealthWeapon",
+            ["Cajado", "Funda com 20 pedras"],
+            ["staff", "sling"]);
+            break;
+        case "gettingBy":
+        case "comfortable":
+            createOptionsInput(id, "Qual arma você escolhe? ", "wealthWeapon",
+            ["Cajado", "Porrete", "Funda com 20 pedras"],
+            ["staff", "club", "sling"]);
+            break;
+        case "wealthy":
+        case "rich":
+            addPToDiv(id, "Você é um burguês!");
+            break;
+    }
+}
+
 function interestingThings(){
     createNewInput("interestingThings", "Coloque o nome da coisa interessante: ", "interestingThing", "text");
     if(character.ancestry == "yerath" && choices.backgroundChange == "extra interesting thing"){
@@ -139,7 +167,7 @@ function interestingThings(){
     }
 }
 
-function saveCharacter(){
+function nextPage(){
     if(choices.readWriteAdds > 0){
         for(let i = 0; i < 10; i++){
             var select = document.querySelector("#language" + i);
@@ -201,6 +229,9 @@ function saveCharacter(){
     }
 
     character.wealth = document.querySelector("#wealth").value;
+    if(character.wealth != "wealthy" && character.wealth != "rich"){
+        choices.wealthWeaponChoice = document.querySelector("#wealthWeapon").value;
+    }
 
     choices.interestingThings = [document.querySelector("#interestingThing").value];
     if(character.ancestry == "yerath" && choices.backgroundChange == "extra interesting thing"){
