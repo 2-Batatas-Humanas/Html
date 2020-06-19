@@ -67,7 +67,34 @@ function checkProfessionsInChoices(){
                 createNewInput("professions", "Profissão do tipo acadêmica adquirida pelo antecedente do personagem. Coloque o nome: ", "backgroundProfession", "text");
                 choices.readWriteAdds++;
                 break;
-            
+        }
+    }
+    if(character.novicePath){
+        switch(character.novicePath.type){
+            case "warrior":
+                createOptionsInput("professions", "Escolha o tipo da sua profissão adquirida pela trilha de aprendiz Guerreiro: ", "novicePathProfType",
+                ["Comum", "Marcial", "Selvagem"],
+                ["common", "martial", "wilderness"]);
+                addBrToDiv("professions", 1);
+                createNewInput("professions", "Coloque o nome da sua profissão: ", "novicePathProf", "text");
+                break;
+            case "rogue":
+                if(choices.rogueProfLangChoice == "profession"){
+                    createOptionsInput("professions", "Escolha o tipo da sua profissão adquirida pela trilha de aprendiz Ladino: ", "novicePathProfType",
+                    ["Comum", "Marcial", "Selvagem"],
+                    ["common", "martial", "wilderness"]);
+                    addBrToDiv("professions", 1);
+                    createNewInput("professions", "Coloque o nome da sua profissão: ", "novicePathProf", "text");
+                }
+                break;
+            case "magician":
+                createNewInput("professions", "Profissão do tipo acadêmica adquirida pela trilha de aprendiz Mágico. Coloque o nome da sua profissão: ", "novicePathProf", "text");
+                break;
+            case "priest":
+                createNewInput("professions", "Profissão do tipo religiosa adquirida pela trilha de aprendiz Sacerdote. Coloque o nome da sua profissão: ", "novicePathProf", "text");
+                addBrToDiv("professions")
+                createCheckbox("professions", "A sua profissão é uma das seguintes: Devoto, Evangelista, Pastor ou Acólito do Novo Deus? ", "novicePathProfReligiousExtra");
+                break;
         }
     }
     let p = document.createElement("p");
@@ -152,6 +179,49 @@ function nextPage(){
             }
             character.professions.push(name);
         }   
+    }
+    if(character.novicePath){
+        switch(character.novicePath.type){
+            case "warrior":
+                let warriorProf = document.querySelector("#novicePathProf").value
+                if(warriorProf === ""){
+                    alert("Coloque o nome da profissão da trilha de aprendiz");
+                    return
+                }
+                character.professions.push(warriorProf);
+                break;
+            case "rogue":
+                if(choices.rogueProfLangChoice){
+                    let rogueProf = document.querySelector("#novicePathProf").value
+                    if(rogueProf === ""){
+                        alert("Coloque o nome da profissão da trilha de aprendiz");
+                        return
+                    }
+                    character.professions.push(rogueProf);
+                }
+                break;
+            case "magician":
+                let magicianProf = document.querySelector("#novicePathProf").value
+                if(magicianProf === ""){
+                    alert("Coloque o nome da profissão da trilha de aprendiz");
+                    return
+                }
+                choices.readWriteAdds++;
+                character.professions.push(magicianProf);
+                break;
+            case "priest":
+                let priestProf = document.querySelector("#novicePathProf").value
+                if(priestProf === ""){
+                    alert("Coloque o nome da profissão da trilha de aprendiz");
+                    return
+                }
+                let choice = document.querySelector("#novicePathProfReligiousExtra").checked;
+                if(choice){
+                    choices.readWriteAdds++;
+                }
+                character.professions.push(priestProf);
+                break;
+        }
     }
     for(let i = 0; i < choices.numProfsChosen; i++){
         var type = document.querySelector("#prof" + i + "Type").value;
