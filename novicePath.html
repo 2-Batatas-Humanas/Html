@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Trilha de Aprendiz</title>
+        <link type="text/css" rel="stylesheet" href="Style/novicePath.css">
+        <script src="Script/novicePath.js"></script>
+        <script src="Script/funcoesAuxiliares.js"></script>
+    </head>
+    <body>
+        <h1>Trilha de Aprendiz</h1>
+        <label for="novicePath">Escolha sua Trilha de Aprendiz</label>
+        <select id="novicePath">
+            <option value="warrior">Guerreiro</option>
+            <option value="rogue">Ladino</option>
+            <option value="magician">Mágico</option>
+            <option value="priest">Sacerdote</option>
+        </select>
+        <button onclick="getNovicePath()">Ok</button>
+        <p></p>
+        <div id="novicePathDiv"></div>
+        <p></p>
+        <button onclick="nextPage()">Próxima página</button>
+    </body>
+</html>
