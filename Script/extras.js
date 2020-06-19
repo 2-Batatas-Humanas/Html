@@ -65,11 +65,45 @@ function checkLangInStorage(){
                 addPToDiv(id, "O antecedente do seu personagem deu a ele a habilidade de ler e escrever a Língua Comum");
                 break;
             case "language gnomish":
+                addPToDiv(id, "O antecedente do seu personagem deu a ele a habilidade de falar a Língua dos Anões");
                 character.languages["Anão"] = {
                     speakable: true,
                     readable: false,
                     writable: false
+                };
+        }
+    }
+    if(character.novicePath){
+        switch(character.novicePath.type){
+            case "rogue":
+                if(choices.rogueProfLangChoice == "language"){
+                    createNewInput(id, "Idioma adquirido pela trilha de aprendiz do personagem(tipo 3). Coloque o nome do idioma: ", "rogueLang", "text");
+                    character.languages["Idioma novo - tipo 3"] = {
+                        speakable: true,
+                        readable: false,
+                        writable: false
+                    };
                 }
+                break;
+            case "priest":
+                if(choices.priestLangChoice == "language"){
+                    createNewInput(id, "Idioma adquirido pela trilha de aprendiz do personagem(tipo 3). Coloque o nome do idioma: ", "priestLang", "text");
+                    character.languages["Idioma novo - tipo 3"] = {
+                        speakable: true,
+                        readable: false,
+                        writable: false
+                    };
+                } else{
+                    let possibleLanguagesKeys = [];
+                    let keys = Object.keys(character.languages);
+                    keys.forEach(function(value){
+                        if(!character.languages[value].readable){
+                            possibleLanguagesKeys.push(value);
+                        }
+                    });
+                    createOptionsInput(id, "Escolha um idioma para poder ler(escolha de Sacerdote): ", "priestReadLang", possibleLanguagesKeys, possibleLanguagesKeys);
+                }
+                break;
         }
     }
     if(choices.readWriteAdds > 0){
@@ -90,7 +124,7 @@ function checkLangInStorage(){
             });
         } else{
             for(let i = 0; i < choices.readWriteAdds; i++){
-                createOptionsInput(id, "Escolha um idioma para ler e escrever: ", "language" + i, possibleLanguagesKeys, possibleLanguagesKeys);
+                createOptionsInput(id, "Escolha um idioma para poder ler e escrever: ", "language" + i, possibleLanguagesKeys, possibleLanguagesKeys);
             }
         }
     }
@@ -105,14 +139,20 @@ function interestingThings(){
     }
 }
 
-function nextPage(){
+function saveCharacter(){
     if(choices.readWriteAdds > 0){
-        for(let i = 0; i < 4; i++){
+        for(let i = 0; i < 10; i++){
             var select = document.querySelector("#language" + i);
             if(select){
                 character.languages[select.value].readable = true;
                 character.languages[select.value].writable = true;
             }
+        }
+    }
+    if(character.novicePath.type == "priest" && choices.priestLangChoice == "read language"){
+        let lang = document.querySelector("#priestReadLang").value;
+        if(lang in Object.keys(character.languages)){
+            character.languages[lang].readable = true;
         }
     }
     if(choices.backgroundChange == "language"){
@@ -133,12 +173,39 @@ function nextPage(){
         }
         delete character.languages["Idioma novo - tipo 1"];
     }
+    if(character.novicePath.type == "magician"){
+        let keys = Object.keys(character.languages);
+        keys.forEach(function(value){
+            character.languages[value].readable = true;
+        })
+    }
+    else if(character.novicePath.type == "rogue" && choices.rogueProfLangChoice == "language"){
+        let lang = document.querySelector("#rogueLang").value;
+        character.languages[lang] = {
+            speakable: character.languages["Idioma novo - tipo 3"].speakable,
+            readable: character.languages["Idioma novo - tipo 3"].readable,
+            writable: character.languages["Idioma novo - tipo 3"].writable
+        }
+        delete character.languages["Idioma novo - tipo 3"];
+    }
+    else if(character.novicePath.type == "priest"){
+        if(choices.priestLangChoice == "language"){
+            let lang = document.querySelector("#priestLang").value;
+            character.languages[lang] = {
+                speakable: character.languages["Idioma novo - tipo 3"].speakable,
+                readable: character.languages["Idioma novo - tipo 3"].readable,
+                writable: character.languages["Idioma novo - tipo 3"].writable
+            }
+            delete character.languages["Idioma novo - tipo 3"];
+        }
+    }
+
     character.wealth = document.querySelector("#wealth").value;
+
     choices.interestingThings = [document.querySelector("#interestingThing").value];
     if(character.ancestry == "yerath" && choices.backgroundChange == "extra interesting thing"){
         choices.interestingThings.push(document.querySelector("#secondInterestingThing").value);
     }
     localStorage.setItem("character", JSON.stringify(character));
     localStorage.setItem("choices", JSON.stringify(choices));
-    //window.location.href = ".html";
 }
