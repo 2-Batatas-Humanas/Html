@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Extras</title>
+        <link rel="stylesheet" href="Style/extras.css">
+        <script src="Script/extras.js"></script>
+        <script src="Script/funcoesAuxiliares.js"></script>
+    </head>
+    <body>
+        <h1>Continuação</h1>
+        <h2>Idiomas</h2>
+        <p>Se você não está vendo nada nesta parte, pule para a parte Riqueza</p>
+        <div id="langDiv"></div>
+        <script>checkLangInStorage()</script>
+        <h2>Riqueza</h2>
+        <label for="wealth">Escolha o seu nível de riqueza: </label>
+        <select id="wealth">
+            <option value="destitute">Desprovido. O personagem não tem dinheiro e vive nas ruas.</option>
+            <option value="poor">Pobre. O personagem vive em condições precárias e nunca tem certeza de onde virá sua próxima refeição.</option>
+            <option value="gettingBy">Modesto. O personagem ganha o bastante para cobrir seus gastos.</option>
+            <option value="comfortable">Confortável. O personagem vive bem e ganha o bastante para guardar um pouco.</option>
+            <option value="wealthy">Abastado. O personagem vive muito bem. Possui roupas de qualidade e boas acomodações e, provavelmente, não passa necessidades há muito tempo.</option>
+            <option value="rich">Rico. O personagem não deseja nada. Provavelmente vem de uma família nobre, tem servos e uma propriedade, castelo ou casa na melhor parte da cidade. Sua fortuna lhe rende muitos amigos e inimigos.</option>
+        </select>
+        <h2>Coisa Interessante</h2>
+        <div id="interestingThings"></div>
+        <script>interestingThings()</script>
+        <br><br>
+        <button onclick="nextPage()">Próxima Página</button>
+    </body>
+</html>
