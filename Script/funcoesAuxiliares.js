@@ -151,3 +151,14 @@ function createNewInput(divId, labelText, inputId, type, placeholder = null, val
     div.appendChild(label);
     div.appendChild(input);
 }
+
+//Button
+function createButton(divId, text, onclick){
+    let div = document.querySelector("#" + divId);
+
+    let button = document.createElement("button");
+    button.innerHTML = text;
+    button.onclick = onclick;
+
+    div.appendChild(button);
+}
