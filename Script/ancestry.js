@@ -229,10 +229,9 @@ function setAncestry(){
 function createCharacter(){
     var ancestry = document.querySelector("#ancestry").value;
     var nameInput = document.querySelector("#name");
-    var canChangePage = true;
     if(!nameInput){
         alert("Clique no botão \"Ok\" depois de \"Selecione sua ancestralidade\" e coloque as informações do seu personagem.")
-        canChangePage = false;
+        return
     } else{
         switch(ancestry){
             case "human":
@@ -254,8 +253,7 @@ function createCharacter(){
                 var backgroundChange = document.querySelector("#backgroundChange").value;
                 if(personagem.name == "" || personagem.personality == "" || personagem.religion == "" || personagem.age == "" || personagem.build == "" || personagem.appearance == "" || personagem.background == ""){
                     alert("Coloque todas as informações do seu personagem");
-                    canChangePage = false;
-                    break;
+                    return
                 }
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
@@ -279,8 +277,7 @@ function createCharacter(){
                 var backgroundChange = document.querySelector("#backgroundChange").value;
                 if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.build == "" || personagem.appearance == "" || personagem.background == ""){
                     alert("Coloque todas as informações do seu personagem");
-                    canChangePage = false;
-                    break;
+                    return
                 }
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
@@ -308,8 +305,7 @@ function createCharacter(){
                 var backgroundChange = document.querySelector("#backgroundChange").value;
                 if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.appearance == "" || personagem.background == "" || personagem.locationKey == ""){
                     alert("Coloque todas as informações do seu personagem");
-                    canChangePage = false;
-                    break;
+                    return
                 }
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
@@ -336,8 +332,7 @@ function createCharacter(){
                 var backgroundChange = document.querySelector("#backgroundChange").value;
                 if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.quirk == "" || personagem.apparentBuild == "" || personagem.apparentAppearance == "" || personagem.background == ""){
                     alert("Coloque todas as informações do seu personagem");
-                    canChangePage = false;
-                    break;
+                    return
                 }
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
@@ -361,8 +356,7 @@ function createCharacter(){
                 var backgroundChange = document.querySelector("#backgroundChange").value;
                 if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.build == "" || personagem.distinctiveAppearance == "" || personagem.oddHabit == "" || personagem.background == ""){
                     alert("Coloque todas as informações do seu personagem");
-                    canChangePage = false;
-                    break;
+                    return
                 }
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
@@ -385,8 +379,7 @@ function createCharacter(){
                 var backgroundChange = document.querySelector("#backgroundChange").value;
                 if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.build == "" || personagem.appearance == "" || personagem.background == ""){
                     alert("Coloque todas as informações do seu personagem");
-                    canChangePage = false;
-                    break;
+                    return
                 }
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
@@ -410,8 +403,7 @@ function createCharacter(){
                 var backgroundChange = document.querySelector("#backgroundChange").value;
                 if(personagem.name == "" || personagem.caste == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.background == ""){
                     alert("Coloque todas as informações do seu personagem");
-                    canChangePage = false;
-                    break;
+                    return
                 }
                 if(backgroundChange != "none"){
                     escolhas.backgroundChange = backgroundChange;
@@ -421,11 +413,10 @@ function createCharacter(){
                 break;
             default:
                 console.log("Unknown error")
-                canChangePage = false;
+                return
         }
     }
-    if(canChangePage){
-        console.log("Character created");
-        window.location.href = 'professions.html';
-    }
+    console.log("Character created");
+    window.location.href = 'novicePath.html';
+    
 }
