@@ -584,6 +584,9 @@ class Yerath extends Character{
         
         this._caste = caste;
         super.addSpeakedLanguage("yerath");
+        super.addTalent("ancestry", "Extra Arms", " You have a second pair of arms that end in hands. These appendages are useful only for fine manipulation and carrying small, lightweight objects or performing minor activities. On your turn, you can use a triggered action to reload a weapon.");
+        super.addTalent("ancestry", "Flutter", "You can use an action to unfurl your wings, which lets you move by flying until the end of the round, although you fly at half Speed. While your wings are unfurled, you grant 1 boon on attack rolls made against you.");
+        super.addTalent("ancestry", "Musk", "You can use an action, or a triggered action when you take damage, to squirt your musk into a 1-yard cube originating from a point you can reach. Any creature in that space must get a success on a Strength challenge roll or become impaired for 1 round. Once you use your Musk, you must wait at least 1 minute before you can use it again. As part of using this talent, you can use the scent to communicate one concept such as fear, anger, sorrow, or security. Any yerathi within 5 yards of the space can perceive this message.");
     }
     // Getting and setting new ancestry-specific properties:
     get caste(){
