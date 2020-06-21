@@ -406,20 +406,178 @@ traditions ={
         attribute: "will",
         darkMagic: false,
         spells: {
-            
+            "Agitar o ar":{
+                description:"O conjurador cria uma leve brisa na área, que se move junto a ele até o fim do efeito. A brisa limpa odores e poeira, espalha objetos leves tais como papéis, apaga velas e faz com que chamas maiores bruxuleiem e dancem Criaturas na área que atacarem o conjurador com armas arremessadas ou de combate à distância fazem suas jogadas de ataque com 1 perdição.",
+                area:"Uma esfera com 2 metros de raio centrada em um ponto ao alcance do conjurador.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"0"
+            },
+            "Rajada de vento":{
+                description:"Uma ventania poderosa atinge o alvo. O conjurador faz uma jogada de ataque de Vontade contra a Força do alvo. Caso seja bem-sucedido, o vento move o alvo 1d6 metros para longe do conjurador.",
+                target:" Uma criatura ou objeto a curta distância.",
+                type:"AT",
+                attackRoll20:"O alvo fica prostrado ao final do movimento.",
+                level:"0"
+            },
+            "Esfolar":{
+                description:"Areia no ar arranha o alvo. O conjurador faz uma jogada de ataque de Vontade contra a Força do alvo. Caso seja bem-sucedido, o alvo sofre 2d6+3 de dano. Se uma criatura viva fica incapacitada devido a esse dano, ela morre instantaneamente, sua pele (caso tenha) é arrancada dos ossos.",
+                target:"Uma criatura ou objeto a curta distância.",
+                type:"AT",
+                attackRoll20:"O alvo sofre 2d6 de dano adicional.",
+                level:"1"
+            },
+            "Invocar ventania":{
+                description:"Um vento uivante dispersa vapores, névoa, fumaça e gás da área. Chamas desprotegidas se apagam e objetos leves são soprados para o canto mais próximo da área. Cada criatura na área deve ter sucesso em uma jogada de desafio de Força ou é movida 1d6 metros para longe do ponto de origem. Criaturas voadoras fazem o teste com 1 perdição.",
+                area:"Um cone, 3 metros de comprimento, originado em um ponto a curta distância.",
+                type:"AT",
+                level:"1"
+            },
+            "Planar":{
+                description:"Desencadeada O conjurador pode utilizar uma ação desencadeada para conjurar a magia quando vê um alvo cair. Durante o tempo da duração, o alvo não sofre dano por aterrissar depois de uma queda. Caso o alvo continue caindo após o fim do efeito, ele sofre dano baseado no ponto a partir do qual a queda continuou após o fim do efeito da magia.",
+                target:"Uma criatura a longa distância.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"1"
+            },
+            "Palma do trovão":{
+                description:"Uma onda de som retumbante se dispersa a partir do centro da área, causando 1d6+1 de dano em tudo na área Cada criatura na área deve fazer uma jogada de desafio de Força e sofrer metade do dano em caso de sucesso. Caso fracasse, a criatura também fica surda por 1 minuto.",
+                area:"Uma esfera com 10 metros de raio centrada em um ponto a média distância.",
+                type:"AT",
+                level:"2"
+            },
+            "Parar o ar":{
+                description:"Pela duração da magia, nenhum som emana ou chega até a área. Criaturas na área ficam ensurdecidas e imunes a ataques baseados em sons, tal como a magia paLma do trovão.",
+                area:"Uma esfera com 4 metros de raio centrada em um ponto a média distância.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"2"
+            },
+            "Conceder o voo":{
+                description:"O conjurador toca o alvo. O alvo pode voar até seu Deslocamento normal pelo tempo de duração da magia.",
+                target:"Uma criatura ao alcance do conjurador.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"3"
+            },
+            "Lançar":{
+                description:"Uma poderosa rajada de vento irrompe do ponto de origem. Cada criatura na área deve fazer uma jogada de desafio de Força; criaturas de Tamanho 1 ou menor fazem a jogada com 1 perdição. Caso fracasse, a criatura fica prostrada e é movida 5d6 metros para longe do ponto de origem. Caso encontre uma superfície sólida antes de completar a distância total do movimento, a criatura e a superfície contra qual bateu sofrem 1d6 de dano mais 1d6 de dano adicional para cada 5 metros de movimento remanescente (arredondado para baixo).",
+                area:"Um cilindro com 4 metros de altura e raio de 4 metros, centrado em um ponto a longa distância.",
+                type:"AT",
+                level:"3"
+            },
+            "Criar ciclone":{
+                description:"Um poderoso tufão aparece em uma das pontas da área e se move por ela, causando 3d6 de dano a qualquer coisa cujo espaço ele entrar. Todo objeto que não esteja fixo no chão que sofra dano desta forma, é movido 1d6 metros em uma direção à escolha do conjurador. Cada criatura que sofre dano desta forma deve fazer uma jogada de desafio de Força. Caso fracasse, ela é movida 1d6 metros na direção escolhida pelo conjurador ou fica prostrada. Caso tenha sucesso, a criatura sofre metade do dano.",
+                area:"Uma linha com 20 metros de comprimento, 10 metros de altura e 2 metros de largura originada de um ponto a longa distância.",
+                type:"AT",
+                level:"4"
+            },
+            "Compelir gênio do vento":{
+                description:"No fim da rodada em que esta magia é conjurada, o cubo alvo se torna um gênio do vento de Tamanho 2. O conjurador não pode finalizar esta magia voluntariamente. Quando o gênio aparece, o conjurador faz uma jogada de ataque de Vontade contra a Vontade dele. O gênio se torna compelido pela duração da magia caso a jogada seja bem-sucedida, ou se torna hostil caso seja um fracasso.",
+                target:"Um cubo de ar, com 2 metros de lado, originado de um ponto a longa distância.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"5"
+            }
         }
     },
     "Canção": {
         attribute: "will",
         darkMagic: false,
         spells: {
-            
+            "Canção da amizade":{
+                description:"O conjurador se concentra por 1 minuto, durante o qual ele canta. Quando termina, cada alvo deve fazer uma jogada de desafio de Vontade. Caso fracasse, ele fica encantado por 1 hora ou até que sofra dano.",
+                target:" Cada criatura escolhida pelo conjurador a curta distância que possa ouvi-lo.",
+                type:"AT",
+                level:"0"
+            },
+            "Projetar voz":{
+                description:"Enquanto durar a magia, tudo que o conjurador diz ou canta pode ser ouvido a até 1,6 km de distância.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"0"
+            },
+            "Canção da coragem":{
+                description:"Enquanto durar a magia, nenhum alvo pode ser encantado, compelido ou assustado, se estiver a curta distância do conjurador e puder ouvi-lo. O efeito termina imediatamente, caso o conjurador pare de cantar ou conjure outra magia.",
+                duration:"1 minunto.",
+                type:"UT",
+                level:"1"
+            },
+            "Canção da inspiração":{
+                description:"Quando conjura essa magia, e a cada turno de duração, o conjurador escolhe uma criatura a curta distância que possa ouvi-lo. Ela faz sua próxima jogada de ataque com 2 dádivas. O efeito termina imediatamente, caso o conjurador pare de cantar ou conjure outra magia.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"1"
+            },
+            "Canção da valentia":{
+                description:"Quando conjura essa magia, e a cada turno de duração, o conjurador escolhe uma criatura a curta distância que possa ouvi-lo. Ela causa 1d6 de dano adicional em seus ataques com armas por 1 rodada. O efeito termina imediatamente, caso o conjurador pare de cantar ou conjure outra magia.",
+                duration:"1 minuto",
+                type:"UT",
+                level:"1"
+            },
+            "Canção da cura":{
+                description:"O conjurador se concentra por 1 minuto, durante o qual passa o tempo cantando. Quando termina, cada alvo a curta distância do conjurador durante toda a performance cura uma quantidade de dano igual à sua taxa de cura.",
+                target:"Cada criatura escolhida pelo conjurador a curta distância que possa ouvi-lo.",
+                type:"UT",
+                level:"2"
+            },
+            "Canção do deslumbramento":{
+                description:"Quando conjura essa magia, e quando utiliza uma ação para se concentrar nela, o conjurador escolhe uma criatura a curta distância que possa ouvi-lo. Ela deve obter um sucesso em uma jogada de desafio de Vontade ou fica encantada enquanto durar o efeito. Se estiver encantada por esse motivo, a criatura pode apenas fazer turnos lentos e, caso esteja a mais de 10 metros do conjurador, deve se mover em direção a ele em seu turno. O efeito termina imediatamente, caso o conjurador pare de cantar ou conjure outra magia.",
+                duration:"Concentração, até 1 minuto.",
+                type:"AT",
+                level:"2"
+            },
+            "Canção da obscenidade":{
+                description:"Quando conjura essa magia, e quando utiliza uma ação para se concentrar nela, o conjurador escolhe uma criatura a curta distância que possa ouvi-lo. Ela deve fazer uma jogada de desafio de Vontade. Caso seja bem-sucedida, se torna imune à conjuração desta magia. Caso fracasse, fica debilitada enquanto durar o efeito. Se estiver debilitada por este motivo, também fica lenta.",
+                duration:"Concentração, até 1 minuto.",
+                type:"AT",
+                level:"3"
+            },
+            "Canção do pavor":{
+                description:"Quando conjura essa magia, e quando utiliza uma ação para se concentrar nela, o conjurador escolhe uma criatura a curta distância que possa ouvi-lo. Ela deve fazer uma jogada de desafio de Vontade. Caso seja bem-sucedida, se torna imune à conjuração dessa magia. Caso fracasse, fica assustada enquanto durar o efeito. Se estiver assustada por este motivo, a criatura deve utilizar sua ação a cada turno para se afastar do conjurador pelo caminho mais seguro. Caso a criatura não possa ouvi-lo ao fim da rodada, ela remove essa aflição.",
+                duration:"Concentração, até 1 minuto.",
+                type:"AT",
+                level:"3"
+            },
+            "Canção do sono":{
+                description:"Quando conjura essa magia, e quando utiliza uma ação para se concentrar nela, o conjurador escolhe uma criatura a curta distância que possa ouvi-lo. Ela deve fazer uma jogada de desafio de Vontade. Caso seja bem-sucedida, se torna imune à conjuração dessa magia., Caso fracasse, fica lenta enquanto durar o efeito. Se estiver lenta por este motivo, ela também fica fatigada. Caso a criatura não possa ouvi-lo ao fim da rodada, ela remove essas aflições. Se já estiver lenta, ela cai no sono por 1 hora.",
+                duration:"Concentração, até 1 minuto.",
+                type:"AT",
+                level:"4"
+            },
+            "Canção dos heróis":{
+                description:"Enquanto durar a magia, ou até que não possam mais ouvi-lo, cada alvo recebe um bônus de +20 para a Saúde, +2 para o seu Deslocamento e faz jogadas de ataque e desafio com 2 dádivas. O efeito termina imediatamente, caso o conjurador pare de cantar ou conjure outra magia.",
+                target:"Até três criaturas a curta distância que possam ouvi-lo.",
+                type:"UT",
+                level:"5"
+            }
         }
     },
     "Caos": {
         attribute: "will",
         darkMagic: false,
         spells: {
+            "Dádiva do caos":{
+                description:"Enquanto durar a magia, o conjurador joga um dado do caos (um d6) toda vez que faz uma jogada de ataque ou de desafio. Se o resultado for um número ímpar, ele é aplicado como penalidade à jogada do d20; sendo um número par, ele é aplicado como bônus.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"0"
+            },
+            "Raio errático":{
+                description:"Um raio colorido e efervescente voa da mão do conjurador. Ele faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, o alvo sofre 1d6 de dano. Depois da jogada de ataque, o conjurador joga um d6. Se o resultado for 6, o ataque é repetido contra um alvo diferente, amigo ou inimigo, a média distância do alvo anterior. O conjurador escolhe o alvo caso mais de um esteja disponível.",
+                target:"Uma criatura ou objeto a média distância.",
+                type:"AT",
+                attaclRoll20:"O alvo sofre 1d6 de dano adicional.",
+                level:"0"
+            },
+            "Devastação inconstante":{
+                description:"Uma bola tremulante de energia salta da mão do conjurador. Ele faz uma jogada de ataque de Vontade contra a Agilidade do alvo e joga um d6. Se o resultado for um número ímpar, ele é aplicado como penalidade à jogada de ataque, sendo um número par como bônus. Caso seja bem-sucedido, o alvo sofre 2d6 de dano, mais 2d6 de dano adicional caso tenha a jogada de ataque tenha recebido penalidade.",
+                target:"Uma criatura ou objeto a média distância.",
+                type:"AT",
+                attackRoll20:" O alvo também é teleportado 1d6 metros para um lugar aberto na direção que o conjurador escolher.",
+                level:"1"
+            },
+            "Dobrar espaço":
             
         }
     },
