@@ -577,28 +577,197 @@ traditions ={
                 attackRoll20:" O alvo também é teleportado 1d6 metros para um lugar aberto na direção que o conjurador escolher.",
                 level:"1"
             },
-            "Dobrar espaço":
-            
+            "Dobrar espaço":{
+                description:"O conjurador joga 2d6. O conjurador se teleporta para um espaço aberto de sua escolha até uma quantidade de metros igual ao resultado da jogada. Desencadeada O conjurador pode utilizar uma ação desencadeada para conjurar esta magia em seu turno. Caso faça isso, ele joga 1d6 em vez de 2d6 para determinar a distância do teleporte.",
+                type:"UT",
+                level:"1"
+            },
+            "Escudo iridescente":{
+                description:"Um campo brilhante e colorido surge ao redor do conjurador. Ele joga um d6 e adiciona o resultado como bônus para sua Defesa. Cada vez que uma criatura realizar um ataque contra sua Defesa, o bônus é reduzido em 1 (até o mínimo de 0, o que termina o efeito).",
+                duration:"1 hora; consulte o efeito.",
+                type:"UT",
+                level:"1"
+            },
+            "Cor da magia":{
+                description:"Um globo colorido dispara da mão do conjurador em direção ao alvo. Quando alcança este ponto, ou caso encontre uma criatura ou objeto sólido antes, o globo explode. Energia caótica multicolorida se dispersa por uma esfera de 1 metro de raio centrada no alvo ou em um ponto na criatura ou objeto no espaço. Tudo na área sofre 1d6+1 de dano. Caso o resultado do dado de dano tenha sido um número ímpar, tudo na área sofre 3d6 de dano adicional.",
+                target:"Um ponto no espaço a média distância.",
+                type:"AT",
+                level:"2"
+            },
+            "Tremula":{
+                description:"O conjurador entra e sai da existência. Ao fim de cada rodada de duração, ele joga um d6. O conjurador se teleporta para um espaço aberto até uma quantidade de metros igual ao resultado da jogada. Caso o resultado seja ímpar, o Mestre escolhe onde vai aparecer. Caso seja par, ele escolhe.",
+                duration:"1d6 minutos.",
+                type:"UT",
+                level:"2"
+            },
+            "Lança caótica":{
+                description:"Um jato de energia multicolorida se espalha por uma área. Cada criatura na área deve fazer uma jogada de desafio de Vontade. A criatura sofre 5d6+5 de dano em caso de fracasso, ou cura 2d6+5 caso em caso de sucesso.",
+                area:" Uma linha moldável com 15 metros de comprimento e 2 metros de largura, originada em um ponto ao alcance do conjurador.",
+                type:"AT",
+                level:"3"
+            },
+            "Magia selvagem":{
+                description:"Luzes estranhas, sons incomuns e outras esquisitices se espalham pela área. O conjurador joga um d20 para descobrir o que acontece.",
+                area:" Uma esfera com 1d6 metros de raio centrada em um ponto ao alcance do conjurador.",
+                type:"UT",
+                level:"3"
+            },
+            "Campo espelhado":{
+                description:"Uma barreira similar a um espelho preenche a área até o fim do efeito, obscurecendo tudo atrás dela. Quando uma criatura entra neste espaço, joga-se um d6. Um resultado par faz com que a criatura se mova 1 metro através da barreira para um espaço aberto do outro lado (a criatura escolhe a direção). Um resultado ímpar teleporta a criatura para um espaço aberto escolhido pelo conjurador em uma superfície sólida a uma quantidade de metros igual ao resultado da jogada.",
+                area:"Uma linha moldável com 10 metros de comprimento, 5 metros de altura e 1 metro de largura originada de um ponto a média distância.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"4"
+            },
+            "Singularidade":{
+                description:"Um aglomerado turvo multicolorido surge no ponto de origem e se mantém até o fim do efeito. Quando o personagem conjura esta magia, objetos que não sejam fixos se movem 2d6 metros para o ponto de origem. Cada criatura presente na área quando a magia é conjurada ou que entra na área deve fazer uma jogada de desafio de Força com 1 perdição. Caso fracasse, a criatura é movida 2d6 metros em direção ao ponto de origem e não pode se mover para longe dele enquanto durar o efeito da magia. Qualquer criatura que chegar ao ponto de origem sofre 10d6 de dano. Caso fique incapacitada por esse dano, ela é completamente apagada da existência, seu corpo e alma desaparecem para sempre. Quando o efeito termina, o aglomerado explode, causando 4d6 de dano a tudo na área da magia. Cada criatura na área deve fazer uma jogada de desafio de Força. Caso fracasse, a criatura fica prostrada no chão; caso seja bem-sucedida, a criatura apenas sofre metade do dano.",
+                area:"Uma esfera de 10 metros de raio centrada em um ponto a longa distância.",
+                duration:"1 rodada.",
+                type:"AT",
+                level:"5"
+            }
         }
     },
     "Celestial": {
         attribute: "will",
         darkMagic: false,
         spells: {
-            
+            "Feixe ardente":{
+                description:"Um feixe flamejante escapa da mão do conjurador. Ele faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, o alvo sofre 1d6 de dano adicional.",
+                target:"Uma criatura ou objeto a distância.",
+                type:"AT",
+                attackRoll20:"O alvo fica cego por 1 rodada.",
+                level:"0"
+            },
+            "Luz":{
+                description:"O conjurador toca o objeto e uma luz brilha a partir dele em um raio de 5 metros pelo tempo de duração da magia.",
+                target:"Um objeto ao alcance do conjurador",
+                duration:"1 hora.",
+                type:"UT",
+                level:"0"
+            },
+            "Clarão":{
+                description:"Um clarão de luz brilhante surge na frente do alvo. O conjurador faz uma jogada de ataque de Vontade contra a Percepção do alvo. Caso seja bem-sucedido, o alvo fica cego por 1 rodada.",
+                target:" Uma criatura dentro do campo de visão a curta distância.",
+                type:"AT",
+                level:"1"
+            },
+            "Raios solares":{
+                description:"Três raios flamejantes voam para fora da mão do conjurador, divididos como ele escolher entre seus alvos. Para cada raio, ele faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, o alvo sofre 1d6 de dano. Caso seja capaz de enxergar, o alvo também fica debilitado por 1 rodada.",
+                target:"Até três criaturas ou objetos a média distância.",
+                type:"AT",
+                attaclRoll20:"O alvo sofre 1d3 de dano adicional.",
+                level:"2"
+            },
+            "Estrela cadente":{
+                description:"Uma partícula de luz branca aparece em qualquer lugar dentro do alcance da magia e corre em direção ao alvo. Quando alcança este ponto, ou caso encontre uma criatura ou objeto sólido antes, a partícula explode. Chamas se dispersam por uma esfera de 3 metros de raio centrada no alvo ou em um ponto no espaço da criatura ou objeto, causando 2d6+2 de dano a tudo na área. Cada criatura na área deve fazer uma jogada de desafio de Força. A criatura fica debilitada por 1 rodada em caso de falha, ou apenas sofre metade do dano em caso de sucesso.",
+                target:"Um ponto no espaço a média distância.",
+                type:"AT",
+                level:"3"
+            },
+            "Irradiação":{
+                description:"Um suave brilho verde se dispersa pela área, transformando escuridão em sombras pela duração da magia. Tudo na área sofre 1d6 de dano quando a magia é conjurada e ao fim de cada turno seguinte enquanto a magia estiver ativa. Cada criatura que sofre dano desta maneira deve fazer uma jogada de desafio de Força. Caso fracasse, ela fica fatigada por 1 rodada e lenta enquanto estiver fatigada devido a este efeito. Caso seja bem-sucedida, a criatura sofre metade do dano.",
+                area:"Uma esfera com 3 metros de raio centrada em um ponto a longa distância.",
+                duration:"1 mminuto.",
+                type:"AT",
+                level:"3"
+            },
+            "Nova":{
+                description:"Luz brilhante explode e se dispersa pela área. Todas as criaturas, com exceção do conjurador, sofrem 2d6+2 de dano e devem fazer uma jogada de desafio de Força. A criatura fica cega por 1 rodada em caso de falha, ou apenas sofre metade do dano em caso de sucesso.",
+                area:"Uma esfera de 8 metros de raio centrada em um ponto ao alcance do conjurador.",
+                type:"AT",
+                level:"4"
+            },
+            "Feixe solar":{
+                description:"O conjurador libera um feixe de luz brilhante e ardente de sua mão, causando 3d6+3 de dano a tudo na área. Cada criatura que sofrer este dano deve fazer uma jogada de desafio de Força. A criatura fica cega por 1 minuto em caso de falha, ou apenas sofre metade do dano em caso de sucesso.",
+                area:" Uma linha com 25 metros de comprimento e 1 metro de largura, originada em um ponto ao alcance do conjurador.",
+                type:"AT",
+                level:"5"
+            }
         }
     },
     "Destruição": {
         attribute: "will",
         darkMagic: false,
         spells: {
-            
+            "Arruinar":{
+                description:"O conjurador sofre 1 ponto de dano. O alvo sofre 1d6 de dano; caso seja uma criatura, ela deve fazer uma jogada de desafio de Força, ficando fatigada por 1 minuto, caso fracasse.",
+                target:"Uma criatura ou objeto a curta distância.",
+                type:"AT",
+                level:"0"
+            },
+            "Quebrar":{
+                description:"O conjurador sofre 1 ponto de dano. O alvo sofre dano igual à sua própria Saúde.",
+                target:"Um objeto de Tamanho 1/2 ou menor a curta distância.",
+                type:"AT",
+                level:"0"
+            },
+            "Dissolver":{
+                description:"O conjurador sofre 2 pontos de dano e faz uma jogada de ataque de Vontade contra a Força do alvo. Caso seja bem-sucedido, ele sofre 1d6+ 1 de dano devido ao toque corrosivo do conjurador e fica debilitado por 1 minuto. Se o alvo ficar incapacitado devido a este dano, ele morre instantaneamente e se torna uma gosma, deixando tudo que vestia ou carregava no espaço que ocupava.",
+                target:" Uma criatura com corpo físico ao alcance do conjurador.",
+                type:"AT",
+                attaclRoll20:"O alvo sofre 1d6 de dano adicional.",
+                level:"1"
+            },
+            "Fender":{
+                description:"O conjurador sofre 2 de dano e o alvo sofre 3d6 de dano. Caso este dano destrua o alvo, ele explode em um raio de 2 metros de um ponto em seu espaço, causando 1d6 de dano a tudo na área devido aos detritos arremessados. Cada criatura na área, que for bem-sucedida em uma jogada de desafio de Agilidade, sofre metade do dano.",
+                target:" Um objeto feito de vidro, metal ou pedra no campo de visão do conjurador a média distância.",
+                type:"AT",
+                level:"1"
+            },
+            "Lacerar":{
+                description:"O conjurador sofre 2 pontos de dano e faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, ele sofre 3d6 de dano.",
+                target:"Uma criatura no campo de visão do conjurador a curta distância.",
+                type:"AT",
+                attackRoll20:"O alvo sofre 2d6 de dano adicional.",
+                level:"1"
+            },
+            "Corroer":{
+                description:"O conjurador sofre 3 pontos de dano e faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, ele fica debilitado por 1 minuto. Ao fim de cada rodada em que o alvo está debilitado por este efeito, ele sofre 1d6 pontos de dano.",
+                target:"Uma criatura com corpo físico no campo de visão do conjurador a curta distância.",
+                type:"AT",
+                attackRoll20:"O alvo sofre 1d6 de dano adicional ao final de cada rodada, enquanto está debilitado por este efeito.",
+                level:"2"
+            },
+            "Poder entrópico":{
+                description:"Sofra 3 pontos de dano. Enquanto durar o efeito, as criaturas que sofrerem dano com suas magias de ataque dele sofrem 1d6 de dano adicional. Desencadeada Quando o personagem conjura uma magia de ataque que causa dano, ele pode utilizar uma ação desencadeada para conjurar esta magia, que durará até o final da rodada. Caso o alvo sofra dano da sua magia de ataque, ele sofre 2d6 de dano adicional.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"2"
+            },
+            "Detonar":{
+                description:"O conjurador sofre 4 pontos de dano. O alvo sofre dano igual à sua própria Saúde e explode em um raio de 4 metros de um ponto em seu espaço, causando 6d6 de dano a tudo na área devido aos detritos arremessados. Cada criatura na área, que for bem-sucedida em uma jogada de desafio de Agilidade, sofre metade do dano.",
+                target:" Um objeto (que nunca tenha sido uma criatura) de Tamanho 1 ou menor no campo de visão do conjurador a média distância.",
+                type:"AT",
+                level:"3"
+            },
+            "Evaporar":{
+                description:"O conjurador sofre 4 pontos de dano e faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, ele sofre 6d6 de dano e começa a evaporar. Um objeto destruído por este dano evapora em uma névoa suave. Uma criatura incapacitada por este dano morre instantaneamente e se torna uma nuvem carmim, que obscurece parcialmente o espaço ocupado por 1 rodada.",
+                target:" Uma criatura ou objeto com corpo físico ao alcance do conjurador.",
+                type:"AT",
+                attackRoll20:"O alvo sofre 2d6 de dano adicional.",
+                level:"3"
+            },
+            "Destruir":{
+                description:"O conjurador sofre 5 pontos de dano. O alvo sofre 30 pontos de dano.",
+                target:"Uma criatura ou objeto de Tamanho 3 ou menor no campo de visão do conjurador a média distância.",
+                type:"AT",
+                level:"4"
+            },
+            "Desintegrar":{
+                description:"O conjurador sofre 6 pontos de dano e faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, ele sofre 9d6 de dano. Uma criatura incapacitada por este dano morre imediatamente e é reduzida a um pequeno monte de poeira no espaço que ocupava.",
+                target:"Uma criatura ou objeto com corpo físico no campo de visão do conjurador a longa distância.",
+                type:"AT",
+                attackRoll20:"O alvo sofre 3d6 de dano adicional.",
+                level:"5"
+            }
         }
     },
     "Fogo": {
         attribute: "will",
         darkMagic: false,
         spells: {
+            
             
         }
     },
