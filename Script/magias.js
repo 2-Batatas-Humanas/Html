@@ -767,29 +767,256 @@ traditions ={
         attribute: "will",
         darkMagic: false,
         spells: {
-            
-            
+            "Controlar chama":{
+                description:"O conjurador acende ou apaga uma chama em um alvo.",
+                target:"Um objeto inflamável de Tamanho 1 ou menor a curta distância.",
+                type:"UT",
+                level:"0"
+            },
+            "Projétil de chamas":{
+                description:"O conjurador libera um projétil incandescente sobre o alvo. O conjurador faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, ele sofre 1d6 de dano.",
+                target:"Uma criatura ou objeto a longa distância.",
+                type:"AT",
+                attackRoll20:"O alvo sofre 1d6 de dano adicional.",
+                level:"0"
+            },
+            "Explosão do fogo":{
+                description:"Chamas saltam das suas mãos, causando 3d6 de dano a tudo na área. As criaturas na área sofrem metade do dano, caso sejam bem-sucedidas em uma jogada de desafio de Agilidade.",
+                area:"Um cone, 3 metros de comprimento, originado em um ponto ao alcance do conjurador.",
+                type:"AT",
+                level:"1"
+            },
+            "Meteoro":{
+                description:"O conjurador arremessa uma rocha em chamas. Quando ela atinge o alvo, ou caso encontre uma criatura ou objeto sólido antes, explode. Chamas se dispersam em uma esfera de 1 metro de raio, centrada no alvo em um ponto no espaço da criatura ou objeto, causando 2d6+2 de dano a tudo na área. As criaturas na área sofrem metade do dano, caso sejam bem-sucedidas em uma jogada de desafio de Agilidade.",
+                target:"Um ponto no espaço a média distância.",
+                type:"AT",
+                level:"1"
+            },
+            "Proteção contra as chamas":{
+                description:"O conjurador toca o alvo. Enquanto durar a magia, ele sofre metade do dano por fogo.",
+                target:"Uma criatura ao alcance do conjurador.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"1"
+            },
+            "Mortalha flamejante":{
+                description:"Chamas envolvem o conjurador enquanto durar a magia, iluminando um raio de 10 metros ao redor dele. As chamas são quentes, mas não ferem o conjurador nem nada que ele carrega. Enquanto durar a magia, ele sofre metade do dano por frio e não fica fatigado por exposição a temperaturas baixas. Além disso, quando uma criatura toca o conjurador ou obtém um sucesso em um ataque contra ele utilizando uma arma de combate corpo a corpo, ela sofre 1d6 de dano por fogo.",
+                duration:"1 minuto",
+                type:"UT",
+                level:"2"
+            },
+            "Bola de fogo":{
+                description:"O conjurador arremessa um globo de fogo. Quando esse globo atinge o alvo, ou caso encontre uma criatura ou objeto sólido antes, ele explode. Chamas se dispersam em uma esfera de 5 metros de raio, centrada no alvo em um ponto no espaço da criatura ou objeto, causando 5d6 de dano a tudo na área. Cada criatura na área sofre metade do dano, caso seja bem-sucedida em uma jogada de desafio de Agilidade.",
+                target:"Um ponto no espaço a longa distância.",
+                type:"AT",
+                level:"3"
+            },
+            "Imolar":{
+                description:"O alvo fumega e ameaça explodir em chamas. O conjurador faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, o alvo sofre 4d6 de dano e pega fogo.",
+                target:"Uma criatura ou objeto a média distância.",
+                type:"AT",
+                attackRoll20:"O alvo sofre 2d6 de dano adicional.",
+                level:"3"
+            },
+            "Muralha de chamas":{
+                description:"Chamas preenchem a área durante o efeito da magia, obscurecendo parcialmente tudo dentro e atrás delas. Criaturas ou objetos na área sofrem 3d6 de dano, quando o personagem conjura a magia ou ao entrarem na área. Ao fim de cada rodada, enquanto dura a magia, cada criatura e objeto inflamável sofre 3d6 de dano e criaturas a curta distância da borda sofrem 1d6 de dano, a não ser que obtenham sucesso em uma jogada de desafio de Força.",
+                area:"Uma linha moldável com 10 metros de comprimento, 5 metros de altura e 1 metro de largura, originada de um ponto a longa distância.",
+                duration:"1 minuto.",
+                type:"AT",
+                level:"4"
+            },
+            "Compelir gênio das chamas":{
+                description:"No fim da rodada na qual esta magia é conjurada, o cubo alvo se torna um gênio de chamas de Tamanho 2. O conjurador não pode finalizar esta magia voluntariamente. Quando o gênio aparece, o conjurador faz uma jogada de ataque de Vontade contra a Vontade dele. O gênio se torna compelido pela duração da magia, caso a jogada seja bem-sucedida, ou se torna hostil, caso seja um fracasso.",
+                target:"Um cubo de fogo com 2 metros de lado, originado de um ponto a longa distância.",
+                duration:"1 minuto",
+                type:"UT",
+                level:"5"
+            }
         }
     },
     "Natureza": {
         attribute: "will",
         darkMagic: false,
         spells: {
-            
+            "Bolotas mágicas":{
+                description:"O conjurador toca os alvos, imbuindo cada um com magia que dura até o fim do efeito ou até serem usados por uma criatura. Ela pode atacar com as bolotas ao arremessá-las contra criaturas ou objetos a curta distância, fazendo uma jogada de ataque de Agilidade contra a Agilidade do alvo. Caso obtenha sucesso, ele sofre 1d3 de dano e fica lento por 1 rodada. Caso seja incapacitado por esse dano, o alvo se enraíza no chão e se transforma em um broto permanentemente.",
+                target:"Até cinco bolotas, nozes ou sementes ao alcance do conjurador.",
+                duration:"1 hora; consulte o efeito.",
+                type:"AT",
+                attackRoll20:"O alvo sofre 1d6 de dano adicional.",
+                level:"0"
+            },
+            "Pele de carvalho":{
+                description:"Enquanto durar a magia, o conjurador ganha um bônus de +2 para sua Defesa. Além disso, quando tenta se esconder em ambientes de floresta, ele faz jogadas de desafio de Agilidade com 1 dádiva.",
+                duration:"1 hora",
+                type:"UT",
+                level:"0"
+            },
+            "Bagas curativas":{
+                description:"O conjurador toca os alvos, imbuindo cada um com magia que dura até o fim do efeito ou até serem consumidas. Uma criatura viva pode utilizar uma ação para consumir a fruta alvo, curando uma quantidade de dano igual à metade de sua taxa de cura.",
+                target:"Até três frutas, ao  alcance do conjurador.",
+                duration:"8 horas; consulte o efeito.",
+                type:"UT",
+                level:"1"
+            },
+            "Exuberância":{
+                description:"Ervas e cipós se espalham por uma área, que se torna terreno difícil enquanto durar a magia. Quando o efeito termina, o crescimento resseca e morre.",
+                area:"Um círculo no solo com 10 metros de raio, centrado em um ponto a média distância.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"1"
+            },
+            "Shillelagh":{
+                description:"O conjurador imbui a arma alvo com magia que dura até o fim do efeito ou até que ele o solte. Enquanto segura a arma alvo, o conjurador recebe um bônus de +2 para seu Deslocamento e ataques, também causa 1d6 de dano adicional.",
+                target:"Um porrete ou cajado empunhado pelo conjurador.",
+                duration:"1 hora; consulte o efeito.",
+                type:"UT",
+                level:"1"
+            },
+            "Pinhas flamejantes":{
+                description:"O conjurador toca os alvos, imbuindo cada um com magia que dura até o fim do efeito ou até serem usados para atacar uma criatura. O item imbuído lança luz em um raio de 5 metros ao seu redor. Uma criatura pode atacar com os alvos ao arremessá-los contra criaturas ou objetos a média distância, fazendo uma jogada de ataque de Agilidade contra a Agilidade do alvo. Caso obtenha sucesso, ele sofre 1d6 de dano, e tudo a 1 metro dele sofre 1d3 de dano pelas faíscas.",
+                target:"Até cinco pinhas, nozes ou sementes ao alcance do conjurador.",
+                duration:"8 horas; consulte o efeito.",
+                type:"AT",
+                attackRoll20:"O alvo do ataque sofre 1d6 de dano adicional.",
+                level:"2"
+            },
+            "Vinhas enredantes":{
+                description:"Vinhas irrompem sob os alvos. Cada alvo deve obter sucesso em um teste de Agilidade ou fica imobilizado por 1 minuto. O alvo pode utilizar uma ação para remover a aflição, arrancando as vinhas.",
+                target:"Até cinco criaturas a média distância.",
+                type:"AT",
+                level:"2"
+            },
+            "Caminhar pela floresta":{
+                description:"O conjurador, junto com tudo que veste e carrega, fica verde-claro enquanto durar a magia. Durante o efeito, o conjurador pode entrar em um espaço ocupado por uma planta de seu Tamanho ou maior e instantaneamente sair em um espaço aberto de outra planta de seu Tamanho ou maior a média distância da planta cujo espaço ele entrou.",
+                duration:"1 minuto.",
+                target:"UT",
+                level:"3"
+            },
+            "Espinheiro":{
+                description:"Espinheiros com espinhos afiados como navalhas se espalham pela área, que se torna terreno difícil enquanto durar a magia. Quando o efeito termina, o espinheiro resseca e morre. Qualquer criatura que entre na área ou se mova através dela deve fazer uma jogada de desafio de Agilidade com 1 perdição, sofrendo 1d6 de dano, caso fracasse.",
+                area:"Um círculo no solo com 10 metros de raio, centrado em um ponto a média distância.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"3"
+            },
+            "Fúria da natureza":{
+                description:"Vinhas como chicotes saltam e causam 3d6 de dano a cada alvo. Cada alvo deve fazer uma jogada de desafio de Agilidade. Caso fracasse, ele é movido 6 metros em uma direção escolhida pelo conjurador e fica imobilizado por 1 minuto. O alvo pode utilizar uma ação para fazer uma jogada de desafio de Força com 1 perdição, removendo a aflição, caso seja bem-sucedido.",
+                area:"Até cinco criaturas a média distância.",
+                type:"AT",
+                level:"4"
+            },
+            "Forma do guradião de carvalho":{
+                description:"O conjurador se transforma em uma poderosa árvore animada. Enquanto durar a magia, ele não pode conjurar magias, mas recebe os seguintes benefícios:<br>• Bônus de +3 para Defesa, +15 de para Saúde e seu Tamanho duplica.<br>• Faz jogadas de ataque e de desafio de Força com 1 dádiva.<br>• Seus galhos contam como armas de combate corpo a corpo que causam 3d6 de dano. <br>• Pode utilizar uma ação desencadeada em seu turno para gastar a conjuração de uma magia de Natureza. Caso faça isso, ele prolonga a duração da magia por uma quantidade de minutos igual ao nível da magia.",
+                duration:"1 minuto",
+                type:"UT",
+                level:"5"
+            }
         }
     },
     "Primitiva": {
         attribute: "will",
         darkMagic: false,
         spells: {
-            
+            "Esconder-se de animais":{
+                description:"O conjurador se esconde de todos os animais enquanto durar a magia. Este efeito termina imediatamente, caso execute um ataque.",
+                duration:"1 minuto; consulte o efeito.",
+                type:"UT",
+                level:"0"
+            },
+            "Fera interior":{
+                description:"Os olhos do conjurador brilham, pelos cobrem seu corpo, as unhas crescem formando garras e os dentes se tornam presas. Enquanto durar a magia, ele ganha visão no escuro e um bônus de +2 no Deslocamento, seus ataques desarmados e armas naturais causam 1d6 de dano adicional.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"0"
+            },
+            "Amizade animal":{
+                description:"O conjurador faz uma jogada de ataque de Vontade contra a Vontade do alvo. Ele faz uma jogada de ataque com 1 dádiva, se estiver sob o efeito da magia idioma das feras. Caso a Saúde do alvo seja maior que a do conjurador, a magia fracassa e a conjuração é perdida. Caso seja bem-sucedido, o alvo fica encantado até que o conjurador complete um descanso. Ele o acompanha em suas aventuras e o ajuda da melhor maneira possível, embora permaneça sob controle do Mestre. O conjurador pode ter uma quantidade igual ao seu Poder de animais encantados desta forma. Caso a conjuração desta magia exceda essa quantidade, o efeito termina automaticamente no animal afetado há mais tempo.",
+                target:"Um animal que possa ver o conjurador a curta distância.",
+                type:"AT",
+                attackRoll20:"O alvo fica permanentemente encantado.",
+                level:"1"
+            },
+            "Idioma das feras":{
+                description:"Enquanto durar a magia, o conjurador pode se comunicar com qualquer animal que possa ouvi-lo.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"1"
+            },
+            "Convocar animal pequeno":{
+                description:"Um animal pequeno ou minúsculo compelido aparece na área. O animal minúsculo pode ter uma das seguintes propriedades: escalador, nadador, venenoso ou voador. O animal é de um tipo apropriado ao ambiente no qual o personagem conjurou esta magia. Quando o efeito termina, o animal fica incapacitado, voltando para onde veio.",
+                area:"Um cubo de espaço, com 1 metro de lado, originado em ponto a média distância sob uma superfície sólida.",
+                type:"UT",
+                level:"1"
+            },
+            "Convocar animal médio":{
+                description:"Esta magia funciona como convocar animaL pequeno, exceto que um animal médio, pequeno ou minúsculo aparece na área. Um animal pequeno ou minúsculo pode ter uma das seguintes propriedades: escalador, nadador, venenoso ou voador.",
+                area:"Um cubo de espaço, com 1 metro de lado, originado em ponto a média distância sob uma superfície sólida.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"2"
+            },
+            "Bote":{
+                description:"O conjurador se desloca até o dobro de seu Deslocamento. A qualquer momento durante esse movimento, ele pode fazer um ataque desarmado ou com uma arma natural contra um alvo a seu alcance, utilizando Vontade no lugar do atributo que o ataque utilizaria normalmente. Caso seja bem-sucedido, o alvo sofre o dano do ataque mais 2d6 de dano adicional e fica prostrado.",
+                requirements:"O conjurador deve estar sob efeito da magia fera interior.",
+                type:"AT",
+                level:"2"
+            },
+            "Convocar animal grande":{
+                description:"Esta magia funciona como convocar animaL pequeno, exceto que um animal grande, médio ou pequeno aparece na área. Um animal médio ou pequeno pode ter uma dos seguintes propriedades: escalador, nadador, venenoso ou voador.",
+                area:"Um cubo de espaço, com 2 metros de lado, originado em ponto a média distância sob uma superfície sólida.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"3"
+            },
+            "Chamado da selva":{
+                description:"Os alvos assumem características bestiais. Enquanto durar a magia, cada alvo recebe um bônus de +10 para Saúde e +2 para Deslocamento, e causa 1d6 de dano adicional com seus ataques utilizando golpes desarmados e armas naturais.",
+                target:"Até cinco criaturas a curta distância.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"4"
+            },
+            "Convocar animal enorme":{
+                description:"Esta magia funciona como convocar animaL pequeno, com exceção de que um animal enorme, grande ou médio aparece na área. Um animal grande ou médio pode ter uma das seguintes propriedades: escalador, nadador, venenoso ou voador.",
+                area:"Um cubo de espaço, com 3 metros de lado, originado em ponto a média distância sob uma superfície sólida.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"5"
+            }
         }
     },
     "Tempestade": {
         attribute: "will",
         darkMagic: false,
         spells: {
-            
+            "Choque":{
+                description:"O conjurador faz uma jogada de ataque de Vontade contra a Agilidade do alvo. O conjurador faz a jogada de ataque com 1 dádiva, se o alvo estiver vestindo ou for feito de metal. Caso seja bem-sucedido, ele sofre 1d6 de dano.",
+                target:"Uma criatura a curta distância.",
+                type:"AT",
+                attackRoll20:"O alvo também fica pasmo até o fim da rodada.",
+                level:"0"
+            },
+            "Névoa":{
+                description:"Névoa se espalha e obscurece parcialmente a área enquanto durar a magia ou até ser dispersada pelo vento.",
+                area:"Um cilindro com 3 metros de altura e 5 metros de raio, centrado em um ponto a média distância.",
+                duration:"1 hora; consulte o efeito.",
+                type:"UT",
+                level:"0"
+            },
+            "Chama de Santa Astrid":{
+                description:"Chamas verdes inofensivas envolvem os alvos enquanto durar a magia. Cada alvo emite luz em um raio de 1 metro e não pode se tornar invisível ou escondido dos que podem vê-lo, criaturas fazem jogadas de ataque contra ele com 1 dádiva.",
+                target:"Até três criaturas ou objetos a curta distância.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"1"
+            },
+            "Névoa congelante":{
+                description:"Névoa se espalha e obscurece parcialmente a área enquanto durar a magia ou até ser dispersa pelo vento. O chão na área se torna escorregadio e é considerado terreno difícil até o fim do efeito. Qualquer criatura na área quando a magia é conjurada ou ao fim da rodada enquanto estiver ativa deve fazer uma jogada de desafio de Força. Caso fracasse, ela sofre 1d3 de dano e fica lenta por 1 rodada.",
+                area:"Um cilindro com 3 metros de altura e 5 metros de raio, centrado em um ponto a média distância.",
+                duration:"1 minuto; consulte o efeito.",
+                type:"AT",
+                level:"1"
+                
         }
     },
     "Terra": {
