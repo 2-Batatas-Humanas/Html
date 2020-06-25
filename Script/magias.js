@@ -578,7 +578,7 @@ traditions ={
                 level:"1"
             },
             "Dobrar espaço":{
-                description:"O conjurador joga 2d6. O conjurador se teleporta para um espaço aberto de sua escolha até uma quantidade de metros igual ao resultado da jogada. Desencadeada O conjurador pode utilizar uma ação desencadeada para conjurar esta magia em seu turno. Caso faça isso, ele joga 1d6 em vez de 2d6 para determinar a distância do teleporte.",
+                description:"O conjurador joga 2d6. O conjurador se teleporta para um espaço aberto de sua escolha até uma quantidade de metros igual ao resultado da jogada.<br><b>Desencadeada</b> O conjurador pode utilizar uma ação desencadeada para conjurar esta magia em seu turno. Caso faça isso, ele joga 1d6 em vez de 2d6 para determinar a distância do teleporte.",
                 type:"UT",
                 level:"1"
             },
@@ -1016,20 +1016,147 @@ traditions ={
                 duration:"1 minuto; consulte o efeito.",
                 type:"AT",
                 level:"1"
-                
+            },
+            "Raio bifurcado":{
+                description:"Para cada um deles, o conjurador faz uma jogada de Vontade contra Agilidade do alvo. O conjurador faz a jogada de ataque com 1 dádiva, se o alvo estiver vestindo ou for feito de metal. Caso seja bem-sucedido, ele sofre 1d6+2 de dano.",
+                target:" Até duas criaturas ou objetos a curta distância de cada uma e a média distância do conjurador.",
+                type:"AT",
+                attackRoll20:"O alvo sofre 1d6 de dano adicional.",
+                level:"1"
+            },
+            "Convocar relâmpago":{
+                description:"Um relâmpago vindo do céu atinge o alvo e causa 3d6+5 de dano a tudo num raio de 3 metros daquele ponto. Cada criatura que sofre dano por este efeito deve fazer uma jogada de desafio de Força. Ela se torna surda por 1 hora, caso fracasse, ou sofre metade do dano, caso seja bem-sucedida.",
+                sacrifice:"O conjurador pode gastar uma conjuração desta magia para conjurar raio bifurcado.",
+                requirement:"O conjurador deve estar a céu aberto.",
+                target:"Um ponto no solo a distância.",
+                type:"AT",
+                level:"2"
+            },
+            "Névoa venenosa":{
+                description:"Névoa arroxeada se espalha e obscurece severamente a área enquanto durar a magia ou até ser dispersa pelo vento. A névoa é mais pesada que o ar, portanto ela adentra rachaduras e aberturas no chão abaixo dela. Ao fim de cada rodada de duração da magia, o jogador joga um d6. Se o número for par, a nuvem se move a metade do resultado em metros para longe do conjurador. Quando a névoa surge e ao fim de cada rodada enquanto está ativa, cada criatura na área deve obter sucesso em uma jogada de desafio de Força ou sofre 1d6 de dano e fica envenenada por 1 rodada. Enquanto estiver envenenada por este motivo, ela também fica imobilizada.",
+                area:"Um cilindro com 2 metros de altura e 5 metros de raio, centrado em um ponto a média distância.",
+                duration:"1 minuto; consulte o efeito.",
+                type:"AT",
+                level:"2"
+            },
+            "Chuva de granizo":{
+                description:"Granizo cai de nuvens que se espalham pela área e permanecem enquanto durar a magia, obscurecendo-a parcialmente. Enquanto durar a magia, criaturas na área e a até 5 metros de sua borda ficam surdas. O chão se torna terreno difícil até que o granizo derreta. Quando a magia é conjurada, e ao fim de cada rodada enquanto estiver ativa, o granizo causa 3d6 de dano a tudo na área que não estiver protegido. Cada criatura que sofre dano por este efeito, deve fazer uma jogada de desafio de Agilidade. A criatura fica prostrada, caso fracasse, ou sofre metade do dano, caso seja bem-sucedida.",
+                area:"Um cilindro com 2 metros de altura e 5 metros de raio, centrado em um ponto a longa distância.",
+                duration:"1 minuto.",
+                type:"AT",
+                level:"3"
+            },
+            "Relâmpago":{
+                description:"O relâmpago viaja por 5d6 metros pela área. Caso encontre um objeto sólido antes de encontrar o fim da linha, ele ricocheteia e viaja de volta para o conjurador em uma linha reta até a distância remanescente. O relâmpago causa 5d6 de dano a tudo na área. Cada criatura na área deve fazer uma jogada de desafio de Agilidade, caso seja feita de metal ou esteja utilizando armadura pesada, ela adiciona 1 perdição a jogada. Uma criatura no caminho de um relâmpago que tenha ricocheteado faz a jogada duas vezes. Caso seja bem-sucedida, ela sofre metade do dano.",
+                area:" Uma linha de 30 metros de comprimento e 1 metro de largura, originada em um ponto ao alcance do mago.",
+                type:"AT",
+                level:"3"
+            },
+            "Chuva ácida":{
+                description:"Chuva verde ácida cai de nuvens que se espalham pela área e permanecem enquanto durar a magia, obscurecendo-a parcialmente. Quando a magia é conjurada, e ao fim de cada rodada enquanto estiver ativa, a chuva causa 5d6 de dano a tudo na área que não estiver protegido. Cada criatura que sofre dano por este efeito deve fazer uma jogada de desafio de Força, sofrendo metade do dano, caso seja bem-sucedida.",
+                area:"Um cilindro com 2 metros de altura e 5 metros de raio, centrado em um ponto a longa distância.",
+                duration:"1 minuto.",
+                type:"AT",
+                level:"4"
+            },
+            "Raio saltador":{
+                description:"O conjurador arremessa um relâmpago no alvo. Ele faz uma jogada de ataque de Vontade contra a Agilidade do alvo com 1 dádiva, se o alvo estiver vestindo ou for feito de metal. Caso seja bem-sucedido, ele sofre 8d6 de dano, e o conjurador pode repetir o ataque contra um alvo diferente a longa distância do primeiro. Cada vez que fizer isso, deve ser escolhido um alvo que ainda não tenha sido atacado com a conjuração desta magia, e reduzir o dano causado em 2d6. Quando o número de dados de dano cai para 0, o efeito termina.",
+                target:"Uma criatura a longa distância; consulte o efeito.",
+                type:"AT",
+                level:"5"
+            }                
         }
     },
     "Terra": {
         attribute: "will",
         darkMagic: false,
         spells: {
-            
+            "Cravo de terra":{
+                description:"Um cravo afiado sai do chão sob o alvo. O conjurador faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso a criatura fracasse, ela sofre 1d6 pontos de dano e fica prostrada.",
+                target:"Uma criatura no solo a curta distância.",
+                type:"AT",
+                attackRoll20:"O alvo sofre 1d6 de dano adicional.",
+                level:"0"
+            },
+            "Esculpir terra e pedra":{
+                description:"O conjurador pode moldar o alvo como se fosse feito de argila macia, depois disso, ele volta à dureza normal.",
+                target:"Um objeto de Tamanho 1 ou menor, feito de terra e pedra, ao alcance do conjurador.",
+                duration:"Permanente",
+                type:"UT",
+                level:"0"
+            },
+            "Armadura de pedra":{
+                description:"Pedras se dispersam até cobrirem o conjurador completamente. Enquanto durar a magia, jogadas de ataque contra a Defesa, Força ou Agilidade do conjurador são feitas com 1 perdição e ele sofre metade do dano por armas. Quando o efeito termina, as pedras que cobrem o conjurador explodem em uma esfera de 1 metro centrada em um ponto ao seu alcance, causando 1d6 de dano por rodada de concentração na magia a tudo na área, exceto ao próprio conjurador. Cada criatura na área, que for bem-sucedida em uma jogada de desafio de Agilidade, sofre metade do dano.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"1"
+            },
+            "Lâminas rochosas":{
+                description:"O conjurador arremessa estilhaços de pedra que causam 2d6 de dano a tudo na área. Cada criatura na área, que for bem-sucedida em uma jogada de desafio de Agilidade, sofre metade do dano. Caso fracasse, a criatura sofre um ferimento hemorrágico e 1d6 de dano ao fim de cada turno, até que cure algum ponto de dano ou outra criatura utilize uma ação para estancar o sangramento.",
+                area:"Um cone de 3 metros de comprimento, originado em um ponto ao alcance do conjurador.",
+                type:"AT",
+                level:"1"
+            },
+            "Tremor":{
+                description:"O chão treme e se eleva. Qualquer criatura parada na área, com exceção do conjurador, ou que se mova para dentro dela, deve fazer uma jogada de desafio de Agilidade. Caso fracasse, a criatura fica prostrada e não pode se levantar enquanto durar a magia.",
+                area:"Um círculo no solo com 4 metros de raio centrado em um ponto ao alcance do conjurador.",
+                duration:"1 rodada.",
+                type:"AT",
+                level:"1"
+            },
+            "Avalanche":{
+                description:"O conjurador eleva a camada superficial do solo em um círculo e a arremessa em um cone. O solo em ambas as áreas se torna terreno difícil, até que os detritos sejam retirados. Tudo no cone sofre 4d6 de dano. Cada criatura na área, que for bem-sucedida em uma jogada de desafio de Agilidade, sofre metade do dano.",
+                area:"Um círculo no solo, com 12 metros de raio, centrado em um ponto ao alcance do conjurador e um cone, com 5 metros de comprimento, originado em um ponto ao alcance do conjurador.",
+                type:"AT",
+                level:"2"
+            },
+            "Moldar terra e pedra":{
+                description:"Quando conjura essa magia, o conjurador deve se concentrar e manter contato com a área por 1 minuto. Ao fim do período, ele molda a terra e a pedra na área como se fossem feitas de argila macia. Após isso, o material volta a sua dureza normal. O conjurador pode conjurar esta magia para abrir buracos em paredes de pedra, bloquear portas, criar armas de pedra ou limpar detritos em uma passagem.",
+                area:"Um cubo de terra ou pedra, de 4 metros de lado, originado em um ponto ao alcance do conjurador.",
+                duration:"Permanente; consulte o efeito.",
+                type:"UT",
+                level:"2"
+            },
+            "Erupção":{
+                description:"O chão entra em erupção, arremessando cascalhos ao ar que caem e causam 5d6 de dano a tudo na área. Criaturas e objetos na área são movidos 1d6 metros para longe do ponto de origem. Cada criatura deve fazer uma jogada de desafio de Força. Caso fracasse, fica prostrado. Caso seja bem-sucedida, apenas sofre metade do dano. Depois do efeito, o solo a 5 metros do ponto de origem é preenchido com detritos e se torna terreno difícil até que seja limpo.",
+                area:"Um cilindro de 10 metros de altura e 2 metros de raio centrado em um ponto no solo a média distância.",
+                type:"AT",
+                level:"3"
+            },
+            "Prender ao chão":{
+                description:"A gravidade repentinamente se intensifica na área, que se torna terreno difícil enquanto a magia está em efeito. Cada criatura presente na área ou que entre nela deve fazer uma jogada de desafio de Força com 1 perdição; caso fracasse, fica prostrada e imobilizada enquanto durar a magia. Se estiver imobilizada por este efeito, a criatura não pode se levantar. Caso esteja voando, a criatura cai e sofre dano dobrado por causa da aterrissagem.",
+                area:"Um cubo, com 10 metros de lado, originado em um ponto a longa distância.",
+                duration:"1 minuto.",
+                type:"AT",
+                level:"3"
+            },
+            "Terremoto":{
+                description:"O solo se agita e se eleva violentamente, se tornando terreno difícil enquanto a magia está em efeito. Quando o personagem conjura esta magia e ao final de cada turno de duração, cada criatura na área deve fazer uma jogada de desafio de Agilidade. Caso fracasse, a criatura sofre 1d6 de dano e fica prostrada. Além disso, quando o personagem conjura a magia e ao final de cada turno de duração, qualquer estrutura em contato com a área sofre 2d6 de dano. Uma estrutura destruída por este dano desmorona e tudo dentro ou embaixo dela sofre 4d6+10 de dano. Criaturas sobre essas estruturas podem sofrer dano por queda, caso haja desmoronamento.",
+                area:"Um círculo no solo com 20 metros de raio centrado em um ponto a longa distância.",
+                duration:"1 minuto.",
+                type:"AT",
+                level:"4"
+            },
+            "Compelir gênio da terra":{
+                description:"No fim da rodada na qual esta magia é conjurada, o alvo se torna um gênio de terra de Tamanho 2. O conjurador não pode finalizar essa magia voluntariamente. Quando o efeito termina, o gênio se desfaz, transformando o chão em seu espaço em terreno difícil. Quando o gênio aparece, o conjurador faz uma jogada de ataque de Vontade contra a Vontade dele. Caso seja bem-sucedido, o gênio se torna compelido pela duração da magia. Caso seja um fracasso, ele se torna hostil.",
+                area:"Um cubo de terra, com 2 metros de lado, originado de um ponto a longa distância.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"5"
+            }
         }
     },
     "Teurgia": {
         attribute: "will",
         darkMagic: false,
         spells: {
+            "Acusar":{
+                description:"O conjurador apresenta seu símbolo sagrado e faz uma jogada de ataque de Vontade contra a Vontade do alvo. Caso seja bem-sucedido, ele fica assustado por 1 rodada.",
+                target:"Uma criatura a curta distância que possa ver e ouvir o conjurador.",
+                type:"AT",
+                attackRoll20:"O alvo fica prostrado.",
+                level:"0"
+            },
             
         }
     },
