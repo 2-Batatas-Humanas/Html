@@ -56,7 +56,7 @@ function setDwarf(){
     addBrToDiv(id, 1);
     createOptionsInput(id, "Seu antecedente é algum desses?(se não for nenhum, selecione a última opção: \"Nenhum\") ", "backgroundChange", 
     ["O personagem vendeu sua alma ao diabo para ganhar riquezas. O diabo o enganou e o deixou sem dinheiro nenhum. Ele começa o jogo com 1 de Corrupção.", "O personagem ganha a vida trabalhando em uma profissão.", "O personagem é um artesão talentoso. Adicione artesão (qualquer um) a sua lista de profissões.", "O personagem viajou muito. Ele fala um idioma adicional.", "O personagem herdou um machado de batalha ou um martelo de guerra de um ancestral.", "O personagem tem a chave para um antigo cofre de tesouros dos anões, perdido há muito tempo.", "O personagem conseguiu algum dinheiro e começa o jogo com 2d6 cc.", "Nenhum"], 
-    ["1 corruption+0 money", "profession", "profession artisan", "language", "battlehammer/warhammer", "key to ancient dwarf tresure vault", "2d6 cp", "none"]);
+    ["1 corruption", "profession", "profession artisan", "language", "battlehammer/warhammer", "key to ancient dwarf tresure vault", "2d6 cp", "none"]);
 }
 
 function setClockwork(){
@@ -192,7 +192,7 @@ function setYerath(){
     createTextareaInput(id, "Qual é o antecedente do seu personagem? ", "background");
     addBrToDiv(id, 1);
     createOptionsInput(id, "Seu antecedente é algum desses?(se não for nenhum, selecione a última opção: \"Nenhum\") ", "backgroundChange", 
-    ["You discovered a shrine...", "Something murdered you queen...", "You found a bit of weird tecnology...", "You're secretly a queen...", "You traveled extensively.. ", "You worked in your profession", "You were sent out from your hive...", "You found something interesting...", "Deep underground, you found a ...", "You took a sword...", "You found an incantation...", "You came with money...", "Nenhum"],
+    ["You discovered a shrine...", "Something murdered you queen...", "You found a bit of weird tecnology...", "You're secretly a queen...", "You traveled extensively.. ", "You worked in your profession", "You were sent out from your hive...", "You found something interesting...", "Deep underground, you found a ...", "You took a sword...", "You found an incantation...", "You came into money...", "Nenhum"],
     ["1 corruption", "1d3 insanity", "random enchanted object", "1 intellect+1 will+!caste att", "language", "profession", "profession academic", "extra interesting thing", "language gnomish", "sword", "incantation rank 0 spell", "2d6 cp", "none"]);
 }
 
