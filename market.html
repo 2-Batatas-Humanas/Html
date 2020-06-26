@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Mercado</title>
+        <link type="text/css" rel="stylesheet" href="Style/market.css">
+        <script src="Script/funcoesAuxiliares.js"></script>
+        <script src="Script/animais.js"></script>
+        <script src="Script/itens.js"></script>
+        <script src="Script/market.js"></script>
+    </head>
+    <body>
+        <h1>Mercado</h1>
+        <h2 id="marketh2">Itens no mercado:</h2>
+        <h2 id="bagType">Itens no inventário:</h2>
+        <div id="flexContainer">
+            <div id="bagDiv"></div>
+            <div id="marketDiv">
+                <div class="market">
+                    <p class="topic">Armas:</p>
+                    <div id="flexWeapon"></div>        
+                </div>
+                <div class="market">
+                    <p class="topic">Munição:</p>
+                    <div id="flexAmmo"></div>
+                </div>
+                <div class="market">
+                    <p class="topic">Armaduras:</p>
+                    <div id="flexArmor"></div>
+                </div>
+                <div class="market">
+                    <p class="topic">Equipamento Pessoal:</p>
+                    <div id="flexPersonalGear"></div>
+                </div>
+                <div class="market">
+                    <p class="topic">Vestuário e acessórios:</p>
+                    <div id="flexClothingAcessory"></div>
+                </div>
+                <div class="market">
+                    <p class="topic">Ferramentas:</p>
+                    <div id="flexTool"></div>
+                </div>
+                <div class="market">
+                    <p class="topic">Comidas:</p>
+                    <div id="flexFood"></div>
+                </div>
+                <div class="market">
+                    <p class="topic">Animais:</p>
+                    <div id="flexAnimal"></div>
+                </div>
+                <div class="market">
+                    <p class="topic">Equipamento para Animais:</p>
+                    <div id="flexAnimalGear"></div>
+                </div>
+                <div class="market">
+                    <p class="topic">Serviçais:</p>
+                    <div id="flexHireling"></div>
+                </div>
+                <div class="market">
+                    <p class="topic">Poções:</p>
+                    <div id="flexPotion"></div>
+                </div>
+                <div class="market">
+                    <p class="topic">Feitiços:</p>
+                    <div id="flexIncantation"></div>
+                </div>
+            </div>
+        </div>
+        <script>setBag()</script>
+        <script>stockMarket()</script>
+        <div id="moneyDiv">
+            <div id="characterMoney">
+                <p>Seu dinheiro atual:</p>
+                <ul>
+                    <li>Milavos(ma): </li> <output id="bitsCurrent">0</output>
+                    <li>Centavos de Cobre(cc): </li> <output id="copperPenniesCurrent">0</output>
+                    <li>Xelins de Prata(xp): </li> <output id="silverShillingsCurrent">0</output>
+                    <li>Coroas de Ouro(co): </li> <output id="goldCrownsCurrent">0</output>
+                </ul>
+            </div>
+        </div>
+        <script>processMoney()</script>
+        <footer>
+            <p>Preços:</p>
+            <p>10 milavos (ma) = 1 centavo de cobre (cc)</p>
+            <p>10 centavos de cobre (cc) = 1 xelim de prata (xp)</p>
+            <p>10 xelins de prata (xp) = 1 coroa de ouro (co)</p>
+        </footer>
+        
+
+    </body>
+</html>
