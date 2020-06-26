@@ -13,8 +13,8 @@ if(!character.bag){
         animals: {},
         money: {
             bits: 0,
-            copperPennies: choices.backgroundMoney || 0,
-            silverShillings: choices.level1Money,
+            copperPennies: parseInt(choices.backgroundMoney) || 0,
+            silverShillings:    parseInt(choices.level1Money),
             goldCrowns: 0
         }
     };
@@ -27,7 +27,7 @@ if(!character.bag){
         case "destitute":
             character.bag.type = "Bolsa";
             character.bag.armors["Trapos"] = deepCopy(item.armor["Roupas"]);
-            character.bag.money.bits = choices.initialWealthMoney;
+            character.bag.money.bits = parseInt(choices.initialWealthMoney);
 
             if(choices.wealthWeaponChoice == "club"){
                 character.bag.weapons["Porrete"] = deepCopy(item.weapon["Porrete"]);
@@ -41,7 +41,7 @@ if(!character.bag){
             break;
         case "poor":
             character.bag.type = "Saco";
-            character.bag.money.bits = choices.initialWealthMoney;
+            character.bag.money.bits = parseInt(choices.initialWealthMoney);
             character.bag.armors["Roupas comuns remendadas"] = deepCopy(item.armor["Roupas"]);
             character.bag.items["Pão"] = {};
             character.bag.items["Odre"] = deepCopy(item.personalGear["Odre"]);
@@ -60,7 +60,7 @@ if(!character.bag){
             break;
         case "gettingBy":
             character.bag.type = "Mochila";
-            character.bag.money.copperPennies += choices.initialWealthMoney;
+            character.bag.money.copperPennies += parseInt(choices.initialWealthMoney);
             character.bag.weapons["Adaga"] = deepCopy(item.weapon["Adaga ou faca"]);
             character.bag.armors["Roupas comuns"] = deepCopy(item.armor["Roupas"]);
             character.bag.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
@@ -84,14 +84,14 @@ if(!character.bag){
             break;
         case "comfortable":
             character.bag.type = "Mochila";
-            character.bag.money.copperPennies += choices.initialWealthMoney;
+            character.bag.money.copperPennies += parseInt(choices.initialWealthMoney);
             character.bag.weapons["Adaga"] = deepCopy(item.weapon["Adaga ou faca"]);
             character.bag.armors["Roupas de qualidade"] = deepCopy(item.armor["Roupas"]);
             character.bag.items["Manto"] = deepCopy(item.clothingAndAccessory["Manto"]);
             character.bag.items["Odre"] = deepCopy(item.personalGear["Odre"]);
             character.bag.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
             character.bag.items["Corda (20 metros)"] = deepCopy(item.personalGear["Corda (20 metros)"]);
-            character.bag.items["Poção de Cura"] = deepCopy(item.potions["Cura"]);
+            character.bag.items["Poção de Cura"] = deepCopy(item.potion["Cura"]);
             character.bag.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
             character.bag.items["Tocha 1"] = deepCopy(item.personalGear["Tocha"]);
             character.bag.items["Tocha 2"] = deepCopy(item.personalGear["Tocha"]);
@@ -102,7 +102,7 @@ if(!character.bag){
                 character.bag.items["Kit de escrita"] = deepCopy(item.tool["Kit de Escrita"]);
             }
             character.bag.weapons["Escudo pequeno"] = deepCopy(item.weapons["Escudo pequeno"]);
-            character.bag.items["Feitiço nível 0"] = deepCopy(item.incantations["Nível 0"]);
+            character.bag.items["Feitiço nível 0"] = deepCopy(item.incantation["Nível 0"]);
 
             if(choices.wealthWeaponChoice == "club"){
                 character.bag.weapons["Porrete"] = deepCopy(item.weapon["Porrete"]);
@@ -118,14 +118,14 @@ if(!character.bag){
             break;
         case "wealthy":
             character.bag.type = "Mochila";
-            character.bag.money.silverShillings += choices.initialWealthMoney;
+            character.bag.money.silverShillings += parseInt(choices.initialWealthMoney);
             character.bag.weapons["Adaga"] = deepCopy(item.weapon["Adaga ou faca"]);
             character.bag.armors["Roupas de cortesão"] = deepCopy(item.armor["Roupas"]);
             character.bag.items["Manto"] = deepCopy(item.clothingAndAccessory["Manto"]);
             character.bag.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
             character.bag.items["Odre"] = deepCopy(item.personalGear["Odre"]);
             character.bag.items["Corda (20 metros)"] = deepCopy(item.personalGear["Corda (20 metros)"]);
-            character.bag.items["Poção de Cura"] = deepCopy(item.potions["Cura"]);
+            character.bag.items["Poção de Cura"] = deepCopy(item.potion["Cura"]);
             character.bag.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
             character.bag.items["Lanterna"] = deepCopy(item.personalGear["Lanterna"]);
             character.bag.items["Frasco de óleo 1"] = deepCopy(item.personalGear["Óleo, frasco"]);
@@ -134,17 +134,17 @@ if(!character.bag){
             character.bag.items["Kit de cura"] = deepCopy(item.tool["Kit de Curandeiro (6 usos)"]);
             character.bag.items["Kit de ferramentas"] = deepCopy(item.tool["Kit de Ferramentas"]);
             character.bag.items["Kit de escrita"] = deepCopy(item.tool["Kit de Escrita"]);
-            character.bag.items["Feitiço nível 0"] = deepCopy(item.incantations["Nível 0"]);
+            character.bag.items["Feitiço nível 0"] = deepCopy(item.incantation["Nível 0"]);
             break;
         case "rich":
             character.bag.type = "Cavalos e servo";
-            character.bag.money.silverShillings += choices.initialWealthMoney;
+            character.bag.money.silverShillings += parseInt(choices.initialWealthMoney);
             character.bag.weapons["Adaga"] = deepCopy(item.weapon["Adaga ou faca"]);
             character.bag.armors["Roupas de nobre"] = deepCopy(item.armor["Roupas"]);
             character.bag.items["Manto"] = deepCopy(item.clothingAndAccessory["Manto"]);
             character.bag.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
             character.bag.items["Odre"] = deepCopy(item.personalGear["Odre"]);
-            character.bag.items["Poção de Cura"] = deepCopy(item.potions["Cura"]);
+            character.bag.items["Poção de Cura"] = deepCopy(item.potion["Cura"]);
             character.bag.hirelings["Servo pessoal"] = deepCopy(item.hireling["Plebeu"]);
             character.bag.hirelings["Guarda"] = deepCopy(item.hireling["Mercenário"]);
             character.bag.animals["Cavalo 1"] = deepCopy(item.animal["Cavalo, mula, pônei"]);
@@ -194,7 +194,7 @@ if(!character.bag){
             };
             break;
         case "incantation rank 0 spell":
-            character.bag.item["Feitiço nível 0"] = deepCopy(item.incantations["Nível 0"]);
+            character.bag.item["Feitiço nível 0"] = deepCopy(item.incantation["Nível 0"]);
             break;
     }
 }
