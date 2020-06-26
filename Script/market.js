@@ -101,7 +101,7 @@ if(!character.bag){
             } else{
                 character.bag.items["Kit de escrita"] = deepCopy(item.tool["Kit de Escrita"]);
             }
-            character.bag.weapons["Escudo pequeno"] = deepCopy(item.weapons["Escudo pequeno"]);
+            character.bag.weapons["Escudo pequeno"] = deepCopy(item.weapon["Escudo pequeno"]);
             character.bag.items["Feitiço nível 0"] = deepCopy(item.incantation["Nível 0"]);
 
             if(choices.wealthWeaponChoice == "club"){
@@ -130,7 +130,7 @@ if(!character.bag){
             character.bag.items["Lanterna"] = deepCopy(item.personalGear["Lanterna"]);
             character.bag.items["Frasco de óleo 1"] = deepCopy(item.personalGear["Óleo, frasco"]);
             character.bag.items["Frasco de óleo 2"] = deepCopy(item.personalGear["Óleo, frasco"]);
-            character.bag.weapons["Escudo pequeno"] = deepCopy(item.weapons["Escudo pequeno"]);
+            character.bag.weapons["Escudo pequeno"] = deepCopy(item.weapon["Escudo pequeno"]);
             character.bag.items["Kit de cura"] = deepCopy(item.tool["Kit de Curandeiro (6 usos)"]);
             character.bag.items["Kit de ferramentas"] = deepCopy(item.tool["Kit de Ferramentas"]);
             character.bag.items["Kit de escrita"] = deepCopy(item.tool["Kit de Escrita"]);
