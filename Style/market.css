@@ -1,0 +1,139 @@
+html, body {
+    font-size: 15px;
+}
+
+#bagDiv {
+    border: 2px solid black;
+}
+
+#bag > ul {
+    border: 1px solid red;
+    padding: 5px;
+    margin: 10px;
+}
+
+#marketh2 {
+    float: right;
+    margin: 0 50px 0 0;
+}
+
+#marketDiv {
+    border: 2px solid black;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.market {
+    border: 1px solid blue;
+    margin: 10px;
+}
+
+#flexContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+
+#moneyDiv {
+    position: fixed;
+    top: 75vh;
+
+}
+
+#moneyDiv > * {
+    background-color: darkorange;
+    color: darkblue;
+    border: 2px solid black;
+    padding: 5px;
+    margin: 10px;
+}
+
+footer {
+    border: 2px solid black;
+    font-weight: bold;
+    text-align: right;
+}
+
+#flexWeapon, #flexAmmo, #flexArmor, #flexPersonalGear, #flexClothingAcessory, #flexTool, #flexFood, #flexAnimal, #flexAnimalGear, #flexHireling, #flexPotion, #flexIncantation {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.weapon {
+    border: 1px solid red;
+    padding: 5px;
+    margin: 5px;
+}
+
+.ammo {
+    border: 1px solid orangered;
+    padding: 5px;
+    margin: 5px;
+}
+
+.armor {
+    border: 1px solid blue;
+    padding: 5px;
+    margin: 5px;
+}
+
+.personalGear {
+    border: 1px solid green;
+    padding: 5px;
+    margin: 5px;
+}
+
+.clothingAcessory {
+    border: 1px solid purple;
+    padding: 5px;
+    margin: 5px;
+}
+
+.tool {
+    border: 1px solid palevioletred;
+    padding: 5px;
+    margin: 5px;
+}
+
+.food {
+    border: 1px solid yellowgreen;
+    padding: 5px;
+    margin: 5px;
+}
+
+.animal {
+    border: 1px solid brown;
+    padding: 5px;
+    margin: 5px;
+}
+
+.animalGear {
+    border: 1px solid gray;
+    padding: 5px;
+    margin: 5px;
+}
+
+.hireling {
+    border: 1px solid darkgoldenrod;
+    padding: 5px;
+    margin: 5px;
+}
+
+.potion {
+    border: 1px solid slateblue;
+    padding: 5px;
+    margin: 5px;
+}
+
+.incantation {
+    border: 1px solid maroon;
+    padding: 5px;
+    margin: 5px;
+}
+
+.topic {
+    font-size: larger;
+    font-weight: bolder;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
