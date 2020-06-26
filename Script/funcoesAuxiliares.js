@@ -162,3 +162,67 @@ function createButton(divId, text, onclick){
 
     div.appendChild(button);
 }
+
+// Lists:
+function createHtmlList(appendId, listId, liList, ordered = false){
+    let space = document.querySelector("#" + appendId);
+
+    let newList;
+    if(ordered) newList = document.createElement("ol");
+    else newList = document.createElement("ul");
+    newList.id = listId;
+
+    for(let i = 0; i < liList.length; i++){
+        let li = document.createElement("li");
+        li.innerHTML = liList[i];
+        newList.appendChild(li);
+    }
+    
+    space.appendChild(newList);
+}
+
+function appendLiElement(appendId, text){
+    let container = document.querySelector("#" + appendId);
+
+    let li = document.createElement("li");
+    li.innerHTML = text;
+    container.appendChild(li);
+}
+
+// Deep Copy:
+function deepCopy(obj){
+    if(obj === null) return null;
+    if(typeof obj !== "object") return obj;
+    
+    if(Array.isArray(obj)){
+        const newArray = [];
+        for(let i = 0; i < obj.length; i++){
+            if(typeof obj[i] === "object"){
+                newArray[i] = deepCopy(obj[i]);
+            } else{
+                newArray[i] = obj[i];
+            }
+        }
+        return newArray;
+    }
+
+    const newObj = {};
+    const objKeys = Object.keys(obj);
+    objKeys.forEach(function(key){ 
+        if(typeof obj[key] === "object"){
+            newObj[key] = deepCopy(obj[key]);
+        } else{
+            newObj[key] = obj[key];
+        }
+    });
+    return newObj;
+}
+
+// Check if object is empty:
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
