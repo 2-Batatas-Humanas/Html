@@ -26,6 +26,13 @@ switch(character.ancestry){
             writable: false
         }
         break;
+    case "orc":
+        character.languages["Dialeto Sombrio"] = {
+            speakable: true,
+            readable: false,
+            writable: false
+        }
+        break;
     case "yerath":
         character.languages["Yerath"] = {
             speakable: true,
@@ -140,22 +147,63 @@ function setWealth(){
             createOptionsInput(id, "Qual arma você escolhe? ", "wealthWeapon",
             ["Porrete", "Funda com 20 pedras"],
             ["club", "sling"]);
+            addBrToDiv(id, 1);
+            createNewInput(id, "Coloque quantos milavos você possui no começo por ser desprovido(1d6 ma): ", "money", "number", null, 1, 1, 6);
             break;
         case "poor":
             createOptionsInput(id, "Qual arma você escolhe? ", "wealthWeapon",
             ["Cajado", "Funda com 20 pedras"],
             ["staff", "sling"]);
+            addBrToDiv(id, 1);
+            createNewInput(id, "Coloque quantos milavos você possui no começo por ser pobre(2d6 ma): ", "money", "number", null, 1, 1, 12);
             break;
         case "gettingBy":
+            createOptionsInput(id, "Qual arma você escolhe? ", "wealthWeapon",
+            ["Cajado", "Porrete", "Funda com 20 pedras"],
+            ["staff", "club", "sling"]);
+            addBrToDiv(id, 1);
+            createNewInput(id, "Coloque quantas tochas você recebe(1d3): ", "numTorch", "number", null, 1, 1, 3);
+            addBrToDiv(id, 1);
+            createNewInput(id, "Coloque quantos centavos de cobre você possui no começo por ser modesto(1d6 cc): ", "money", "number", null, 1, 1, 6);
+            break;
         case "comfortable":
             createOptionsInput(id, "Qual arma você escolhe? ", "wealthWeapon",
             ["Cajado", "Porrete", "Funda com 20 pedras"],
             ["staff", "club", "sling"]);
+            addBrToDiv(id, 1);
+            createOptionsInput(id, "Qual kit você escolhe? ", "kit",
+            ["Kit de ferramentas", "Kit de escrita"],
+            ["tools", "writing"]);
+            addBrToDiv(id, 1);
+            createNewInput(id, "Coloque quantos centavos de cobre você possui no começo por ser confortável(2d6 cc): ", "money", "number", null, 1, 1, 12);
             break;
         case "wealthy":
-        case "rich":
-            addPToDiv(id, "Você é um burguês!");
+            createNewInput(id, "Coloque quantos xelins de prata você possui no começo por ser abastado(1d6 xp): ", "money", "number", null, 1, 1, 6);
             break;
+        case "rich":
+            createNewInput(id, "Coloque quantos xelins de prata você possui no começo por ser rico(2d6 xp): ", "money", "number", null, 1, 1, 12);
+            break;
+    }
+    addBrToDiv(id);
+    createNewInput(id, "Qual é a quantidade de xelins de prata que você recebeu por ter ido para o nível 1?(2d6 xp) ", "level1Money", "number", null, 1, 1, 12);
+
+    switch(choices.backgroundChange){
+        case "2d6 cp":
+            addBrToDiv(id);
+            createNewInput(id, "Você recebeu 2d6 centavos de cobre pelo seu antecedente. Coloque quanto deu: ", "background", "number", null, 1, 1, 12);
+            break;
+        case "battlehammer/warhammer":
+            addBrToDiv(id);
+            createOptionsInput(id, "Qual desses você escolhe?(o seu personagem recebeu por causa do antecedente) ", "background",
+            ["Machado de batalha", "Martelo de Guerra"], 
+            ["battlehammer", "warhammer"]);
+            break;
+        case "random enchanted object":
+            addBrToDiv(id);
+            createNewInput(id, "Você recebeu um objeto encantado por causa do antecedente. Coloque o nome dele: ", "background", "text");
+            addBrToDiv(id, 1);
+            createNewInput(id, "Coloque a propriedade mágica do seu objeto: ", "magicProperty", "text");
+        
     }
 }
 
@@ -205,7 +253,7 @@ function nextPage(){
         let keys = Object.keys(character.languages);
         keys.forEach(function(value){
             character.languages[value].readable = true;
-        })
+        });
     }
     else if(character.novicePath.type == "rogue" && choices.rogueProfLangChoice == "language"){
         let lang = document.querySelector("#rogueLang").value;
@@ -229,8 +277,30 @@ function nextPage(){
     }
 
     character.wealth = document.querySelector("#wealth").value;
+    choices.initialWealthMoney = document.querySelector("#money").value;
+    choices.level1Money = document.querySelector("#level1Money").value;
     if(character.wealth != "wealthy" && character.wealth != "rich"){
         choices.wealthWeaponChoice = document.querySelector("#wealthWeapon").value;
+        if(character.wealth == "gettingBy"){
+            choices.numTorch = document.querySelector("#numTorch").value;
+        }
+        else if(character.wealth == "comfortable"){
+            choices.kit = document.querySelector("#kit").value;
+        }
+    }
+    if(choices.backgroundChange == "2d6 cp"){
+        choices.backgroundMoney = document.querySelector("#background").value;
+    }
+    switch(choices.backgroundChange){
+        case "2d6 cp":
+            choices.backgroundMoney = document.querySelector("#background").value;
+            break;
+        case "battlehammer/warhammer":
+            choices.battleWarHammer = document.querySelector("#background").value;
+            break;
+        case "random enchanted object":
+            choices.newObject = document.querySelector("#background").value;
+            choices.magicProperty = document.querySelector("#magicProperty").value;        
     }
 
     choices.interestingThings = [document.querySelector("#interestingThing").value];
@@ -239,4 +309,5 @@ function nextPage(){
     }
     localStorage.setItem("character", JSON.stringify(character));
     localStorage.setItem("choices", JSON.stringify(choices));
+    window.location.href = "market.html";
 }
