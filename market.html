@@ -26,6 +26,12 @@
             <a href="#topicIncantation">Feitiços</a>
             <a href="#priceHelp">Legenda dos Preços</a>
         </nav>
+        <div id="priceHelp">
+            <p>Preços:</p>
+            <p>10 milavos (ma) = 1 centavo de cobre (cc)</p>
+            <p>10 centavos de cobre (cc) = 1 xelim de prata (xp)</p>
+            <p>10 xelins de prata (xp) = 1 coroa de ouro (co)</p>
+        </div>
         <h2 id="marketh2">Itens no mercado:</h2>
         <h2 id="bagType">Itens no inventário:</h2>
         <div id="flexContainer">
@@ -98,6 +104,9 @@
                 <div id="shoppingBag">
                     <p>Coloque os itens aqui:</p>
                     <div id="shoppingList"></div>
+                    <div id="buyButton">
+                        <button onclick="buyItems()">Comprar</button>
+                    </div>
                 </div>
             </div>
             <div>
@@ -109,15 +118,8 @@
                     <li>Coroas de Ouro(co): </li> <output id="goldCrownsPrice">0</output>
                 </ul>
             </div>
+            
         </div>
         <script>processMoney()</script>
-        <footer id="priceHelp">
-            <p>Preços:</p>
-            <p>10 milavos (ma) = 1 centavo de cobre (cc)</p>
-            <p>10 centavos de cobre (cc) = 1 xelim de prata (xp)</p>
-            <p>10 xelins de prata (xp) = 1 coroa de ouro (co)</p>
-        </footer>
-        
-
     </body>
 </html>
