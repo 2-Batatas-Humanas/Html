@@ -349,12 +349,34 @@ function setBag(){
 
 function processMoney(){
     let bits = document.querySelector("#bitsCurrent");
-    bits.value = character.bag.money.bits;
     let copperPennies = document.querySelector("#copperPenniesCurrent");
-    copperPennies.value = character.bag.money.copperPennies;
     let silverShillings = document.querySelector("#silverShillingsCurrent");
-    silverShillings.value = character.bag.money.silverShillings;
     let goldCrowns = document.querySelector("#goldCrownsCurrent");
+    if(character.bag.money.bits >= 10){
+        let auxValue = character.bag.money.bits;
+        bits.value = auxValue % 10;
+        character.bag.money.bits = auxValue % 10;
+        character.bag.money.copperPennies += Math.floor(auxValue / 10);
+
+    } else{
+        bits.value = character.bag.money.bits;
+    }
+    if(character.bag.money.copperPennies >= 10){
+        let auxValue = character.bag.money.copperPennies;
+        copperPennies.value = auxValue % 10;
+        character.bag.money.copperPennies = auxValue % 10;
+        character.bag.money.silverShillings += Math.floor(auxValue / 10);
+    } else{
+        copperPennies.value = character.bag.money.copperPennies;
+    }
+    if(character.bag.money.silverShillings >= 10){
+        let auxValue = character.bag.money.silverShillings;
+        silverShillings.value = auxValue % 10;
+        character.bag.money.silverShillings = auxValue % 10;
+        character.bag.money.goldCrowns += Math.floor(auxValue / 10);
+    } else{
+        silverShillings.value = character.bag.money.silverShillings;
+    }
     goldCrowns.value = character.bag.money.goldCrowns;
 }
 
@@ -364,9 +386,16 @@ function stockMarket(){
     let weapons = Object.keys(item.weapon);// Get all the weapons
     weapons.forEach(function(wpn){// For each weapon(wpn)
         let auxDiv = document.createElement("div");// Create a new div
-        auxDiv.className = "weapon";// Div class => weapon
+        auxDiv.className = "weapon marketStuff";// Div classes => weapon and marketStuff
+        auxDiv.ondragstart = (event) => {
+            event.dataTransfer.setData("Values", event.target.dataset.value);
+            event.dataTransfer.setData("Prices", event.target.dataset.price);
+        };
 
         let auxP = document.createElement("p");// Create a p for the weapon's name
+        auxP.draggable = true;
+        auxP.setAttribute("data-value", wpn);
+        auxP.setAttribute("data-price", item.weapon[wpn].price);
         auxP.innerHTML = wpn;// Put the name in the p
         auxDiv.appendChild(auxP);// Append the p in the div
 
@@ -374,17 +403,17 @@ function stockMarket(){
 
         let price = item.weapon[wpn].price;// Get the price to be normalized
         let priceType = "";
-        if(price > 1000){// Normalizing price
+        if(price >= 1000){// Normalizing price
             price /= 1000
-            priceType = "Coroas de Ouro(co)";
+            priceType = "Coroa(s) de Ouro(co)";
         }
-        else if(price > 100){
+        else if(price >= 100){
             price /= 100
-            priceType = "Xelins de Prata(xp)";
+            priceType = "Xelin(s) de Prata(xp)";
         }
-        else if(price > 10){
+        else if(price >= 10){
             price /= 10
-            priceType = "Centavos de Cobre(cc)";
+            priceType = "Centavo(s) de Cobre(cc)";
         }
         else if(price === null){
             price = "";
@@ -410,26 +439,33 @@ function stockMarket(){
     let ammo = Object.keys(item.ammo);
     ammo.forEach(function(val){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "ammo";
+        auxDiv.className = "ammo marketStuff";
+        auxDiv.ondragstart = (event) => {
+            event.dataTransfer.setData("Values", event.target.dataset.value);
+            event.dataTransfer.setData("Prices", event.target.dataset.price);
+        };
 
         let auxP = document.createElement("p");
+        auxP.draggable = true;
+        auxP.setAttribute("data-value", ammo);
+        auxP.setAttribute("data-price", item.ammo[val]);
         auxP.innerHTML = val;
         auxDiv.appendChild(auxP);
 
         let auxUl = document.createElement("ul");
         let price = item.ammo[val];
         let priceType = "";
-        if(price > 1000){
+        if(price >= 1000){
             price /= 1000
-            priceType = "Coroas de Ouro(co)";
+            priceType = "Coroa(s) de Ouro(co)";
         }
-        else if(price > 100){
+        else if(price >= 100){
             price /= 100
-            priceType = "Xelins de Prata(xp)";
+            priceType = "Xelin(s) de Prata(xp)";
         }
-        else if(price > 10){
+        else if(price >= 10){
             price /= 10
-            priceType = "Centavos de Cobre(cc)";
+            priceType = "Centavo(s) de Cobre(cc)";
         }
         else if(price === null){
             price = "";
@@ -449,26 +485,33 @@ function stockMarket(){
     let armors = Object.keys(item.armor);
     armors.forEach(function(armor){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "armor";
+        auxDiv.className = "armor marketStuff";
+        auxDiv.ondragstart = (event) => {
+            event.dataTransfer.setData("Values", event.target.dataset.value);
+            event.dataTransfer.setData("Prices", event.target.dataset.price);
+        };
 
         let auxP = document.createElement("p");
+        auxP.draggable = true;
+        auxP.setAttribute("data-value", armor);
+        auxP.setAttribute("data-price", item.armor[armor].price);
         auxP.innerHTML = armor;
         auxDiv.appendChild(auxP);
 
         let auxUl = document.createElement("ul");
         let price = item.armor[armor].price;
         let priceType = "";
-        if(price > 1000){
+        if(price >= 1000){
             price /= 1000
-            priceType = "Coroas de Ouro(co)";
+            priceType = "Coroa(s) de Ouro(co)";
         }
-        else if(price > 100){
+        else if(price >= 100){
             price /= 100
-            priceType = "Xelins de Prata(xp)";
+            priceType = "Xelin(s) de Prata(xp)";
         }
-        else if(price > 10){
+        else if(price >= 10){
             price /= 10
-            priceType = "Centavos de Cobre(cc)";
+            priceType = "Centavo(s) de Cobre(cc)";
         }
         else if(price === null){
             price = "";
@@ -492,26 +535,33 @@ function stockMarket(){
     let personalGears = Object.keys(item.personalGear);
     personalGears.forEach(function(gear){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "personalGear";
+        auxDiv.className = "personalGear marketStuff";
+        auxDiv.ondragstart = (event) => {
+            event.dataTransfer.setData("Values", event.target.dataset.value);
+            event.dataTransfer.setData("Prices", event.target.dataset.price);
+        };
 
         let auxP = document.createElement("p");
+        auxP.draggable = true;
+        auxP.setAttribute("data-value", gear);
+        auxP.setAttribute("data-price", item.personalGear[gear].price);
         auxP.innerHTML = gear;
         auxDiv.appendChild(auxP);
 
         let auxUl = document.createElement("ul");
         let price = item.personalGear[gear].price;
         let priceType = "";
-        if(price > 1000){
+        if(price >= 1000){
             price /= 1000
-            priceType = "Coroas de Ouro(co)";
+            priceType = "Coroa(s) de Ouro(co)";
         }
-        else if(price > 100){
+        else if(price >= 100){
             price /= 100
-            priceType = "Xelins de Prata(xp)";
+            priceType = "Xelin(s) de Prata(xp)";
         }
-        else if(price > 10){
+        else if(price >= 10){
             price /= 10
-            priceType = "Centavos de Cobre(cc)";
+            priceType = "Centavo(s) de Cobre(cc)";
         }
         else if(price === null){
             price = "";
@@ -535,26 +585,33 @@ function stockMarket(){
     let clothingAcessories = Object.keys(item.clothingAndAccessory);
     clothingAcessories.forEach(function(val){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "clothingAcessory";
+        auxDiv.className = "clothingAcessory marketStuff";
+        auxDiv.ondragstart = (event) => {
+            event.dataTransfer.setData("Values", event.target.dataset.value);
+            event.dataTransfer.setData("Prices", event.target.dataset.price);
+        };
 
         let auxP = document.createElement("p");
+        auxP.draggable = true;
+        auxP.setAttribute("data-value", val);
+        auxP.setAttribute("data-price", item.clothingAndAccessory[val].price);
         auxP.innerHTML = val;
         auxDiv.appendChild(auxP);
 
         let auxUl = document.createElement("ul");
         let price = item.clothingAndAccessory[val].price;
         let priceType = "";
-        if(price > 1000){
+        if(price >= 1000){
             price /= 1000
-            priceType = "Coroas de Ouro(co)";
+            priceType = "Coroa(s) de Ouro(co)";
         }
-        else if(price > 100){
+        else if(price >= 100){
             price /= 100
-            priceType = "Xelins de Prata(xp)";
+            priceType = "Xelin(s) de Prata(xp)";
         }
-        else if(price > 10){
+        else if(price >= 10){
             price /= 10
-            priceType = "Centavos de Cobre(cc)";
+            priceType = "Centavo(s) de Cobre(cc)";
         }
         else if(price === null){
             price = "";
@@ -575,26 +632,33 @@ function stockMarket(){
     let tools = Object.keys(item.tool);
     tools.forEach(function(tool){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "tool";
+        auxDiv.className = "tool marketStuff";
+        auxDiv.ondragstart = (event) => {
+            event.dataTransfer.setData("Values", event.target.dataset.value);
+            event.dataTransfer.setData("Prices", event.target.dataset.price);
+        };
 
         let auxP = document.createElement("p");
+        auxP.draggable = true;
+        auxP.setAttribute("data-value", tool);
+        auxP.setAttribute("data-price", item.tool[tool].price);
         auxP.innerHTML = tool;
         auxDiv.appendChild(auxP);
 
         let auxUl = document.createElement("ul");
         let price = item.tool[tool].price;
         let priceType = "";
-        if(price > 1000){
+        if(price >= 1000){
             price /= 1000
-            priceType = "Coroas de Ouro(co)";
+            priceType = "Coroa(s) de Ouro(co)";
         }
-        else if(price > 100){
+        else if(price >= 100){
             price /= 100
-            priceType = "Xelins de Prata(xp)";
+            priceType = "Xelin(s) de Prata(xp)";
         }
-        else if(price > 10){
+        else if(price >= 10){
             price /= 10
-            priceType = "Centavos de Cobre(cc)";
+            priceType = "Centavo(s) de Cobre(cc)";
         }
         else if(price === null){
             price = "";
@@ -618,26 +682,33 @@ function stockMarket(){
     let foods = Object.keys(item.food);
     foods.forEach(function(food){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "food";
+        auxDiv.className = "food marketStuff";
+        auxDiv.ondragstart = (event) => {
+            event.dataTransfer.setData("Values", event.target.dataset.value);
+            event.dataTransfer.setData("Prices", event.target.dataset.price);
+        };
 
         let auxP = document.createElement("p");
+        auxP.draggable = true;
+        auxP.setAttribute("data-value", food);
+        auxP.setAttribute("data-price", item.food[food].price);
         auxP.innerHTML = food;
         auxDiv.appendChild(auxP);
 
         let auxUl = document.createElement("ul");
         let price = item.food[food].price;
         let priceType = "";
-        if(price > 1000){
+        if(price >= 1000){
             price /= 1000
-            priceType = "Coroas de Ouro(co)";
+            priceType = "Coroa(s) de Ouro(co)";
         }
-        else if(price > 100){
+        else if(price >= 100){
             price /= 100
-            priceType = "Xelins de Prata(xp)";
+            priceType = "Xelin(s) de Prata(xp)";
         }
-        else if(price > 10){
+        else if(price >= 10){
             price /= 10
-            priceType = "Centavos de Cobre(cc)";
+            priceType = "Centavo(s) de Cobre(cc)";
         }
         else if(price === null){
             price = "";
@@ -658,26 +729,33 @@ function stockMarket(){
     let animals = Object.keys(item.animal);
     animals.forEach(function(animal){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "animal";
+        auxDiv.className = "animal marketStuff";
+        auxDiv.ondragstart = (event) => {
+            event.dataTransfer.setData("Values", event.target.dataset.value);
+            event.dataTransfer.setData("Prices", event.target.dataset.price);
+        };
 
         let auxP = document.createElement("p");
+        auxP.draggable = true;
+        auxP.setAttribute("data-value", animal);
+        auxP.setAttribute("data-price", item.animal[animal].price);
         auxP.innerHTML = animal;
         auxDiv.appendChild(auxP);
 
         let auxUl = document.createElement("ul");
         let price = item.animal[animal].price;
         let priceType = "";
-        if(price > 1000){
+        if(price >= 1000){
             price /= 1000
-            priceType = "Coroas de Ouro(co)";
+            priceType = "Coroa(s) de Ouro(co)";
         }
-        else if(price > 100){
+        else if(price >= 100){
             price /= 100
-            priceType = "Xelins de Prata(xp)";
+            priceType = "Xelin(s) de Prata(xp)";
         }
-        else if(price > 10){
+        else if(price >= 10){
             price /= 10
-            priceType = "Centavos de Cobre(cc)";
+            priceType = "Centavo(s) de Cobre(cc)";
         }
         else if(price === null){
             price = "";
@@ -735,26 +813,33 @@ function stockMarket(){
     let animalGears = Object.keys(item.animalGear);
     animalGears.forEach(function(gear){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "animalGear";
+        auxDiv.className = "animalGear marketStuff";
+        auxDiv.ondragstart = (event) => {
+            event.dataTransfer.setData("Values", event.target.dataset.value);
+            event.dataTransfer.setData("Prices", event.target.dataset.price);
+        };
 
         let auxP = document.createElement("p");
+        auxP.draggable = true;
+        auxP.setAttribute("data-value", gear);
+        auxP.setAttribute("data-price", item.animalGear[gear].price);
         auxP.innerHTML = gear;
         auxDiv.appendChild(auxP);
 
         let auxUl = document.createElement("ul");
         let price = item.animalGear[gear].price;
         let priceType = "";
-        if(price > 1000){
+        if(price >= 1000){
             price /= 1000
-            priceType = "Coroas de Ouro(co)";
+            priceType = "Coroa(s) de Ouro(co)";
         }
-        else if(price > 100){
+        else if(price >= 100){
             price /= 100
-            priceType = "Xelins de Prata(xp)";
+            priceType = "Xelin(s) de Prata(xp)";
         }
-        else if(price > 10){
+        else if(price >= 10){
             price /= 10
-            priceType = "Centavos de Cobre(cc)";
+            priceType = "Centavo(s) de Cobre(cc)";
         }
         else if(price === null){
             price = "";
@@ -775,26 +860,33 @@ function stockMarket(){
     let hirelings = Object.keys(item.hireling);
     hirelings.forEach(function(val){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "hireling";
+        auxDiv.className = "hireling marketStuff";
+        auxDiv.ondragstart = (event) => {
+            event.dataTransfer.setData("Values", event.target.dataset.value);
+            event.dataTransfer.setData("Prices", event.target.dataset.price);
+        };
 
         let auxP = document.createElement("p");
+        auxP.draggable = true;
+        auxP.setAttribute("data-value", val);
+        auxP.setAttribute("data-price", item.hireling[val].pricePerWeek);
         auxP.innerHTML = val;
         auxDiv.appendChild(auxP);
 
         let auxUl = document.createElement("ul");
         let price = item.hireling[val].pricePerWeek;
         let priceType = "";
-        if(price > 1000){
+        if(price >= 1000){
             price /= 1000
-            priceType = "Coroas de Ouro(co)";
+            priceType = "Coroa(s) de Ouro(co)";
         }
-        else if(price > 100){
+        else if(price >= 100){
             price /= 100
-            priceType = "Xelins de Prata(xp)";
+            priceType = "Xelin(s) de Prata(xp)";
         }
-        else if(price > 10){
+        else if(price >= 10){
             price /= 10
-            priceType = "Centavos de Cobre(cc)";
+            priceType = "Centavo(s) de Cobre(cc)";
         }
         else if(price === null){
             price = "";
@@ -815,26 +907,33 @@ function stockMarket(){
     let potions = Object.keys(item.potion);
     potions.forEach(function(potion){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "potion";
+        auxDiv.className = "potion marketStuff";
+        auxDiv.ondragstart = (event) => {
+            event.dataTransfer.setData("Values", event.target.dataset.value);
+            event.dataTransfer.setData("Prices", event.target.dataset.price);
+        };
 
         let auxP = document.createElement("p");
+        auxP.draggable = true;
+        auxP.setAttribute("data-value", potion);
+        auxP.setAttribute("data-price", item.potion[potion].price);
         auxP.innerHTML = potion;
         auxDiv.appendChild(auxP);
 
         let auxUl = document.createElement("ul");
         let price = item.potion[potion].price;
         let priceType = "";
-        if(price > 1000){
+        if(price >= 1000){
             price /= 1000
-            priceType = "Coroas de Ouro(co)";
+            priceType = "Coroa(s) de Ouro(co)";
         }
-        else if(price > 100){
+        else if(price >= 100){
             price /= 100
-            priceType = "Xelins de Prata(xp)";
+            priceType = "Xelin(s) de Prata(xp)";
         }
-        else if(price > 10){
+        else if(price >= 10){
             price /= 10
-            priceType = "Centavos de Cobre(cc)";
+            priceType = "Centavo(s) de Cobre(cc)";
         }
         else if(price === null){
             price = "";
@@ -856,26 +955,33 @@ function stockMarket(){
     let incantations = Object.keys(item.incantation);
     incantations.forEach(function(val){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "incantation";
+        auxDiv.className = "incantation marketStuff";
+        auxDiv.ondragstart = (event) => {
+            event.dataTransfer.setData("Values", event.target.dataset.value);
+            event.dataTransfer.setData("Prices", event.target.dataset.price);
+        };
 
         let auxP = document.createElement("p");
+        auxP.draggable = true;
+        auxP.setAttribute("data-value", val);
+        auxP.setAttribute("data-price", item.incantation[val].price);
         auxP.innerHTML = val;
         auxDiv.appendChild(auxP);
 
         let auxUl = document.createElement("ul");
         let price = item.incantation[val].price;
         let priceType = "";
-        if(price > 1000){
+        if(price >= 1000){
             price /= 1000
-            priceType = "Coroas de Ouro(co)";
+            priceType = "Coroa(s) de Ouro(co)";
         }
-        else if(price > 100){
+        else if(price >= 100){
             price /= 100
-            priceType = "Xelins de Prata(xp)";
+            priceType = "Xelin(s) de Prata(xp)";
         }
-        else if(price > 10){
+        else if(price >= 10){
             price /= 10
-            priceType = "Centavos de Cobre(cc)";
+            priceType = "Centavo(s) de Cobre(cc)";
         }
         else if(price === null){
             price = "";
@@ -890,4 +996,93 @@ function stockMarket(){
         auxDiv.appendChild(auxUl);
         div.appendChild(auxDiv);
     });
+}
+
+shoppingItemsNum = 0;
+totalPrice = 0;
+
+function putItemInShoppingBag(event){
+    let name = event.dataTransfer.getData("Values");
+    let price = event.dataTransfer.getData("Prices");
+    let shoppingList = document.querySelector("#shoppingList");
+
+    let shoppingItem = document.createElement("span");
+    shoppingItem.id = "item" + shoppingItemsNum;
+    shoppingItem.innerHTML = name;
+
+    let removeButton = document.createElement("button");
+    removeButton.style.color = "red";
+    removeButton.innerHTML = "X";
+    removeButton.setAttribute("onclick", `removeItemFromShoppingBag(${shoppingItemsNum})`);
+
+    shoppingList.appendChild(shoppingItem);
+    shoppingItem.appendChild(removeButton);
+
+    handleItemPrice(price, shoppingItemsNum);
+    shoppingItemsNum++;
+}
+
+function removeItemFromShoppingBag(itemNum){
+    let shoppingList = document.querySelector("#shoppingList");
+    let shoppingItem = document.querySelector("#item" + itemNum);
+    shoppingList.removeChild(shoppingItem);
+}
+
+priceItemList = {};
+
+function handleItemPrice(price, itemNum){
+    priceItemList[itemNum] = price;
+
+    if(price >= 1000){
+        let goldCrowns = document.querySelector("#goldCrownsPrice");
+        goldCrowns.value = parseInt(goldCrowns.value) + price/1000;
+    }
+    else if(price >= 100){
+        let silverShillings = document.querySelector("#silverShillingsPrice");
+        if(parseInt(silverShillings.value) + price/100 >= 10){
+            silverShillings.value = (parseInt(silverShillings.value) + price/100) % 10;
+            let goldCrowns = document.querySelector("#goldCrownsPrice");
+            goldCrowns.value = parseInt(goldCrowns.value) + 1;
+        } else{
+            silverShillings.value = parseInt(silverShillings.value) + price/100;
+        }
+    }
+    else if(price >= 10){
+        let copperPennies = document.querySelector("#copperPenniesPrice");
+        if(parseInt(copperPennies.value) + price/10 >= 10){
+            copperPennies.value = (parseInt(copperPennies.value) + price/10) % 10;
+            let silverShillings = document.querySelector("#silverShillingsPrice");
+            if(parseInt(silverShillings.value) + 1 == 10){
+                silverShillings.value = 0;
+                let goldCrowns = document.querySelector("#goldCrownsPrice");
+                goldCrowns.value = parseInt(goldCrowns.value) + 1;
+            } else{
+                silverShillings.value = parseInt(silverShillings.value) + 1;
+            }
+        } else{
+            copperPennies.value = parseInt(copperPennies.value) + price/10;
+        }
+    }
+    else if(price !== null){
+        let bits = document.querySelector("#bitsPrice");
+        if(parseInt(bits.value) + price >= 10){
+            bits.value = (parseInt(bits.value) + price) % 10;
+            let copperPennies = document.querySelector("#copperPenniesPrice");
+            if(parseInt(copperPennies.value) + 1 == 10){
+                copperPennies.value = 0;
+                let silverShillings = document.querySelector("#silverShillingsPrice");
+                if(parseInt(silverShillings.value) + 1 == 10){
+                    silverShillings.value = 0;
+                    let goldCrowns = document.querySelector("#goldCrownsPrice");
+                    goldCrowns.value = parseInt(goldCrowns.value) + 1;
+                } else{
+                    silverShillings.value = parseInt(silverShillings.value) + 1;
+                }
+            } else{
+                copperPennies.value = parseInt(copperPennies.value) + 1;
+            }
+        } else{
+            bits.value = parseInt(bits.value) + price;
+        }
+    }
 }
