@@ -936,46 +936,57 @@ item = {
     },
     incantation: {
         "Nível 0": {
+            level: 0,
             price: 100,
             availability: "I"
         },
         "Nível 1": {
+            level: 1,
             price: 500,
             availability: "I"
         },
         "Nível 2": {
+            level: 2,
             price: 1000,
             availability: "R"
         },
         "Nível 3": {
+            level: 3,
             price: 5000,
             availability: "R"
         },
         "Nível 4": {
+            level: 4,
             price: 10000,
             availability: "E"
         },
         "Nível 5": {
+            level: 5,
             price: 50000,
             availability: "E"
         },
         "Nível 6": {
+            level: 6,
             price: 100000,
             availability: "E"
         },
         "Nível 7": {
+            level: 7,
             price: 250000,
             availability: "Mestre"
         },
         "Nível 8": {
+            level: 8,
             price: 500000,
             availability: "Mestre"
         },
         "Nível 9": {
+            level: 9,
             price: 1000000,
             availability: "Mestre"
         },
         "Nível 10": {
+            level: 10,
             price: 5000000,
             availability: "Mestre"
         }
