@@ -1,10 +1,30 @@
+/*
+    Normal font size:
+*/
+
 html, body {
     font-size: 15px;
 }
 
+/*
+    h1(Mercado)
+*/
+
+h1 {
+    text-align: center;
+}
+
+/*
+    Bag Div CSS
+*/
+
 #bagDiv {
     border: 2px solid black;
 }
+
+/*
+    Puts border, padding and margin to all categories of items
+*/
 
 #bag > ul {
     border: 1px solid red;
@@ -12,10 +32,18 @@ html, body {
     margin: 10px;
 }
 
+/*
+    h2(Itens no mercado:)
+*/
+
 #marketh2 {
     float: right;
     margin: 0 50px 0 0;
 }
+
+/*
+    The entire market: its children will be organized in a flexbox
+*/
 
 #marketDiv {
     border: 2px solid black;
@@ -23,10 +51,18 @@ html, body {
     flex-flow: row wrap;
 }
 
+/*
+    Class for every market item type
+*/
+
 .market {
     border: 1px solid blue;
     margin: 10px;
 }
+
+/*
+    Top most container for both bag and market:
+*/
 
 #flexContainer {
     display: flex;
@@ -35,105 +71,120 @@ html, body {
     padding-bottom: 10px;
 }
 
-#moneyDiv {
-    position: fixed;
-    top: 75vh;
-
-}
-
-#moneyDiv > * {
-    background-color: darkorange;
-    color: darkblue;
-    border: 2px solid black;
-    padding: 5px;
-    margin: 10px;
-}
-
-footer {
-    border: 2px solid black;
-    font-weight: bold;
-    text-align: right;
-}
+/*
+    Market itens CSS
+*/
 
 #flexWeapon, #flexAmmo, #flexArmor, #flexPersonalGear, #flexClothingAcessory, #flexTool, #flexFood, #flexAnimal, #flexAnimalGear, #flexHireling, #flexPotion, #flexIncantation {
     display: flex;
     flex-flow: row wrap;
 }
 
-.weapon {
-    border: 1px solid red;
+.marketStuff {
     padding: 5px;
     margin: 5px;
+}
+
+.weapon {
+    border: 1px solid red;
 }
 
 .ammo {
     border: 1px solid orangered;
-    padding: 5px;
-    margin: 5px;
 }
 
 .armor {
     border: 1px solid blue;
-    padding: 5px;
-    margin: 5px;
 }
 
 .personalGear {
     border: 1px solid green;
-    padding: 5px;
-    margin: 5px;
 }
 
 .clothingAcessory {
     border: 1px solid purple;
-    padding: 5px;
-    margin: 5px;
 }
 
 .tool {
     border: 1px solid palevioletred;
-    padding: 5px;
-    margin: 5px;
 }
 
 .food {
     border: 1px solid yellowgreen;
-    padding: 5px;
-    margin: 5px;
 }
 
 .animal {
     border: 1px solid brown;
-    padding: 5px;
-    margin: 5px;
 }
 
 .animalGear {
     border: 1px solid gray;
-    padding: 5px;
-    margin: 5px;
 }
 
 .hireling {
     border: 1px solid darkgoldenrod;
-    padding: 5px;
-    margin: 5px;
 }
 
 .potion {
     border: 1px solid slateblue;
-    padding: 5px;
-    margin: 5px;
 }
 
 .incantation {
     border: 1px solid maroon;
-    padding: 5px;
-    margin: 5px;
 }
 
 .topic {
     font-size: larger;
     font-weight: bolder;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/*
+    Money Bag, Shopping Bag and Total Price
+*/
+
+#moneyDiv {
+    position: fixed;
+    bottom: 0vh;
+    display: flex;
+    flex-flow: row;
+}
+
+#moneyDiv > * {
+    background-color: gold;
+    color: black;
+    border: 2px solid black;
+    padding: 5px;
+    margin: 10px;
+}
+
+/*
+    Shopping List
+*/
+#shoppingList {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+/*
+    Navigation(Top)
+*/
+
+nav {
+    position: fixed;
+    background-color: snow;
+    border: 2px solid lawngreen;
+    padding: 5px;
+    top: 0;
+    right: 0;
+}
+
+/*
+    Footer(price help)
+*/
+
+footer {
+    border: 2px solid black;
+    font-weight: bold;
+    text-align: right;
 }
