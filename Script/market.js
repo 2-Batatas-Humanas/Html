@@ -279,7 +279,7 @@ function setBag(){
                     desc += `<p>Preço por semana: ${(character.bag.hirelings[hireling].price)/100} Xelins de Prata(xp)</p>`   
             }
             desc += `<p>Descrição: ${character.bag.hirelings[hireling].description}</p></details>`
-            appendLiElement(itemsId, desc);            
+            appendLiElement(hirelingsId, desc);            
         });
     }
     if(!isEmpty(character.bag.animals)){
