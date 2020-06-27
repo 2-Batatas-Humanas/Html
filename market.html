@@ -11,57 +11,72 @@
     </head>
     <body>
         <h1>Mercado</h1>
+        <nav>
+            <a href="#topicWeapon">Armas</a>
+            <a href="#topicAmmo">Munição</a>
+            <a href="#topicArmor">Armaduras</a>
+            <a href="#topicPersonalGear">Equipamento Pessoal</a>
+            <a href="#topicClothingAcessory">Vestuário e Acessórios</a>
+            <a href="#topicTool">Ferramentas</a>
+            <a href="#topicFood">Comidas</a>
+            <a href="#topicAnimal">Animais</a>
+            <a href="#topicAnimalGear">Equipamento para Animais</a>
+            <a href="#topicHireling">Serviçais</a>
+            <a href="#topicPotion">Poções</a>
+            <a href="#topicIncantation">Feitiços</a>
+            <a href="#priceHelp">Legenda dos Preços</a>
+        </nav>
         <h2 id="marketh2">Itens no mercado:</h2>
         <h2 id="bagType">Itens no inventário:</h2>
         <div id="flexContainer">
             <div id="bagDiv"></div>
             <div id="marketDiv">
                 <div class="market">
-                    <p class="topic">Armas:</p>
+                    <p class="topic" id="topicWeapon">Armas:</p>
                     <div id="flexWeapon"></div>        
                 </div>
                 <div class="market">
-                    <p class="topic">Munição:</p>
+                    <p class="topic" id="topicAmmo">Munição:</p>
                     <div id="flexAmmo"></div>
                 </div>
                 <div class="market">
-                    <p class="topic">Armaduras:</p>
+                    <p class="topic" id="topicArmor">Armaduras:</p>
                     <div id="flexArmor"></div>
                 </div>
                 <div class="market">
-                    <p class="topic">Equipamento Pessoal:</p>
+                    <p class="topic" id="topicPersonalGear">Equipamento Pessoal:</p>
                     <div id="flexPersonalGear"></div>
                 </div>
                 <div class="market">
-                    <p class="topic">Vestuário e acessórios:</p>
+                    <p class="topic" id="topicClothingAcessory">Vestuário e Acessórios:</p>
                     <div id="flexClothingAcessory"></div>
                 </div>
                 <div class="market">
-                    <p class="topic">Ferramentas:</p>
+                    <p class="topic" id="topicTool">Ferramentas:</p>
                     <div id="flexTool"></div>
                 </div>
                 <div class="market">
-                    <p class="topic">Comidas:</p>
+                    <p class="topic" id="topicFood">Comidas:</p>
                     <div id="flexFood"></div>
                 </div>
                 <div class="market">
-                    <p class="topic">Animais:</p>
+                    <p class="topic" id="topicAnimal">Animais:</p>
                     <div id="flexAnimal"></div>
                 </div>
                 <div class="market">
-                    <p class="topic">Equipamento para Animais:</p>
+                    <p class="topic" id="topicAnimalGear">Equipamento para Animais:</p>
                     <div id="flexAnimalGear"></div>
                 </div>
                 <div class="market">
-                    <p class="topic">Serviçais:</p>
+                    <p class="topic" id="topicHireling">Serviçais:</p>
                     <div id="flexHireling"></div>
                 </div>
                 <div class="market">
-                    <p class="topic">Poções:</p>
+                    <p class="topic" id="topicPotion">Poções:</p>
                     <div id="flexPotion"></div>
                 </div>
                 <div class="market">
-                    <p class="topic">Feitiços:</p>
+                    <p class="topic" id="topicIncantation">Feitiços:</p>
                     <div id="flexIncantation"></div>
                 </div>
             </div>
@@ -78,9 +93,25 @@
                     <li>Coroas de Ouro(co): </li> <output id="goldCrownsCurrent">0</output>
                 </ul>
             </div>
+            <div id="shoppingDiv" ondragover="return false" ondrop="putItemInShoppingBag(event)">
+                <p>Itens no carrinho:</p>
+                <div id="shoppingBag">
+                    <p>Coloque os itens aqui:</p>
+                    <div id="shoppingList"></div>
+                </div>
+            </div>
+            <div>
+                <p>Preço total:</p>
+                <ul>
+                    <li>Milavos(ma): </li> <output id="bitsPrice">0</output>
+                    <li>Centavos de Cobre(cc): </li> <output id="copperPenniesPrice">0</output>
+                    <li>Xelins de Prata(xp): </li> <output id="silverShillingsPrice">0</output>
+                    <li>Coroas de Ouro(co): </li> <output id="goldCrownsPrice">0</output>
+                </ul>
+            </div>
         </div>
         <script>processMoney()</script>
-        <footer>
+        <footer id="priceHelp">
             <p>Preços:</p>
             <p>10 milavos (ma) = 1 centavo de cobre (cc)</p>
             <p>10 centavos de cobre (cc) = 1 xelim de prata (xp)</p>
