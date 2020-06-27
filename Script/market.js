@@ -61,7 +61,7 @@ if(!character.bag){
         case "gettingBy":
             character.bag.type = "Mochila";
             character.bag.money.copperPennies += parseInt(choices.initialWealthMoney);
-            character.bag.weapons["Adaga"] = deepCopy(item.weapon["Adaga ou faca"]);
+            character.bag.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
             character.bag.armors["Roupas comuns"] = deepCopy(item.armor["Roupas"]);
             character.bag.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
             character.bag.items["Odre"] = deepCopy(item.personalGear["Odre"]);
@@ -85,7 +85,7 @@ if(!character.bag){
         case "comfortable":
             character.bag.type = "Mochila";
             character.bag.money.copperPennies += parseInt(choices.initialWealthMoney);
-            character.bag.weapons["Adaga"] = deepCopy(item.weapon["Adaga ou faca"]);
+            character.bag.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
             character.bag.armors["Roupas de qualidade"] = deepCopy(item.armor["Roupas"]);
             character.bag.items["Manto"] = deepCopy(item.clothingAndAccessory["Manto"]);
             character.bag.items["Odre"] = deepCopy(item.personalGear["Odre"]);
@@ -93,7 +93,7 @@ if(!character.bag){
             character.bag.items["Corda (20 metros)"] = deepCopy(item.personalGear["Corda (20 metros)"]);
             character.bag.items["Poção de Cura"] = deepCopy(item.potion["Cura"]);
             character.bag.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
-            character.bag.items["Tocha 1"] = deepCopy(item.personalGear["Tocha"]);
+            character.bag.items["Tocha"] = deepCopy(item.personalGear["Tocha"]);
             character.bag.items["Tocha 2"] = deepCopy(item.personalGear["Tocha"]);
             character.bag.items["Kit de cura"] = deepCopy(item.tool["Kit de Curandeiro (6 usos)"]);
             if(choices.kit == "tools"){
@@ -119,7 +119,7 @@ if(!character.bag){
         case "wealthy":
             character.bag.type = "Mochila";
             character.bag.money.silverShillings += parseInt(choices.initialWealthMoney);
-            character.bag.weapons["Adaga"] = deepCopy(item.weapon["Adaga ou faca"]);
+            character.bag.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
             character.bag.armors["Roupas de cortesão"] = deepCopy(item.armor["Roupas"]);
             character.bag.items["Manto"] = deepCopy(item.clothingAndAccessory["Manto"]);
             character.bag.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
@@ -128,7 +128,7 @@ if(!character.bag){
             character.bag.items["Poção de Cura"] = deepCopy(item.potion["Cura"]);
             character.bag.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
             character.bag.items["Lanterna"] = deepCopy(item.personalGear["Lanterna"]);
-            character.bag.items["Frasco de óleo 1"] = deepCopy(item.personalGear["Óleo, frasco"]);
+            character.bag.items["Frasco de óleo"] = deepCopy(item.personalGear["Óleo, frasco"]);
             character.bag.items["Frasco de óleo 2"] = deepCopy(item.personalGear["Óleo, frasco"]);
             character.bag.weapons["Escudo pequeno"] = deepCopy(item.weapon["Escudo pequeno"]);
             character.bag.items["Kit de cura"] = deepCopy(item.tool["Kit de Curandeiro (6 usos)"]);
@@ -139,7 +139,7 @@ if(!character.bag){
         case "rich":
             character.bag.type = "Cavalos e servo";
             character.bag.money.silverShillings += parseInt(choices.initialWealthMoney);
-            character.bag.weapons["Adaga"] = deepCopy(item.weapon["Adaga ou faca"]);
+            character.bag.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
             character.bag.armors["Roupas de nobre"] = deepCopy(item.armor["Roupas"]);
             character.bag.items["Manto"] = deepCopy(item.clothingAndAccessory["Manto"]);
             character.bag.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
@@ -147,9 +147,9 @@ if(!character.bag){
             character.bag.items["Poção de Cura"] = deepCopy(item.potion["Cura"]);
             character.bag.hirelings["Servo pessoal"] = deepCopy(item.hireling["Plebeu"]);
             character.bag.hirelings["Guarda"] = deepCopy(item.hireling["Mercenário"]);
-            character.bag.animals["Cavalo 1"] = deepCopy(item.animal["Cavalo, mula, pônei"]);
-            character.bag.animals["Cavalo 1"].hasSaddle = true;
-            character.bag.items["Sela 1"] = deepCopy(item.animalGear["Sela"]);
+            character.bag.animals["Cavalo"] = deepCopy(item.animal["Cavalo, mula, pônei"]);
+            character.bag.animals["Cavalo"].hasSaddle = true;
+            character.bag.items["Sela"] = deepCopy(item.animalGear["Sela"]);
             character.bag.animals["Cavalo 2"] = deepCopy(item.animal["Cavalo, mula, pônei"]);
             character.bag.animals["Cavalo 2"].hasSaddle = true;
             character.bag.items["Sela 2"] = deepCopy(item.animalGear["Sela"]);
@@ -174,7 +174,11 @@ if(!character.bag){
             character.bag.items["Chave para um antigo cofre de tesouros dos anões"] = {};
             break;
         case "knife":
-            character.bag.weapons["Faca"] = deepCopy(item.weapon["Adaga ou faca"]);
+            if(!character.bag.weapons["Adaga ou faca"]){
+                character.bag.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
+            } else{
+                character.bag.weapons["Adaga ou faca 2"] = deepCopy(item.weapon["Adaga ou faca"]);
+            }
             break;
         case "lock of hair":
             character.bag.items["Cacho do cabelo da Rainha das Fadas"] = {};
@@ -186,7 +190,7 @@ if(!character.bag){
             character.bag.items["Medalha por Coragem"] = {};
             break;
         case "sword":
-            character.bag.weapons["Espada"] = deepCopy(item.weapon["Espada bastarda ou martelo de guerra"]);
+            character.bag.weapons["Espada bastarda ou martelo de guerra"] = deepCopy(item.weapon["Espada bastarda ou martelo de guerra"]);
             break;
         case "random enchanted object":
             character.bag.weapons[choices.newObject] = {
@@ -194,7 +198,11 @@ if(!character.bag){
             };
             break;
         case "incantation rank 0 spell":
-            character.bag.item["Feitiço nível 0"] = deepCopy(item.incantation["Nível 0"]);
+            if(!character.bag.items["Feitiço nível 0"]){
+                character.bag.items["Feitiço nível 0"] = deepCopy(item.incantation["Nível 0"]);
+            } else {
+                character.bag.items["Feitiço nível 0 2"] = deepCopy(item.incantation["Nível 0"]);
+            }
             break;
     }
 }
@@ -390,12 +398,14 @@ function stockMarket(){
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
+            event.dataTransfer.setData("Types", event.target.dataset.type);
         };
 
         let auxP = document.createElement("p");// Create a p for the weapon's name
         auxP.draggable = true;
         auxP.setAttribute("data-value", wpn);
         auxP.setAttribute("data-price", item.weapon[wpn].price);
+        auxP.setAttribute("data-type", "weapon");
         auxP.innerHTML = wpn;// Put the name in the p
         auxDiv.appendChild(auxP);// Append the p in the div
 
@@ -443,13 +453,15 @@ function stockMarket(){
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
+            event.dataTransfer.setData("Types", event.target.dataset.type);
         };
 
         let auxP = document.createElement("p");
         auxP.draggable = true;
-        auxP.setAttribute("data-value", ammo);
+        auxP.setAttribute("data-value", val);
         auxP.setAttribute("data-price", item.ammo[val]);
-        auxP.innerHTML = val;
+        auxP.setAttribute("data-type", "ammo");
+        auxP.innerHTML = val + "(5)";
         auxDiv.appendChild(auxP);
 
         let auxUl = document.createElement("ul");
@@ -489,12 +501,14 @@ function stockMarket(){
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
+            event.dataTransfer.setData("Types", event.target.dataset.type);
         };
 
         let auxP = document.createElement("p");
         auxP.draggable = true;
         auxP.setAttribute("data-value", armor);
         auxP.setAttribute("data-price", item.armor[armor].price);
+        auxP.setAttribute("data-type", "armor");
         auxP.innerHTML = armor;
         auxDiv.appendChild(auxP);
 
@@ -539,12 +553,14 @@ function stockMarket(){
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
+            event.dataTransfer.setData("Types", event.target.dataset.type);
         };
 
         let auxP = document.createElement("p");
         auxP.draggable = true;
         auxP.setAttribute("data-value", gear);
         auxP.setAttribute("data-price", item.personalGear[gear].price);
+        auxP.setAttribute("data-type", "personalGear");
         auxP.innerHTML = gear;
         auxDiv.appendChild(auxP);
 
@@ -589,12 +605,14 @@ function stockMarket(){
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
+            event.dataTransfer.setData("Types", event.target.dataset.type);
         };
 
         let auxP = document.createElement("p");
         auxP.draggable = true;
         auxP.setAttribute("data-value", val);
         auxP.setAttribute("data-price", item.clothingAndAccessory[val].price);
+        auxP.setAttribute("data-type", "clothingAcessory");
         auxP.innerHTML = val;
         auxDiv.appendChild(auxP);
 
@@ -636,12 +654,14 @@ function stockMarket(){
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
+            event.dataTransfer.setData("Types", event.target.dataset.type);
         };
 
         let auxP = document.createElement("p");
         auxP.draggable = true;
         auxP.setAttribute("data-value", tool);
         auxP.setAttribute("data-price", item.tool[tool].price);
+        auxP.setAttribute("data-type", "tool");
         auxP.innerHTML = tool;
         auxDiv.appendChild(auxP);
 
@@ -686,12 +706,14 @@ function stockMarket(){
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
+            event.dataTransfer.setData("Types", event.target.dataset.type);
         };
 
         let auxP = document.createElement("p");
         auxP.draggable = true;
         auxP.setAttribute("data-value", food);
         auxP.setAttribute("data-price", item.food[food].price);
+        auxP.setAttribute("data-type", "food");
         auxP.innerHTML = food;
         auxDiv.appendChild(auxP);
 
@@ -733,12 +755,14 @@ function stockMarket(){
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
+            event.dataTransfer.setData("Types", event.target.dataset.type);
         };
 
         let auxP = document.createElement("p");
         auxP.draggable = true;
         auxP.setAttribute("data-value", animal);
         auxP.setAttribute("data-price", item.animal[animal].price);
+        auxP.setAttribute("data-type", "animal");
         auxP.innerHTML = animal;
         auxDiv.appendChild(auxP);
 
@@ -817,12 +841,14 @@ function stockMarket(){
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
+            event.dataTransfer.setData("Types", event.target.dataset.type);
         };
 
         let auxP = document.createElement("p");
         auxP.draggable = true;
         auxP.setAttribute("data-value", gear);
         auxP.setAttribute("data-price", item.animalGear[gear].price);
+        auxP.setAttribute("data-type", "animalGear");
         auxP.innerHTML = gear;
         auxDiv.appendChild(auxP);
 
@@ -864,12 +890,14 @@ function stockMarket(){
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
+            event.dataTransfer.setData("Types", event.target.dataset.type);
         };
 
         let auxP = document.createElement("p");
         auxP.draggable = true;
         auxP.setAttribute("data-value", val);
         auxP.setAttribute("data-price", item.hireling[val].pricePerWeek);
+        auxP.setAttribute("data-type", "hireling");
         auxP.innerHTML = val;
         auxDiv.appendChild(auxP);
 
@@ -911,12 +939,14 @@ function stockMarket(){
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
+            event.dataTransfer.setData("Types", event.target.dataset.type);
         };
 
         let auxP = document.createElement("p");
         auxP.draggable = true;
-        auxP.setAttribute("data-value", potion);
+        auxP.setAttribute("data-value", "Poção " + potion);
         auxP.setAttribute("data-price", item.potion[potion].price);
+        auxP.setAttribute("data-type", "potion");
         auxP.innerHTML = potion;
         auxDiv.appendChild(auxP);
 
@@ -959,12 +989,14 @@ function stockMarket(){
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
+            event.dataTransfer.setData("Types", event.target.dataset.type);
         };
 
         let auxP = document.createElement("p");
         auxP.draggable = true;
-        auxP.setAttribute("data-value", val);
+        auxP.setAttribute("data-value", "Feitiço " + val);
         auxP.setAttribute("data-price", item.incantation[val].price);
+        auxP.setAttribute("data-type", "incantation");
         auxP.innerHTML = val;
         auxDiv.appendChild(auxP);
 
@@ -1003,7 +1035,8 @@ totalPrice = 0;
 
 function putItemInShoppingBag(event){
     let name = event.dataTransfer.getData("Values");
-    let price = event.dataTransfer.getData("Prices");
+    let price = parseInt(event.dataTransfer.getData("Prices"));
+    let type = event.dataTransfer.getData("Types");
     let shoppingList = document.querySelector("#shoppingList");
 
     let shoppingItem = document.createElement("span");
@@ -1018,7 +1051,7 @@ function putItemInShoppingBag(event){
     shoppingList.appendChild(shoppingItem);
     shoppingItem.appendChild(removeButton);
 
-    handleItemPrice(price, shoppingItemsNum);
+    handleItemPrice(price, shoppingItemsNum, type);
     shoppingItemsNum++;
 }
 
@@ -1026,13 +1059,16 @@ function removeItemFromShoppingBag(itemNum){
     let shoppingList = document.querySelector("#shoppingList");
     let shoppingItem = document.querySelector("#item" + itemNum);
     shoppingList.removeChild(shoppingItem);
+    removeItemPrice(itemNum);
 }
 
 priceItemList = {};
 
-function handleItemPrice(price, itemNum){
-    priceItemList[itemNum] = price;
-
+function handleItemPrice(price, itemNum, type){
+    priceItemList[itemNum] = {
+        price: price,
+        type: type
+    }
     if(price >= 1000){
         let goldCrowns = document.querySelector("#goldCrownsPrice");
         goldCrowns.value = parseInt(goldCrowns.value) + price/1000;
@@ -1052,7 +1088,7 @@ function handleItemPrice(price, itemNum){
         if(parseInt(copperPennies.value) + price/10 >= 10){
             copperPennies.value = (parseInt(copperPennies.value) + price/10) % 10;
             let silverShillings = document.querySelector("#silverShillingsPrice");
-            if(parseInt(silverShillings.value) + 1 == 10){
+            if(parseInt(silverShillings.value) == 9){
                 silverShillings.value = 0;
                 let goldCrowns = document.querySelector("#goldCrownsPrice");
                 goldCrowns.value = parseInt(goldCrowns.value) + 1;
@@ -1068,10 +1104,10 @@ function handleItemPrice(price, itemNum){
         if(parseInt(bits.value) + price >= 10){
             bits.value = (parseInt(bits.value) + price) % 10;
             let copperPennies = document.querySelector("#copperPenniesPrice");
-            if(parseInt(copperPennies.value) + 1 == 10){
+            if(parseInt(copperPennies.value) == 9){
                 copperPennies.value = 0;
                 let silverShillings = document.querySelector("#silverShillingsPrice");
-                if(parseInt(silverShillings.value) + 1 == 10){
+                if(parseInt(silverShillings.value) == 9){
                     silverShillings.value = 0;
                     let goldCrowns = document.querySelector("#goldCrownsPrice");
                     goldCrowns.value = parseInt(goldCrowns.value) + 1;
@@ -1084,5 +1120,273 @@ function handleItemPrice(price, itemNum){
         } else{
             bits.value = parseInt(bits.value) + price;
         }
+    }
+}
+
+function removeItemPrice(itemNum){
+    let price = priceItemList[itemNum].price;
+    if(price >= 1000){
+        let goldCrowns = document.querySelector("#goldCrownsPrice");
+        goldCrowns.value = parseInt(goldCrowns.value) - price / 1000;
+    }
+    else if(price >= 100){
+        let silverShillings = document.querySelector("#silverShillingsPrice");
+        if(parseInt(silverShillings.value) < price / 100){
+            let goldCrowns = document.querySelector("#goldCrownsPrice");
+            goldCrowns.value = parseInt(goldCrowns.value) - 1;
+            silverShillings.value = parseInt(silverShillings.value) + 10 - price / 100;
+        } else{
+            silverShillings.value = parseInt(silverShillings.value) - price / 100;
+        }
+    }
+    else if(price >= 10){
+        let copperPennies = document.querySelector("#copperPenniesPrice");
+        if(parseInt(copperPennies.value) < price / 10){
+            let silverShillings = document.querySelector("#silverShillingsPrice");
+            if(parseInt(silverShillings.value) == 0){
+                let goldCrowns = document.querySelector("#goldCrownsPrice");
+                goldCrowns.value = parseInt(goldCrowns.value) - 1;
+                silverShillings.value = parseInt(silverShillings.value) + 9;
+                copperPennies.value = parseInt(copperPennies.value) + 10 - price / 10;
+            } else{
+                silverShillings.value = parseInt(silverShillings.value) - 1;
+                copperPennies.value = parseInt(copperPennies.value) + 10 - price / 10;
+            }
+        } else{
+            copperPennies.value = parseInt(copperPennies.value) - price / 10;
+        }
+    }
+    else if(price !== null){
+        let bits = document.querySelector("#bitsPrice");
+        if(parseInt(bits.value) < price){
+            let copperPennies = document.querySelector("#copperPenniesPrice");
+            if(parseInt(copperPennies.value) == 0){
+                let silverShillings = document.querySelector("#silverShillingsPrice");
+                if(parseInt(silverShillings.value) == 0){
+                    let goldCrowns = document.querySelector("#goldCrownsPrice");
+                    goldCrowns.value = parseInt(goldCrowns.value) - 1;
+                    silverShillings.value = parseInt(silverShillings.value) + 9;
+                    copperPennies.value = parseInt(copperPennies.value) + 9;
+                    bits.value = parseInt(bits.value) + 10 - price;
+                } else{
+                    silverShillings.value = parseInt(silverShillings.value) - 1;
+                    copperPennies.value = parseInt(copperPennies.value) + 9;
+                    bits.value = parseInt(bits.value) + 10 - price;
+                }
+            } else{
+                copperPennies.value = parseInt(copperPennies.value) - 1;
+                bits.value = parseInt(bits.value) + 10 - price;
+            }
+        } else{
+            bits.value = parseInt(bits.value) - price;
+        }
+    }
+    delete priceItemList[itemNum];
+}
+
+function buyItems(){
+    let bCost = parseInt(document.querySelector("#bitsPrice").value);
+    let bWallet = parseInt(document.querySelector("#bitsCurrent").value);
+
+    let cpCost = parseInt(document.querySelector("#copperPenniesPrice").value);
+    let cpWallet = parseInt(document.querySelector("#copperPenniesCurrent").value);
+
+    let ssCost = parseInt(document.querySelector("#silverShillingsPrice").value);
+    let ssWallet = parseInt(document.querySelector("#silverShillingsCurrent").value);
+
+    let gcCost = parseInt(document.querySelector("#goldCrownsPrice").value);
+    let gcWallet = parseInt(document.querySelector("#goldCrownsCurrent").value);
+
+    let totalCost = gcCost * 1000 + ssCost * 100 + cpCost * 10 + bCost;
+    let totalWallet = gcWallet * 1000 + ssWallet * 100 + cpWallet * 10 + bWallet;
+
+    if(totalCost > totalWallet){
+        alert("Preço total da compra maior que o dinheiro atual. Por favor, remova alguns itens.");
+    } else{
+        let difference = totalWallet - totalCost;
+        if(difference >= 1000){
+            character.bag.money.goldCrowns = Math.floor(difference / 1000);
+            character.bag.money.silverShillings = Math.floor((difference % 1000) / 100);
+            character.bag.money.copperPennies = Math.floor((difference % 100) / 10);
+            character.bag.money.bits = difference % 10;
+        }
+        else if(difference >= 100){
+            character.bag.money.goldCrowns = 0;
+            character.bag.money.silverShillings = Math.floor(difference / 100);
+            character.bag.money.copperPennies = Math.floor((difference % 100) / 10);
+            character.bag.money.bits = difference % 10;
+        }
+        else if(difference >= 10){
+            character.bag.money.goldCrowns = 0;
+            character.bag.money.silverShillings = 0;
+            character.bag.money.copperPennies = Math.floor(difference / 10);
+            character.bag.money.bits = difference % 10
+        }
+        else {
+            character.bag.money.goldCrowns = 0;
+            character.bag.money.silverShillings = 0;
+            character.bag.money.copperPennies = 0;
+            character.bag.money.bits = difference;
+        }
+        let items = Object.keys(priceItemList);
+        items.forEach(function(val){
+            let newItem = document.querySelector("#item" + val).innerHTML;
+            let pos = newItem.indexOf("<");
+            newItem = newItem.slice(0, pos);
+            switch(priceItemList[val].type){
+                case "weapon":
+                    if(character.bag.weapons[newItem]){
+                        for(var i = 2; i < 100; i++){
+                            if(!character.bag.weapons[newItem + " " + i.toString()]){
+                                break;
+                            }
+                        }
+                        character.bag.weapons[newItem + " " + i.toString()] = deepCopy(item.weapon[newItem]);
+                    } else{
+                        character.bag.weapons[newItem] = deepCopy(item.weapon[newItem]);
+                    }
+                    break;
+                case "ammo":
+                    if(character.bag.ammo[newItem]){
+                        character.bag.ammo[newItem].quantity += 5;
+                    } else{
+                        character.bag.ammo[newItem] = {
+                            price: item.ammo[newItem],
+                            quantity: 5
+                        }
+                    }
+                    break;
+                case "armor":
+                    if(character.bag.armors[newItem]){
+                        for(var i = 2; i < 100; i++){
+                            if(!character.bag.armors[newItem + " " + i.toString()]){
+                                break;
+                            }
+                        }
+                        character.bag.armors[newItem + " " + i.toString()] = deepCopy(item.armor[newItem]);
+                    } else{
+                        character.bag.armors[newItem] = deepCopy(item.armor[newItem]);
+                    }
+                    break;
+                case "personalGear":
+                    if(newItem == "Mochila"){
+                        character.bag.type = "Mochila";
+                    }
+                    else{
+                        if(character.bag.items[newItem]){
+                            for(var i = 2; i < 100; i++){
+                                if(!character.bag.items[newItem + " " + i.toString()]){
+                                    break;
+                                }
+                            }
+                            character.bag.items[newItem + " " + i.toString()] = deepCopy(item.personalGear[newItem]);
+                        } else{
+                            character.bag.items[newItem] = deepCopy(item.personalGear[newItem]);
+                        }
+                    }
+                    break;
+                case "clothingAcessory":
+                    if(character.bag.items[newItem]){
+                        for(var i = 2; i < 100; i++){
+                            if(!character.bag.items[newItem + " " + i.toString()]){
+                                break;
+                            }
+                        }
+                        character.bag.items[newItem + " " + i.toString()] = deepCopy(item.clothingAndAccessory[newItem]);
+                    } else{
+                        character.bag.items[newItem] = deepCopy(item.clothingAndAccessory[newItem]);
+                    }
+                    break;
+                case "tool":
+                    if(character.bag.items[newItem]){
+                        for(var i = 2; i < 100; i++){
+                            if(!character.bag.items[newItem + " " + i.toString()]){
+                                break;
+                            }
+                        }
+                        character.bag.items[newItem + " " + i.toString()] = deepCopy(item.tool[newItem]);
+                    } else{
+                        character.bag.items[newItem] = deepCopy(item.tool[newItem]);
+                    }
+                    break;
+                case "food":
+                    if(character.bag.items[newItem]){
+                        for(var i = 2; i < 100; i++){
+                            if(!character.bag.items[newItem + " " + i.toString()]){
+                                break;
+                            }
+                        }
+                        character.bag.items[newItem + " " + i.toString()] = deepCopy(item.food[newItem]);
+                    } else{
+                        character.bag.items[newItem] = deepCopy(item.food[newItem]);
+                    }
+                    break;
+                case "animal":
+                    if(character.bag.animals[newItem]){
+                        for(var i = 2; i < 100; i++){
+                            if(!character.bag.animals[newItem + " " + i.toString()]){
+                                break;
+                            }
+                        }
+                        character.bag.animals[newItem + " " + i.toString()] = deepCopy(item.animal[newItem]);
+                    } else{
+                        character.bag.animals[newItem] = deepCopy(item.animal[newItem]);
+                    }
+                    break;
+                case "animalGear":
+                    if(character.bag.items[newItem]){
+                        for(var i = 2; i < 100; i++){
+                            if(!character.bag.items[newItem + " " + i.toString()]){
+                                break;
+                            }
+                        }
+                        character.bag.items[newItem + " " + i.toString()] = deepCopy(item.animalGear[newItem]);
+                    } else{
+                        character.bag.items[newItem] = deepCopy(item.animalGear[newItem]);
+                    }
+                    break;
+                case "hireling":
+                    if(character.bag.hirelings[newItem]){
+                        for(var i = 2; i < 100; i++){
+                            if(!character.bag.hirelings[newItem + " " + i.toString()]){
+                                break;
+                            }
+                        }
+                        character.bag.hirelings[newItem + " " + i.toString()] = deepCopy(item.hireling[newItem]);
+                    } else{
+                        character.bag.hirelings[newItem] = deepCopy(item.hireling[newItem]);
+                    }
+                    break;
+                case "potion":
+                    newItem = newItem.slice(6, newItem.length());
+                    if(character.bag.items[newItem]){
+                        for(var i = 2; i < 100; i++){
+                            if(!character.bag.items[newItem + " " + i.toString()]){
+                                break;
+                            }
+                        }
+                        character.bag.items[newItem + " " + i.toString()] = deepCopy(item.potion[newItem]);
+                    } else{
+                        character.bag.items[newItem] = deepCopy(item.potion[newItem]);
+                    }
+                    break;
+                case "incantation":
+                    newItem = newItem.slice(8, newItem.length());
+                    if(character.bag.items[newItem]){
+                        for(var i = 2; i < 100; i++){
+                            if(!character.bag.items[newItem + " " + i.toString()]){
+                                break;
+                            }
+                        }
+                        character.bag.items[newItem + " " + i.toString()] = deepCopy(item.incantation[newItem]);
+                    } else{
+                        character.bag.items[newItem] = deepCopy(item.incantation[newItem]);
+                    }
+                    break;
+            }
+        });
+        localStorage.setItem("character", JSON.stringify(character));
+        localStorage.setItem("choices", JSON.stringify(choices));
+        //window.location.href = "";
     }
 }
