@@ -1157,6 +1157,72 @@ traditions ={
                 attackRoll20:"O alvo fica prostrado.",
                 level:"0"
             },
+            "Criar símbolo sagrado":{
+                description:"Um símbolo sagrado brilhante surge na mão do conjurador e se mantém pela duração da magia ou até ser derrubado. O símbolo sagrado fornece uma dádiva para as jogadas de ataque com magias de Teurgia do conjurador.",
+                duration:"1 minuto; consulte o efeito.",
+                type:"UT",
+                level:"0"
+            },
+            "Benção":{
+                description:"O conjurador toca cada um e concede sua benção. Enquanto durar a magia, o alvo faz jogadas de ataque e de desafio com 1 dádiva e não pode ser assustado.",
+                target:"Qualquer quantidade de criaturas ao alcance do conjurador.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"1"
+            },
+            "Censura":{
+                description:"O conjurador apresenta seu símbolo sagrado, um pedaço de escritura ou algum tipo de representação física de sua fé e libera uma onda de poder sagrado que se dispersa pela área. Cada demônio, espírito, fada, diabo e morto-vivo na área deve fazer uma jogada de desafio de Vontade. Caso fracasse, a criatura fica assustada por 1 minuto.",
+                area:" Uma esfera com 5 metros de raio, centrada em um ponto ao alcance do conjurador.",
+                type:"AT",
+                level:"1"
+            },
+            "Solo sagrado":{
+                description:"Um domo transparente e imóvel brilha enquanto durar a magia. Nada de fora pode atravessá-lo, e a sua área interna está excluída dos efeitos de outras magias. Criaturas e objetos dentro do domo estão escondidos de todos fora dele, com exceção do conjurador. Uma criatura dentro do domo pode sair livremente, mas uma vez que faz isso não pode retornar. Este efeito termina imediatamente, caso uma criatura dentro do domo execute um ataque.",
+                area:"Um domo transparente e imóvel brilha enquanto durar a magia. Nada de fora pode atravessá-lo, e a sua área interna está excluída dos efeitos de outras magias. Criaturas e objetos dentro do domo estão escondidos de todos fora dele, com exceção do conjurador. Uma criatura dentro do domo pode sair livremente, mas uma vez que faz isso não pode retornar. Este efeito termina imediatamente, caso uma criatura dentro do domo execute um ataque.",
+                duration:"Concentração, até 1 minuto; consulte o efeito.",
+                type:"UT",
+                level:"1"
+            },
+            "Martelo de deus":{
+                description:"Um martelo brilhante dourado surge no alvo e flutua. Enquanto durar a magia, o conjurador pode utilizar uma ação desencadeada em seu turno para mover o martelo até 10 metros e atacar uma criatura a 1 metro dele. O conjurador faz uma jogada de ataque de Vontade com 1 dádiva contra a Defesa do alvo. Caso seja bem-sucedido, o alvo sofre 2d6 de dano.",
+                target:"Um ponto no espaço a média distância.",
+                duration:"1 minuto.",
+                type:"AT",
+                attackRoll20:"O alvo 2d6 de danoadicional.",
+                level:"2"
+            },
+            "Revelação":{
+                description:"O conjurador toca o alvo, fornecendo sete revelações que duram até o fim da magia ou até que a última seja gasta. Quando o alvo faz uma jogada de ataque ou desafio, ele pode gastar quantas revelações quiser até o máximo restante. Para cada revelação gasta, o alvo faz a jogada com 2 dádivas.",
+                target:"Uma criatura ao alcance do conjurador.",
+                duration:"1 minuto; consulte o efeito.",
+                type:"UT",
+                level:"2"
+            },
+            "Auxílio divino":{
+                description:"O conjurador toca o alvo, fornecendo sete revelações que duram até o fim da magia ou até que a última seja gasta. Quando o alvo faz uma jogada de ataque ou desafio, ele pode gastar quantas revelações quiser até o máximo restante. Para cada revelação gasta, o alvo faz a jogada com 2 dádivas.",
+                target:"Criaturas escolhidas pelo conjurador a curta distância.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"3"
+            },
+            "Fúria de deus":{
+                description:"Um relâmpago atinge o alvo e causa 2d6+2 de dano a cada criatura presente até 1d6 metros daquele ponto. Cada criatura que sofre dano por este efeito deve fazer uma jogada de desafio de Agilidade. Ela se torna pasma por 1 rodada, caso fracasse ou sofre metade do dano, caso seja bem-sucedida.",
+                target:"Um ponto no solo a média distância.",
+                type:"AT",
+                level:"3"
+            },
+            "Avatar":{
+                description:"Poder divino flui dentro do conjurador. Enquanto durar a magia, ele sofre metade do dano de todas as fontes, faz jogadas de ataque com 1 dádiva e causa 2d6 de dano adicional com ataques por armas.",
+                duration:"1 minuto",
+                type:"UT",
+                level:"4"
+            },
+            "Fogo dos céus":{
+                description:"Chamas se dispersam pela área e causam 7d6 de dano a cada criatura nela. Caso uma criatura seja bem-sucedida em uma jogada de desafio de Vontade, ela sofre metade do dano. Qualquer criatura incapacitada por este dano desaparece, apagada da trama da realidade.",
+                area:" Um cilindro vertical com 25 metros de altura e 5 metros de raio, centrado em um ponto no solo a extrema distância.",
+                type:"AT",
+                level:"5"
+            }
             
         }
     },
@@ -1164,14 +1230,137 @@ traditions ={
         attribute: "will",
         darkMagic: false,
         spells: {
-            
+            "Forma fluida":{
+                description:"Enquanto durar a magia, o conjurador pode se mover por espaços ocupados por outras criaturas independentemente de seu Tamanho.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"0"
+            },
+            "Máscara":{
+                description:"O conjurador altera a aparência de seu corpo, de maneira que se pareça com outra pessoa enquanto durar a magia ou até ficar inconsciente. Ele pode aumentar ou diminuir sua altura em até 30 cm, aumentar ou diminuir seu peso em 25% ou fazer outras alterações cosméticas que desejar. Nenhum dos atributos, características e outras habilidades mudam, o conjurador não pode assumir uma ancestralidade diferente.",
+                duration:"1 hora; consulte o efeito.",
+                type:"UT",
+                level:"0"
+            },
+            "Forma animal":{
+                description:"O conjurador assume a forma de um animal médio, pequeno ou minúsculo enquanto durar a magia. Caso assuma a forma de um animal minúsculo, ele pode ganhar uma das seguintes propriedades: escalador, nadador ou voador.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"1"
+            },
+            "Passo amplo":{
+                description:"Enquanto durar a magia, o conjurador recebe um bônus de +4 para seu Deslocamento e pode utilizar uma ação para pular 3d6 metros, aterrissando em segurança.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"1"
+            },
+            "Revoada":{
+                description:"O conjurador se desfaz e se torna uma nuvem de estorninhos que voa o dobro de seu Deslocamento sem desencadear ataques livres; ele pode se mover por espaços ocupados por outras criaturas independentemente do tamanho. Ao fim deste movimento, ele retorna a forma normal.<br><b>Desencadeada<b/> O conjurador pode utilizar uma ação desencadeada para conjurar esta magia quando sofrer dano. Caso faça isso, ele sofre metade do dano do ataque desencadeador, mas se move apenas metade do seu Deslocamento como descrito acima.",
+                type:"UT",
+                level:"1"
+            },
+            "Forma animal aprimorada":{
+                description:"O conjurador assume a forma de um animal grande, médio, pequeno ou minúsculo enquanto durar a magia. Caso assuma a forma de um animal pequeno ou minúsculo, ele pode ganhar uma das seguintes propriedades: escalador, nadador ou voador.",
+                duration:"1 hora.",
+                type:"UT",
+                level:"1"
+            },
+            "Forma de objeto":{
+                description:"O conjurador assume a forma de um objeto de seu Tamanho ou menor enquanto durar a magia, se tornando fisicamente indistinguível do objeto cuja forma assumiu. Ele toma todas as decisões sobre como sua nova forma se parece. Até que o efeito termine, o conjurador não pode falar e pode utilizar ações apenas para se concentrar na magia. No entanto, ele pode perceber o ambiente utilizando seus sentidos normais. Este efeito termina imediatamente, caso o conjurador sofra qualquer dano.",
+                duration:"Concentração, até 8 horas.",
+                type:"UT",
+                level:"2"
+            },
+            "Acelerar cura":{
+                descripttion:"O conjurador deve se concentrar por 1 minuto enquanto conjura essa magia. Caso sua concentração não seja interrompida, ao fim deste período, o conjurador cura dano igual a duas vezes sua taxa de cura e remove qualquer uma das seguintes aflições de si mesmo: doente, fatigado ou envenenado.",
+                type:"UT",
+                level:"3"
+            },
+            "Forma de névoa":{
+                description:"O conjurador assume a forma de névoa enquanto durar a magia. Até que o efeito termine, o ele tem todos os seguintes benefícios e penalidades: <br>• O conjurador é imune a dano. <br>• O conjurador ignora efeitos de jogadas de ataque contra sua Força ou que exijam uma jogada de desafio de Força. <br>• O conjurador pode voar e se mover por aberturas largas o bastante para permitir a passagem de ar, embora não possa se mover por espaços preenchidos por líquidos — eles funcionam como objetos sólidos. <br>• O conjurador não pode cair. Ele está imune às aflições agarrado, imobilizado, lento e prostrado. <br>• O conjurador não pode falar, nem utilizar ações, magias e objetos. <br>Ao fim de cada rodada, quando está em uma área de vento, o conjurador é movido 2d6 metros na direção que o vento sopra e sofre uma penalidade cumulativa de -5 à sua Saúde. A penalidade se mantém até que retorne a forma normal.",
+                duration:"Concentração, até 1 hora.",
+                type:"UT",
+                level:"3"
+            },
+            "Mettalicus":{
+                description:"O corpo do conjurador se torna de metal. Enquanto durar a magia, sua Defesa se torna 20 e ele ganha um bônus de +10 para sua Saúde, ficando imune às aflições adormecido, cego, doente, envenenado, fatigado e surdo, além de não poder ser movido contra sua vontade. O conjurador também sofre metade do dano por armas, fogo e frio. No entanto, ele também fica lento, e não pode beber, comer ou nadar.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"4"
+            },
+            "Forma de animal maior":{
+                description:"O conjurador assume a forma de um animal enorme, grande, médio, pequeno ou minúsculo enquanto durar a magia. Caso assuma a forma de um animal médio, pequeno ou minúsculo, ele pode ganhar uma das seguintes propriedades: escalador, nadador ou voador.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"5"
+            }
         }
     },
     "Vida": {
         attribute: "will",
         darkMagic: false,
         spells: {
-            
+            "Cura menor":{
+                description:"O conjurador toca o alvo, curando dano igual à metade da taxa de cura do alvo.",
+                target:"Uma criatura ao alcance conjurador.",
+                duration:"UT",
+                level:"0"
+            },
+            "Sentir vida":{
+                description:"O conjurador sabe a localização de quaisquer criaturas vivas na área. Elas não podem se esconder dele enquanto durar a magia.",
+                area:"Uma esfera com 5 metros de raio, centrada em um ponto no espaço do conjurador.",
+                duration:"1 minuto.",
+                type:"UT",
+                level:"0"
+            },
+            "Cura leve":{
+                description:"O conjurador toca o alvo, que cura uma quantidade de dano igual à sua própria taxa de cura.",
+                target:"Uma criatura ao alcance do conjurador.",
+                type:"UT",
+                level:"1"
+            },
+            "Fonte de vida":{
+                description:"Energias curativas se espalham pela área e se movem junto com o conjurador enquanto durar a magia. Toda vez que uma criatura viva na área curar dano, ela cura uma quantidade de dano adicional igual ao Poder do conjurador.",
+                area:"Uma esfera com 2 metros de raio, centrada em um ponto ao alcance do conjurador.",
+                duration:"1 minuto.",
+            },
+            "Tratamento":{
+                description:"O conjurador toca o alvo, fornecendo um dos seguintes benefícios: <br>• Remove uma das seguintes aflições do alvo: doente, fatigado, debilitado ou envenenado. <br>• Remove 1 ponto de Insanidade do alvo. <br>• Remove qualquer penalidade contra a Saúde do alvo. <br>• O alvo cura uma quantidade de dano igual à metade de sua taxa de cura.",
+                target:"Uma criatura ao alcance do conjurador.",
+                type:"UT",
+                level:"1"
+            },
+            "Cura moderadora":{
+                description:"O conjurador toca o alvo, que cura uma quantidade de dano igual ao dobro de sua própria taxa de cura.",
+                target:"Uma criatura ao alcance do conjurador.",
+                type:"UT",
+                level:"2"
+            },
+            "Explosão de vitalidade":{
+                description:"Cada alvo cura uma quantidade de dano igual à metade de sua taxa de cura.",
+                target:"Até três criaturas vivas a curta distância.",
+                type:"UT",
+                level:"2"
+            },
+            "Tratamento maior":{
+                description:"O conjurador toca cada um dos alvos, fornecendo um dos seguintes benefícios (ele pode escolher um benefício diferente para cada alvo): <br>• Remove uma das seguintes aflições do alvo: doente, fatigado, debilitado ou envenenado. <br>• Remove 1 ponto de Insanidade do alvo. <br>• Remove qualquer penalidade contra a Saúde do alvo. <br>• O alvo cura uma quantidade de dano igual à sua taxa de cura.",
+                target:"Até três criaturas ao alcance do conjurador.",
+                type:"UT",
+                level:"3"
+            },
+            "Cura total":{
+                description:"O conjurador toca o alvo, curando todos os seus pontos de dano.",
+                target:"O conjurador toca o alvo, curando todos os seus pontos de dano.",
+                type:"UT",
+                level:"4"
+            },
+            "Ressurreição":{
+                description:"O conjurador toca o alvo. Ele deve se concentrar por 1 hora, durante esse tempo o conjurador deve manter contato físico com o alvo. Caso a concentração não seja interrompida, ele talvez possa voltar à vida. Caso a alma do alvo resida no Submundo, ela retorna ao corpo e ele volta à vida. O alvo cura 1 ponto de dano e fica fatigado e debilitado, até que complete um descanso. Caso a alma do alvo resida no Inferno, o conjurador faz uma jogada de desafio de Vontade com uma quantidade de perdições igual à Corrupção do alvo. Caso seja bem-sucedido, ele volta à vida como descrito acima. Caso fracasse, a alma está completamente perdida. Ela não pode retornar ao corpo por meio de outras conjurações desta mesma magia.",
+                sacrifice:"O conjurador pode gastar uma conjuração desta magia para conjurar cura totaL.",
+                target:"Uma criatura morta a não mais de 24 horas ao alcance do conjurador.",
+                type:"UT",
+                level"5"
+            }              
         }
     }
 }
