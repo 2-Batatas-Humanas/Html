@@ -1359,7 +1359,7 @@ traditions ={
                 sacrifice:"O conjurador pode gastar uma conjuração desta magia para conjurar cura totaL.",
                 target:"Uma criatura morta a não mais de 24 horas ao alcance do conjurador.",
                 type:"UT",
-                level"5"
+                level: "5"
             }              
         }
     }
