@@ -1272,7 +1272,7 @@ traditions ={
                 level:"2"
             },
             "Acelerar cura":{
-                descripttion:"O conjurador deve se concentrar por 1 minuto enquanto conjura essa magia. Caso sua concentração não seja interrompida, ao fim deste período, o conjurador cura dano igual a duas vezes sua taxa de cura e remove qualquer uma das seguintes aflições de si mesmo: doente, fatigado ou envenenado.",
+                description:"O conjurador deve se concentrar por 1 minuto enquanto conjura essa magia. Caso sua concentração não seja interrompida, ao fim deste período, o conjurador cura dano igual a duas vezes sua taxa de cura e remove qualquer uma das seguintes aflições de si mesmo: doente, fatigado ou envenenado.",
                 type:"UT",
                 level:"3"
             },
