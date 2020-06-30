@@ -167,7 +167,7 @@ if(!character.bag){
             if(choices.battleWarHammer == "battlehammer"){
                 character.bag.weapons["Machado de batalha"] = deepCopy(item.weapon["Machado de batalha, mangual, estrela da manhã, picareta, ou espada"]);
             } else{
-                character.bag.weapons["Martelo de guerra"] = deepCopy(item.weapons["Espada bastarda ou martelo de guerra"]);
+                character.bag.weapons["Martelo de guerra"] = deepCopy(item.weapon["Espada bastarda ou martelo de guerra"]);
             }
             break;
         case "key to ancient dwarf tresure vault":
