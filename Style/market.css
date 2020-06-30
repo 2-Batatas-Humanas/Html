@@ -191,13 +191,32 @@ nav {
 }
 
 /*
+    Help
+*/
+
+#help {
+    display: flex;
+    width: 95vw;
+    flex-flow: row wrap;
+    align-items: space-between;
+}
+
+/*
     Price help
 */
 
 #priceHelp {
     border: 2px solid black;
     font-weight: bold;
-    width: 330px
+}
+
+/*
+    Property Help
+*/
+
+#propertyHelp {
+    border: 2px solid black;
+    font-weight: bold;
 }
 
 /*
