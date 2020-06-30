@@ -436,7 +436,7 @@ function stockMarket(){
             <li>Tipo: ${item.weapon[wpn].type}</li>
             <li>Dano: ${item.weapon[wpn].damage}</li>
             <li>Mãos: ${item.weapon[wpn].hands}</li>
-            <li>Propriedades: ${item.weapon[wpn].properties.toString()}</li>
+            <li>Propriedades: <a href="#help"> ${item.weapon[wpn].properties.toString()}</a></li>
             <li>Preço: ${price} ${priceType}</li>
             <li>Disponibilidade: ${item.weapon[wpn].availability}</li>
         `
@@ -1182,6 +1182,16 @@ function removeItemPrice(itemNum){
         }
     }
     delete priceItemList[itemNum];
+}
+
+function loadWeaponsProperties(){
+    let propertiesDiv = document.querySelector("#weaponsProperties");
+    let properties = Object.keys(item.weaponProperties);
+    properties.forEach(function(prop){
+        let p = document.createElement("p");
+        p.innerHTML = prop + ": " + item.weaponProperties[prop];
+        propertiesDiv.appendChild(p);
+    });
 }
 
 function buyItems(){
