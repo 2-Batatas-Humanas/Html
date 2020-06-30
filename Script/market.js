@@ -1403,7 +1403,7 @@ function buyItems(){
 
 sendMessage = async (data) => {
     try{
-        let response = await fetch("file:///E:/Raiz%20manter/Desktop/Projetos/RpgCodigo/htmlCode/Mestre/index.html", {
+        let response = await fetch("https://2-batatas-humanas.github.io/mestre/index.html", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
