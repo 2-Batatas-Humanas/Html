@@ -35,6 +35,7 @@ function getNovicePath(){
             createOptionsInput(id, "Escolha uma opção: ", "priestLangChoice",
             ["Adicionar um idioma à lista de idiomas que o personagem pode falar", "Ler um idioma que fala"],
             ["language", "read language"]);
+            addBrToDiv(id);
             createOptionsInput(id, "Escolha a religião do seu personagem: ", "priestReligion",
             ["Culto do Novo Deus", "Ancestrais Anões", "Fé Antiga", "Bruxaria"],
             ["Culto do Novo Deus", "Ancestrais Anões", "Fé Antiga", "Bruxaria"]);
