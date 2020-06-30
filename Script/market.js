@@ -1387,6 +1387,6 @@ function buyItems(){
         });
         localStorage.setItem("character", JSON.stringify(character));
         localStorage.setItem("choices", JSON.stringify(choices));
-        window.location.href = "spells.html";
+        //window.location.href = "";
     }
 }
