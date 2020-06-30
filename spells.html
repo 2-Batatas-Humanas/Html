@@ -10,14 +10,33 @@
     </head>
     <body>
         <h1>Tradições e Magias</h1>
+        <div id="possibleChoices"></div>
+        <script>loadChoices()</script>
+        <div id="caption">
+            <div class="darkMagic caption"></div><span>: Tradição de Magia Negra</span>
+            
+            
+        </div>
         <div>
             <p id="firstP">Escolha uma tradição:</p>
             <div id="traditions">
-                <div id="intellectTraditions"></div>
-                <div id="willTraditions"></div>
+                <div>
+                    <p id="intellect">Tradições de Intelecto</p>
+                    <div id="intellectTraditions"></div>
+                </div>
+                <div>
+                    <p id="will">Tradições de Vontade</p>
+                    <div id="willTraditions"></div>
+                </div>
             </div>
             <script>loadTraditions()</script>
-            <div id="spells"></div>
+            <h2 id="currentTradition"></h2>
+            <div id="spells"></div>         
         </div>
+        <div>
+            <p>Tradições e magias escolhidas:</p>
+            <ul id="traditionsList"></ul>
+        </div>
+        <button id="nextPageButton" onclick="nextPage()">Próxima Página</button>
     </body>
 </html>
