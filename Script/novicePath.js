@@ -35,6 +35,9 @@ function getNovicePath(){
             createOptionsInput(id, "Escolha uma opção: ", "priestLangChoice",
             ["Adicionar um idioma à lista de idiomas que o personagem pode falar", "Ler um idioma que fala"],
             ["language", "read language"]);
+            createOptionsInput(id, "Escolha a religião do seu personagem: ", "priestReligion",
+            ["Culto do Novo Deus", "Ancestrais Anões", "Fé Antiga", "Bruxaria"],
+            ["Culto do Novo Deus", "Ancestrais Anões", "Fé Antiga", "Bruxaria"]);
             break;
         default:
             alert("Developer error");
@@ -65,6 +68,7 @@ function nextPage(){
             break;
         case "priest":
             choices.priestLangChoice = document.querySelector("#priestLangChoice").value;
+            character.novicePath["religion"] = document.querySelector("#priestReligion").value;
             break;
     }
     localStorage.setItem("character", JSON.stringify(character));
