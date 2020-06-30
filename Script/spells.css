@@ -2,6 +2,18 @@ html, body {
     font-size: 20px;
 }
 
+.caption {
+    width: 15px;
+    height: 15px;
+}
+
+#caption {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    flex-flow: row;
+}
+
 h1 {
     font-size: 40px;
     text-align: center;
@@ -12,32 +24,66 @@ h1 {
     color: gold;
 }
 
-#traditions, #spells, #intellectTraditions, #willTraditions {
+#removeButton {
+    margin-left: 95vw;
+    background-color: red;
+}
+
+#currentTradition {
+    font-size: 30px;
+    text-align: center;
+    font-weight: 500;
+}
+
+#spells, #intellectTraditions, #willTraditions {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
 }
 #intellectTraditions, #willTraditions {
-    border: 2px ridge red;
     flex: 1;
 }
 
+#intellect {
+    color: blue;
+}
+
+#will {
+    color: green;
+}
+
 .tradition {
-    border: 2px solid green;
-    background-color: rgb(45, 0, 248);
+    background-color: rgb(216, 204, 138);
+    cursor: pointer;
     padding: 5px;
     margin: 5px;
     flex: 1;
     text-align: center;
 }
 
-.button {
-    width: max-content;
-    height: max-content;
+.darkMagic {
+    background-color: indigo;
+}
+
+.traditionInavailable {
+    background-color: black;
+    cursor: not-allowed;
+}
+
+.intellect {
+    border: 2px solid blue;
+}
+
+.will {
+    border: 2px solid green;
 }
 
 .spell {
     border: 2px solid lightseagreen;
     padding: 5px;
     margin: 5px;
+}
+
+#nextPageButton {
+    margin-left: 90vw;
 }
