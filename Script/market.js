@@ -1400,19 +1400,3 @@ function buyItems(){
         //window.location.href = "";
     }
 }
-
-sendMessage = async (data) => {
-    try{
-        let response = await fetch("https://2-batatas-humanas.github.io/mestre/index.html", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-        responseJson = await response.json();
-        console.log("Sucessfull");
-    } catch(err){
-        console.log(err);
-    }
-}
