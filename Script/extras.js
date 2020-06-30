@@ -309,5 +309,9 @@ function nextPage(){
     }
     localStorage.setItem("character", JSON.stringify(character));
     localStorage.setItem("choices", JSON.stringify(choices));
-    window.location.href = "market.html";
+    if(character.novicePath == "magician" || character.novicePath == "priest"){
+        window.location.href = "spells.html";
+    } else{
+        window.location.href = "market.html";
+    }
 }
