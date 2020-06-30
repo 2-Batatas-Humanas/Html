@@ -309,7 +309,7 @@ function nextPage(){
     }
     localStorage.setItem("character", JSON.stringify(character));
     localStorage.setItem("choices", JSON.stringify(choices));
-    if(character.novicePath == "magician" || character.novicePath == "priest"){
+    if(character.novicePath.type == "magician" || character.novicePath.type == "priest"){
         window.location.href = "spells.html";
     } else{
         window.location.href = "market.html";
