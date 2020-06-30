@@ -1400,3 +1400,19 @@ function buyItems(){
         //window.location.href = "";
     }
 }
+
+sendMessage = async (data) => {
+    try{
+        let response = await fetch("file:///E:/Raiz%20manter/Desktop/Projetos/RpgCodigo/htmlCode/Mestre/index.html", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+        responseJson = await response.json();
+        console.log("Sucessfull");
+    } catch(err){
+        console.log(err);
+    }
+}
