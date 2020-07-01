@@ -81,8 +81,8 @@ function checkProfessionsInChoices(){
             case "rogue":
                 if(choices.rogueProfLangChoice == "profession"){
                     createOptionsInput("professions", "Escolha o tipo da sua profissão adquirida pela trilha de aprendiz Ladino: ", "novicePathProfType",
-                    ["Comum", "Marcial", "Selvagem"],
-                    ["common", "martial", "wilderness"]);
+                    ["Comum", "Criminosa", "Selvagem"],
+                    ["common", "criminal", "wilderness"]);
                     addBrToDiv("professions", 1);
                     createNewInput("professions", "Coloque o nome da sua profissão: ", "novicePathProf", "text");
                 }
