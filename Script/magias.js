@@ -1316,13 +1316,15 @@ traditions ={
             "Cura leve":{
                 description:"O conjurador toca o alvo, que cura uma quantidade de dano igual à sua própria taxa de cura.",
                 target:"Uma criatura ao alcance do conjurador.",
-                type:"UT",
-                level:"1"
+                type: "UT",
+                level: "1"
             },
             "Fonte de vida":{
                 description:"Energias curativas se espalham pela área e se movem junto com o conjurador enquanto durar a magia. Toda vez que uma criatura viva na área curar dano, ela cura uma quantidade de dano adicional igual ao Poder do conjurador.",
                 area:"Uma esfera com 2 metros de raio, centrada em um ponto ao alcance do conjurador.",
                 duration:"1 minuto.",
+                type: "UT",
+                level: "1"
             },
             "Tratamento":{
                 description:"O conjurador toca o alvo, fornecendo um dos seguintes benefícios: <br>• Remove uma das seguintes aflições do alvo: doente, fatigado, debilitado ou envenenado. <br>• Remove 1 ponto de Insanidade do alvo. <br>• Remove qualquer penalidade contra a Saúde do alvo. <br>• O alvo cura uma quantidade de dano igual à metade de sua taxa de cura.",
