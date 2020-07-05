@@ -244,10 +244,10 @@ function createCharacter(){
                     age: document.querySelector("#age").value,
                     size: document.querySelector("#size").value,
                     appearance: document.querySelector("#appearance").value,
-                    background: document.querySelector("#background").value
+                    background: document.querySelector("#background").value,
+                    raisedAttribute: document.querySelector("#raisedAttribute").value,
                 };
                 escolhas = {
-                    raisedAttribute: document.querySelector("#raisedAttribute").value,
                     profLangChoice: document.querySelector("#professionLanguageChoice").value
                 };
                 var backgroundChange = document.querySelector("#backgroundChange").value;
