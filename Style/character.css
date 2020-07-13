@@ -1,0 +1,117 @@
+/*
+    Normal font-size:
+*/
+
+html, body {
+    font-size: 20px;
+}
+
+/*
+    Main Div: flexbox row wrap
+    Direct Children ( > *): 2 per row, border 2px solid black
+*/
+
+#mainDiv {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+}
+
+#mainDiv > * {
+    border: 2px solid black;
+}
+
+/*
+    Direct Children of Main Div: 
+    -Profile
+    -MostImportantCharacteristics
+    -Extras
+    -OtherCharacteristics
+*/
+
+#profile {
+    display: flex;
+    flex-flow: row wrap;
+    width: 48vw;
+    height: auto;
+}
+
+#mostImportantCharacteristics {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    width: 48vw;
+}
+
+#extras {
+    display: flex;
+    flex-flow: column;
+    width: 48vw;
+}
+
+#otherCharacteristics {
+    display: flex;
+    flex-flow: row wrap;
+    width: 48vw;
+}
+
+/*
+    Children of Profile:
+*/
+
+#profile > * {
+    flex: 1;
+}
+
+#photoHolder {
+    width: 300px;
+    height: 250px;
+}
+
+#photo {
+    width: 160px;
+    height: 160px;
+    margin-left: 25px;
+    margin-top: 25px;
+    border: 2px solid black;
+    text-align: center;
+}
+
+#addImage {
+    font-size: 50px;
+}
+
+#addLevel {
+    border-radius: 50%;
+}
+
+/*
+    Children of mostImportantCharacteristics:
+*/
+
+#mostImportantCharacteristics input {
+    width: 15px;
+}
+
+#mostImportantCharacteristics > * {
+    margin: 10px;
+    width: 30%;
+}
+
+/*
+    Children of extras:
+*/
+
+#extras button {
+    text-align: left;
+    width: min-content;
+    font-size: 20px;
+}
+
+/*
+    Children of otherCharacteristics:
+*/
+
+#otherCharacteristics > * {
+    width: 49%;
+}
