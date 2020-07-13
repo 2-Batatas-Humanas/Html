@@ -1,7 +1,5 @@
 character = JSON.parse(localStorage.getItem("character"));
 if(!character) console.log("Couldn't load character");
-choices = JSON.parse(localStorage.getItem("choices"));
-if(!choices) console.log("Couldn't load choices");
 
 possibleTraditions = Object.keys(traditions);
 
@@ -35,6 +33,7 @@ function loadChoices(){
                 addPToDiv(id, "Escolha uma tradição, inicialmente.");
                 addPToDiv(id, "Depois você terá duas escolhas: escolher uma nova tradição ou escolher uma magia para cada escolha.");
                 traditionSpellsChoices = 3;
+                character.additionalAttCharacts.power = 1;
                 switch(character.novicePath.religion){
                     case "Culto do Novo Deus":
                         possibleTraditions = ["Celestial", "Teurgia", "Vida"];
@@ -256,6 +255,5 @@ function nextPage(){
         })
     });
     localStorage.setItem("character", JSON.stringify(character));
-    localStorage.setItem("choices", JSON.stringify(choices));
     window.location.href = "market.html";
 }
