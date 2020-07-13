@@ -203,7 +203,45 @@ function setWealth(){
             createNewInput(id, "Você recebeu um objeto encantado por causa do antecedente. Coloque o nome dele: ", "background", "text");
             addBrToDiv(id, 1);
             createNewInput(id, "Coloque a propriedade mágica do seu objeto: ", "magicProperty", "text");
-        
+            break;
+        case "1d6 insanity":
+        case "1d6 insanity+profession":
+            addBrToDiv(id);
+            createNewInput(id, "Qual é o tanto de insanidade que o seu personagem recebeu do seu antecedente(1d6): ", "insanity", "number", null, 1, 1, 6);
+            break;
+        case "1d3 insanity":
+            addBrToDiv(id);
+            createNewInput(id, "Qual é o tanto de insanidade que o seu personagem recebeu do seu antecedente(1d3): ", "insanity", "number", null, 1, 1, 3);
+            break;
+        case "1d3 corruption":
+            addBrToDiv(id);
+            createNewInput(id, "Qual é o tanto de corrupção que o seu personagem recebeu do seu antecedente(1d3): ", "corruption", "number", null, 1, 1, 3);
+            break;
+    }
+    if(character.ancestry == "clockwork"){
+        addBrToDiv(id);
+        switch(choices.purposeChange){
+            case "2 strength/agility":
+                createOptionsInput(id, "Escolha um atributo para aumentar em 2(função autômata): ", "purpose",
+                ["Força", "Agilidade"],
+                ["strength", "agility"]);
+                break;
+            case "2 intellect/will":
+                createOptionsInput(id, "Escolha um atributo para aumentar em 2(função autômata): ", "purpose",
+                ["Intelecto", "Vontade"],
+                ["intellect", "will"]);
+                break;
+            case "2 agility/intellect":
+                createOptionsInput(id, "Escolha um atributo para aumentar em 2(função autômata): ", "purpose",
+                ["Intelecto", "Agilidade"],
+                ["intellect", "agility"]);
+                break;
+            case "2 attribute":
+                createOptionsInput(id, "Escolha um atributo para aumentar em 2(função autômata): ", "purpose",
+                ["Força", "Agilidade", "Intelecto", "Vontade"],
+                ["strength", "agility", "intellect", "will"]);
+                break;
+        }
     }
 }
 
@@ -300,7 +338,21 @@ function nextPage(){
             break;
         case "random enchanted object":
             choices.newObject = document.querySelector("#background").value;
-            choices.magicProperty = document.querySelector("#magicProperty").value;        
+            choices.magicProperty = document.querySelector("#magicProperty").value;
+            break;
+        case "1d6 insanity":
+        case "1d6 insanity+profession":
+            choices.backgroundInsanity = document.querySelector("#insanity").value;
+            break;
+        case "1d3 corruption":
+            choices.backgroundCorruption = document.querySelector("#corruption").value;
+            break;
+        case "1d3 insanity":
+            choices.backgroundInsanity = document.querySelector("#insanity").value;
+            break;
+    }
+    if(character.ancestry == "clockwork"){
+        choices.purposeChoice = document.querySelector("#purpose").value;
     }
 
     choices.interestingThings = [document.querySelector("#interestingThing").value];
