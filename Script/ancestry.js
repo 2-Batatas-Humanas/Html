@@ -56,7 +56,7 @@ function setDwarf(){
     addBrToDiv(id, 1);
     createOptionsInput(id, "Seu antecedente é algum desses?(se não for nenhum, selecione a última opção: \"Nenhum\") ", "backgroundChange", 
     ["O personagem vendeu sua alma ao diabo para ganhar riquezas. O diabo o enganou e o deixou sem dinheiro nenhum. Ele começa o jogo com 1 de Corrupção.", "O personagem ganha a vida trabalhando em uma profissão.", "O personagem é um artesão talentoso. Adicione artesão (qualquer um) a sua lista de profissões.", "O personagem viajou muito. Ele fala um idioma adicional.", "O personagem herdou um machado de batalha ou um martelo de guerra de um ancestral.", "O personagem tem a chave para um antigo cofre de tesouros dos anões, perdido há muito tempo.", "O personagem conseguiu algum dinheiro e começa o jogo com 2d6 cc.", "Nenhum"], 
-    ["1 corruption", "profession", "profession artisan", "language", "battlehammer/warhammer", "key to ancient dwarf tresure vault", "2d6 cp", "none"]);
+    ["1 corruption", "profession", "profession artisan", "language", "battlehammer/warhammer", "key to ancient dwarf treasure vault", "2d6 cp", "none"]);
 }
 
 function setClockwork(){
@@ -244,7 +244,7 @@ function createCharacter(){
                     age: document.querySelector("#age").value,
                     size: document.querySelector("#size").value,
                     appearance: document.querySelector("#appearance").value,
-                    background: document.querySelector("#background").value
+                    background: document.querySelector("#background").value,
                 };
                 escolhas = {
                     raisedAttribute: document.querySelector("#raisedAttribute").value,
@@ -296,7 +296,7 @@ function createCharacter(){
                     age: document.querySelector("#age").value,
                     religion: document.querySelector("#religion").value,
                     appearance: document.querySelector("#appearance").value,
-                    background: document.querySelector("#background").value
+                    background: document.querySelector("#background").value,
                 };
                 escolhas = {
                     purposeChange: document.querySelector("#purposeChange"),
