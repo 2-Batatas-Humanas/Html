@@ -60,9 +60,9 @@ function nextPage(){
     let novicePath = document.querySelector("#novicePath").value;
     character.novicePath = {
         "type": novicePath,
-        "training": training,
-        "attributes": [attribute1, attribute2]
+        "training": training
     }
+    choices["novicePathAttributes"] = [attribute1, attribute2];
     switch(novicePath){
         case "rogue":
             choices.rogueProfLangChoice = document.querySelector("#rogueProfLangChoice").value;
