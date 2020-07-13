@@ -1,9 +1,10 @@
 character = JSON.parse(localStorage.getItem("character"));
 if(!character) console.log("Couldn't load character");
 choices = JSON.parse(localStorage.getItem("choices"));
-if(!choices) console.log("Couldn't load choices");
+if(!choices) thereChoices = false;
+else thereChoices = true;
 
-if(!character.bag){
+if(thereChoices){
     character.bag = {
         weapons: {},
         ammo: {},
@@ -14,7 +15,7 @@ if(!character.bag){
         money: {
             bits: 0,
             copperPennies: parseInt(choices.backgroundMoney) || 0,
-            silverShillings:    parseInt(choices.level1Money),
+            silverShillings: parseInt(choices.level1Money),
             goldCrowns: 0
         }
     };
@@ -22,7 +23,6 @@ if(!character.bag){
     if(character.ancestry == "yerath" && choices.backgroundChange == "extra interesting thing"){
         character.bag.items[choices.interestingThings[1]] = {};
     }
-    
     switch(character.wealth){
         case "destitute":
             character.bag.type = "Bolsa";
@@ -170,7 +170,7 @@ if(!character.bag){
                 character.bag.weapons["Martelo de guerra"] = deepCopy(item.weapon["Espada bastarda ou martelo de guerra"]);
             }
             break;
-        case "key to ancient dwarf tresure vault":
+        case "key to ancient dwarf treasure vault":
             character.bag.items["Chave para um antigo cofre de tesouros dos anões"] = {};
             break;
         case "knife":
@@ -231,7 +231,7 @@ function setBag(){
         createHtmlList("bag", "bagAmmo", []);
         let ammo = Object.keys(character.bag.ammo);
         ammo.forEach(function(val){
-            appendLiElement("bagAmmo", val + ": " + character.bag.ammo.quantity);
+            appendLiElement("bagAmmo", val + ": " + character.bag.ammo[val].quantity);
         });
     }
     if(!isEmpty(character.bag.armors)){
@@ -1395,8 +1395,110 @@ function buyItems(){
                     break;
             }
         });
+        if(thereChoices){
+            character = processChoices(character, choices);
+            localStorage.removeItem("choices");
+        }
         localStorage.setItem("character", JSON.stringify(character));
-        localStorage.setItem("choices", JSON.stringify(choices));
-        //window.location.href = "";
+        window.location.href = "character.html";
     }
+}
+
+function processChoices(charact, chs){
+    let newCharacter = deepCopy(charact);
+    newCharacter.status = {
+        strength: 0,
+        agility: 0,
+        intellect: 0,
+        will: 0,
+        perception: 0,
+        defense: null,
+        health: 0,
+        size: null,
+        speed: null,
+        damage: 0,
+        power: 0,
+        insanity: 0,
+        corruption: 0,
+        level: 1
+    }
+    if(chs.backgroundChange){
+        switch(chs.backgroundChange){
+            case "1d6 insanity":
+            case "1d6 insanity+profession":
+            case "1d3 insanity":
+                newCharacter.status.insanity = chs.backgroundInsanity;
+                break;
+            case "1d3 corruption":
+                newCharacter.status.corruption = chs.backgroundCorruption;
+                break;
+            case "1 corruption":
+                newCharacter.status.corruption = 1;
+                break;
+            case "1 insanity":
+                newCharacter.status.insanity = 1;
+                break;
+            case "2 corruption":
+                newCharacter.status.corruption = 2;
+                break;
+            case "1 intellect+1 will+!caste att":
+                newCharacter.status.intellect = 1;
+                newCharacter.status.will = 1;
+                break;
+        }
+    }
+    switch(charact.ancestry){
+        case "human":
+            newCharacter.status[chs.raisedAttribute] = 1;
+            break;
+        case "clockwork":
+            switch(chs.purposeChange){
+                case "2 strength/agility":
+                case "2 intellect/will":
+                case "2 agility/intellect":
+                case "2 attribute":
+                    newCharacter.status[chs.purposeChoice] += 2;
+                    break;
+                case "2 strength":
+                    newCharacter.status.strength += 2;
+                    break;
+            }
+            break;
+        case "yerath":
+            if(chs.backgroundChange != "1 intellect+1 will+!caste att"){
+                switch(chs.casteChoice){
+                    case "profession laborer+2 strength+1 will":
+                        newCharacter.status.strength += 2;
+                        newCharacter.status.will += 1;
+                        break;
+                    case "profession guide+1 agility+1 perception":
+                        newCharacter.status.agility += 1;
+                        newCharacter.status.perception += 1;
+                        break;
+                    case "profession soldier+2 strength+13 defense":
+                        newCharacter.status.strength += 2;
+                        newCharacter.status.defense = 13;
+                        break;
+                }
+            }
+    }
+    switch(charact.novicePath.type){
+        case "warrior":
+            newCharacter.status.health += 5;
+            break;
+        case "rogue":
+            newCharacter.status.health += 3;
+            break;
+        case "magician":
+            newCharacter.status.health += 2;
+            newCharacter.status.power += 1;
+            break;
+        case "priest":
+            newCharacter.status.power += 1;
+            newCharacter.status.health += 4;
+            break;
+    }
+    newCharacter.status[choices.novicePathAttributes[0]] += 1;
+    newCharacter.status[choices.novicePathAttributes[1]] += 1;
+    return newCharacter;
 }
