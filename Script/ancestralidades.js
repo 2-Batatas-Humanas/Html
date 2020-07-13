@@ -1,5 +1,7 @@
 class Character{
-    constructor(name, personality, age, religion, background, strength, agility, intellect, will, perception, defense, health, size, speed, power, damage, insanity, corruption, level){
+    constructor(name, personality, age, religion, background, strength, agility, intellect, will,
+        perception, defense, health, size, speed, power, damage, insanity, corruption, level,
+        professions, paths, bag, traditions){
         this._name = name;
         this._personality = personality;
         this._age = age;
@@ -19,8 +21,7 @@ class Character{
         this._insanity = insanity;
         this._corruption = corruption;
         this._level = level;
-
-        this._healingRate = Math.floor(health/4);
+        
         this._languageList = {
             "Língua Comum": {
                 speakable: true,
@@ -28,19 +29,48 @@ class Character{
                 writable: false
             } 
         }
-        this._professionList = [];
-        this._talents = {};
-        this._talents["ancestry"] = {};
-        this._talents["novicePath"] = {};
-        this._talents["expertPath"] = {};
-        this._talents["masterPath"] = {};
+        this._professionList = professions;
+        this._talents = {
+            "ancestry": {},
+            "novicePath": {},
+            "expertPath": {},
+            "masterPath": {}
+        };
+
+        switch(paths.novice.type){
+            case "warrior":
+                this._novicePath = new Warrior(paths.novice.training, level);
+                break;
+            case "rogue":
+                if(level == 1){
+                    this._novicePath = new Rogue(paths.novice.training, level);
+                }
+                else if(level < 8){
+                    this._novicePath = new Rogue(paths.novice.training, level, paths.novice.talentChoice2);
+                }
+                else{
+                    this._novicePath = new Rogue(paths.novice.training, level, paths.novice.talentChoice2, paths.novice.talentChoice8);
+                }
+                break;
+            case "magician":
+                this._novicePath = new Magician(paths.novice.training, level);
+                break;
+            case "priest":
+                this._novicePath = new Priest(paths.novice.training, level);
+                break;
+        }
+        this._talents.novicePath = this.novicePath.talents;
+
+        this._bag = bag;
+
+        this._traditions = traditions;
     }
     // Most likely immutable properties
     get name(){
         return this._name;
     }
-    set name(name){
-        this._name = name;
+    set name(newName){
+        this._name = newName;
     }
     get personality(){
         return this._personality;
@@ -80,7 +110,7 @@ class Character{
     }
     // Special case: all ancestries have healing rate = current health / 4 -> round down(floor)
     get healingRate(){
-        return Math.floor(this._health/4);
+        return Math.floor(this.health/4);
     }
     // Special case 2: when you level up, a function inside the ancestry specific class will be triggered
     get level(){
@@ -94,7 +124,7 @@ class Character{
         return this._power;
     }
     set power(value){
-        return this._power = value
+        this._power = value
     }
     // Mutable properties:
     //Strength:
@@ -174,19 +204,28 @@ class Character{
     }   
     addSpeakedLanguage(language){
         if(!(language in this._languageList)){
-            this._languageList[language] = {};
+            this._languageList[language] = {
+                "readable": false,
+                "writable": false
+            };
         }
         this._languageList[language]["speakable"] = true;
     }
     addReadableLanguage(language){
         if(!(language in this._languageList)){
-            this._languageList[language] = {};
+            this._languageList[language] = {
+                "speakable": false,
+                "writable": false
+            };
         }
         this._languageList[language]["readable"] = true;
     }
     addWritableLanguage(language){
         if(!(language in this._languageList)){
-            this._languageList[language] = {};
+            this._languageList[language] = {
+                "readable": false,
+                "speakable": false
+            };
         }
         this._languageList[language]["writable"] = true;
     }
@@ -195,23 +234,38 @@ class Character{
         return this._professionList;
     }
     addProfession(profession){
-        this._professionList[this._professionList.length] = profession;
+        this._professionList[this.professionList.length] = profession;
     }
     //Talents:
     get talents(){
-        return this._ancestryTalents;
+        return this._talents;
     }
+
     addTalent(type, name, description){
         this._talents[type][name] = description;
+    }
+
+    get bag(){
+        return this._bag;
+    }
+
+    get novicePath(){
+        return this._novicePath;
+    }
+
+    get traditions(){
+        return this._traditions;
     }
 }
 
 class Human extends Character{
-    constructor(name, personality, age, religion, background, size, build, appearance, additionalAttCharacts){
+    constructor(name, personality, age, religion, background, size, build, appearance,
+        status, professions, paths, bag, traditions){
         super(name, personality, age, religion, background,
-            10+additionalAttCharacts.strength, 10+additionalAttCharacts.agility, 10+additionalAttCharacts.intellect, 10+additionalAttCharacts.will,
-            10+additionalAttCharacts.intellect, 10+additionalAttCharacts.agility, 10+additionalAttCharacts.strength, size, 10,
-            additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
+            10+status.strength, 10+status.agility, 10+status.intellect, 10+status.will,
+            10+status.intellect, 10+status.agility, 10+status.strength, size, 10,
+            status.power, status.damage, status.insanity, status.corruption, status.level,
+            professions, paths, bag, traditions);
         this._build = build;
         this._appearance = appearance;
     }
@@ -229,13 +283,22 @@ class Human extends Character{
         this._appearance = newAppearence;
     }
     // Overriding properties setters:
+    get strength(){
+        return super.strength;
+    }
     set strength(value){
         super.health = super.health - super.strength + value;
         super.strength = value;
     }
+    get agility(){
+        return super.agility;
+    }
     set agility(value){
         super.defense = super.defense - super.agility + value;
         super.agility = value;
+    }
+    get intellect(){
+        return super.intellect;
     }
     set intellect(value){
         super.perception = super.perception - super.intellect + value;
@@ -254,11 +317,13 @@ class Human extends Character{
 }
 
 class Changeling extends Character{
-    constructor(name, personality, trueAge, religion, background, apparentGender, apparentAncestry, apparentAge, apparentBuild, apparentAppearence, quirk, additionalAttCharacts){  
+    constructor(name, personality, trueAge, religion, background, apparentGender, apparentAncestry,
+        apparentAge, apparentBuild, apparentAppearence, quirk, status, professions, paths, bag, traditions){  
         super(name, personality, trueAge, religion, background,
-            additionalAttCharacts.strength+9, additionalAttCharacts.agility+10, additionalAttCharacts.intellect+10, additionalAttCharacts.will+10,
-            additionalAttCharacts.intellect+11, additionalAttCharacts.agility+10, additionalAttCharacts.strength+10,
-            1, 10, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
+            status.strength+9, status.agility+10, status.intellect+10, status.will+10,
+            status.intellect+11, status.agility+10, status.strength+10,
+            1, 10, status.power, status.damage, status.insanity, status.corruption, status.level,
+            professions, paths, bag, traditions);
         
         this._apparentGender = apparentGender;
         this._apparentAncestry = apparentAncestry;
@@ -310,13 +375,22 @@ class Changeling extends Character{
         this._quirk = newQuirk;
     }
     // Overriding properties setters:
+    get strength(){
+        return super.strength;
+    }
     set strength(value){
         super.health = super.health - super.strength + value;
         super.strength = value;
     }
+    get agility(){
+        return super.agility;
+    }
     set agility(value){
         super.defense = super.defense - super.agility + value;
         super.agility = value;
+    }
+    get intellect(){
+        return super.intellect;
     }
     set intellect(value){
         super.perception = super.perception - super.intellect + value;
@@ -335,11 +409,13 @@ class Changeling extends Character{
 }
 
 class Clockwork extends Character{
-    constructor(name, personality, age, religion, background, purpose, form, appearance, locationKey, additionalAttCharacts){  
+    constructor(name, personality, age, religion, background, purpose, form, appearance, locationKey, status,
+        professions, paths, bag, traditions){  
         super(name, personality, age, religion, background,
-            additionalAttCharacts.strength+9, additionalAttCharacts.agility+8, additionalAttCharacts.intellect+9, additionalAttCharacts.will+9,
-            additionalAttCharacts.intellect+9, 13, additionalAttCharacts.strength+9,
-            1, 8, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
+            status.strength+9, status.agility+8, status.intellect+9, status.will+9,
+            status.intellect+9, 13, status.strength+9,
+            1, 8, status.power, status.damage, status.insanity, status.corruption, status.level,
+            professions, paths, bag, traditions);
         
         this._purpose = purpose;
         this._form = form;
@@ -377,9 +453,15 @@ class Clockwork extends Character{
         this._locationKey = newLocationKey;
     }
     // Overriding properties setters:
+    get strength(){
+        return super.strength;
+    }
     set strength(value){
         super.health = super.health - super.strength + value;
         super.strength = value;
+    }
+    get intellect(){
+        return super.intellect;
     }
     set intellect(value){
         super.perception = super.perception - super.intellect + value;
@@ -398,11 +480,13 @@ class Clockwork extends Character{
 }
 
 class Dwarf extends Character{
-    constructor(name, personality, age, religion, background, build, appearance, hatred, additionalAttCharacts){  
+    constructor(name, personality, age, religion, background, build, appearance, hatred, status,
+        professions, paths, bag, traditions){  
         super(name, personality, age, religion, background,
-            additionalAttCharacts.strength+10, additionalAttCharacts.agility+9, additionalAttCharacts.intellect+10, additionalAttCharacts.will+10,
-            additionalAttCharacts.intellect+11, additionalAttCharacts.agility+9, additionalAttCharacts.strength+14,
-            0.5, 8, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
+            status.strength+10, status.agility+9, status.intellect+10, status.will+10,
+            status.intellect+11, status.agility+9, status.strength+14,
+            0.5, 8, status.power, status.damage, status.insanity, status.corruption, status.level,
+            professions, paths, bag, traditions);
         
         this._build = build
         this._appearance = appearance;
@@ -436,13 +520,22 @@ class Dwarf extends Character{
         this._hatred = newHatred;
     }
     // Overriding properties setters:
+    get strength(){
+        return super.strength;
+    }
     set strength(value){
         super.health = super.health - super.strength + value;
         super.strength = value;
     }
+    get agility(){
+        return super.agility;
+    }
     set agility(value){
         super.defense = super.defense - super.agility + value;
         super.agility = value;
+    }
+    get intellect(){
+        return super.intellect;
     }
     set intellect(value){
         super.perception = super.perception - super.intellect + value;
@@ -461,11 +554,13 @@ class Dwarf extends Character{
 }
 
 class Goblin extends Character{
-    constructor(name, personality, age, religion, background, build, distinctiveAppearance, oddHabit, additionalAttCharacts){  
+    constructor(name, personality, age, religion, background, build, distinctiveAppearance, oddHabit, status,
+        professions, paths, bag, traditions){  
         super(name, personality, age, religion, background,
-            additionalAttCharacts.strength+8, additionalAttCharacts.agility+12, additionalAttCharacts.intellect+10, additionalAttCharacts.will+9,
-            additionalAttCharacts.intellect+11, additionalAttCharacts.agility+12, additionalAttCharacts.strength+8,
-            0.5, 10, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
+            status.strength+8, status.agility+12, status.intellect+10, status.will+9,
+            status.intellect+11, status.agility+12, status.strength+8,
+            0.5, 10, status.power, status.damage, status.insanity, status.corruption, status.level,
+            professions, paths, bag, traditions);
         
         this._build = build
         this._distinctiveAppearance = distinctiveAppearance;
@@ -498,13 +593,22 @@ class Goblin extends Character{
         this._oddHabit = newOddHabit;
     }
     // Overriding properties setters:
+    get strength(){
+        return super.strength;
+    }
     set strength(value){
         super.health = super.health - super.strength + value;
         super.strength = value;
     }
+    get agility(){
+        return super.agility;
+    }
     set agility(value){
         super.defense = super.defense - super.agility + value;
         super.agility = value;
+    }
+    get intellect(){
+        return super.intellect;
     }
     set intellect(value){
         super.perception = super.perception - super.intellect + value;
@@ -523,11 +627,13 @@ class Goblin extends Character{
 }
 
 class Orc extends Character{
-    constructor(name, personality, age, religion, background, build, appearance, additionalAttCharacts){  
+    constructor(name, personality, age, religion, background, build, appearance, status,
+        professions, paths, bag, traditions){  
         super(name, personality, age, religion, background,
-            additionalAttCharacts.strength+11, additionalAttCharacts.agility+10, additionalAttCharacts.intellect+9, additionalAttCharacts.will+9,
-            additionalAttCharacts.intellect+10, additionalAttCharacts.agility+10, additionalAttCharacts.strength+11,
-            1, 12, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption+1, additionalAttCharacts.level);
+            status.strength+11, status.agility+10, status.intellect+9, status.will+9,
+            status.intellect+10, status.agility+10, status.strength+11,
+            1, 12, status.power, status.damage, status.insanity, status.corruption+1, status.level,
+            professions, paths, bag, traditions);
         
         this._build = build
         this._appearance = appearance;
@@ -551,13 +657,22 @@ class Orc extends Character{
         this._appearance = newAppearance;
     }
     // Overriding properties setters:
+    get strength(){
+        return super.strength;
+    }
     set strength(value){
         super.health = super.health - super.strength + value;
         super.strength = value;
     }
+    get agility(){
+        return super.agility;
+    }
     set agility(value){
         super.defense = super.defense - super.agility + value;
         super.agility = value;
+    }
+    get intellect(){
+        return super.intellect;
     }
     set intellect(value){
         super.perception = super.perception - super.intellect + value;
@@ -576,14 +691,15 @@ class Orc extends Character{
 }
 
 class Yerath extends Character{
-    constructor(name, caste, age, religion, personality, background, additionalAttCharacts){
+    constructor(name, caste, age, religion, personality, background, status,
+        professions, paths, bag, traditions){
         super(name, personality, age, religion, background, 
-            additionalAttCharacts.strength+9, additionalAttCharacts.agility+10, additionalAttCharacts.intellect+10, additionalAttCharacts.will+9,
-            additionalAttCharacts.intellect+10, 12, additionalAttCharacts.strength+9,
-            1, 10, additionalAttCharacts.power, additionalAttCharacts.damage, additionalAttCharacts.insanity, additionalAttCharacts.corruption, additionalAttCharacts.level);
-        
+            status.strength+9, status.agility+10, status.intellect+10, status.will+9,
+            status.perception+10, status.defense || 12, status.health+9,
+            status.size || 1, status.speed || 10, status.power, status.damage, status.insanity, status.corruption, status.level,
+            professions, paths, bag, traditions);
         this._caste = caste;
-        super.addSpeakedLanguage("yerath");
+        super.addSpeakedLanguage("Yerath");
         super.addTalent("ancestry", "Extra Arms", " You have a second pair of arms that end in hands. These appendages are useful only for fine manipulation and carrying small, lightweight objects or performing minor activities. On your turn, you can use a triggered action to reload a weapon.");
         super.addTalent("ancestry", "Flutter", "You can use an action to unfurl your wings, which lets you move by flying until the end of the round, although you fly at half Speed. While your wings are unfurled, you grant 1 boon on attack rolls made against you.");
         super.addTalent("ancestry", "Musk", "You can use an action, or a triggered action when you take damage, to squirt your musk into a 1-yard cube originating from a point you can reach. Any creature in that space must get a success on a Strength challenge roll or become impaired for 1 round. Once you use your Musk, you must wait at least 1 minute before you can use it again. As part of using this talent, you can use the scent to communicate one concept such as fear, anger, sorrow, or security. Any yerathi within 5 yards of the space can perceive this message.");
@@ -596,9 +712,15 @@ class Yerath extends Character{
         this._caste = newCaste;
     }
     // Overriding properties setters:
+    get strength(){
+        return super.strength;
+    }
     set strength(value){
         super.health = super.health - super.strength + value;
         super.strength = value;
+    }
+    get intellect(){
+        return super.intellect;
     }
     set intellect(value){
         super.perception = super.perception - super.intellect + value;
@@ -606,8 +728,8 @@ class Yerath extends Character{
     }
     // New ascentry-specific methods:
     level4(){
-        super._defense = super._defense + 1;
-        super._health = super._health + 1;
+        super.defense = super.defense + 1;
+        super.health = super.health + 1;
     }
     levelUp(){
         super.level = super.level + 1;
@@ -617,31 +739,217 @@ class Yerath extends Character{
     }
 }
 
-function parseJsonBackToAncestryClassObject(ancestry, jsonObject){
-    switch(ancestry){
+function getCharacter(object){
+    if(!object.traditions){
+        object.traditions = {};
+    }
+    let paths = {
+        novice: {
+            type: object.novicePath.type,
+        }
+    };
+    if(object.status.level >= 2 && object.novicePath.type == "rogue"){
+        if(object.novicePath.talentChoice2){
+            paths.novice.talentChoice2 = object.novicePath.talentChoice2;
+        }
+        if(object.novice.talentChoice8){
+            paths.novice.talentChoice8 = object.novicePath.talentChoice8;
+        }
+    }
+    if(object.expertPath){
+        paths.expertPath = {
+            type: object.expertPath.type
+        }
+    }
+    if(object.masterPath){
+        paths.masterPath = {
+            type: object.masterPath.type
+        }
+    }
+    let characterCreated;
+    let keys;
+    switch(object.ancestry){
         case "human":
-            break;
+            characterCreated = new Human(object.name, object.personality, object.age, object.religion,
+                object.background, object.size, object.build, object.appearance, object.status,
+                object.professions, paths, object.bag, object.traditions);
+            keys = Object.keys(object.languages);
+            keys.forEach(function(language){
+                if(object.languages[language].speakable){
+                    characterCreated.addSpeakedLanguage(language);
+                }
+                if(object.languages[language].readable){
+                    characterCreated.addReadableLanguage(language);
+                }
+                if(object.languages[language].writable){
+                    characterCreated.addWritableLanguage(language);
+                }
+            });
+            return characterCreated;
         case "dwarf":
-            
-            break;
-        case "clockwork":
-
-            break;
+            characterCreated = new Dwarf(object.name, object.personality, object.age, object.religion,
+                object.background, object.build, object.appearance, object.hatred, object.status,
+                object.professions, paths, object.bag, object.traditions);
+            keys = Object.keys(object.languages);
+            keys.forEach(function(language){
+                if(object.languages[language].speakable){
+                    characterCreated.addSpeakedLanguage(language);
+                }
+                if(object.languages[language].readable){
+                    characterCreated.addReadableLanguage(language);
+                }
+                if(object.languages[language].writable){
+                    characterCreated.addWritableLanguage(language);
+                }
+            });
+            return characterCreated;
         case "changeling":
-
-            break;
+            characterCreated = new Changeling(object.name, object.personality, object.age,
+                object.religion, object.background, object.apparentGender, object.apparentAncestry,
+                object.apparentAge, object.apparentBuild, object.apparentAppearance, 
+                object.quirk, object.status, object.professions, paths, object.bag, object.traditions);
+            keys = Object.keys(object.languages);
+            keys.forEach(function(language){
+                if(object.languages[language].speakable){
+                    characterCreated.addSpeakedLanguage(language);
+                }
+                if(object.languages[language].readable){
+                    characterCreated.addReadableLanguage(language);
+                }
+                if(object.languages[language].writable){
+                    characterCreated.addWritableLanguage(language);
+                }
+            });
+            return characterCreated;
+        case "clockwork":
+            characterCreated = new Clockwork(object.name, personality, object.age, object.religion,
+                object.background, object.purpose, object.form, object.appearance,
+                object.locationKey, object.status, object.professions, paths, object.bag, object.traditions);
+            keys = Object.keys(object.languages);
+            keys.forEach(function(language){
+                if(object.languages[language].speakable){
+                    characterCreated.addSpeakedLanguage(language);
+                }
+                if(object.languages[language].readable){
+                    characterCreated.addReadableLanguage(language);
+                }
+                if(object.languages[language].writable){
+                    characterCreated.addWritableLanguage(language);
+                }
+            });
+            return characterCreated;
         case "goblin":
-
-            break;
+            characterCreated = new Goblin(object.name, object.personality, object.age, object.religion,
+                object.background, object.build, object.distinctiveAppearance, object.oddHabit, object.status,
+                object.professions, paths, object.bag, object.traditions);
+            keys = Object.keys(object.languages);
+            keys.forEach(function(language){
+                if(object.languages[language].speakable){
+                    characterCreated.addSpeakedLanguage(language);
+                }
+                if(object.languages[language].readable){
+                    characterCreated.addReadableLanguage(language);
+                }
+                if(object.languages[language].writable){
+                    characterCreated.addWritableLanguage(language);
+                }
+            });
+            return characterCreated;
         case "orc":
-
-            break;
+            characterCreated = new Orc(object.name, object.personality, object.age, object.religion,
+                object.background, object.build, object.appearance, object.status,
+                object.professions, paths, object.bag, object.traditions);
+            keys = Object.keys(object.languages);
+            keys.forEach(function(language){
+                if(object.languages[language].speakable){
+                    characterCreated.addSpeakedLanguage(language);
+                }
+                if(object.languages[language].readable){
+                    characterCreated.addReadableLanguage(language);
+                }
+                if(object.languages[language].writable){
+                    characterCreated.addWritableLanguage(language);
+                }
+            });
+            return characterCreated;
+        case "yerath":
+            characterCreated = new Yerath(object.name, object.caste, object.age, object.religion,
+                object.personality, object.background, object.status,
+                object.professions, paths, object.bag, object.traditions);
+            keys = Object.keys(object.languages);
+            keys.forEach(function(language){
+                if(object.languages[language].speakable){
+                    characterCreated.addSpeakedLanguage(language);
+                }
+                if(object.languages[language].readable){
+                    characterCreated.addReadableLanguage(language);
+                }
+                if(object.languages[language].writable){
+                    characterCreated.addWritableLanguage(language);
+                }
+            });
+            return characterCreated;
         default:
-            console.log("Unable to get ancestry object - " + ancestry + " isn't an ancestry");
+            console.log("Unable to get ancestry character - " + ancestry + " isn't an ancestry");
     }
 }
 
+function getCharacterObject(characterToBeObject){
+    let newObject = {
+        "age": characterToBeObject.age,
+        "personality": characterToBeObject.personality,
+        "religion": characterToBeObject.religion,
+        "background": characterToBeObject.background,
+        "name": characterToBeObject.name,
+        "status": characterToBeObject.status,
+    };
+    
+    if(characterToBeObject instanceof Human){
+        newObject.ancestry = "human";
+        newObject.size = characterToBeObject.size;
+        newObject.appearance = characterToBeObject.appearance;
+        newObject.build = characterToBeObject.build;
+    }
+    else if(characterToBeObject instanceof Dwarf){
+        newObject.ancestry = "dwarf";
+        newObject.appearance = characterToBeObject.appearance;
+        newObject.build = characterToBeObject.build;
+        newObject.hatred = characterToBeObject.hatred;
+    }
+    else if(characterToBeObject instanceof Changeling){
+        newObject.ancestry = "changeling";
+        newObject.apparentGender = characterToBeObject.apparentGender;
+        newObject.apparentAncestry = characterToBeObject.apparentAncestry;
+        newObject.apparentAge = characterToBeObject.apparentAge;
+        newObject.apparentBuild = characterToBeObject.apparentBuild;
+        newObject.apparentAppearence = characterToBeObject.apparentAppearence;
+        newObject.quirk = characterToBeObject.quirk;
+    }
+    else if(characterToBeObject instanceof Clockwork){
+        newObject.ancestry = "clockwork";
+        newObject.appearance = characterToBeObject.appearance;
+        newObject.purpose = characterToBeObject.purpose;
+        newObject.form = characterToBeObject.form;
+    }
+    else if(characterToBeObject instanceof Goblin){
+        newObject.ancestry = "goblin";
+        newObject.build = characterToBeObject.build;
+        newObject.distinctiveAppearance = characterToBeObject.distinctiveAppearance;
+        newObject.oddHabit = characterToBeObject.oddHabit;
+    }
+    else if(characterToBeObject instanceof Orc){
+        newObject.ancestry = "orc";
+        newObject.appearance = characterToBeObject.appearance;
+        newObject.build = characterToBeObject.build;
+    }
+    else if(characterToBeObject instanceof Yerath){
+        newObject.ancestry = "yerath";
+        newObject.caste = characterToBeObject.caste;
+    }
+    return newObject;
+}
 
+/*
 console.log("Ancestry examples:");
 
 var human = new Human("Example 1", "Crazy", 20, "None", "Came from a mafia", 0.5, "Very very weak", "Handsome af", {
@@ -649,6 +957,11 @@ var human = new Human("Example 1", "Crazy", 20, "None", "Came from a mafia", 0.5
     agility: 1,
     intellect: 0,
     will: 0,
+    perception: 0,
+    defense: null,
+    health: 0,
+    size: null,
+    speed: null,
     damage: 0,
     power: 0,
     insanity: 0,
@@ -661,6 +974,11 @@ var changeling = new Changeling("Example 2", "Cool", 30, "Dama da noite", "Kidna
     agility: 0,
     intellect: 0,
     will: 0,
+    perception: 0,
+    defense: null,
+    health: 0,
+    size: null,
+    speed: null,
     damage: 0,
     power: 0,
     insanity: 0,
@@ -673,6 +991,11 @@ var clockwork = new Clockwork("Robot 1", "Fluid", 150, "Pai morte", "Came from a
     agility: 0,
     intellect: 0,
     will: 0,
+    perception: 0,
+    defense: null,
+    health: 0,
+    size: null,
+    speed: null,
     damage: 0,
     power: 0,
     insanity: 0,
@@ -685,6 +1008,11 @@ var dwarf = new Dwarf("Sneezy", "ATCHOU!", 50, "Winter is coming", "Snow white",
     agility: 0,
     intellect: 0,
     will: 0,
+    perception: 0,
+    defense: null,
+    health: 0,
+    size: null,
+    speed: null,
     damage: 0,
     power: 0,
     insanity: 0,
@@ -697,6 +1025,11 @@ var goblin = new Goblin("Greeny", "Angry and sneaky", 15, "Lord Voldemort", "Rob
     agility: 0,
     intellect: 0,
     will: 0,
+    perception: 0,
+    defense: null,
+    health: 0,
+    size: null,
+    speed: null,
     damage: 0,
     power: 0,
     insanity: 0,
@@ -709,6 +1042,11 @@ var orc = new Orc("Construtor", "Kill.", 21, "None", "You received an education.
     agility: 0,
     intellect: 0,
     will: 0,
+    perception: 0,
+    defense: null,
+    health: 0,
+    size: null,
+    speed: null,
     damage: 0,
     power: 0,
     insanity: 0,
@@ -721,6 +1059,11 @@ var yerath = new Yerath("HarleyQuinn", "Soldier", 12, "Herself", "Buzzly", "Bee 
     agility: 0,
     intellect: 0,
     will: 0,
+    perception: 0,
+    defense: null,
+    health: 0,
+    size: null,
+    speed: null,
     damage: 0,
     power: 0,
     insanity: 0,
@@ -735,3 +1078,4 @@ console.log(dwarf);
 console.log(goblin);
 console.log(orc);
 console.log(yerath);
+*/
