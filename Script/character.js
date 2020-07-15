@@ -166,6 +166,7 @@ function loadInfo(){
             infoDiv.appendChild(build);
             let hatred = document.createElement("p");
             hatred.innerHTML = "Ódio Anão: " + character.hatred;
+            infoDiv.appendChild(hatred);
         }
         else if(character instanceof Changeling){
             let apparentAncestry = document.createElement("p");
