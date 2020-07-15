@@ -40,7 +40,7 @@ function setDwarf(){
     addBrToDiv(id);
     createOptionsInput(id, "Qual é o ódio anão do seu personagem(criatura odiada)? ", "hatred", 
     ["Ogros", "Trogloditas", "Homens-Fera", "Orcs", "Goblins", "Elfos", "Trolls", "Gigantes", "Dragões", "Demônios"], 
-    ["Ogres", "Troglodytes", "Beastmen", "Orcs", "Goblins", "Elves", "Trolls", "Giants", "Dragons", "Demons"]);
+    ["Ogros", "Trogloditas", "Homens-Fera", "Orcs", "Goblins", "Elfos", "Trolls", "Gigantes", "Dragões", "Demônios"]);
     addBrToDiv(id);
     createTextareaInput(id, "Qual é a personalidade do seu personagem? ", "personality");
     addBrToDiv(id);
@@ -107,7 +107,7 @@ function setChangeling(){
     addBrToDiv(id);
     createOptionsInput(id, "Selecione a ancestralidade aparente do seu personagem: ", "apparentAncestry", 
     ["Goblin", "Anão", "Humano", "Orc", "Yerath", "Outra"], 
-    ["goblin" , "dwarf", "human", "orc", "yerath", "other"]);
+    ["Goblin", "Anão", "Humano", "Orc", "Yerath", "Outra"]);
     addBrToDiv(id);
     createNewInput(id, "Qual é a idade aparente do seu personagem? ", "apparentAge", "number", null, 25, 0);
     addBrToDiv(id);
@@ -418,5 +418,4 @@ function createCharacter(){
     }
     console.log("Character created");
     window.location.href = 'novicePath.html';
-    
 }
