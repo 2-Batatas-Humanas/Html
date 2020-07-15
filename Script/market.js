@@ -67,7 +67,7 @@ if(thereChoices){
             character.bag.items["Odre"] = deepCopy(item.personalGear["Odre"]);
             character.bag.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
             for(let i = 0; i < (choices.numTorch || 1); i++){
-                character.bag.items["Tocha " + i + 1] = deepCopy(item.personalGear["Tocha"]);
+                character.bag.items["Tocha " + (i + 1)] = deepCopy(item.personalGear["Tocha"]);
             }
 
             if(choices.wealthWeaponChoice == "club"){
