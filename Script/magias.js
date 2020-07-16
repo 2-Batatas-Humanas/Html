@@ -206,39 +206,394 @@ traditions ={
             
         }
     },
-    "Runas": {
+    "Runa": {
         attribute: "intellect",
         darkMagic: false,
         spells: {
-            
+            "Runa do Encontro": {
+                description: "O conjurador toca o alvo e deixa um símbolo nele. Enquanto durar a magia, o conjurador sempre sabe o local exato da criatura marcada.",
+                target: " Uma criatura ou objeto ao alcance do conjurador",
+                duration: "1 hora",
+                type: "UT",
+                level: 0
+            },
+            "Traduzir Tudo": {
+                description: "Enquanto durar a magia, o conjurador pode ler qualquer escrita que encontrar.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 0
+            },
+            "Escudo Rúnico": {
+                description: "O conjurador escreve uma runa no alvo que se mantém pela duração da magia. As criaturas que fizerem ataques com armas contra o portador da runa fazem suas jogadas de ataque com 1 perdição.",
+                target: "Um escudo ao alcance do conjurador",
+                duration: "1 minuto",
+                type: "UT",
+                level: 1
+            },
+            "Grifo de Fogo": {
+                description: "Um glifo ardente aparece sobre o alvo enquanto durar a magia. Quando conjura a magia, e ao fim de cada rodada de duração, o glifo libera chamas que se espalham por uma esfera de 2 metros, centrada em um ponto no espaço do alvo, causando 1d6+2 de dano a tudo na área. Cada criatura na área deve fazer uma jogada de desafio de Agilidade com 1 perdição, caso obtenham sucesso, não sofrem dano.",
+                target: "Um ponto no espaço a curta distância.",
+                duration: "1 minuto",
+                type: "AT",
+                level: 1
+            },
+            "Marca da Ruína": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Agilidade do alvo. Caso seja bem-sucedido, ele prende uma runa ao alvo por 1 minuto. Uma vez por rodada, enquanto durar a magia, quando o alvo sofrer dano, ele sofre 1d6 de dano adicional da runa.",
+                target: "Uma criatura a curta distância.",
+                type: "AT",
+                level: 1
+            },
+            "Prisão Glífica": {
+                description: "Um anel de glifos ardentes envolve o alvo e se mantém no lugar enquanto durar a magia. Caso abandone o espaço ou passe pelas runas, ele deve fazer uma jogada de desafio de Força com 1 perdição. Caso fracasse, ele sofre 6d6 de dano; ou metade do dano, caso seja bem-sucedido.",
+                target: "Uma criatura no campo de visão do conjurador a curta distância",
+                duration: "1 minuto",
+                type: "AT",
+                level: 2
+            },
+            "Runa da Ocultação": {
+                description: "O conjurador toca o alvo e uma runa aparece sobre ele. Enquanto durar a magia, o alvo não pode ser percebido por magia, e caso esteja em uma área obscurecida no fim da rodada, ele automaticamente está escondido até que utilize uma ação para se mover.",
+                target: "Uma criatura ao alcance do conjurador.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 2
+            },
+            "Armadilha Selo": {
+                description: "Uma runa surge no ponto de origem e permanece até o fim da magia. Quando uma criatura se mover para dentro ou para fora da área, e ao fim de cada rodada enquanto durar o efeito, raios crepitantes se espalham a partir da runa, causando 2d6 de dano a tudo na área. Cada criatura na área deve fazer uma jogada de desafio de Agilidade. Ela se torna imóvel por 1 rodada, caso fracasse, ou sofre metade do dano, caso seja bem-sucedida.",
+                target: "Um círculo com 4 metros de raio, centrado em um ponto no solo a média distância",
+                duration: "1 minuto",
+                type: "UT",
+                level: 3
+            },
+            "Runa da Força": {
+                description: "Uma runa brilhante surge no alvo onde o conjurador o tocou. Enquanto durar a magia, ele faz jogadas de ataque e de desafio de Força com 2 dádivas, seus ataques com armas de combate corpo a corpo passam a causar 2d6 de dano adicional.",
+                target: "Uma criatura ao alcance do conjurador.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 3
+            },
+            "Arma Rúnica": {
+                description: "O conjurador escreve uma runa brilhante na arma alvo. Enquanto durar a magia, ataques utilizando aquela arma causam 3d6 de dano adicional.",
+                target: "Uma arma ao alcance do conjurador.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 4
+            },
+            "Runa do Poder": {
+                description: "Uma runa brilhante surge no alvo onde o conjurador o tocou. Enquanto durar a magia, o alvo faz jogadas de ataque e de desafio com 2 dádivas, recebe um bônus de +20 para Saúde e causa 1d6 de dano adicional com qualquer ataque que cause dano.",
+                target: "Uma criatura ao alcance do conjurador",
+                duration: "1 minuto",
+                type: "UT",
+                level: 5
+            }
         }
     },
     "Sombras": {
         attribute: "intellect",
         darkMagic: false,
         spells: {
-            
+            "Lâmina do Crepúsculo": {
+                description: "Feixes de escuridão criam uma lâmina sólida na mão do conjurador que dura até que o efeito acabe ou a lâmina saia de sua mão. Ela funciona como uma arma rápida de mão inábil, com a propriedade sutileza e causa 1d6 de dano. Ela causa 1d6 de dano adicional, quando o conjurador é bem-sucedido em uma jogada de ataque contra um alvo escondido por sombras ou escuridão.",
+                duration: "1 minuto; consulte o efeito",
+                type: "UT",
+                level: 0
+            },
+            "Muralha da Escuridão": {
+                description: "A área se torna opaca enquanto durar o efeito e obscurece completamente tudo dentro e atrás dela, bloqueando toda luz criada por fontes naturais.",
+                area: "Um círculo com 2 metros de raio, com qualquer orientação, centrado em um ponto a média distância",
+                duration: "1 minuto",
+                type: "UT",
+                level: 0
+            },
+            "Dardo de Sombra": {
+                description: "Um míssil de escuridão profunda salta da mão do personagem. O conjurador faz uma jogada de ataque de Intelecto contra a Agilidade do alvo. Caso seja bem-sucedido, ele sofre 2d6 de dano e faz suas jogadas de desafio de Percepção com 3 perdições por 1 minuto.",
+                target: "Uma criatura a média distância.",
+                type: "AT",
+                level: 1
+            },
+            "Escuridão": {
+                description: "Uma escuridão profunda preenche a área, obscurecendo completamente o espaço enquanto durar a magia. A escuridão cancela toda luz de fontes naturais e as criadas por magias de nível 0, além de bloquear toda visão não mágica, com exceção de visão da verdade. Caso o personagem conjure esta magia em um objeto que tenha tocado, a área de escuridão se move com ele. Se o objeto for completamente coberto, o efeito da magia é suprimido até que ele esteja livre novamente.",
+                area: "Uma esfera com 5 metros de raio, centrada em um ponto a curta distância.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 1
+            },
+            "Visão no Escuro": {
+                description: "O conjurador toca o alvo, que recebe visão no escuro enquanto durar a magia.",
+                target: "Uma criatura ao alcance de toque.",
+                duration: "1 hora",
+                type: "UT",
+                level: 1
+            },
+            "Caminhar nas Sombras": {
+                description: "Enquanto durar a magia, quando o conjurador entra em um espaço obscurecido por sombras ou escuridão, ele pode sair instantaneamente em um local aberto nas mesmas condições a média distância daquele que entrou. Ele pode se mover desta maneira uma vez por rodada.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 2
+            },
+            "Monstro das Sombras": {
+                description: "Filamentos de escuridão se reúnem em uma área para formar um monstro médio compelido com a propriedade voador. O monstro das sombras pode ter qualquer aparência que escolher. Caso ele fique incapacitado, o efeito termina.",
+                area: "Um cubo, 1 metro de lado, originado de um ponto a média distância.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 2
+            },
+            "Raios Negros do Submundo": {
+                description: "Três mísseis de escuridão saltam da mão do conjurador, que pode dividi-los como quiser entre os alvos. Para cada míssil, será realizada uma jogada de ataque de Intelecto contra a Agilidade do alvo. Caso obtenha sucesso, ele sofre 2d6 de dano e se move 1d6 metros para longe do conjurador",
+                target: "Até três criaturas a média distância.",
+                attackRoll20: "O alvo sofre 1d6 de dano adicional.",
+                type: "AT",
+                level: 3
+            },
+            "Magia das Sombras": {
+                description: "O conjurador escolhe uma magia de nível 2 ou menor de uma tradição que não seja Sombra. Ele conjura a magia sem gastar a conjuração, mesmo que não tenha mais conjurações daquela magia sobrando.",
+                type: "UT",
+                level: 3
+            },
+            "Portais Sombrios": {
+                description: "A escuridão preenche cada cubo, obscurecendo completamente seu espaço e bloqueando toda visão não mágica, com exceção de visão da verdade. Atribua um número de 1 a 6 a cada cubo. Quando uma criatura entra em um dos cubos, ela deve fazer uma jogada de desafio de Intelecto para escolher em qual cubo sairá. Caso seja bem-sucedida, ela instantaneamente sai no espaço aberto do cubo escolhido. Caso fracasse, a criatura joga um d6 para determinar o cubo do qual sai. Em ambos os casos, ela decide por qual direção sair do cubo.",
+                area: "Seis cubos de 1 metro de lado a longa distância.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 4
+            },
+            "Enervação": {
+                description: "Um raio negro salta da palma da mão do conjurador, que faz uma jogada de ataque de Intelecto contra a Agilidade do alvo. Caso seja bem-sucedido, ele sofre uma penalidade de -20 em sua Saúde por 1 hora. Quando essa penalidade se aplica, o alvo também fica debilitado.",
+                target: "Uma criatura viva a longa distância.",
+                attackRoll20: "A penalidade se torna -30.",
+                type: "AT",
+                level: 5
+            }
         }
     },
     "Tecnomancia": {
         attribute: "intellect",
         darkMagic: false,
         spells: {
-            
+            "Fazer Gambiarra": {
+                description: "O conjurador toca o alvo, removendo 1d6 de dano dele.",
+                target: "Um objeto de Tamanho 2 ou menos que tenha sofrido 1 ou mais dano, mas que não esteja destruído, ao alcance do conjurador.",
+                type: "UT",
+                level: 0
+            },
+            "Ferramenta Mágica": {
+                description: "O conjurador cria e ataca com uma chave inglesa. Ele faz uma jogada de ataque de Intelecto contra a Defesa do alvo. Caso seja bem-sucedido, o alvo sofre 1d6+1 de dano e fica prostrado.",
+                target: "Uma criatura ou objeto a curta distância.",
+                attackRoll20: "O alvo também fica debilitado até o fim da rodada.",
+                type: "AT",
+                level: 0
+            },
+            "Atiradeira de Virotes": {
+                description: "O conjurador cria uma torre de besta de Tamanho 1 na área. A torre tem Defesa 5 e Saúde igual ao valor do Intelecto do conjurador. Ela existe enquanto durar a magia ou até ser destruída. Ao fim de cada rodada, a torre atira em uma criatura alvo ou objeto a longa distância. O conjurador faz uma jogada de ataque de Intelecto contra a Defesa do alvo. Caso seja bem-sucedido, o alvo sofre 2d6 de dano.",
+                area: "Um cubo de espaço, com 1 metro de lado, originado em ponto ao alcance do conjurador sob uma superfície sólida.",
+                duration: "1 minuto",
+                attackRoll20: "O alvo sofre 1d6 de dano adicional.",
+                type: "AT",
+                level: 1
+            },
+            "Escudo Eletrizante": {
+                description: "O conjurador cria um escudo em seu braço que se mantém até o fim da magia. Uma vez por rodada, quando uma criatura o ataca com uma arma de combate corpo a corpo e obtém um sucesso, o escudo brilha e a criatura atacante deve fazer uma jogada de desafio de Agilidade. Caso fracasse, ela sofre 1d6 de dano e é movida 1d3 metros para longe do conjurador, ficando prostrada ao fim deste movimento.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 1
+            },
+            "Estrepes": {
+                description: "Pequenos pedaços de metal afiado emergem do ponto de origem, cobrindo todas as superfícies horizontais na área enquanto durar o efeito. Criaturas que entram ou se movem na área precisam ser bem-sucedidas em uma jogada de desafio de Agilidade ou sofrem 1d6+1 de dano e ficam lentas. Caso a criatura já tenha ficado lenta por esse efeito, ela fica prostrada e imobilizada. A criatura remove a aflição lenta e imobilizada quando cura o dano.",
+                area: "Um círculo no solo com 5 metros de raio, centrado em um ponto a média distância.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 1
+            },
+            "Granadas": {
+                description: "O conjurador arremessa três granadas, dividindo-as como quiser entre os alvos. Quando uma granada atinge o alvo, ou encontra uma criatura ou objeto sólido antes disso, ela explode. A explosão causa 1d6+1 de dano por fogo em tudo numa esfera de 1 metro de raio centrada no alvo ou em um ponto no espaço da criatura ou do objeto. Cada criatura na área que obtiver sucesso em uma jogada de desafio de Agilidade sofre metade do dano.",
+                target: "Até três pontos a curta distância.",
+                type: "AT",
+                level: 2
+            },
+            "Lança-Chamas": {
+                description: "O conjurador cria um lança-chamas, a arma contém 6 cargas. Ela surge em suas mãos ou aos pés dele, caso não esteja com as mãos livres. Quando seu último uso é gasto, o lança-chamas se desmonta em peças avulsas. Uma criatura empunhando o lança-chamas pode utilizar uma ação para gastar uma carga, que lança uma chama com uma linha de 5 metros de comprimento e 1 metro de largura, de um ponto ao alcance dela. As chamas causam 2d6 de dano a tudo na área; cada criatura que obtiver sucesso em uma jogada de desafio de Agilidade, sofre metade do dano. O lança-chamas explode quando a criatura que o empunha sofre dano por eletricidade ou fogo. Chamas preenchem uma esfera de 5 metros de raio, originadas de um ponto no espaço da criatura, causando 1d6 de dano por carga que não tenha sido usada. Cada criatura na área que obtiver sucesso em uma jogada de desafio de Agilidade sofre metade do dano.",
+                duration: "Consulte o efeito",
+                type: "UT",
+                level: 2
+            },
+            "Lâminas Voadoras": {
+                description: "Cinco lâminas voam da mão do conjurador, divididas como quiser entre os alvos. Para cada lâmina, ele faz uma jogada de ataque de Intelecto contra a Agilidade do alvo. Caso seja bem-sucedido, o alvo sofre 2d6 de dano.",
+                target: "Até três criaturas ou objetos a média distância",
+                attackRoll20: "O alvo sofre 1d6 de dano adicional.",
+                type: "AT",
+                level: 3
+            },
+            "Consertar": {
+                description: "O conjurador toca o alvo, removendo todo de dano dele.",
+                target: "Um objeto de Tamanho 3 ou menor que tenha sofrido 1 ou mais dano, mas que não esteja destruído, ao alcance do conjurador.",
+                type: "UT",
+                level: 3
+            },
+            "Armadura Energizada": {
+                description: "O conjurador se concentra por 1 hora, durante este período ele constrói uma armadura de batalha energizada, um construto enorme na área. O construto se mantém enquanto durar a magia ou até que esteja incapacitado. Ele não pode utilizar ações ou se mover independentemente, o conjurador deve entrar na cabine para controlá-lo. Enquanto estiver dentro dele, o conjurador trata a Defesa e Saúde do construto com se fossem suas, se move com o Deslocamento do construto e pode utilizar as opções de ataque e ações dele no lugar das suas.",
+                area: "Um cubo com 3 metros de lado, originado de um ponto ao alcance do conjurador",
+                duration: "Até que o conjurador complete um descanso; consulte o efeito",
+                type: "UT",
+                level: 4
+            },
+            "Item Mágico": {
+                description: "O conjurador toca o alvo e o imbui de poder mágico. Enquanto durar a magia, jogadas de ataque e desafio para qualquer tarefa feita utilizando o alvo são realizadas com 1 dádiva. Se o objeto é uma arma, seus ataques causam 1d6 de dano adicional. Caso seja uma armadura, o usuário ganha um bônus de +1 para sua Defesa. <br><b>Permanência</b> Se o conjurador gastar ingredientes raros no custo de 1 co quando conjurar esta magia, o efeito dura até que complete um descanso. Caso conjure esta magia da mesma maneira no mesmo alvo a cada dia por um mês, uma semana e um dia, o efeito se torna permanente.",
+                target: "Um objeto ao alcance do conjurador",
+                duration: "1 hora",
+                type: "UT",
+                level: 5
+            }
         }
     },
     "Teleporte": {
         attribute: "intellect",
         darkMagic: false,
         spells: {
-            
+            "Buscar": {
+                description: "O alvo é teleportado para a mão do conjurador ou cai aos seus pés, caso esteja com as mãos ocupadas.",
+                target: "Um objeto que o conjurador poderia segurar em uma mão, a média distância.",
+                type: "UT",
+                level: 0
+            },
+            "Despachar": {
+                description: "O alvo é teleportado para um espaço aberto a média distância.",
+                target: "Um objeto de Tamanho 1 ou menor que esteja carregando.",
+                type: "UT",
+                level: 0
+            },
+            "Buraco da Glória": {
+                description: "Um portal de 30 cm de largura se abre no centro de cada cubo e se mantêm enquanto durar o efeito. Os portais têm grossura desprezível, qualquer coisa colocada em um sai no outro. Quando o efeito termina, o portal se fecha, possivelmente cortando o que quer que esteja nele (como determinado pelo Mestre).",
+                area: "Dois cubos de 1 metro de lado a média distância.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 1
+            },
+            "Divisão": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo. Caso seja bem-sucedido, o alvo sofre 3d6 de dano. Se ele for incapacitado por esse dano, pedaços de seu corpo se separam, ocasionando a morte instantaneamente.",
+                target: "Uma criatura no campo de visão do conjurador a curta distância",
+                attackRoll20: "O alvo sofre 1d6 de dano adicional.",
+                type: "AT",
+                level: 1
+            },
+            "Trocar": {
+                description: "O conjurador e seu alvo são teleportados e trocam de posição. Um alvo relutante pode fazer uma jogada de desafio de Vontade e negar o efeito, caso obtenha sucesso. <br><b>Desencadeada</b> O conjurador pode utilizar uma ação desencadeada em seu turno para conjurar a magia. Caso faça isso, o alvo deve estar a curta distância.",
+                target: "Uma criatura a longa distância.",
+                type: "UT",
+                level: 1
+            },
+            "Atalho": {
+                description: "O conjurador se teleporta para um espaço aberto que possa ver a longa distância. <br><b>Desencadeada</b> O conjurador pode utilizar uma ação desencadeada em seu turno para conjurar a magia. Caso faça isso, o espaço aberto deve estar a média distância.",
+                type: "UT",
+                level: 2
+            },
+            "Remover": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Agilidade do alvo. Caso seja bem-sucedido, ele toca o alvo e o teleporta para um espaço aberto em uma superfície sólida no seu campo de visão a média distância.",
+                target: "Uma criatura ao alcance do conjurador.",
+                attackRoll20: "O espaço aberto pode estar a distância extrema.",
+                type: "AT",
+                level: 2
+            },
+            "Fundir": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, o alvo é teleportado para um espaço aberto em uma superfície sólida a média distância do conjurador, parte dele se funde com a superfície. Ele sofre 6d6 de dano e fica imobilizado. A única maneira de remover essa aflição é destruir o objeto no qual o alvo está fundido ou utilizar uma ação para cortar o membro aprisionado (causando dano ao alvo igual a duas vezes sua taxa de cura).",
+                target: "Uma criatura a média distância.",
+                attackRoll20: "O alvo sofre 2d6 de dano adicional e também fica atordoado por 1 rodada.",
+                type: "AT",
+                level: 3
+            },
+            "Passo Infinito": {
+                description: "Em cada um dos seus turnos enquanto durar a magia, o conjurador pode utilizar uma ação desencadeada para se teleportar para um espaço aberto dentro do seu campo de visão a média distância.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 3
+            },
+            "Portais": {
+                description: "Um portal se abre no centro de cada cubo e se mantém enquanto durar o efeito. Cada portal tem 1 metro de largura e dois metros de altura, mas não tem grossura. O portal tem uma frente e um verso, pode ser orientado para qualquer lado. Qualquer coisa que entre pela frente de um portal sai imediatamente em um espaço aberto na parte de trás do outro, e vice-versa.",
+                area: "Dois cubos, cada um com 2 metros de lado, um se originando em um ponto ao alcance do conjurador e o outro originado em um ponto a extrema distância.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 4
+            },
+            "Viagem": {
+                description: "O conjurador toca cada um dos alvos e define um destino. Faça uma jogada de desafio de Intelecto. O Mestre impõe uma ou mais perdições a jogada, baseado na familiaridade do conjurador com o destino. Caso nomeie um lugar que não existe, a magia fracassa e conjuração é perdida. Caso seja bem-sucedido, o alvo é teleportado para o destino. Caso fracasse, cada alvo se teleporta separadamente para um local a 1d20 quilômetros do destino, escolhidos pelo Mestre. Caso o total da jogada seja 0 ou menos, cada alvo também sofre 10d6 de dano e ganha 1 de Insanidade pela magia ter saído terrivelmente errado. Caso o local de destino não seja largo o bastante para acomodar o alvo, ele sofre 5d6 de dano, recebe 1 de Insanidade e retorna ao espaço que saiu. Uma criatura incapacitada por este dano está morta quando volta, reduzida a uma pilha de sangue, ossos e carne. Caso o espaço de destino não seja aberto — como, por exemplo, o interior de uma parede — o alvo se funde com o material e morre instantaneamente.",
+                target: "Até cinco criaturas dispostas, ao alcance do conjurador.",
+                type: "UT",
+                level: 5
+            }
         }
     },
     "Tempo": {
         attribute: "intellect",
         darkMagic: false,
         spells: {
-            
+            "Rapidez": {
+                description: "O conjurador toca o alvo, fornecendo a ele um bônus de +10 ao seu Deslocamento enquanto durar a magia. Quando o efeito termina, o alvo fica fatigado por 1 minuto.",
+                target: "Uma criatura que não esteja fatigada ao alcance do conjurador.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 0
+            },
+            "Retardar o tempo": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, o alvo fica lento por 1 rodada.",
+                target: "Uma criatura no campo de visão do conjurador a curta distância",
+                attackRoll20: "O alvo também fica debilitado enquanto estiver lento devido a este efeito.",
+                type: "AT",
+                level: 0
+            },
+            "Lentidão": {
+                description: "Cada alvo deve fazer uma jogada de desafio de Vontade. Caso fracasse, a criatura fica lenta por 1 minuto.",
+                target: "Até cinco criaturas a média distância.",
+                type: "AT",
+                level: 1
+            },
+            "Paradoxo Menor": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra o Intelecto do alvo. Caso seja bem-sucedido, o alvo desaparece por 1 rodada. Ele ressurge no espaço onde estava ou no mais próximo, caso esteja ocupado.",
+                target: "Uma criatura no campo de visão do conjurador a curta distância.",
+                attackRoll20: "O conjurador também recupera a conjuração desta magia.",
+                type: "AT",
+                level: 1
+            },
+            "Reescrever o Momento": {
+                description: "Uma vez por rodada, enquanto durar a magia, quando faz uma jogada, o conjurador pode descartar o resultado e jogar o dado novamente. Ele deve utilizar o segundo resultado.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 1
+            },
+            "Precognição": {
+                description: "Enquanto durar a magia, jogadas de ataque contra o conjurador são feitas com 1 perdição. Além disso, ele faz jogadas de desafio para resistir a ataques com 1 dádiva.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 2
+            },
+            "Salto Temporal": {
+                description: "O conjurador salta para frente no tempo, desaparecendo de seu espaço. A qualquer momento enquanto durar a magia, ele pode aparecer no espaço que abandonou ou no mais próximo, caso esteja ocupado. Caso contrário, ele reaparece no fim da rodada quando o efeito termina.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 2
+            },
+            "Acelerar": {
+                description: "O conjurador toca o alvo. Enquanto durar a magia, a criatura pode fazer tanto um turno rápido quanto um lento a cada rodada. Quando o efeito termina, o alvo fica fatigado por 1d6 minutos.",
+                target: "Uma criatura ao alcance do conjurador",
+                duration: "1 minuto",
+                type: "UT",
+                level: 3
+            },
+            "Desacelerar": {
+                description: "Cada criatura na área deve obter sucesso em uma jogada de desafio de Vontade ou fica lenta por 1 minuto. Enquanto estiver lenta devido a este efeito, quando a criatura faz um turno lento, ela pode utilizar uma ação ou movimento, mas não ambos.",
+                area: "Uma esfera com 3 metros de raio, centrada em um ponto a média distância.",
+                type: "AT",
+                level: 3
+            },
+            "Dois de Si": {
+                description: "Você faz com que seu eu do futuro apareça na área e ele permanecerá no seu presente pela duração da magia. Até lá, você e seu eu futuro fazem um turno cada por rodada, embora o paradoxo obrigue que ambos façam jogadas de ataque e de desafio com 1 perdição. Você e seu eu do futuro tem atributos, características e habilidades idênticas e contam como uma única criatura para propósito de compartilhamento de recursos. Sendo assim, caso um sofra dano ou ganhe Insanidade, isto é aplicado em ambas as versões. Se uma gastar o uso de uma magia, este uso é consumido para ambos. Caso um dos dois sofra alguma aflição, ou seja beneficiado por um efeito duradouro, a aflição ou efeito se aplica a ambos. Seu eu do futuro tem cópias idênticas de tudo que você tem e usa, com algumas exceções. Primeiramente, se você ou a duplicata consumirem ou gastarem um item, como uma poção de cura, o item é gasto para ambos. Além disto, caso tenha uma relíquia, você deverá decidir se é você ou seu eu do futuro que a carrega. Caso você ou sua duplicata fiquem incapacitados, o outro também ficará. E caso você morra, seu eu do futuro desaparece. Quando o efeito termina, você e seu eu do futuro desaparecem. Você reaparece 1 minuto depois, no espaço que o seu eu do futuro ocupava, e caso esteja ocupado, no espaço aberto mais próximo.",
+                area: "Um cubo, grande o bastante para acomodar uma criatura do tamanho do conjurador, originado em um ponto a uma quantidade de metros igual ao seu Deslocamento",
+                duration: "1 minuto; consulte o efeito",
+                type: "UT",
+                level: 4
+            },
+            "Viagem no Tempo": {
+                description: "O conjurador escolhe um momento no tempo, até 100 anos no futuro. O conjurador desaparece. Quando o tempo do jogo alcançar o período destinado, ele imediatamente reaparece no espaço que abandonou ou no espaço aberto mais próximo, caso este esteja ocupado.",
+                type: "UT",
+                level: 5
+            }
         }
     },
     // Tradições de vontade:
