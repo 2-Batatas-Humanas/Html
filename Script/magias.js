@@ -723,7 +723,7 @@ traditions ={
             "Aprimorar defesa":{
                 description:"O conjurador toca o alvo. Pela duração da magia, o alvo ganha um bônus de +5 para sua Saúde, jogadas de ataque contra o alvo são feitas com 1 perdição.",
                 target:"Uma criatura ao alcance do conjurador.",
-                duratiom:"1 minuto.",
+                duration:"1 minuto.",
                 type:"UT",
                 level:"2"
             },
@@ -922,7 +922,7 @@ traditions ={
                 description:"Um raio colorido e efervescente voa da mão do conjurador. Ele faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, o alvo sofre 1d6 de dano. Depois da jogada de ataque, o conjurador joga um d6. Se o resultado for 6, o ataque é repetido contra um alvo diferente, amigo ou inimigo, a média distância do alvo anterior. O conjurador escolhe o alvo caso mais de um esteja disponível.",
                 target:"Uma criatura ou objeto a média distância.",
                 type:"AT",
-                attaclRoll20:"O alvo sofre 1d6 de dano adicional.",
+                attackRoll20:"O alvo sofre 1d6 de dano adicional.",
                 level:"0"
             },
             "Devastação inconstante":{
@@ -1011,7 +1011,7 @@ traditions ={
                 description:"Três raios flamejantes voam para fora da mão do conjurador, divididos como ele escolher entre seus alvos. Para cada raio, ele faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, o alvo sofre 1d6 de dano. Caso seja capaz de enxergar, o alvo também fica debilitado por 1 rodada.",
                 target:"Até três criaturas ou objetos a média distância.",
                 type:"AT",
-                attaclRoll20:"O alvo sofre 1d3 de dano adicional.",
+                attackRoll20:"O alvo sofre 1d3 de dano adicional.",
                 level:"2"
             },
             "Estrela cadente":{
@@ -1061,7 +1061,7 @@ traditions ={
                 description:"O conjurador sofre 2 pontos de dano e faz uma jogada de ataque de Vontade contra a Força do alvo. Caso seja bem-sucedido, ele sofre 1d6+ 1 de dano devido ao toque corrosivo do conjurador e fica debilitado por 1 minuto. Se o alvo ficar incapacitado devido a este dano, ele morre instantaneamente e se torna uma gosma, deixando tudo que vestia ou carregava no espaço que ocupava.",
                 target:" Uma criatura com corpo físico ao alcance do conjurador.",
                 type:"AT",
-                attaclRoll20:"O alvo sofre 1d6 de dano adicional.",
+                attackRoll20:"O alvo sofre 1d6 de dano adicional.",
                 level:"1"
             },
             "Fender":{
