@@ -69,7 +69,7 @@ function loadCharacterData() {
         strength.innerHTML += "+" + (character.strength - 10) + ")";
     }
     else if(character.strength < 10){
-        strength.innerHTML += "-" + (character.strength - 10) + ")";
+        strength.innerHTML += (character.strength - 10) + ")";
     }
     else{
         strength.innerHTML += (character.strength - 10) + ")";
@@ -80,7 +80,7 @@ function loadCharacterData() {
         agility.innerHTML += "+" + (character.agility - 10) + ")";
     }
     else if(character.agility < 10){
-        agility.innerHTML += "-" + (character.agility - 10) + ")";
+        agility.innerHTML += (character.agility - 10) + ")";
     }
     else{
         agility.innerHTML += (character.agility - 10) + ")";
@@ -91,7 +91,7 @@ function loadCharacterData() {
         intellect.innerHTML += "+" + (character.intellect - 10) + ")";
     }
     else if(character.intellect < 10){
-        intellect.innerHTML += "-" + (character.intellect - 10) + ")";
+        intellect.innerHTML += (character.intellect - 10) + ")";
     }
     else{
         intellect.innerHTML += (character.intellect - 10) + ")";
@@ -102,7 +102,7 @@ function loadCharacterData() {
         will.innerHTML += "+" + (character.will - 10) + ")";
     }
     else if(character.will < 10){
-        will.innerHTML += "-" + (character.will - 10) + ")";
+        will.innerHTML += (character.will - 10) + ")";
     }
     else{
         will.innerHTML += (character.will - 10) + ")";
@@ -113,7 +113,7 @@ function loadCharacterData() {
         perception.innerHTML += "+" + (character.perception - 10) + ")";
     }
     else if(character.perception < 10){
-        perception.innerHTML += "-" + (character.perception - 10) + ")";
+        perception.innerHTML += (character.perception - 10) + ")";
     }
     else{
         perception.innerHTML += (character.perception - 10) + ")";
