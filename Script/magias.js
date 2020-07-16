@@ -196,14 +196,161 @@ traditions ={
         attribute: "intellect",
         darkMagic: true,
         spells: {
-            
+            "Ferir": {
+                description: "Farpas invisíveis rasgam o corpo do alvo. Faça uma jogada de ataque de Intelecto contra a Força da vítima. Caso seja bem-sucedido, o alvo sofre uma penalidade de -5 em Saúde durante 1 minuto.",
+                target: "Uma criatura que consiga ver, a curta distância.",
+                attackRoll20: "A penalidade à Saúde é -10 ao invés de -5.",
+                type: "AT",
+                level: 0
+            },
+            "Idioma Negro": {
+                description: "Enquanto durar a magia, o conjurador faz jogadas de ataque de Vontade contra demônios, diabos, espíritos e mortos-vivos com 1 dádiva.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 0
+            },
+            "Defecação Odiosa": {
+                description: "As entranhas do alvo se torcem e roncam alto. Se sua Saúde for 10 ou menos, ele morre instantaneamente, jatos de sangue e fezes espirram de todos os orifícios. Se sua Saúde for maior que 10, o conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo. Caso seja bem-sucedido, ele sofre 1d6+2 de dano e fica pasmo por 1 rodada, conforme o conteúdo dos intestinos é expelido violentamente. Se for incapacitado pelo dano, excremento, órgãos e sangue explodem em seu corpo, matando-o instantaneamente. Cada criatura a até 2 metros do espaço do alvo deve fazer uma jogada de desafio de Vontade; caso fracasse, fica debilitada por 1 rodada.",
+                target: "Uma criatura, com corpo físico, a média distância.",
+                attackRoll20: "O alvo sofre 1d6 de dano adicional.",
+                type: "AT",
+                level: 1
+            },
+            "Obediência": {
+                description: "O conjurador fisga a alma do alvo. O conjurador faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, durante o próximo minuto, ele deve escolher ao fim de cada turno, entre: sofrer 1d6 de dano ou ficar compelido por 1 rodada.",
+                target: "Uma criatura viva a curta distância.",
+                type: "AT",
+                level: 1
+            },
+            "Rasgar Língua": {
+                description: "O conjurador cospe no alvo. Ele faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, sua língua se bifurca e o conjurador toma o controle da boca do alvo enquanto se concentrar, até 1 hora. Enquanto o efeito estiver ativo, toda vez que o conjurador fala, ele pode escolher usar sua própria boca ou a do alvo, contanto que esteja a até 1,6 km dele. Não há alteração na voz do alvo quando o conjurador fala utilizando sua boca.",
+                target: "Uma criatura capaz de falar a curta distância.",
+                attackRoll20: "O efeito dura por até 1 hora sem concentração.",
+                type: "AT",
+                level: 1
+            },
+            "O Fim da Visão": {
+                description: "Os olhos do alvo incham e se espremem dentro da cabeça. Se sua Saúde for 15 ou menos, ele sofre 1d6 de dano e fica cego conforme seus olhos explodem. Se sua Saúde for 15 ou mais, o conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo; este ataque é feito com 1 perdição, se sua Saúde for 30 ou mais. Caso seja bem-sucedido, ele fica cego enquanto o conjurador se concentrar, até 1 minuto. Ao fim de cada rodada, até o fim do efeito, o alvo deve fazer uma jogada de desafio de Força e sofre 1d6 de dano, caso fracasse. Se obtiver três fracassos antes do fim do efeito, a aflição cego se torna permanente — os olhos explodem, escorrendo pelo seu rosto.",
+                target: "Uma criatura dentro do campo de visão a curta distância",
+                attackRoll20: "O efeito dura por até 1 minuto sem concentração.",
+                type: "AT",
+                level: 2
+            },
+            "Vermes Vorazes": {
+                description: "Vermes famintos preenchem a barriga do alvo, causando 2d6 de dano. Ao fim de cada rodada de duração, ele deve fazer uma jogada de desafio de Força. Caso fracasse, sofre 1d6 de dano e fica debilitado por 1 rodada. Caso seja bem-sucedido, não há efeito; no terceiro sucesso, o alvo vomita um emaranhado de vermes contorcidos e o efeito termina. Se ficar incapacitado devido ao dano da magia, ele morre instantaneamente e uma nuvem de moscas negras se dispersa em uma área de 5 metros de raio, a partir de um ponto dentro do espaço do alvo. As moscas obscurecem severamente a área e permanecem por 1 minuto ou até serem dispersas por fogo ou vento.",
+                target: "Uma criatura viva a média distância.",
+                duration: "1 minuto",
+                type: "AT",
+                level: 2
+            },
+            "O Fim do Desejo": {
+                description: "O alvo sofre de uma dor interna aguda. O conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo. Caso seja bem-sucedido, ele sofre 3d6 de dano e fica pasmo por 1d6 rodada, conforme os tristes restos de seus órgãos reprodutores caem de seu corpo.",
+                target: "Uma criatura viva a curta distância.",
+                attackRoll20: "O alvo sofre 3d6 de dano adicional e fica prostrado; ele não pode se levantar enquanto estiver pasmo devido a este efeito.",
+                type: "AT",
+                level: 3
+            },
+            "Separar Ossos da Carne": {
+                description: "Os ossos do alvo se contorcem sob sua pele. O conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo. Caso seja bem-sucedido, ele sofre 6d6 de dano. Caso fique incapacitado por esse dano, morre instantaneamente; seus ossos saem da carne e se tornam um cadáver animado do Tamanho do alvo, ocupando seu espaço anterior. O cadáver animado ataca a criatura mais próxima a cada rodada, escolhendo o alvo aleatoriamente, caso haja mais de um.",
+                target: "Uma criatura que tenha ossos em seu corpo a média distância.",
+                attackRoll20: "O alvo sofre 2d6 de dano adicional.",
+                type: "AT",
+                level: 3
+            },
+            "Trocar Almas": {
+                description: "O conjurador agarra a alma dos alvos e faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, ele fica pasmo por 1 minuto.<br><b>Especial</b> Caso o conjurador seja bem-sucedido contra ambos os alvos, suas almas trocam permanentemente de corpo. Cada alvo recebe 1d6 de Insanidade. Cada alma leva para o novo corpo as características a seguir, com exceção das apresentadas, ele utiliza os atributos do novo corpo, suas características e habilidades: <br>• Todos os idiomas e profissões <br>• Valores de Intelecto e Vontade (refazer cálculo da percepção, se necessário) <br>• Valores de Insanidade e Corrupção <br>• Todos os talentos <br>• Todas as tradições que descobriu e magias que conhece",
+                target: "Duas criaturas vivas mortais a média distância.",
+                attackRoll20: "O alvo também fica atordoado enquanto está pasmo por este efeito.",
+                type: "AT",
+                level: 4
+            },
+            "União Horrenda": {
+                description: "A forma dos alvos fica indistinta por um momento. O conjurador faz uma jogada de ataque de Intelecto contra a Força de cada alvo. Caso seja bem-sucedido, ele sofre 3d6 de dano e fica debilitado por 1 rodada. <br><b>Especial</b> Caso o conjurador seja bem-sucedido contra ambos os alvos, seus corpos se fundem permanentemente em uma única criatura, que fica debilitada até que complete um descanso. A aparência da criatura fundida fica a critério do conjurador. A criatura fundida combina os atributos, características e outras habilidades dos alvos, da seguinte maneira: <br>• Ela tem o valor mais alto de Força dos alvos e o mais baixo de Agilidade. Cada alvo mantém seu próprio Intelecto e Vontade. <br>• Ela ganha 2d6 de Insanidade, substituindo o valor atual de Insanidade dos alvos (caso tivessem). A Corrupção dos alvos, caso exista, é somada. <br>• Os alvos ocupam o mesmo espaço, adicionando seus Tamanhos. Some o mais alto dos valores de Saúde dentre os alvos com metade da Saúde mais baixa. O Deslocamento da criatura fundida se torna 6. <br>• A criatura fundida tem as propriedades e talentos de ambos os alvos e ganha a propriedade horripilante, caso não tenha. <br>• Embora compartilhem um corpo, cada alvo faz um turno a cada rodada. Um deve fazer um turno rápido e o outro um turno lento; caso não consigam decidir, cada um joga um d6 e aquele que obtiver o resultado maior decide.",
+                target: "Duas criaturas no campo de visão do conjurador a curta distância uma da outra e a média distância do conjurador.",
+                attackRoll20: " O alvo sofre 3d6 de dano adicional.",
+                type: "AT",
+                level: 5
+            }
         }
     },
     "Proteção": {
         attribute: "intellect",
         darkMagic: false,
         spells: {
-            
+            "Proteger Local": {
+                description: "Um campo invisível surge junto a circunferência da área. Enquanto durar a magia, o conjurador sabe se uma criatura de Tamanho 1/2 ou maior se moveu para dentro ou para fora dela. Esta informação o acorda, caso esteja dormindo.",
+                area: "Uma esfera com 10 metros de raio, centrada em um ponto ao alcance do conjurador.",
+                duration: "6 horas",
+                type: "UT",
+                level: 0
+            },
+            "Tranca Mágica": {
+                description: "O alvo se fecha e é trancado. Enquanto durar a magia, ele não pode ser aberto por meios não mágicos por outra criatura que não seja o conjurador, mas pode ser destruído.",
+                target: "Um objeto a curta distância que possa ser aberto ou fechado, tal como uma porta, baú ou janela.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 0
+            },
+            "Campo de Força": {
+                description: "Um campo de força invisível envolve o conjurador e se move com ele. O campo tem Saúde 10. Enquanto durar a magia, a qualquer momento que o conjurador sofrer dano, ao invés dele, o campo sofre o dano. Caso o dano total no campo seja igual à sua Saúde, o efeito termina imediatamente.",
+                duration: "1 minuto; consulte o efeito.",
+                type: "UT",
+                level: 1
+            },
+            "Evasão": {
+                description: "O conjurador se move até quatro vezes seu Deslocamento, sem desencadear ataques livres. <br><b>Desencadeada</b> O conjurador pode utilizar uma ação desencadeada para conjurar esta magia quando sofrer dano. Caso faça isso, o conjurador se move até o dobro de seu Deslocamento sem desencadear ataques livres.",
+                type: "UT",
+                level: 1
+            },
+            "Santuário": {
+                description: "O conjurador toca o alvo, fazendo com que ele fique escondido de todas as criaturas enquanto durar a magia. Este efeito termina imediatamente, caso o alvo execute um ataque.",
+                target: "Uma criatura ao alcance do conjurador",
+                duration: "1 minuto; consulte o efeito",
+                type: "UT",
+                level: 1
+            },
+            "Vigilância": {
+                description: "O conjurador toca o alvo, fornecendo uma ampliação em prontidão e consciência dos arredores. Enquanto durar a magia, o alvo faz suas jogadas de desafio de Percepção com 1 dádiva e não pode ser encantado, compelido, assustado, surpreso ou adormecido por magia.",
+                target: "Uma criatura ao alcance do conjurador",
+                duration: "4 horas",
+                type: "UT",
+                level: 2
+            },
+            "Vigor": {
+                description: "O conjurador toca o alvo, fornecendo a ele um bônus de +10 para Saúde enquanto durar a magia.",
+                target: "Uma criatura ao alcance do conjurador.",
+                duration: "1 hora",
+                type: "UT",
+                level: 2
+            },
+            "Campo de Proteção": {
+                description: "Uma barreira invisível e imóvel surge junto a circunferência da área e permanece enquanto durar a magia. Quando o personagem conjura a magia, ele designa uma quantidade de criaturas a média distância dele. Apenas elas podem se mover livremente e fazer ataques através da barreira. Nenhuma outra criatura pode se mover através da barreira, nem fazer ataques com armas de combate corpo a corpo contra alvos do outro lado.",
+                area: "Uma esfera com 3 metros de raio, centrada em um ponto ao alcance do conjurador.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 3
+            },
+            "Proteção Contra Magias": {
+                description: "O conjurador toca o alvo e fornece proteção contra magias enquanto durar o efeito. As criaturas que realizarem ataques desse tipo, o fazem com 1 perdição. Além disso, o alvo tem 1 dádiva para resistir nas jogadas de desafio",
+                target: "Uma criatura ao alcance do conjurador.",
+                duration: "1 hora",
+                type: "UT",
+                level: 3
+            },
+            "Invulnerabilidade": {
+                description: "O conjurador toca o alvo, tornando-o imune a todo dano enquanto durar a magia.",
+                target: "Uma criatura ao alcance do conjurador.",
+                duration: "Concentração, até 1 minuto",
+                type: "UT",
+                level: 4
+            },
+            "Globo de Negação": {
+                description: "Uma barreira invisível e imóvel surge junto a circunferência da área e permanece enquanto durar a magia. Jogadas de ataque com magia de nível 5 ou menor, contra alvos atrás da barreira, fracassam automaticamente. Da mesma maneira, a área dentro da barreira está excluída da área de qualquer magia de nível 5 ou menor. Por fim, magias conjuradas de dentro da barreira não podem ter um ponto de origem além da borda da barreira.",
+                area: " Uma esfera com 5 metros de raio, centrada em um ponto ao alcance do conjurador.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 5
+            }
         }
     },
     "Runa": {
