@@ -136,8 +136,8 @@ function loadSpells(trad, numTrad){
             addSpellButton.innerHTML = "Adicionar magia";
             newDiv.appendChild(addSpellButton);
         }
-        const atts = ["description", "target", "area", "duration", "attackRoll20", "level", "type"];
-        const names = ["Descrição", "Alvo", "Área", "Duração", "Ataque 20+", "Nível", "Tipo"];
+        const atts = ["description", "target", "area", "duration", "attackRoll20", "requisites", "type", "level"];
+        const names = ["Descrição", "Alvo", "Área", "Duração", "Ataque 20+", "Requisitos", "Tipo", "Nível"];
         for(let i = 0; i < atts.length; i++){
             addToDiv(atts[i], names[i], spellObj, id);
         }
