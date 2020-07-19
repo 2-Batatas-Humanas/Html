@@ -11,8 +11,7 @@ traditions ={
                 level: 0
             },
             "Epifania": {
-                description: "O conjurador pode utilizar uma ação desencadeada para conjurar a magia quando faz uma jogada de desafio ou de ataque. Ele joga o d20 duas vezes e utiliza o maior resultado do dado.",
-                triggered: true,
+                description: "<b>Desencadeada</b>O conjurador pode utilizar uma ação desencadeada para conjurar a magia quando faz uma jogada de desafio ou de ataque. Ele joga o d20 duas vezes e utiliza o maior resultado do dado.",
                 type: "UT",
                 level: 0
             },
@@ -100,9 +99,8 @@ traditions ={
                 level: 1
             },
             "Escudo arcano": {
-                description: "Pela duração da magia, uma barreira de energia protege o conjurador, impondo 1 perdição a jogadas de ataque contra sua Defesa ou Agilidade. Desencadeada Quando uma criatura faz uma jogada de ataque contra sua Defesa ou Agilidade, o conjurador pode utilizar uma ação desencadeada para conjurar esta magia. A criatura desencadeante faz sua jogada de ataque com 3 perdições e, em seguida, o efeito termina.",
+                description: "Pela duração da magia, uma barreira de energia protege o conjurador, impondo 1 perdição a jogadas de ataque contra sua Defesa ou Agilidade. <br><b>Desencadeada</b> Quando uma criatura faz uma jogada de ataque contra sua Defesa ou Agilidade, o conjurador pode utilizar uma ação desencadeada para conjurar esta magia. A criatura desencadeante faz sua jogada de ataque com 3 perdições e, em seguida, o efeito termina.",
                 duration: "1 minuto",
-                triggered: true,
                 type: "UT",
                 level: 1
             },
@@ -154,42 +152,473 @@ traditions ={
         attribute: "intellect",
         darkMagic: false,
         spells: {
-            
+            "Ataque Ampliado": {
+                description: "Como parte da conjuração desta magia, o conjurador faz um ataque com uma arma. O conjurador faz a jogada de ataque com 1 dádiva e pode utilizar Intelecto ao invés do atributo normal do ataque.",
+                type: "AT",
+                level: 0
+            },
+            "Celeridade": {
+                description: "O conjurador se move até o dobro do Deslocamento. Este movimento não desencadeia ataques livres. <br><b>Desencadeado</b> O conjurador pode utilizar uma ação desencadeada em seu turno para conjurar esta magia. Caso faça isso, ele se move até seu Deslocamento normal sem desencadear ataques livres.",
+                type: "UT",
+                level: 0
+            },
+            "Ataque Poderoso": {
+                description: "Como parte da conjuração desta magia, o conjurador faz um ataque com uma arma. Ele faz a jogada de ataque com 1 dádiva e pode utilizar Intelecto ao invés do atributo normal do ataque. Caso seja bem-sucedido, o alvo sofre 2d6 de dano adicional.",
+                type: "AT",
+                level: 1
+            },
+            "Ataque Retumbante": {
+                description: "Como parte da conjuração desta magia, o personagem faz um ataque com uma arma. O conjurador faz a jogada de ataque com 1 dádiva e pode utilizar Intelecto ao invés do atributo normal do ataque. Caso seja bem-sucedido, o alvo sofre o dano normal e fica pasmo por 1 rodada.",
+                type: "AT",
+                level: 1
+            },
+            "Fechar Ferimentos": {
+                description: "O conjurador cura uma quantidade de pontos de dano igual sua taxa de cura. <br><b>Desencadeado</b> O conjurador pode utilizar uma ação desencadeada em seu turno para conjurar essa magia. Caso faça isso, ele cura uma quantidade de pontos de dano igual à metade de sua taxa de cura.",
+                type: "UT",
+                level: 1
+            },
+            "Arco da Morte": {
+                description: "O conjurador desliza sua arma de combate corpo a corpo ao redor de si em um arco mortal, causando 3d6+3 de dano a cada alvo ao invés do dano normal da arma. Cada alvo sofre metade do dano se bem-sucedido em uma jogada de desafio de Agilidade.",
+                target: "Cada criatura escolhida ao alcance do conjurador",
+                type: "AT",
+                level: 2
+            },
+            "Deslizamento da Montanha": {
+                description: "O conjurador voa até o dobro de seu Deslocamento, então aterrissa. Quando aterrissar, uma onda de choque se dispersa pelo chão em um raio de 4 metros de um ponto em seu espaço. Cada criatura no chão deve fazer uma jogada de desafio de Agilidade. Caso a criatura fracasse, ela sofre 2d6 pontos de dano e fica prostrada.",
+                type: "AT",
+                level: 2
+            },
+            "Aptidão para a Batalha": {
+                description: "O conjurador amplia suas habilidades de batalha. Enquanto durar a magia, toda vez que atacar com uma arma, ele pode fazer a jogada de ataque duas vezes e utilizar o melhor resultado. Além disso, seus ataques com arma causam 1d6 de dano adicional até o fim do efeito.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 3
+            },
+            "Ataque Meteórico": {
+                description: "O conjurador se move até o dobro de seu Deslocamento em uma linha reta. Durante este movimento, ele pode fazer um ataque com arma contra cada criatura ao seu alcance, mas não mais que uma vez por criatura. Para cada ataque depois do primeiro, o conjurador faz a jogada de ataque com 1 perdição e cada ataque causa 1d6 de dano adicional. O conjurador pode utilizar Intelecto ao invés do atributo normal do ataque.",
+                type: "AT",
+                level: 3
+            },
+            "Muralhas de Espadas": {
+                description: "Uma muralha de lâminas cortantes se forma na área e permanece pela duração da magia. Ela cobre tudo atrás dela. Quando a muralha surge, tudo na área sofre 5d6 de dano. Caso seja bem-sucedida em uma jogada de desafio de Agilidade, a criatura sofre metade do dano. Criaturas podem se mover pela área, como se fosse por terreno difícil. Quando uma criatura entra na área de fora, ou caso esteja dentro da área no fim da rodada, ela deve obter um sucesso em uma jogada de desafio de agilidade ou sofrer 3d6 de dano.",
+                area: "Uma linha com 20 metros de comprimento, 5 metros de altura e 2 metros de largura originada de um ponto a longa distância",
+                duration: "1 hora",
+                type: "AT",
+                level: 4
+            },
+            "Atacar como o Relâmpago": {
+                description: "O conjurador se move como um borrão, atingindo furiosamente conforme passa. Cada criatura escolhida na área deve fazer uma jogada de desafio de Agilidade com 1 perdição. Caso fracasse, ela sofre 4d6+3 de dano. Em seguida, o conjurador se move até metade de seu Deslocamento. Este movimento não desencadeia ataques livres.",
+                area: "Uma esfera com raio igual à metade do Deslocamento do conjurador centrada em um ponto a seu alcance",
+                type: "AT",
+                level: 5
+            }
         }
     },
     "Encantamento": {
         attribute: "intellect",
         darkMagic: false,
         spells: {
-            
+            "Enfeitiçar": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra o Intelecto do alvo. Caso seja bem-sucedido, ele é movido até o máximo de seu próprio Deslocamento.",
+                target: "Uma criatura que possa ver o conjurador a longa distância.",
+                attackRoll20: "O conjurador também recupera a conjuração desta magia.",
+                type: "AT",
+                level: 0
+            },
+            "Presença": {
+                description: "Enquanto durar a magia, criaturas que, comumente, são atraídas por membros da raça do conjurador fazem jogadas de ataque contra ele com 1 perdição.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 0
+            },
+            "Comandar": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, ele fica compelido por 1 rodada. Se o alvo estiver encantado, o conjurador faz a jogada de ataque com 1 dádiva.",
+                target: "Uma criatura a curta distância que possa ouvir o conjurador.",
+                attackRoll20: "O conjurador também recupera a conjuração desta magia.",
+                type: "AT",
+                level: 1
+            },
+            "Encantar": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, ele fica encantado por 1 hora ou até que sofra dano. Se o conjurador ou membros de seu grupo tiverem atacado o alvo sem completarem ainda um descanso depois disso, ele faz a jogada de ataque com 1 perdição.",
+                target: "Uma criatura a curta distância que possa ver o conjurador.",
+                attackRoll20: "O alvo fica encantado por 1d6 horas ou até que sofra dano.",
+                type: "AT",
+                level: 1
+            },
+            "Indagar": {
+                description: "O conjurador faz uma pergunta e uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, ele deve responder sinceramente e com o maior número de detalhes possível.",
+                target: "Uma criatura a curta distância que possa ver, ouvir e entender o conjurador.",
+                attackRoll20: "O alvo também fica assustado por 1 rodada.",
+                type: "AT",
+                level: 1
+            },
+            "Compelir": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, ele fica compelido por 1 minuto ou até que sofra dano. Se o conjurador ou membros de seu grupo tiverem atacado o alvo sem completarem ainda um descanso depois disso, ele faz a jogada de ataque com 1 perdição.",
+                target: "Uma criatura a média distância que possa ver o conjurador.",
+                attackRoll20: "O alvo fica compelido por 1 hora ou até que sofra dano.",
+                type: "AT",
+                level: 2
+            },
+            "Prender a Mente": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, ele fica pasmo por 1 minuto ou até que sofra dano. Enquanto estiver pasmo por este efeito, o conjurador faz jogadas de ataque com 1 dádiva para interagir socialmente com ele. Se o conjurador ou membros de seu grupo tiverem atacado o alvo sem completarem ainda um descanso depois disso, ele faz a jogada de ataque com 1 perdição.",
+                target: "Uma criatura a média distância que possa ver e ouvir o conjurador.",
+                attackRoll20: " O alvo também fica atordoado enquanto está pasmo devido a este efeito.",
+                type: "AT",
+                level: 2
+            },
+            "Acovardar": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, ele se torna imobilizado por 1 minuto; enquanto estiver imobilizado desta maneira, também fica assustado. Uma vez por rodada, quando o alvo sofrer dano, ele pode fazer uma jogada de desafio de Vontade, caso seja bem-sucedido, remove a sua aflição imobilizado.",
+                target: "Uma criatura a média distância",
+                attackRoll20: "O alvo também fica prostrado e não pode se levantar enquanto estiver imobilizado devido a este efeito.",
+                type: "AT",
+                level: 3
+            },
+            "Implantar Sugestão": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, ele fica atordoado enquanto durar a magia ou até que sofra dano. Caso o conjurador se concentre por um minuto completo, ele descreve um curso de ação que, obviamente, não pode ser suicida e que possa ser resumido em uma frase ou duas. Ele também descreve o que desencadeia aquela atividade, por exemplo: chegar a um destino específico ou ouvir uma palavra ou frase. Caso a atividade sugerida possa ser potencialmente nociva para o alvo, seus entes queridos ou sua propriedade, ele pode fazer uma jogada de desafio de Vontade; caso seja bem-sucedido, não é afetado. Caso contrário, ele deve realizar a atividade descrita, se o desencadeador ocorrer nas próximas 8 horas. Uma vez que o alvo completou a atividade, o efeito termina.",
+                target: "Uma criatura a curta distância que possa ver e ouvir o conjurador.",
+                duration: "Concentração, até 1 minuto; consulte o efeito",
+                type: "AT",
+                level: 3
+            },
+            "Fascinar": {
+                description: "Cada alvo deve fazer uma jogada de desafio de Vontade com 1 perdição. Caso fracasse, o alvo se torna encantado até que o conjurador o ataque ou complete um descanso. Enquanto estiver encantado desta maneira, caso se mova e fique acima da curta distância do conjurador, ele fica debilitado.",
+                target: "Qualquer quantidade de criaturas a curta distância.",
+                type: "AT",
+                level: 4
+            },
+            "Escravizar": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Se o conjurador ou membros de seu grupo tiverem atacado o alvo sem completarem ainda um descanso depois disso, ele faz a jogada de ataque com 1 perdição. Caso seja bem-sucedido, o alvo fica encantado. Ele não envelhece enquanto estiver encantado devido a este efeito. Ao sofrer dano, pode fazer uma jogada de desafio de Vontade e remover a aflição, caso seja bem-sucedido. Enquanto o conjurador está até a longa distância do alvo e ele está encantado devido a este efeito, o conjurador pode utilizar uma ação para fazer uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, ele fica compelido por 1 minuto.",
+                target: "Uma criatura a média distância.",
+                attackRoll20: "Caso o total da jogada de ataque inicial tenha sido 20 ou mais e exceda o número alvo em 5 ou mais, o conjurador faz as jogadas de ataque de Vontade secundárias contra o alvo com 2 dádivas.",
+                type: "AT",
+                level: 5
+            }
         }
     },
     "Ilusão": {
         attribute: "intellect",
         darkMagic: false,
         spells: {
-            
+            "Clamor": {
+                description: "O ponto alvo emite sons a escolha do conjurador enquanto durar a magia. Estes sons podem ser ruídos ou uma fala em um idioma conhecido, o volume pode variar de um sussurro a tão alto quanto um trovão. Enquanto dura a magia, o conjurador pode mudar o som como quiser para imitar efeitos como golpes de espada, uma conversa, passos em aproximação ou em fuga.",
+                target: "Um ponto no espaço a média distância",
+                duration: "1 minuto",
+                type: "UT",
+                level: 0
+            },
+            "Disfarce": {
+                description: "O conjurador toca o alvo e fornece um disfarce ilusório que dura até o fim do efeito. O conjurador decide como é esse disfarce. Ele pode aumentar ou diminuir a altura aparente do alvo ou seu peso em até 25 por centro. A aparência das roupas e os equipamentos podem ser alterados também, embora o efeito não mascare os sons que ele faz normalmente.",
+                target: "Uma criatura ao alcance do conjurador.",
+                duration: "1 hora",
+                type: "UT",
+                level: 0
+            },
+            "Duplicatas": {
+                description: "Quatro duplicatas ilusórias surgem em espaços abertos ao alcance do conjurador. Enquanto durar a magia, cada duplicata de move com o conjurador, continuamente trocando de lugar de maneira que os observadores não consigam discernir qual é o verdadeiro conjurador. O movimento das duplicatas não desencadeia ataques livres. Quando uma criatura é bem-sucedida em uma jogada de ataque contra a Defesa, Força ou Agilidade do conjurador, joga-se um d20 para descobrir se o ataque atinge o conjurador ou uma das duplicatas. Caso atinja uma das duplicatas, o número de duplicatas é reduzido em 1. O efeito termina quando a última duplicata some.",
+                duration: "1 hora; consulte o efeito",
+                type: "UT",
+                level: 1
+            },
+            "Vertigem": {
+                description: "O alvo vê o ambiente girar ao seu redor. O conjurador faz uma jogada de ataque de Intelecto contra a Percepção do alvo. Caso seja bem-sucedido, ele é afetado por vertigem durante 1 minuto. Caso se mova mais de 2 metros em seu turno enquanto estiver afetado por este efeito, deve fazer uma jogada de desafio de Agilidade. Caso fracasse, fica prostrado no fim de seu turno.",
+                target: "Uma criatura a curta distância.",
+                attackRoll20: "Enquanto estiver afetado pela vertigem, o alvo também fica prostrado, potencialmente terminando seu turno, quando sofre dano.",
+                type: "AT",
+                level: 1
+            },
+            "Visão": {
+                description: "Uma ilusão visual silenciosa de uma criatura, objeto ou força aparece na área. Caso crie a ilusão de uma criatura, ela se move e se comporta como se estivesse viva enquanto durar a magia. Caso a ilusão seja atacada, ou caso o conjurador não possa vê-la no fim da rodada, o efeito termina imediatamente.",
+                area: "Um cubo com 2 metros de lado, originado de um ponto no campo de visão do conjurador a curta distância.",
+                duration: "1 hora; consulte o efeito",
+                type: "UT",
+                level: 1
+            },
+            "Fantasia": {
+                description: "Uma ilusão visual e auditiva de uma criatura, objeto ou força surge na área. Caso o conjurador não possa ver a ilusão no fim da rodada, o efeito termina imediatamente. Se o conjurador criou a ilusão de uma força perigosa, tal como fogo ou água fervente, as criaturas devem fazer uma jogada de desafio de Percepção quando se movem para esse espaço. Elas sofrem 2d6 de dano, caso fracassem. Se o conjurador criou a ilusão de uma criatura, ela se move e se comporta como se estivesse viva e utiliza o valor de Intelecto do conjurador para seus atributos, Defesa e Saúde. Ela ignora todas as aflições e desaparece quando se torna incapacitada, encerrando o efeito. Enquanto durar a magia, o conjurador pode utilizar uma ação para mover a ilusão até 10 metros e atacar uma criatura a 1 metro dela, desde que a criatura possa ver a ilusão e acredite que ela é real. O conjurador faz uma jogada de ataque de Intelecto contra a Percepção do alvo. Caso seja bem-sucedido, ele acredita que foi ferido, queimado ou prejudicado de alguma maneira pela ilusão e sofre 2d6 de dano.",
+                area: "Um cubo com 2 metros de lado, originado em um ponto no campo de visão do conjurador a curta distância.",
+                duration: "1 hora; consulte o efeito",
+                type: "UT",
+                level: 2
+            },
+            "Invisibilidade": {
+                description: "O conjurador toca o alvo que se torna invisível enquanto durar a magia.",
+                target: "Uma criatura ou objeto ao alcance do conjurador.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 2
+            },
+            "Engodo": {
+                description: "<b>Desencadeada</b> O conjurador pode utilizar uma ação desencadeada para conjurar esta magia, quando uma criatura obtém um sucesso em uma jogada de ataque contra ele. O sucesso se torna um fracasso, e o conjurador se teleporta para um espaço aberto de sua escolha a curta distância.",
+                type: "UT",
+                level: 3
+            },
+            "Fantasma": {
+                description: "Uma ilusão de uma criatura, objeto ou força que parece e soa como se fosse real surge dentro da área. Caso o conjurador não possa ver a ilusão no fim da rodada, o efeito termina imediatamente. Se o conjurador criou a ilusão de uma força perigosa, tal como fogo ou água fervente, as criaturas devem fazer uma jogada de desafio de Percepção quando se movem para esse espaço e sofrem 3d6 de dano, caso fracassem. Se o conjurador criou a ilusão de uma criatura, ela se move e se comporta como se estivesse viva e utiliza o valor de Intelecto do conjurador para seus atributos, Defesa e Saúde. Ela ignora todas as aflições e desaparece quando se torna incapacitada, encerrando o efeito. Enquanto durar a magia, o conjurador pode utilizar uma ação para mover a ilusão até 10 metros e atacar uma criatura a 1 metro dela que possa ver a ilusão e que acredite que ela é real. O conjurador faz uma jogada de ataque de Intelecto contra a Percepção do alvo. Caso seja bem-sucedido, ele acredita que foi ferido, queimado ou prejudicado de alguma maneira pela ilusão e sofre 4d6 de dano.",
+                area: "Um cubo com 4 metros de lado, originado de um ponto no campo de visão do conjurador a longa distância.",
+                duration: "1 hora; consulte o efeito",
+                attackRoll20: "O alvo sofre 2d6 de dano adicional.",
+                type: "UT",
+                level: 3
+            },
+            "Miragem": {
+                description: "Um terreno ilusório surge dentro da área e se mantém enquanto durar a magia. Ele parece completamente real a visão, olfato, audição e tato. O conjurador pode mudar a aparência do terreno real completamente ou incorporar suas características na ilusão. Ela pode esconder completamente qualquer característica do terreno real em sua área e seus efeitos visuais. Por exemplo, o conjurador poderia tornar uma chama invisível e esconder completamente a luz que emana, no entanto, a emissão de calor permaneceria e criaturas que entrassem em contato com ela receberiam dano. <br><b>Sacrifício</b> O conjurador pode gastar uma conjuração dessa magia para conjurar fantasma. <br><b>Permanência</b> Caso o conjurador conjure essa magia na mesma área todos os dias, por um mês e um dia, esse efeito se torna permanente.",
+                area: "Um cilindro com 5 metros de altura e 10 metros de raio, centrado em um ponto a longa distância.",
+                duration: "Até o conjurador completar um descanso",
+                type: "UT",
+                level: 4
+            },
+            "Cópia Adicional": {
+                description: "Uma cópia ilusória do conjurador surge dentro de uma área. A cópia se parece, soa e é idêntica a ele. Ela utiliza os atributos e caraterísticas do conjurador. No entanto, ignora todas as aflições e desaparece quando se torna incapacitada, o que termina o efeito. Quando o conjurador se move, ele também pode mover a cópia até seu Deslocamento total em qualquer direção, da mesma forma que se move normalmente. Ele pode escolher conjurar magias de seu espaço ou do espaço que a cópia ocupa. Quando uma criatura obtém um sucesso em uma jogada de ataque contra o conjurador, ele pode utilizar uma ação desencadeada para trocar de posição instantaneamente com a cópia, fazendo com que a cópia seja alvo do ataque em seu lugar.",
+                area: "Um cubo, grande o bastante para acomodar uma criatura do tamanho do Conjurador, originado em um ponto a curta distância.",
+                duration: "1 hora; consulte o efeito",
+                type: "UT",
+                level: 5
+            }
         }
     },
     "Invocação": {
         attribute: "intellect",
         darkMagic: false,
         spells: {
-            
+            "Invocação Direta": {
+                description: "O conjurador move o alvo até metade de seu Deslocamento.",
+                target: "Uma criatura a curta distância criada por sua conjuração de uma magia de Invocação",
+                type: "UT",
+                level: 0
+            },
+            "Invocar Item Útil": {
+                description: "Um objeto de Tamanho 1 ou menor que não seja mágico nem custe mais de 1 xp aparece na área.",
+                area: "Um objeto de Tamanho 1 ou menor que não seja mágico nem custe mais de 1 xp aparece na área.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 0
+            },
+            "Invocar Arma": {
+                description: "Uma arma ou pacote de munição surge na mão ou mãos do conjurador, ou a seus pés caso não tenha mãos livres.",
+                duration: "1 hora",
+                type: "UT",
+                level: 1
+            },
+            "Invocar Banquete": {
+                description: "Um banquete suntuoso e completo surge nas superfícies horizontais na área, o bastante para sustentar até cinco criaturas por um dia. Qualquer coisa que não seja consumida some ao fim do efeito.",
+                area: "Um cubo, com 2 metros de lado, originado de um ponto ao alcance do conjurador",
+                duration: "1 hora; consulte o efeito",
+                type: "UT",
+                level: 1
+            },
+            "Invocar Monstro Pequeno": {
+                description: "Um monstro pequeno compelido aparece na área.",
+                area: "Um cubo, com 1 metro de lado, originado de um ponto a média distância em cima de uma superfície sólida",
+                duration: "1 minuto",
+                type: "UT",
+                level: 1
+            },
+            "Invocar Monstro Médio": {
+                description: "Um monstro médio ou dois pequenos compelidos surgem na área.",
+                area: "Um cubo, com 2 metros de lado, originado de um ponto a média distância em cima de uma superfície sólida",
+                duration: "1 minuto",
+                type: "UT",
+                level: 2
+            },
+            "Invocar Montaria": {
+                description: "Um grupo de 1d6 montarias (cavalo) surgem na área. Eles podem ter qualquer aparência que o conjurador desejar. As montarias conjuradas são amigáveis a ele e se tornam compelidas por qualquer criatura que montar nelas. <br><b>Sacrifício</b> O conjurador pode gastar a conjuração desta magia para conjurar invocar monstro pequeno.",
+                target: "Um cubo, com 10 metros de lado, originado de um ponto a média distância em cima de uma superfície sólida",
+                duration: "2 horas",
+                type: "UT",
+                level: 2
+            },
+            "Invocar Monstro Grande": {
+                description: "Um monstro grande ou dois médios compelidos surgem na área.",
+                area: "Um cubo, com 2 metros de lado, originado de um ponto a média distância em cima de uma superfície sólida",
+                duration: "1 minuto",
+                type: "UT",
+                level: 3
+            },
+            "Invocar Parede": {
+                description: "Uma parede de pedra preenche a área e permanece até o fim do efeito ou até ser destruída. A parede cobre tudo atrás dela. Cada cubo de 1 metro de parede tem Defesa 5 e Saúde 50, desaparecendo caso seja destruído.",
+                area: "Uma linha moldável com 10 metros de comprimento, 5 metros de altura e 2 metros de largura, originada de um ponto a longa distância em qualquer orientação, desde que, pelo menos, dois lados se apoiem em superfícies sólidas",
+                duration: "1 hora; consulte o efeito",
+                type: "UT",
+                level: 3
+            },
+            "Invocar Abrigo": {
+                description: "O conjurador deve se concentrar por 1 minuto, durante este tempo ele visualiza um prédio ou ilha. Ao fim deste período, o prédio ou ilha visualizado surge na área e se mantém até o fim da duração da magia. Caso um prédio seja invocado, o conjurador decide como ele se parece, tal como entradas, janelas e quantidade de quartos. Ele inclui camas para até 10 pessoas, cadeiras, mesas, comida e bebida o bastante para sustentar até 10 pessoas e uma lareira acesa. Caso invoque uma ilha, ela fornece acomodações para até 10 pessoas da mesma maneira que se tivesse criado o prédio, mas na forma de bangalôs e cabanas. <br><b>Sacrifício</b> O conjurador pode gastar a conjuração desta magia para conjurar invocar monstro grande.",
+                area: "Um cubo, com 20 metros de lado, originado de um ponto a longa distância em uma superfície sólida ou líquida",
+                duration: "12 horas; consulte o efeito",
+                type: "UT",
+                level: 4
+            },
+            "Invocar Monstro Imenso": {
+                description: "Um monstro imenso ou dois grandes compelidos surgem na área.",
+                area: "Um cubo, com 4 metros de lado, originado de um ponto a média distância em cima de uma superfície sólida",
+                duration: "1 minuto",
+                type: "UT",
+                level: 5
+            }
         }
     },
     "Maldição": {
         attribute: "intellect",
         darkMagic: true,
         spells: {
-            
+            "Esconjurar": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, ele fica amaldiçoado por 1 minuto ou até que sofra dano. Enquanto está amaldiçoado, o alvo fica debilitado e o conjurador faz jogadas de ataque contra ele com 1 dádiva.",
+                target: "Uma criatura a curta distância que possa ver o conjurador",
+                attackRoll20: "O alvo também fica pasmo por 1 rodada.",
+                type: "AT",
+                level: 0
+            },
+            "Varíola": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo. Caso seja bem-sucedido, bolhas verdes e purulentas surgem nele. O alvo sofre 1d3 de dano por doença e fica assustado por 1 rodada.",
+                target: "Uma criatura viva a curta distância",
+                attackRoll20: "O alvo fica assustado por 1 minuto.",
+                type: "AT",
+                level: 0
+            },
+            "Assustar": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso seja bem-sucedido, ele fica assustado por 1 minuto. Enquanto está assustado desta maneira, o alvo pode utilizar uma ação para fazer uma jogada de desafio de Vontade e remove a aflição se for bem-sucedido.",
+                target: "Uma criatura a curta distância que possa ver o conjurador",
+                attackRoll20: "Enquanto está assustado desta maneira, o alvo também fica debilitado.",
+                type: "AT",
+                level: 1
+            },
+            "Dor": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo. Caso seja bem-sucedido, por 1 minuto, toda vez que o alvo sofrer dano, ele sofre 1d6 de dano adicional.",
+                target: "Uma criatura a curta distância",
+                attackRoll20: "Além disso, por 1 minuto, toda vez que o alvo sofre dano, ele fica pasmo por 1 rodada.",
+                type: "AT",
+                level: 1
+            },
+            "Mancar": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo. Caso seja bem-sucedido, ele fica lento por 1 minuto.",
+                target: "Uma criatura a curta distância",
+                attackRoll20: "O alvo também fica prostrado e não pode se levantar enquanto estiver lento devido a este efeito.",
+                type: "AT",
+                level: 1
+            },
+            "Fraqueza": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo. Caso seja bem-sucedido, ele fica amaldiçoado por 1 minuto. Enquanto está amaldiçoado, o alvo sofre uma penalidade de -10 para Saúde e faz jogadas de ataque de Força e Agilidade com 1 perdição.",
+                target: "Uma criatura a média distância",
+                attackRoll20: "A maldição dura até que o conjurador morra ou até que seja retirada.",
+                type: "AT",
+                level: 2
+            },
+            "Vulnerabilidade": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo. Caso seja bem-sucedido, ele fica amaldiçoado por 1 minuto. Enquanto está amaldiçoado, jogadas de ataque contra o alvo são feitas com 1 dádiva e ele faz suas jogadas de desafio para resistir a ataques com 1 perdição.",
+                target: "Uma criatura a média distância",
+                attackRoll20: "A maldição dura até que o conjurador morra ou até que seja retirada.",
+                type: "AT",
+                level: 2
+            },
+            "Pavor": {
+                description: "Uma onda de terror se dispersa pela área. Cada criatura dentro dela deve fazer uma jogada de desafio de Vontade, ficando assustada por 1 minuto, caso fracasse. Enquanto está assustada devido a este efeito, a criatura deve fazer um turno rápido toda rodada, utilizando uma ação para fugir do conjurador pelo caminho mais seguro. Ao fim de cada rodada, caso a criatura não tenha um caminho desobstruído até o conjurador e não possa vê-lo, ela pode fazer uma jogada de desafio de Vontade para remover esta aflição.",
+                area: "Um cone, 10 metros de comprimento, originado em um ponto ao alcance do conjurador",
+                type: "AT",
+                level: 3
+            },
+            "Suíno": {
+                description: "Cada alvo deve fazer uma jogada de desafio de Força. Caso fracasse, ele é transformado em um porco (um animal pequeno) até o fim da duração, junto com tudo que veste ou carrega. Enquanto está transformado devido a este efeito, o alvo fica assustado e deve fazer um turno rápido toda rodada, utilizando uma ação para fugir do conjurador pelo caminho mais seguro. O efeito termina imediatamente quando o alvo sofre dano.",
+                target: "Até três criaturas vivas no campo de visão do conjurador a média distância",
+                duration: "1 minuto; consulte o efeito",
+                type: "AT",
+                level: 3
+            },
+            "Sapo": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo com 3 dádivas, se o alvo tiver 40 de Saúde ou menos. Caso obtenha sucesso, ele é transformado em um sapo inofensivo (um animal minúsculo) e se mantém nessa forma enquanto o conjurador se concentrar, até 1 minuto. Caso a concentração não seja interrompida por toda sua duração, a maldição permanece até que o conjurador morra ou que utilize uma ação para removê-la. A maldição também termina, caso uma virgem beije o alvo por vontade própria.",
+                target: "Uma criatura no campo de visão do conjurador a média distância",
+                duration: "Concentração, até 1 minuto; consulte o efeito",
+                attackRoll20: "Enquanto a criatura estiver a até média distância do conjurador, a maldição dura automaticamente até que ele morra ou que utilize uma ação para removê-la.",
+                type: "AT",
+                level: 4
+            },
+            "Petrificar": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo com 3 dádivas, se o alvo tiver 50 de Saúde ou menos. Caso seja bem-sucedido, ele sofre 7d6+ 10 de dano e fica lento por 1 minuto. Se o alvo ficar incapacitado por este dano, ele morre imediatamente e se torna uma estátua de pedra.",
+                target: "Uma criatura a média distância que tenha corpo físico",
+                attackRoll20: "O alvo sofre 3d6 de dano adicional.",
+                type: "AT",
+                level: 5
+            }
         }
     },
     "Necromancia": {
         attribute: "intellect",
         darkMagic: true,
         spells: {
-            
+            "Esconder-se de Mortos Vivos": {
+                description: "O conjurador se esconde de criaturas mortas-vivas enquanto durar a magia. Este efeito termina imediatamente, caso execute um ataque.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 0
+            },
+            "Punho Espectral": {
+                description: "Uma mão sombria se lança contra o alvo. O conjurador faz uma jogada de Intelecto contra a Agilidade do alvo. Caso seja bem-sucedido, ele sofre 1d3 de dano e faz suas jogadas de ataque com 1 perdição durante 1 rodada.",
+                target: "Uma criatura a média distância",
+                attackRoll20: "O alvo sofre 1d6 de dano adicional.",
+                type: "AT",
+                level: 0
+            },
+            "Animar Cadáver": {
+                description: "O conjurador toca o alvo. Caso ele se concentre e mantenha contato com o alvo por 1 minuto, o alvo se torna um cadáver animado compelido de seu Tamanho. <br><b>Sacrifício</b> O conjurador pode gastar uma conjuração desta magia para conjurar punho espectral.",
+                target: "Um cadáver de Tamanho 1 ou 1/2 ao alcance do conjurador",
+                type: "UT",
+                level: 1
+            },
+            "Colher Alma": {
+                description: "Uma bola de luz suave sai do alvo e voa em direção ao conjurador, orbitando o corpo dele enquanto durar a magia. Ele pode utilizar uma ação para terminar o efeito imediatamente e curar dano igual à sua taxa de cura. Até que o efeito termine, a criatura alvo não pode ser trazida de volta a vida por nenhum meio.",
+                target: "Uma criatura morta a no máximo 1 rodada, a curta distância.",
+                duration: "4 horas; consulte o efeito",
+                type: "AT",
+                level: 1
+            },
+            "Garras da Sepultura": {
+                description: "Enquanto durar a magia, escuridão de dispersa pela área; garras de ossos e mãos apodrecidas saem do chão, que se torna terreno difícil. Cada criatura que estiver na área no momento da conjuração da magia ou no fim da rodada, deve fazer uma jogada de desafio de Agilidade. Caso fracasse, ela sofre 1d6 de dano e fica imobilizada enquanto durar a magia. Caso já estivesse imobilizada, ela sofre mais 1d6 de dano. A criatura pode utilizar uma ação para se libertar, removendo a aflição imobilizado.",
+                area: "Um círculo no solo com 5 metros de raio, centrado em um ponto a curta distância.",
+                duration: "1 minuto",
+                type: "AT",
+                level: 1
+            },
+            "Crânio Estridente": {
+                description: "Um crânio humano surge no ar, centrado no ponto alvo. Ele tem a propriedade voador, Defesa 20 e Saúde 10. Quando o valor de dano sofrido por ele se torna igual à sua Saúde, o crânio se desfaz e o efeito termina imediatamente. Quando o personagem conjura esta magia, ele pode fazer com que o crânio voe até 10 metros e grite; ele também pode fazer isso utilizando uma ação ou ação desencadeada em seu turno enquanto durar a magia. O ruído se dispersa por uma esfera com raio 3 metros, centrada no crânio. Cada criatura na área que possa ouvir deve obter um sucesso em um teste de desafio de Força ou sofre 1d6+1 de dano.",
+                target: "Um ponto no espaço ao alcance do conjurador",
+                duration: "1 minuto; consulte o efeito",
+                type: "AT",
+                level: 2
+            },
+            "Lascar Ossos": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo. Caso seja bem-sucedido, ele sofre 3d6+5 de dano. Caso se torne incapacitado por este dano, ele morre instantaneamente e os ossos em seu corpo explodem em um cone de 3 metros de comprimento de um ponto em seu espaço. Tudo na área sofre 1d6 de dano, criaturas que tiverem sucesso uma jogada de desafio de Agilidade não sofrem dano.",
+                target: "Uma criatura que tenha ossos em seu corpo, a média distância.",
+                attackRoll20: "O alvo sofre 2d6 de dano adicional.",
+                type: "AT",
+                level: 2
+            },
+            "Canibalizar Magia": {
+                description: "O conjurador faz uma jogada de ataque de Intelecto contra a Força do alvo. Caso seja bem-sucedido, ele sofre 3d6 de dano e o conjurador recupera a conjuração de uma magia de nível 1 ou menor.",
+                target: " Uma criatura a média distância.",
+                attackRoll20: "O alvo sofre 2d6 de dano adicional e o conjurador recupera a conjuração de uma magia de nível 2 ou menor.",
+                type: "AT",
+                level: 3
+            },
+            "Fosso de Poder Sombrio": {
+                description: "Um glifo surge no ponto de origem. Enquanto durar a magia, quando uma criatura na área sofrer dano, ela sofre 2d6 de dano adicional.",
+                area: "Um círculo no solo com 5 metros de raio, centrado em um ponto a média distância.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 3
+            },
+            "Selar os Portões do Submundo": {
+                description: "Tentáculos de energia necromântica se espalham pela área. Enquanto durar a magia, mortos-vivos na área fazem jogadas de ataque e de desafio com 1 dádiva e criaturas vivas, com exceção do conjurador, fazem jogadas de ataque e de desafio com 1 perdição. Além disso, criaturas vivas, de Tamanho 1 ou 1/2, que morrerem na área se tornam cadáveres animados compelidos.",
+                area: "Uma esfera com 10 metros de raio, centrada em um ponto a média distância",
+                duration: "1 minuto",
+                type: "AT",
+                level: 4
+            },
+            "Exército dos Mortos": {
+                description: "A área se torna terreno difícil enquanto durar a magia. Ao fim da rodada na qual a magia foi conjurada, 2d6 cadáveres animados compelidos saem do chão e se levantam. Todos os cadáveres animados criados por essa magia contam como uma única criatura, para determinar quantas criaturas mortas-vivas compelidas o conjurador pode controlar. O efeito termina quando o último destes cadáveres é destruído.",
+                area: "Um círculo no solo com 2 metros de raio, centrado em um ponto a média distância.",
+                duration: "1 hora",
+                type: "UT",
+                level: 5
+            }
         }
     },
     "Proibida": {
@@ -1154,12 +1583,32 @@ traditions ={
                 type:"AT",
                 level:"1"
             },
+            "Explosão Primástica": {
+                description: "Uma partícula brilhante voa do dedo do conjurador em direção ao alvo. Quando alcança o ponto alvo, ou caso encontre uma criatura ou objeto sólido antes dele, a partícula explode em luzes coloridas. Elas se dispersam em uma esfera de 1 metro de raio centrada no alvo ou em um ponto na criatura ou objeto. Cada criatura capaz de enxergar na área deve ser bem-sucedida em uma jogada de desafio de Percepção ou fica pasma por 1 rodada.",
+                target: "Um ponto no espaço a média distância",
+                type: "AT",
+                level: 1
+            },
+            "Luz Persistente": {
+                description: "O conjurador toca o objeto e uma luz brilha a partir dele em um raio de 10 metros pelo tempo de duração da magia.",
+                target: "Um objeto ao alcance do conjurador",
+                duration: "8 horas",
+                type: "UT",
+                level: 1
+            },
             "Raios solares":{
                 description:"Três raios flamejantes voam para fora da mão do conjurador, divididos como ele escolher entre seus alvos. Para cada raio, ele faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, o alvo sofre 1d6 de dano. Caso seja capaz de enxergar, o alvo também fica debilitado por 1 rodada.",
                 target:"Até três criaturas ou objetos a média distância.",
                 type:"AT",
                 attackRoll20:"O alvo sofre 1d3 de dano adicional.",
                 level:"2"
+            },
+            "Alvorecer": {
+                description: "Luz do sol se dispersa pela área enquanto a magia está ativa, eliminando sombras mágicas ou escuridão criadas por magias de nível 2 ou menor.",
+                area: "Uma esfera com 10 metros de raio centrada em um ponto a longa distância",
+                duration: "1 hora",
+                type: "UT",
+                level: 2
             },
             "Estrela cadente":{
                 description:"Uma partícula de luz branca aparece em qualquer lugar dentro do alcance da magia e corre em direção ao alvo. Quando alcança este ponto, ou caso encontre uma criatura ou objeto sólido antes, a partícula explode. Chamas se dispersam por uma esfera de 3 metros de raio centrada no alvo ou em um ponto no espaço da criatura ou objeto, causando 2d6+2 de dano a tudo na área. Cada criatura na área deve fazer uma jogada de desafio de Força. A criatura fica debilitada por 1 rodada em caso de falha, ou apenas sofre metade do dano em caso de sucesso.",
@@ -1239,13 +1688,13 @@ traditions ={
             },
             "Detonar":{
                 description:"O conjurador sofre 4 pontos de dano. O alvo sofre dano igual à sua própria Saúde e explode em um raio de 4 metros de um ponto em seu espaço, causando 6d6 de dano a tudo na área devido aos detritos arremessados. Cada criatura na área, que for bem-sucedida em uma jogada de desafio de Agilidade, sofre metade do dano.",
-                target:" Um objeto (que nunca tenha sido uma criatura) de Tamanho 1 ou menor no campo de visão do conjurador a média distância.",
+                target:"Um objeto (que nunca tenha sido uma criatura) de Tamanho 1 ou menor no campo de visão do conjurador a média distância.",
                 type:"AT",
                 level:"3"
             },
             "Evaporar":{
                 description:"O conjurador sofre 4 pontos de dano e faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, ele sofre 6d6 de dano e começa a evaporar. Um objeto destruído por este dano evapora em uma névoa suave. Uma criatura incapacitada por este dano morre instantaneamente e se torna uma nuvem carmim, que obscurece parcialmente o espaço ocupado por 1 rodada.",
-                target:" Uma criatura ou objeto com corpo físico ao alcance do conjurador.",
+                target:"Uma criatura ou objeto com corpo físico ao alcance do conjurador.",
                 type:"AT",
                 attackRoll20:"O alvo sofre 2d6 de dano adicional.",
                 level:"3"
@@ -1306,6 +1755,13 @@ traditions ={
                 duration:"1 minuto",
                 type:"UT",
                 level:"2"
+            },
+            "Saraivada Incandescente": {
+                description: "O conjurador lança três projéteis de fogo, divididos como ele quiser entre os alvos. Para cada projétil, ele faz uma jogada de ataque de Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, o alvo sofre 1d6+1 de dano.",
+                target: "Até três criaturas ou objetos a média distância.",
+                attackRoll20: "O alvo sofre 1d3 de dano adicional.",
+                type: "AT",
+                level: 2
             },
             "Bola de fogo":{
                 description:"O conjurador arremessa um globo de fogo. Quando esse globo atinge o alvo, ou caso encontre uma criatura ou objeto sólido antes, ele explode. Chamas se dispersam em uma esfera de 5 metros de raio, centrada no alvo em um ponto no espaço da criatura ou objeto, causando 5d6 de dano a tudo na área. Cada criatura na área sofre metade do dano, caso seja bem-sucedida em uma jogada de desafio de Agilidade.",
@@ -1458,11 +1914,18 @@ traditions ={
                 type:"UT",
                 level:"2"
             },
+            "Fera Atroz": {
+                description: "O alvo se torna uma besta selvagem. Enquanto durar a magia, o Tamanho do alvo aumenta para 1 ou aumenta em 1, caso seja de Tamanho 1 ou maior, seus ataques com golpes desarmados ou armas naturais causam 1d6 de dano adicional.",
+                target: "O conjurador ou um animal a curta distância.",
+                duration: "1 minuto",
+                type: "UT",
+                level: 2
+            },
             "Bote":{
                 description:"O conjurador se desloca até o dobro de seu Deslocamento. A qualquer momento durante esse movimento, ele pode fazer um ataque desarmado ou com uma arma natural contra um alvo a seu alcance, utilizando Vontade no lugar do atributo que o ataque utilizaria normalmente. Caso seja bem-sucedido, o alvo sofre o dano do ataque mais 2d6 de dano adicional e fica prostrado.",
-                requirements:"O conjurador deve estar sob efeito da magia fera interior.",
+                requisites:"O conjurador deve estar sob efeito da magia fera interior.",
                 type:"AT",
-                level:"2"
+                level: 3
             },
             "Convocar animal grande":{
                 description:"Esta magia funciona como convocar animaL pequeno, exceto que um animal grande, médio ou pequeno aparece na área. Um animal médio ou pequeno pode ter uma dos seguintes propriedades: escalador, nadador, venenoso ou voador.",
@@ -1527,9 +1990,8 @@ traditions ={
                 level:"1"
             },
             "Convocar relâmpago":{
-                description:"Um relâmpago vindo do céu atinge o alvo e causa 3d6+5 de dano a tudo num raio de 3 metros daquele ponto. Cada criatura que sofre dano por este efeito deve fazer uma jogada de desafio de Força. Ela se torna surda por 1 hora, caso fracasse, ou sofre metade do dano, caso seja bem-sucedida.",
-                sacrifice:"O conjurador pode gastar uma conjuração desta magia para conjurar raio bifurcado.",
-                requirement:"O conjurador deve estar a céu aberto.",
+                description:"Um relâmpago vindo do céu atinge o alvo e causa 3d6+5 de dano a tudo num raio de 3 metros daquele ponto. Cada criatura que sofre dano por este efeito deve fazer uma jogada de desafio de Força. Ela se torna surda por 1 hora, caso fracasse, ou sofre metade do dano, caso seja bem-sucedida.<br><b>Sacrifício</b> O conjurador pode gastar uma conjuração desta magia para conjurar raio bifurcado.",
+                requisites:"O conjurador deve estar a céu aberto.",
                 target:"Um ponto no solo a distância.",
                 type:"AT",
                 level:"2"
@@ -1765,7 +2227,7 @@ traditions ={
                 description:"O conjurador assume a forma de um animal grande, médio, pequeno ou minúsculo enquanto durar a magia. Caso assuma a forma de um animal pequeno ou minúsculo, ele pode ganhar uma das seguintes propriedades: escalador, nadador ou voador.",
                 duration:"1 hora.",
                 type:"UT",
-                level:"1"
+                level: 2
             },
             "Forma de objeto":{
                 description:"O conjurador assume a forma de um objeto de seu Tamanho ou menor enquanto durar a magia, se tornando fisicamente indistinguível do objeto cuja forma assumiu. Ele toma todas as decisões sobre como sua nova forma se parece. Até que o efeito termine, o conjurador não pode falar e pode utilizar ações apenas para se concentrar na magia. No entanto, ele pode perceber o ambiente utilizando seus sentidos normais. Este efeito termina imediatamente, caso o conjurador sofra qualquer dano.",
@@ -1846,6 +2308,12 @@ traditions ={
                 type:"UT",
                 level:"2"
             },
+            "Cura Maior": {
+                description: "O conjurador toca o alvo, que cura uma quantidade de dano igual ao triplo de sua própria taxa de cura.",
+                target: "Uma criatura ao alcance do conjurador.",
+                type: "UT",
+                level: 3
+            },
             "Tratamento maior":{
                 description:"O conjurador toca cada um dos alvos, fornecendo um dos seguintes benefícios (ele pode escolher um benefício diferente para cada alvo): <br>• Remove uma das seguintes aflições do alvo: doente, fatigado, debilitado ou envenenado. <br>• Remove 1 ponto de Insanidade do alvo. <br>• Remove qualquer penalidade contra a Saúde do alvo. <br>• O alvo cura uma quantidade de dano igual à sua taxa de cura.",
                 target:"Até três criaturas ao alcance do conjurador.",
@@ -1860,7 +2328,7 @@ traditions ={
             },
             "Ressurreição":{
                 description:"O conjurador toca o alvo. Ele deve se concentrar por 1 hora, durante esse tempo o conjurador deve manter contato físico com o alvo. Caso a concentração não seja interrompida, ele talvez possa voltar à vida. Caso a alma do alvo resida no Submundo, ela retorna ao corpo e ele volta à vida. O alvo cura 1 ponto de dano e fica fatigado e debilitado, até que complete um descanso. Caso a alma do alvo resida no Inferno, o conjurador faz uma jogada de desafio de Vontade com uma quantidade de perdições igual à Corrupção do alvo. Caso seja bem-sucedido, ele volta à vida como descrito acima. Caso fracasse, a alma está completamente perdida. Ela não pode retornar ao corpo por meio de outras conjurações desta mesma magia.",
-                sacrifice:"O conjurador pode gastar uma conjuração desta magia para conjurar cura totaL.",
+                sacrifice:"O conjurador pode gastar uma conjuração desta magia para conjurar cura total.",
                 target:"Uma criatura morta a não mais de 24 horas ao alcance do conjurador.",
                 type:"UT",
                 level: "5"
