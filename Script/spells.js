@@ -34,7 +34,7 @@ function loadChoices(){
                 addPToDiv(id, "Depois você terá duas escolhas: escolher uma nova tradição ou escolher uma magia para cada escolha.");
                 traditionSpellsChoices = 3;
                 character.additionalAttCharacts.power = 1;
-                switch(character.novicePath.religion){
+                switch(character.novicePath.choices.religion){
                     case "Culto do Novo Deus":
                         possibleTraditions = ["Celestial", "Teurgia", "Vida"];
                         break;
