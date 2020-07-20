@@ -22,6 +22,7 @@ class Character{
         this._corruption = corruption;
         this._level = level;
         
+
         this._languageList = {
             "Língua Comum": {
                 speakable: true,
@@ -42,24 +43,30 @@ class Character{
                 this._novicePath = new Warrior(paths.novice.training, level);
                 break;
             case "rogue":
-                if(level == 1){
-                    this._novicePath = new Rogue(paths.novice.training, level);
-                }
-                else if(level < 8){
-                    this._novicePath = new Rogue(paths.novice.training, level, paths.novice.talentChoice2);
-                }
-                else{
-                    this._novicePath = new Rogue(paths.novice.training, level, paths.novice.talentChoice2, paths.novice.talentChoice8);
-                }
+                this._novicePath = new Rogue(paths.novice.training, level, paths.novice.choices || {});
                 break;
             case "magician":
                 this._novicePath = new Magician(paths.novice.training, level);
                 break;
             case "priest":
-                this._novicePath = new Priest(paths.novice.training, level);
+                this._novicePath = new Priest(paths.novice.training, level, paths.novice.choices || {});
                 break;
         }
         this._talents.novicePath = this.novicePath.talents;
+
+        if(paths.expert){
+            switch(paths.expert.type){
+
+            }
+            this._talents.expertPath = this.expertPath.talents;
+        }
+
+        if(paths.master){
+            switch(paths.master.type){
+
+            }
+            this._talents.masterPath = this.masterPath.talents;
+        }
 
         this._bag = bag;
 
@@ -251,6 +258,14 @@ class Character{
 
     get novicePath(){
         return this._novicePath;
+    }
+
+    get expertPath(){
+        return this._expertPath;
+    }
+
+    get masterPath(){
+        return this._masterPath;
     }
 
     get traditions(){
@@ -700,9 +715,9 @@ class Yerath extends Character{
             professions, paths, bag, traditions);
         this._caste = caste;
         super.addSpeakedLanguage("Yerath");
-        super.addTalent("ancestry", "Extra Arms", " You have a second pair of arms that end in hands. These appendages are useful only for fine manipulation and carrying small, lightweight objects or performing minor activities. On your turn, you can use a triggered action to reload a weapon.");
-        super.addTalent("ancestry", "Flutter", "You can use an action to unfurl your wings, which lets you move by flying until the end of the round, although you fly at half Speed. While your wings are unfurled, you grant 1 boon on attack rolls made against you.");
-        super.addTalent("ancestry", "Musk", "You can use an action, or a triggered action when you take damage, to squirt your musk into a 1-yard cube originating from a point you can reach. Any creature in that space must get a success on a Strength challenge roll or become impaired for 1 round. Once you use your Musk, you must wait at least 1 minute before you can use it again. As part of using this talent, you can use the scent to communicate one concept such as fear, anger, sorrow, or security. Any yerathi within 5 yards of the space can perceive this message.");
+        super.addTalent("ancestry", "Braços Extras", "Você tem um segundo par de braços que terminam em mãos. É apenas possível usá-los para carregar objetos pequenos e leves ou para realizar atividades menores. Você também tem como usar seus dedos normalmente. No seu turno, você pode usar uma ação desencadeada para recarregar uma arma.");
+        super.addTalent("ancestry", "Voar", "Você pode usar uma ação para desenrolar suas asas. Dessa forma você pode se mover voando até o final da rodada, mas você se move na metade do seu deslocamento. Enquanto suas asas estão desenroladas, jogadas de ataque feitas contra você tem uma dádiva.");
+        super.addTalent("ancestry", "Gosma", "Você pode usar uma ação, ou uma ação desencadeada quando você toma dano, para esguichar a sua gosma em um cubo de 1 metro de raio originando de um ponto que você consegue alcançar. Qualquer criatura nesse espaço precisa conseguir um sucesso em um jogada de desafio de força ou ficam desabilitados por uma rodada. Uma vez que você que usar sua gosma, você precisa esperar um minuto antes de você usá-la de novo. Como parte desse talento, você pode usar o cheiro da gosma para comunicar um sentimento para outros yeraths, como medo, raiva, tristeza ou segurança. Qualquer yerath dentro de 5 metros pode sentir essa mensagem.");
     }
     // Getting and setting new ancestry-specific properties:
     get caste(){
@@ -744,28 +759,10 @@ function getCharacter(object){
         object.traditions = {};
     }
     let paths = {
-        novice: {
-            type: object.novicePath.type,
-        }
+        novice: object.novicePath,
+        expert: object.expertPath || null,
+        master: object.masterPath || null
     };
-    if(object.status.level >= 2 && object.novicePath.type == "rogue"){
-        if(object.novicePath.talentChoice2){
-            paths.novice.talentChoice2 = object.novicePath.talentChoice2;
-        }
-        if(object.novice.talentChoice8){
-            paths.novice.talentChoice8 = object.novicePath.talentChoice8;
-        }
-    }
-    if(object.expertPath){
-        paths.expertPath = {
-            type: object.expertPath.type
-        }
-    }
-    if(object.masterPath){
-        paths.masterPath = {
-            type: object.masterPath.type
-        }
-    }
     let characterCreated;
     let keys;
     switch(object.ancestry){
@@ -902,8 +899,48 @@ function getCharacterObject(characterToBeObject){
         "background": characterToBeObject.background,
         "name": characterToBeObject.name,
         "status": characterToBeObject.status,
+        "professions": characterToBeObject.professions,
+        "bag": characterToBeObject.bag,
+        "traditions": characterToBeObject.traditions,
     };
+    // Novice Path
+    switch(characterToBeObject.novicePath.pathName){
+        case "Guerreiro":
+            newObject.novicePath = {
+                type: "warrior",
+                training: characterToBeObject.novicePath.training
+            }
+            break;
+        case "Ladino":
+            newObject.novicePath = {
+                type: "rogue",
+                training: characterToBeObject.novicePath.training,
+                choices: characterToBeObject.novicePath.choices
+            }
+            break;
+        case "Mágico":
+            newObject.novicePath = {
+                type: "magician",
+                training: characterToBeObject.novicePath.training
+            }
+            break;
+        case "Sacerdote":
+            newObject.novicePath = {
+                type: "priest",
+                training: characterToBeObject.novicePath.training,
+                choices: characterToBeObject.novicePath.choices
+            }
+            break;
+    }
     
+    // Expert Path
+
+    // Master Path
+
+    // Languages
+    newObject.languages = characterToBeObject.languages;
+
+    // Ancestry
     if(characterToBeObject instanceof Human){
         newObject.ancestry = "human";
         newObject.size = characterToBeObject.size;
@@ -946,6 +983,7 @@ function getCharacterObject(characterToBeObject){
         newObject.ancestry = "yerath";
         newObject.caste = characterToBeObject.caste;
     }
+    
     return newObject;
 }
 
