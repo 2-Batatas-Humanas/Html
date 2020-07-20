@@ -257,6 +257,14 @@ function loadInfo(){
         });
         infoDiv.appendChild(languageList);
 
+        let noviceTraining = document.createElement("p");
+        noviceTraining.innerHTML = "Treinamento da trilha de aprendiz: " + character.novicePath.training;
+        infoDiv.appendChild(noviceTraining);
+        
+        // Expert Training
+
+        // Master Training
+
     } else{
         infoDiv.innerHTML = "";
     }
