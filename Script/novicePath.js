@@ -69,7 +69,9 @@ function nextPage(){
             break;
         case "priest":
             choices.priestLangChoice = document.querySelector("#priestLangChoice").value;
-            character.novicePath["religion"] = document.querySelector("#priestReligion").value;
+            character.novicePath.choices = {
+                religion: document.querySelector("#priestReligion").value
+            }
             break;
     }
     localStorage.setItem("character", JSON.stringify(character));
