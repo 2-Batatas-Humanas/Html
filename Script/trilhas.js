@@ -356,29 +356,38 @@ class Druida extends Path{
 class Oraculo extends Path{
     constructor(training, level){
         let talents = {
-            "": ""
+            "Êxtase Divino": "O oráculo pode utilizar uma ação para entrar em um estado de êxtase que dura 1 minuto. Ele ganha os seguintes benefícios durante este período: <ul><li>Recebe um bônus de +10 para a Saúde.</li><li>Não pode ficar assustado, compelido ou encantado.</li><li>Não pode ganhar pontos de Insanidade.</li><li>Faz jogadas de ataque e de desafio de Intelecto, Vontade ou Percepção com 1 dádiva.</li></ul> Quando este efeito termina, o oráculo deve fazer uma jogada de desafio de Vontade ou ganha 1 de Insanidade. O oráculo pode utilizar este talento uma quantidade de vezes igual a seu Poder. Ele restaura seus usos quando completa um descanso."
         };
         if(level >= 6){
-            talents[""] = "";
+            talents["Comunhão com os Deuses"] = "Quando o oráculo usa Êxtase Divino, pode decidir entrar em transe. Caso se concentre até que o efeito termine, ele pode fazer até três perguntas para a presença sobrenatural que podem ser respondidas com sim, não e talvez. Então, o oráculo faz uma jogada de desafio de Vontade com 1 perdição. Caso seja bem-sucedido, o Mestre deve responder com a verdade. Caso fracasse, o oráculo ganha 1 de Insanidade.";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Avatar"] = "Enquanto está sob o efeito de Êxtase Divino, o oráculo recebe os seguintes benefícios adicionais: <ul><li>Recebe um bônus de +1 para Defesa.</li><li>Faz jogadas de ataques e desafio de Força e Agilidade com 1 dádiva.</li><li>Seus ataques causam 1d6 de dano adicional.</li></ul>";
         }
-        super(training, "", talents);
+        super(training, "Oráculo", talents);
     }
     level3(){
         return {
-            
+            health: 3,
+            power: 1,
+            magicChoices: 1,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level6(){
         return {
-            
+            health: 3,
+            magicChoices: 1
         }
     }
     level9(){
         return {
-            
+            health: 3,
+            power: 1,
+            magicChoices: 1
         }
     }
 }
@@ -386,29 +395,36 @@ class Oraculo extends Path{
 class Paladino extends Path{
     constructor(training, level){
         let talents = {
-            "": ""
+            "Punição Divina": "Quando o paladino é bem-sucedido em um ataque com uma arma, ele pode gastar a conjuração de uma magia. O ataque causa 1d6 de dano adicional por nível da magia gasta (mínimo 1d6 de dano adicional). Caso o alvo seja um demônio, diabo, espírito, fada ou morto-vivo, o dano adicional aumenta em 1d6.",
+            "Cura pela Fé": "O paladino pode utilizar uma ação para tocar uma criatura viva, dentro de seu alcance, e gastar a conjuração de uma magia para fazer um dos seguintes:<ul><li>O alvo cura uma quantidade de dano igual à metade de sua taxa de cura.</li><li>O paladino remove a aflição doente de um alvo.</li><li>O paladino remove a aflição envenenado de um alvo.</li></ul>"
         };
         if(level >= 6){
-            talents[""] = "";
+            talents["Vigor Divino"] = "O paladino não pode ficar doente ou envenenado. Ele nunca toma dano por doença e veneno.";
+            talents["Sentir Inimigos"] = "O paladino pode utilizar uma ação ou ação desencadeada em seu turno para encontrar inimigos. Por 1 minuto, nenhuma criatura, até média distância, pode se esconder do paladino e suas jogadas de ataque contra criaturas, até média distância, ignoram os efeitos de obscurecimento. O paladino pode utilizar este talento uma quantidade de vezes igual a seu Poder. Ele restaura seus usos quando completa um descanso.";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Resplendor Divino"] = "Em seu turno, o paladino pode utilizar uma ação ou ação desencadeada para fazer uma luz brilhar de um ponto dentro de seu espaço até um número de metros igual a duas vezes seu Poder. A luz se move com ele e dura pelo menos 1 minuto. Até que o efeito termine, o paladino e os membros de seu grupo na área iluminada não podem ser assustados e fazem jogadas de desafio com 1 dádiva para resistir a ataques. Da mesma maneira, demônios, diabos, fadas, espíritos e mortos-vivos ficam debilitados enquanto estão na área iluminada. O paladino pode utilizar este talento uma quantidade de vezes igual a seu Poder. Ele restaura seus usos quando completa um descanso.";
         }
-        super(training, "", talents);
+        super(training, "Paladino", talents);
     }
     level3(){
         return {
-            
+            health: 4,
+            power: 1,
+            magicChoices: 1
         }
     }
     level6(){
         return {
-            
+            health: 4,
+            magicChoices: 1
         }
     }
     level9(){
         return {
-            
+            health: 4,
+            power: 1,
+            magicChoices: 1
         }
     }
 }
@@ -418,29 +434,38 @@ class Paladino extends Path{
 class Artifice extends Path{
     constructor(training, level){
         let talents = {
-            "": ""
+            "Bolsa de Artífice": "O artífice tem uma bolsa cheia de peças sobressalentes que pode utilizar para criar equipamentos. O artífice mede a quantidade de peças em coroas de ouro, embora essas peças não tenham valor para ninguém além de outro artífice. O valor em co destas peças sobressalentes é igual a duas vezes o nível do grupo. O artífice pode utilizar uma ação para começar a montar as peças e formar uma armadura, uma arma, munição ou um item de engenharia, gastando uma quantidade de peças da bolsa equivalentes ao preço do item. É necessário 1 minuto para criar um objeto, no qual o artífice deve se concentrar e utilizar um kit de ferramentas. Ao fim deste tempo, o artífice obtém uma peça de equipamento finalizada que permanece até que ele complete um descanso, neste momento, o equipamento se desmonta em partes novamente. Quando completa um descanso, o artífice repõe as peças de sua Bolsa de Artífice, até o valor máximo de co. Caso perca sua Bolsa de Artífice, o artífice pode criar uma nova. Custa uma quantidade de coroas de ouro igual ao nível do grupo. O artífice pode ter apenas uma Bolsa do Artífice por vez."
         };
         if(level >= 6){
-            talents[""] = "";
+            talents["Armazenar Magia"] = "O artífice pode utilizar uma ação para tocar um objeto que criou a partir de sua Bolsa de Artífice. Caso se concentre durante um 1 minuto, tempo no qual o Artífice deve se manter em contato com o objeto, ele pode gastar uma conjuração de magia e imbuir a conjuração daquela magia no objeto. A conjuração fica no objeto até que o artífice complete um descanso ou até que seja gasto. Qualquer criatura que segurar o objeto pode utilizar uma ação para gastar a conjuração da magia do objeto e conjurar a magia, independentemente do Poder da criatura.";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Servo Mecânico"] = "O artífice pode utilizar uma ação para criar um ou mais pequenos construtos utilizando materiais contidos em sua Bolsa de Artífice. Para cada 1 co de materiais gastos, um construto pequeno compelido aparece em um espaço aberto à curta distância do artífice. O artífice pode fornecer a característica voador a qualquer número de construtos ao gastar 1 co adicional da bolsa para cada um deles. Os construtos permanecem até serem destruídos ou até que o artífice complete um descanso. Ao fim deste período, os servos mecânicos se desmontam em partes.";
         }
-        super(training, "", talents);
+        super(training, "Artífice", talents);
     }
     level3(){
         return {
-            
+            health: 2,
+            power: 1,
+            magicChoices: 1,
+            choice: {
+                language: "new",
+                profession: "academic"
+            }
         }
     }
     level6(){
         return {
-            
+            health: 2,
+            magicChoices: 1
         }
     }
     level9(){
         return {
-            
+            health: 2,
+            power: 1,
+            magicChoices: 1
         }
     }
 }
@@ -448,29 +473,41 @@ class Artifice extends Path{
 class Bruxa extends Path{
     constructor(training, level){
         let talents = {
-            "": ""
+            "Orientação": "Quando uma criatura que pode ouvir e entender o que a bruxa diz faz uma jogada de desafio, a bruxa pode utilizar uma ação desencadeada para oferecer orientação para a criatura. A criatura faz o teste com 2 dádivas."
         };
         if(level >= 6){
-            talents[""] = "";
+            talents["Vassoura Voadora"] = "A bruxa pode utilizar uma ação para tocar uma vassoura e gastar a conjuração de uma magia. Ela imbui a vassoura de magia que se mantém por uma quantidade de horas igual ao Poder da bruxa adicionado do nível da magia cuja conjuração foi gasta. Até que o efeito termine, enquanto a bruxa estiver sentada no cabo da vassoura, ela pode se mover voando. A vassoura pode carregar um ou mais passageiros cujo total de Tamanhos não exceda 1.";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Laço Duradouro"] = "A bruxa pode utilizar uma ação para criar um laço com uma criatura a curta distância que possa vê-la e ouvi-la. Caso o alvo esteja disposto, ele se conecta a bruxa até que ela morra, o alvo morra, ou a bruxa utilize esse talento novamente. Até o fim do efeito, a bruxa e o alvo fazem todas as suas jogadas de Percepção com 1 dádiva enquanto estiverem dentro de uma média distância um do outro. Toda vez que a bruxa ou o alvo cura dano, o outro cura metade do dano, contanto que estejam dentro de uma média distância um do outro. Por fim, a bruxa pode utilizar uma ação para fazer com que a imagem do alvo apareça em uma superfície reflexiva que ela pode ver a curta distância e essa imagem se mantém ali por quanto tempo a bruxa desejar. A imagem mostra o alvo e a área a curta distância dele.";
         }
-        super(training, "", talents);
+        super(training, "Bruxa", talents);
     }
     level3(){
         return {
-            
+            health: 2,
+            power: 1,
+            magicChoices: 1,
+            choice: {
+                language: "new",
+                profession: "academic",
+                profession2: "common",
+                profession3: "wilderness"
+            },
+            spell: "Fogo das Bruxas"
         }
     }
     level6(){
         return {
-            
+            health: 2,
+            magicChoices: 1
         }
     }
     level9(){
         return {
-            
+            health: 2,
+            power: 1,
+            magicChoices: 1
         }
     }
 }
@@ -478,29 +515,35 @@ class Bruxa extends Path{
 class Feiticeiro extends Path{
     constructor(training, level){
         let talents = {
-            "": ""
+            "Feitiçaria": "Quando o feiticeiro conjura uma magia de ataque, ele pode utilizar este talento para fazer uma jogada de ataque com 1 dádiva e impor 1 perdição nas jogadas de desafio da criatura que tentar resistir a magia. Depois de resolver o efeito da magia, o personagem recebe 1 ponto de <b>tensão</b>. A tensão se mantém até que ele complete um descanso completo.",
+            "Tensão do Feiticeiro": "Ao fim de cada rodada na qual o feiticeiro recebe 1 ou mais pontos de tensão, ele deve fazer uma jogada de desafio de Vontade. A jogada é feita com uma quantidade de perdições igual à sua tensão total. Caso fracasse, a energia explode de um ponto dentro do alcance do personagem até um número de metros igual ao total de tensão. Tudo na área, exceto o feiticeiro, sofre 1d6 de dano por ponto de Poder do feiticeiro. Se as criaturas nesta área obtiverem sucesso em uma jogada de desafio de Agilidade, sofrem metade do dano. A tensão cai para 0."
         };
         if(level >= 6){
-            talents[""] = "";
+            talents["Feitiçaria Maior"] = "Quando o feiticeiro conjura uma magia, pode ampliar seus efeitos. Ele recebe 1 ponto de tensão e aplica uma das seguintes características a magia:<ul><li>Caso a magia exija uma jogada de ataque, a jogada é feita com 2 dádivas.</li><li>Criaturas que fazem jogadas de desafio para resistirem a magia, fazem suas jogadas com 2 perdições.</li><li>O alcance do efeito aumenta de curto para médio, de médio para longo e de longo para extremo.</li><li>Dobra o tamanho da área de efeito da magia.</li><li>Caso o alvo receba dano da magia, ele recebe 2d6 de dano adicional.</li><li>Caso o alvo seja curado pela magia, ele recebe 2d6 de cura adicionais.</li></ul>";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Explosão de Feitiçaria"] = "Enquanto o feiticeiro tem 1 ou mais pontos de tensão, ele pode utilizar uma ação para liberar uma explosão de energia de feitiçaria em uma criatura ou objeto que esteja até média distância. Ele reduz a tensão em 1 e faz uma jogada de ataque de Intelecto ou Vontade contra a Agilidade do alvo. Caso seja bem-sucedido, a explosão atinge o alvo e ele sofre 2d6 de dano.";
         }
-        super(training, "", talents);
+        super(training, "Feiticeiro", talents);
     }
     level3(){
         return {
-            
+            health: 2,
+            power: 1,
+            magicChoices: 1
         }
     }
     level6(){
         return {
-            
+            health: 2,
+            magicChoices: 1
         }
     }
     level9(){
         return {
-            
+            health: 2,
+            power: 1,
+            magicChoices: 1
         }
     }
 }
@@ -508,29 +551,38 @@ class Feiticeiro extends Path{
 class Mago extends Path{
     constructor(training, level){
         let talents = {
-            "": ""
+            "Grimório": "O mago ganha um tomo repleto de conhecimentos mágicos. Ele escolhe três magias de qualquer tradição e as anota no grimório. As magias devem ser de um nível que o mago possa conjurar. Se aprender essas magias normalmente faria com que o mago ganhasse pontos de Corrupção, ele recebe a Corrupção como se as tivesse aprendido. Caso esteja segurando seu grimório, o mago pode gastar a conjuração de uma magia que tenha aprendido para conjurar uma magia contida no grimório, desde que a magia seja do mesmo nível ou menor. Toda vez que aprende uma magia que já esteja escrita no grimório, o mago pode adicionar uma nova magia de mesmo nível ou menor ao grimório. A magia adicionada deve ser de um nível que o mago possa conjurar, mas pode ser de qualquer tradição."
         };
         if(level >= 6){
-            talents[""] = "";
+            talents["Especialista em Magia"] = "O mago aumenta o número de conjurações de magias de nível 0 e 1 em 1.";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Maestria em Magia"] = "O mago tornou-se mestre na conjuração de magias. Ele recebe 6 pontos de magia. Quando conjura uma magia, o mago pode gastar uma quantidade de pontos de magia igual 1 + o nível da magia para conjurar a magia sem gastar a conjuração ou para conjurar uma magia para a qual não sobraram mais conjurações. O mago recupera seus pontos de magia quando completa um descanso.";
         }
-        super(training, "", talents);
+        super(training, "Mago", talents);
     }
     level3(){
         return {
-            
+            health: 2,
+            power: 1,
+            magicChoices: 1,
+            choice: {
+                language: "new",
+                profession: "academic"
+            }
         }
     }
     level6(){
         return {
-            
+            health: 2,
+            magicChoices: 1,
         }
     }
     level9(){
         return {
-            
+            health: 2,
+            power: 1,
+            magicChoices: 1,
         }
     }
 }
