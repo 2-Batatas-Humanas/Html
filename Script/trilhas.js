@@ -592,29 +592,37 @@ class Mago extends Path{
 class Assassino extends Path{
     constructor(training, level){
         let talents = {
-            "": ""
+            "Assassinar": "Quando uma criatura surpreendida ou uma criatura da qual está escondido sofre dano por seu ataque, a criatura deve fazer uma jogada de desafio de Força. Caso fracasse, ela sofre uma quantidade de dano equivalente à Saúde dela.",
+            "Especialista em Disfarces": "Caso tenha um kit de disfarces, o assassino pode utilizar uma ação para gastar um uso do kit e colocar um disfarce.",
+            "Reflexos Ligeiros": "O assassino pode utilizar uma ação desencadeada em seu turno para esconder-se ou recuar."
         };
         if(level >= 6){
-            talents[""] = "";
+            talents["Produzir Veneno"] = "O assassino pode utilizar uma ação e um kit de alquimista para criar uma dose de veneno. Ele deve gastar ao menos 1 minuto se concentrando, durante o qual utiliza o kit e ingredientes especiais no valor de 5 co. Ao fim deste tempo, o assassino cria uma dose de veneno. O veneno mantém sua potência até que o assassino complete um descanso.";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Olho do Assassino"] = "O assassino pode utilizar uma ação em seu turno para escolher uma criatura à longa distância da qual está escondido. Ele faz uma jogada de desafio de Percepção. Caso seja bem-sucedido, sabe como atacar o alvo da melhor maneira possível por 1 minuto. Até que o efeito termine, quando o assassino ataca o alvo, faz suas jogadas de ataque com 1 dádiva e o ataque causa 2d6 de dano adicional.";
         }
-        super(training, "", talents);
+        super(training, "Assassino", talents);
     }
     level3(){
         return {
-            
+            perception: 1,
+            health: 3,
+            choice: {
+                language: "new",
+                profession: "common",
+                profession: "criminal"
+            }
         }
     }
     level6(){
         return {
-            
+            health: 3
         }
     }
     level9(){
         return {
-            
+            health: 3
         }
     }
 }
@@ -622,59 +630,178 @@ class Assassino extends Path{
 class Batedor extends Path{
     constructor(training, level){
         let talents = {
-            "": ""
+            "Prontidão": "O batedor faz todas as jogadas de Percepção com 1 dádiva. Além disso, ele não pode ser surpreendido, a menos que esteja inconsciente.",
+            "Observador Avançado": "Quando o batedor faz uma jogada de desafio para se esconder ou ser furtivo e está além da curta distância dos outros membros do grupo, ele faz a jogada com 1 dádiva.",
+            "Reflexos Ligeiros": "O batedor pode utilizar uma ação desencadeada em seu turno para esconder-se ou recuar.",
+            "Sem Pegadas": "Quando se move por terreno sólido, o batedor deixa pegadas apenas se quiser fazê-lo."
         };
         if(level >= 6){
-            talents[""] = "";
+            talents["Revelar Fraqueza"] = "Você pode utilizar uma ação ou ação desencadeada em seu turno para escolher uma criatura dentro do seu alcance. Por 1 rodada, cada membro de seu grupo que atacar o alvo faz o ataque com 1 dádiva.";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Golpe Baixo"] = "Quando o alvo escolhido no talento Revelar Fraqueza sofre dano, o batedor pode utilizar uma ação desencadeada para atacar o alvo.";
         }
-        super(training, "", talents);
+        super(training, "Batedor", talents);
     }
     level3(){
         return {
-            
+            health: 3,
+            perception: 1,
+            speed: 2,
+            choice: {
+                language: "new",
+                profession: "wilderness"
+            }
         }
     }
     level6(){
         return {
-            
+            health: 3
         }
     }
     level9(){
         return {
-            
+            health: 3
         }
     }
 }
 
 class Ladrao extends Path{
-    constructor(training, level){
+    constructor(training, level, choices){
         let talents = {
-            "": ""
+            "Reflexos Ligeiros": "O ladrão pode utilizar uma ação desencadeada em seu turno para esconder-se ou recuar"
         };
+        switch(choices.thieveryTalent3.t1){
+            case "escapeArtist":
+                talents["Artista da Fuga"] = "Quando o ladrão é agarrado, ele pode utilizar uma ação desencadeada para escapar. Quando o ladrão está preso por cordas ou algemas, ele pode utilizar uma ação para tentar escapar das amarras. Ele deve se concentrar por 1 minuto. Ao fim deste período, ele faz uma jogada de desafio de Agilidade. Caso seja bem-sucedido, ele escapa das amarras. Caso fracasse, o ladrão está preso firmemente e se mantém preso até ser libertado.";
+                break;
+            case "hideInShadows":
+                talents["Esconder-se nas Sombras"] = "O ladrão pode tentar se esconder quando está, pelo menos, parcialmente obscurecido por sombras, mesmo que esteja sendo observado.";
+                break;
+            case "keenSenses":
+                talents["Sentidos Aguçados"] = "O ladrão faz todas as jogadas de Percepção com 1 dádiva.";
+                break;
+            case "moveSilently":
+                talents["Mover-se Silenciosamente"] = "O ladrão faz suas jogadas de desafio para esgueirar-se com 2 dádivas.";
+                break;
+            case "openLocks":
+                talents["Abrir Fechaduras"] = "Caso o ladrão precise abrir fechaduras, ele pode utilizar uma ação para abrir uma fechadura a seu alcance. Caso o Mestre exija uma jogada de desafio, a jogada é feita com 1 dádiva.";
+                break;
+            case "pickPockets":
+                talents["Punguista"] = "Você pode usar uma ação ou ação desencadeada para pegar um objeto de uma criatura em seu alcance. O objeto pego tem que ser algo que possa ser segurado em uma mão e estar em algum lugar do corpo da criatura que não suas mãos (ou apêndices similares). Se você puder ver o objeto, você pode pegá-lo. Se não puder, por estar em um bolso ou mochila, o Mestre determina se o item foi pego";
+                break;
+            case "scaleWalls":
+                talents["Escalar Paredes"] = "O ladrão ignora os efeitos de terreno difícil quando escalar, e faz as jogadas de desafio para escalar com 1 dádiva.";
+                break;
+            case "trapSense":
+                talents["Sentir Armadilhas"] = "Quando o ladrão procura por armadilhas ou precisa resistir aos efeitos de uma armadilha, ele faz a jogada de desafio com 1 dádiva.";
+                break;
+        }
+        switch(choices.thieveryTalent3.t2){
+            case "escapeArtist":
+                talents["Artista da Fuga"] = "Quando o ladrão é agarrado, ele pode utilizar uma ação desencadeada para escapar. Quando o ladrão está preso por cordas ou algemas, ele pode utilizar uma ação para tentar escapar das amarras. Ele deve se concentrar por 1 minuto. Ao fim deste período, ele faz uma jogada de desafio de Agilidade. Caso seja bem-sucedido, ele escapa das amarras. Caso fracasse, o ladrão está preso firmemente e se mantém preso até ser libertado.";
+                break;
+            case "hideInShadows":
+                talents["Esconder-se nas Sombras"] = "O ladrão pode tentar se esconder quando está, pelo menos, parcialmente obscurecido por sombras, mesmo que esteja sendo observado.";
+                break;
+            case "keenSenses":
+                talents["Sentidos Aguçados"] = "O ladrão faz todas as jogadas de Percepção com 1 dádiva.";
+                break;
+            case "moveSilently":
+                talents["Mover-se Silenciosamente"] = "O ladrão faz suas jogadas de desafio para esgueirar-se com 2 dádivas.";
+                break;
+            case "openLocks":
+                talents["Abrir Fechaduras"] = "Caso o ladrão precise abrir fechaduras, ele pode utilizar uma ação para abrir uma fechadura a seu alcance. Caso o Mestre exija uma jogada de desafio, a jogada é feita com 1 dádiva.";
+                break;
+            case "pickPockets":
+                talents["Punguista"] = "Você pode usar uma ação ou ação desencadeada para pegar um objeto de uma criatura em seu alcance. O objeto pego tem que ser algo que possa ser segurado em uma mão e estar em algum lugar do corpo da criatura que não suas mãos (ou apêndices similares). Se você puder ver o objeto, você pode pegá-lo. Se não puder, por estar em um bolso ou mochila, o Mestre determina se o item foi pego";
+                break;
+            case "scaleWalls":
+                talents["Escalar Paredes"] = "O ladrão ignora os efeitos de terreno difícil quando escalar, e faz as jogadas de desafio para escalar com 1 dádiva.";
+                break;
+            case "trapSense":
+                talents["Sentir Armadilhas"] = "Quando o ladrão procura por armadilhas ou precisa resistir aos efeitos de uma armadilha, ele faz a jogada de desafio com 1 dádiva.";
+                break;
+        }
         if(level >= 6){
-            talents[""] = "";
+            talents["Esquiva"] = "O ladrão pode utilizar uma ação ou ação desencadeada em seu turno para escolher uma criatura que ele vê. Até o fim da rodada, o alvo faz suas jogadas de ataque contra o ladrão com 1 perdição e o ladrão ganha 1 dádiva para todas as jogadas de desafio para resistir a ataques do alvo.";
+            switch(choices.thieveryTalent6){
+                case "escapeArtist":
+                    talents["Artista da Fuga"] = "Quando o ladrão é agarrado, ele pode utilizar uma ação desencadeada para escapar. Quando o ladrão está preso por cordas ou algemas, ele pode utilizar uma ação para tentar escapar das amarras. Ele deve se concentrar por 1 minuto. Ao fim deste período, ele faz uma jogada de desafio de Agilidade. Caso seja bem-sucedido, ele escapa das amarras. Caso fracasse, o ladrão está preso firmemente e se mantém preso até ser libertado.";
+                    break;
+                case "hideInShadows":
+                    talents["Esconder-se nas Sombras"] = "O ladrão pode tentar se esconder quando está, pelo menos, parcialmente obscurecido por sombras, mesmo que esteja sendo observado.";
+                    break;
+                case "keenSenses":
+                    talents["Sentidos Aguçados"] = "O ladrão faz todas as jogadas de Percepção com 1 dádiva.";
+                    break;
+                case "moveSilently":
+                    talents["Mover-se Silenciosamente"] = "O ladrão faz suas jogadas de desafio para esgueirar-se com 2 dádivas.";
+                    break;
+                case "openLocks":
+                    talents["Abrir Fechaduras"] = "Caso o ladrão precise abrir fechaduras, ele pode utilizar uma ação para abrir uma fechadura a seu alcance. Caso o Mestre exija uma jogada de desafio, a jogada é feita com 1 dádiva.";
+                    break;
+                case "pickPockets":
+                    talents["Punguista"] = "Você pode usar uma ação ou ação desencadeada para pegar um objeto de uma criatura em seu alcance. O objeto pego tem que ser algo que possa ser segurado em uma mão e estar em algum lugar do corpo da criatura que não suas mãos (ou apêndices similares). Se você puder ver o objeto, você pode pegá-lo. Se não puder, por estar em um bolso ou mochila, o Mestre determina se o item foi pego";
+                    break;
+                case "scaleWalls":
+                    talents["Escalar Paredes"] = "O ladrão ignora os efeitos de terreno difícil quando escalar, e faz as jogadas de desafio para escalar com 1 dádiva.";
+                    break;
+                case "trapSense":
+                    talents["Sentir Armadilhas"] = "Quando o ladrão procura por armadilhas ou precisa resistir aos efeitos de uma armadilha, ele faz a jogada de desafio com 1 dádiva.";
+                    break;
+            }
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Oportunista"] = "Quando uma criatura ao alcance do ladrão sofre dano por um ataque, ele pode utilizar uma ação desencadeada para atacar esta criatura.";
+            switch(choices.thieveryTalent9){
+                case "escapeArtist":
+                    talents["Artista da Fuga"] = "Quando o ladrão é agarrado, ele pode utilizar uma ação desencadeada para escapar. Quando o ladrão está preso por cordas ou algemas, ele pode utilizar uma ação para tentar escapar das amarras. Ele deve se concentrar por 1 minuto. Ao fim deste período, ele faz uma jogada de desafio de Agilidade. Caso seja bem-sucedido, ele escapa das amarras. Caso fracasse, o ladrão está preso firmemente e se mantém preso até ser libertado.";
+                    break;
+                case "hideInShadows":
+                    talents["Esconder-se nas Sombras"] = "O ladrão pode tentar se esconder quando está, pelo menos, parcialmente obscurecido por sombras, mesmo que esteja sendo observado.";
+                    break;
+                case "keenSenses":
+                    talents["Sentidos Aguçados"] = "O ladrão faz todas as jogadas de Percepção com 1 dádiva.";
+                    break;
+                case "moveSilently":
+                    talents["Mover-se Silenciosamente"] = "O ladrão faz suas jogadas de desafio para esgueirar-se com 2 dádivas.";
+                    break;
+                case "openLocks":
+                    talents["Abrir Fechaduras"] = "Caso o ladrão precise abrir fechaduras, ele pode utilizar uma ação para abrir uma fechadura a seu alcance. Caso o Mestre exija uma jogada de desafio, a jogada é feita com 1 dádiva.";
+                    break;
+                case "pickPockets":
+                    talents["Punguista"] = "Você pode usar uma ação ou ação desencadeada para pegar um objeto de uma criatura em seu alcance. O objeto pego tem que ser algo que possa ser segurado em uma mão e estar em algum lugar do corpo da criatura que não suas mãos (ou apêndices similares). Se você puder ver o objeto, você pode pegá-lo. Se não puder, por estar em um bolso ou mochila, o Mestre determina se o item foi pego";
+                    break;
+                case "scaleWalls":
+                    talents["Escalar Paredes"] = "O ladrão ignora os efeitos de terreno difícil quando escalar, e faz as jogadas de desafio para escalar com 1 dádiva.";
+                    break;
+                case "trapSense":
+                    talents["Sentir Armadilhas"] = "Quando o ladrão procura por armadilhas ou precisa resistir aos efeitos de uma armadilha, ele faz a jogada de desafio com 1 dádiva.";
+                    break;
+            }
         }
-        super(training, "", talents);
+        super(training, "Ladrão", talents, choices);
     }
     level3(){
         return {
-            
+            health: 3,
+            perception: 1,
+            choice: {
+                language: "new",
+                profession: "criminal"
+            }
         }
     }
     level6(){
         return {
-            
+            health: 3,
+            perception: 1
         }
     }
     level9(){
         return {
-            
+            health: 3
         }
     }
 }
@@ -682,29 +809,41 @@ class Ladrao extends Path{
 class Warlock extends Path{
     constructor(training, level){
         let talents = {
-            "": ""
+            "Roubar Magia": "Quando uma criatura a média distância conjura uma magia, o warlock pode utilizar uma ação desencadeada para fazer uma jogada de ataque de Intelecto contra a criatura desencadeante. Caso seja bem-sucedido, a magia não tem efeito. Caso o Poder do warlock seja alto o bastante para conjurar a magia, ele ganha uma conjuração da magia que foi conjurada. Ele mantém a conjuração até gastá-la ou até completar um descanso, neste momento ela some da mente do warlock. Uma vez que utilizou este talento, ele não pode mais utilizá-lo até que tenha completado um descanso.",
+            "Desaparecer": "Quando sofre dano, o warlock pode utilizar uma ação desencadeada para ficar invisível por 1 rodada ou até seu ataque. Caso tenha uma conjuração de uma magia de Roubar Magia, ele pode gastá-la para ficar invisível por 1 minuto."
         };
         if(level >= 6){
-            talents[""] = "";
+            talents["Enganar Adivinhação"] = "O warlock não pode ser percebido por magia de Adivinhação.";
+            talents["Ladrão de Magias Especialista"] = "O warlock pode utilizar Roubar Magia duas vezes.";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Maestria em Roubar Magias"] = "O warlock pode utilizar Roubar Magia três vezes. Ele sempre rouba a magia e pode conjurá-la independente de seu Poder.";
+            talents["Desaparecimento em Fuga"] = "Quando utiliza Desaparecer, o warlock também pode se teleportar para um espaço aberto a curta distância.";
         }
-        super(training, "", talents);
+        super(training, "Warlock", talents);
     }
     level3(){
         return {
-            
+            health: 2,
+            power: 1,
+            magicChoices: 1,
+            choice: {
+                language: "new",
+                profession: "criminal"
+            }
         }
     }
     level6(){
         return {
-            
+            health: 2,
+            magicChoices: 1
         }
     }
     level9(){
         return {
-            
+            health: 2,
+            power: 1,
+            magicChoices: 1
         }
     }
 }
@@ -713,60 +852,92 @@ class Warlock extends Path{
 
 class AtadorDeFeiticos extends Path{
     constructor(training, level){
-        let talents = {
-            "": ""
-        };
+        let talents = {};
         if(level >= 6){
-            talents[""] = "";
+            talents["Investir Poder"] = "O personagem pode utilizar uma ação ou ação desencadeada em seu turno para investir um poder ainda maior no alvo de sua magia \"Enfeitiçar Arma\". Para isso, ele gasta a conjuração de uma magia de nível 1 ou maior. Por 1 minuto, chamas místicas dançam na arma, iluminando uma área de 10 metros ao redor. Até que o efeito termine, os ataques feitos com essa arma causam 1d6 de dano adicional.";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Arma Mágica"] = "Quando o atador de feitiços ataca com a arma sob efeito da magia \"Enfeitiçar Arma\", ele faz a jogada de ataque com 1 dádiva e seu ataque causa 1d6 de dano adicional.";
         }
-        super(training, "", talents);
+        super(training, "Atador de Feitiços", talents);
     }
     level3(){
         return {
-            
+            health: 3,
+            power: 1,
+            magicChoices: 1,
+            spell: "Enfeitiçar Arma"
         }
     }
     level6(){
         return {
-            
+            health: 3,
+            magicChoices: 1
         }
     }
     level9(){
         return {
-            
+            health: 3,
+            power: 1,
+            magicChoices: 1
         }
     }
 }
 
 class Combatente extends Path{
-    constructor(training, level){
-        let talents = {
-            "": ""
-        };
+    constructor(training, level, choices){
+        let talents = {};
+        switch(choices.talent){
+            case "defenseEspecialization":
+                talents["Especialização em Defesa"] = "O combatente aumenta sua Defesa em 1.";
+                break;
+            case "fightWithTwoWeapons":
+                talents["Lutar com Duas Armas"] = "Quando o combatente ataca com duas armas, ele faz a jogada de ataque com 1 dádiva.";
+                break;
+            case "haftAttack":
+                talents["Lutar com Qualquer Coisa"] = "Você ignora a penalidade de 1 perdição imposta por não cumprir o requisito da arma ou por atacar com uma arma improvisada. Além disto, quando ataca com uma arma ou uma arma improvisada, aumente o dano para 1d6, caso seja menor que isso.";
+                break;
+            case "powerfulAttack":
+                talents["Ataque Poderoso"] = "Quando o combatente ataca com uma arma pesada, ele pode fazer a jogada de ataque com 1 perdição para causar 1d6 de dano adicional, caso seja bem-sucedido.";
+                break;
+            case "preciseAttack":
+                talents["Ataque Preciso"] = "Quando o combatente ataca com uma arma rápida, ele pode fazer um ataque preciso. Ele faz uma jogada de ataque contra a Agilidade do alvo em vez de sua Defesa.";
+                break;
+            case "shieldBash":
+                talents["Bater com Escudo"] = "Quando obtém sucesso em um ataque com escudo, o combatente faz a próxima jogada de ataque, ao mesmo alvo antes do fim do próximo turno, com 2 dádivas.";
+                break;
+            case "swiftReload":
+                talents["Recarga Rápida"] = "O combatente pode utilizar uma ação desencadeada em seu turno para recarregar uma arma que tenha a propriedade recarregar. Caso ataque com essa arma durante o mesmo turno, ele faz a jogada de ataque com 1 perdição.";
+                break;
+            case "swiftShot":
+                talents["Disparo Rápido"] = "Quando atacar com uma arma de combate a distância que não tenha a propriedade recarregar, o combatente pode usar uma ação desencadeada para atacar com a mesma arma. Ele faz a segunda jogada de ataque com 2 perdições.";
+                break;
+        }
         if(level >= 6){
-            talents[""] = "";
+            talents["Durável"] = "A taxa de cura do combatente se torna igual à sua Saúde dividida por 3.";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Maestria com Armas"] = "Quando o combatente faz uma jogada de ataque e o resultado é 9 ou menos, ele pode jogar novamente aquele dado. O combatente utiliza o novo resultado mesmo que seja 9 ou menos.";
         }
-        super(training, "", talents);
+        super(training, "Combatente", talents, choices);
     }
     level3(){
         return {
-            
+            health: 5,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level6(){
         return {
-            
+            health: 5,
         }
     }
     level9(){
         return {
-            
+            health: 5,
         }
     }
 }
@@ -774,29 +945,32 @@ class Combatente extends Path{
 class Furioso extends Path{
     constructor(training, level){
         let talents = {
-            "": ""
+            "Fúria": "Quando toma dano e não está fatigado, o furioso pode escolher entrar em fúria. Ele se mantém em fúria por 1 minuto ou até ficar inconsciente. Quando o efeito termina, ele fica fatigado por 1 minuto e deve fazer uma jogada de desafio de Vontade. Caso fracasse, ele ganha 1 de Insanidade. Enquanto estiver em fúria, o furioso tem os seguintes benefícios e desvantagens:<ul><li>Recebe um bônus de +10 para a Saúde.</li><li>Não pode ficar encantado, compelido ou assustado.</li><li>Faz jogadas de ataque com 1 perdição.</li><li>Seus ataques com armas causam 1d6 de dano extra.</li><li>Deve utilizar uma ação por turno para atacar, utilizando investir, caso seja necessário.</li></ul>",
+            "Fúria Descontrolada": "Quando o furioso enlouquece, ele entra em fúria mesmo que esteja fatigado. Enquanto estiver em fúria deste modo, o Mestre controla o furioso e decide quando ele faz um turno e o que faz em seu turno a cada rodada. Ao fim de cada uma, enquanto estiver em fúria, o Mestre joga um d6. Caso essa jogada resulte em 5 ou mais, a loucura termina (consulte o Capítulo 2 sobre regras para terminar a loucura) e o jogador retoma o controle de seu personagem. Caso esteja fatigado quando entrar em fúria, o furioso sofre 1d6 de dano quando a loucura termina.",
+            "Couro de Ferro": "Enquanto não estiver usando armadura média ou pesada, o furioso tem bônus de +1 na Defesa."
         };
         if(level >= 6){
-            talents[""] = "";
+            talents["Raiva Feroz"] = "Enquanto estiver em fúria, o furioso tem bônus de +2 no Deslocamento. Além disso, quando ele ataca uma criatura assustada, faz a jogada de ataque com 1 dádiva.";
+            talents["Raiva Assustadora"] = "Quando entra em fúria, cada criatura a curta distância que não seja membro do grupo do furioso deve fazer uma jogada de desafio de Vontade ou ficar assustada por 1 rodada.";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Golpe Imprudente"] = "Quando o furioso ataca com uma arma de combate corpo a corpo, ele pode fazer uma jogada de ataque com 2 perdições para causar 2d6 de dano adicional, caso seja bem-sucedido.";
         }
-        super(training, "", talents);
+        super(training, "Furioso", talents);
     }
     level3(){
         return {
-            
+            health: 6
         }
     }
     level6(){
         return {
-            
+            health: 6
         }
     }
     level9(){
         return {
-            
+            health: 6
         }
     }
 }
@@ -804,29 +978,38 @@ class Furioso extends Path{
 class Patrulheiro extends Path{
     constructor(training, level){
         let talents = {
-            "": ""
+            "Prontidão": "O patrulheiro faz todas as jogadas de Percepção com 1 dádiva. Além disso, ele não pode ser surpreendido, a menos que esteja inconsciente.",
+            "Caçar Presa": "O patrulheiro pode utilizar uma ação ou ação desencadeada em seu turno para escolher uma criatura que pode ver. Aquele alvo se torna sua presa até que use este talento novamente, fique inconsciente ou complete um descanso. Quando jogar para atacar, encontrar ou rastrear a criatura definida como sua presa, o patrulheiro faz as jogadas de ataque ou desafio com 1 dádiva."
         };
         if(level >= 6){
-            talents[""] = "";
+            talents["Guia Experiente"] = "O patrulheiro sempre sabe em qual direção está o norte e sempre pode retraçar seus passos. Além disso, quando viaja por terra, todos no grupo que tiverem Deslocamento menor que o do patrulheiro, se movem com o mesmo Deslocamento dele.";
+            talents["Rastreador Especialista"] = "Toda vez que o patrulheiro encontra rastros, ele pode fazer uma jogada de desafio de Intelecto. Caso seja bem-sucedido, ele aprende uma verdade sobre a criatura ou criaturas que fizeram os rastros. Caso fracasse, ele não descobre informações úteis a partir dos rastros.";
         }
         if(level >= 9){
-            talents[""] = "";
+            talents["Mestre Caçador"] = "Criaturas que são designadas como presa com o talento Caçar Presa não podem se esconder do patrulheiro e sofrem 1d6 de dano adicional dos ataques dele.";
+            talents["Perseguição Incansável"] = "Quando uma criatura que foi designada como presa com o talento Caçar Presa se move, o patrulheiro pode utilizar uma ação desencadeada para se mover até metade de seu Deslocamento.";
         }
-        super(training, "", talents);
+        super(training, "Patrulheiro", talents);
     }
     level3(){
         return {
-            
+            health: 8,
+            choice: {
+                profession: "rastreador",
+                language: "new",
+                profession: "wilderness"
+            }
         }
     }
     level6(){
         return {
-            
+            perception: 1,
+            health: 4
         }
     }
     level9(){
         return {
-            
+            health: 4
         }
     }
 }
