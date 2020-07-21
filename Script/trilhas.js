@@ -1013,3 +1013,124 @@ class Patrulheiro extends Path{
         }
     }
 }
+
+//Trilhas de Especialista fora do livro base
+
+class Highlander extends Path{
+    constructor(training, level){
+        let talents = {
+            "Treinamento em Montanha(Highland Trained)": "Quando você usa uma ação para investir, seu movimento ignora a dificultade do terreno.",
+            "Especialista em Armas Pesadas(Heavy Weapon Expertise)": "Você ignora a propriedade \"Pesada\" das armas que você empunha."
+        }
+        if(level >= 6){
+            talents["Sair do Fundo do Poço(Back from the Brink)"] = "Se você estiver machucado, quando você for curar dano, você cura 1d6 de dano extra.";
+            talents["Ataque do Momento(Momentum Strike)"] = "Quando seu ataque com uma arma pesada deixa uma criatura incapacitada, você pode usar uma ação desencadeada para atacar com uma arma.";
+        }
+        if(level >= 9){
+            talents["Maestria em Armas Pesadas(Heavy Weapon Mastery)"] = "Quando empunhando uma arma pesada, você tem mais 1 de defesa. Além disso, seus ataques com armas pesadas causam 1d6 de dano extra";
+            talents["Bater o Pé no Chão(Plant your Feet)"] = "Quando um um efeito iria te mover sem te teleportar, você pode escolher não se mover.";
+        }
+        super(training, "Highlander", talents);
+    }
+    level3(){
+        return {
+            health: 5,
+            choice: {
+                language: "new",
+                profession: "wilderness"
+            }
+        }
+    }
+    level6(){
+        return {
+            health: 5
+        }
+    }
+    level9(){
+        return {
+            health: 5
+        }
+    }
+}
+
+class Silhouette extends Path{
+    constructor(training, level){
+        let talents = {
+            "Reunir Sombras(Gather Shadows)": "Você pode usar uma ação para reunir um número de sombras igual a 1 + poder do seu personagem. Você mantém as sombras até gastá-las ou até usar esse poder novamente.",
+            "Misturar-se com as Sombras(Shadow Blend)": "Quando você está em uma área obscurecida por sombras ou pela escuridão, você pode usar uma ação desencadeada para ficar invisível por 1 minuto. Se você se mover ou usar uma ação, o efeito acaba imediatamente.",
+            "Proteção das sombras(Shadow Guard)": "Quando você é atacado por uma criatura que consegue te ver, você pode usar uma ação desencadeada para gastar uma sombra e colocar 1 perdição nesse ataque.",
+            "Enxergar na Escuridão(Shadowed Eyes)": "Quando você estiver em uma área obscurecida por sombras ou pela escuridão, você pode usar uma ação desencadeada para gastar uma sombra e ganhar visão nas sombras por 1 minuto."
+        }
+        if(level >= 6){
+            talents["Dança nas Sombras(Shadow Dance)"] = "Quando você se move para um espaço obscurecido por sombras ou pela escuridão, você pode usar uma ação desencadeada para gastar uma sombra e teleportar para outro espaço aberto dentro de um curto alcance que também é obscurecido por sombras ou pela escuridão. Você não precisa ver o espaço alvo e, quando você usa esse talento, você tem noção de todos os espaços elegíveis dentro do alcance desse talento.";
+        }
+        if(level >= 9){
+            talents["Arma das Sombras(Shadow Weapon)"] = "Quando você usa uma arma para atacar uma criatura enquanto você estiver obscurecido por sombras ou pela escuridão, você pode usar uma ação desencadeada para gastar uma sombra e atacar o alvo contra a agilidade dele, em vez da defesa. Além disso, o ataque dá 1d6 de dano extra.";
+        }
+        super(training, "Silhouette", talents);
+    }
+    level3(){
+        return {
+            health: 3,
+            power: 1,
+            magicChoices: 1,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
+        }
+    }
+    level6(){
+        return {
+            health: 3,
+            magicChoices: 1
+        }
+    }
+    level9(){
+        return {
+            health: 3,
+            power: 1,
+            magicChoices: 1
+        }
+    }
+}
+
+class SummerChild extends Path{
+    constructor(training, level){
+        let talents = {
+            "Encantamento da Confusão(Confounding Charm)": "Quando você deixa uma criatura encantada por uma magia que você lançou, a criatura também fica compelida por 1 turno."
+        }
+        if(level >= 6){
+            talents["Chamas da Paixão(Flames of Passion"] = "Você pode usar uma ação e uma conjuração de uma magia nível 1 ou maior para adquirir a essência da Rainha do Verão por um número de rodadas igual ao nível da magia que você gastou. Seu cabelo vira fogo e seus olhos brilham como o pôr do sol. Cada criatura viva dentro de um curto alcance precisa fazer um desafio de vontade; se falhar, fica encantado até o fim desse efeito. Toda vez que uma criatura encantada por esse efeito faz uma jogada de ataque ou jogada de desafio, você pode usar uma ação desencadeada para dar 2 dádivas à jogada, e o ataque beneficiado por essas dádivas também dá 1d6 de dano extra. Você pode usar Chamas da Paixão um número de vezes igual à metade do seu poder(mínimo 1). Você ganha todos os usos quando completa um descanso.";
+        }
+        if(level >=9){
+            talents["Chamas do Verão(Flames of Summer)"] = "Enquanto você estiver sob efeito do talento Chamas da Paixão, seus ataques com feitiços de fogo dão 1d6 de dano extra.";
+        }
+        super(training, "SummerChild", talents);
+    }
+    level3(){
+        return {
+            health: 4,
+            power: 1,
+            magicChoices: 1,
+            choice: {
+                language: "new",
+                profession: "artist"
+            }
+        }
+    }
+    level6(){
+        return {
+            health: 4,
+            magicChoices: 1
+        }
+    }
+    level9(){
+        return {
+            health: 4,
+            power: 1,
+            magicChoices: 1
+        }
+    }
+}
+// Trilhas de Mestre:
