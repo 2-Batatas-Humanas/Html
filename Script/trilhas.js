@@ -1,8 +1,9 @@
 class Path{
-    constructor(training, pathType, talents){
+    constructor(training, pathName, talents, choices = null){
         this._training = training;
-        this._pathType = pathType;
+        this._pathName = pathName;
         this._talents = talents;
+        this._choices = choices || null;
     }
     get training(){
         return this._training;
@@ -10,11 +11,14 @@ class Path{
     set training(newTraining){
         this._training = newTraining;
     }
-    get pathType(){
-        return this._pathType;
+    get pathName(){
+        return this._pathName;
     }
-    set pathType(pathType){
-        this._pathType = pathType;
+    set pathName(pathName){
+        this._pathName = pathName;
+    }
+    get choices(){
+        return this._choices;
     }
     get talents(){
         return this._talents;
@@ -49,6 +53,8 @@ class Path{
     }
 }
 
+// Novice Paths
+
 class Warrior extends Path{
     constructor(training, level){
         let talents = {
@@ -66,12 +72,33 @@ class Warrior extends Path{
             talents["Determinação"] = "O guerreiro pode utilizar Recuperar o Fôlego duas vezes a cada descanso.",
             talents["Maestria em Combate"] = "Quando o guerreiro utiliza uma ação para atacar com uma arma, ele pode escolher entre causar 1d6 de dano adicional neste ataque ou fazer outro ataque contra um alvo diferente a qualquer momento antes do fim do turno. Este talento é cumulativo com Especialização em Combate. O guerreiro deve escolher um alvo diferente para cada ataque que fizer."
         }
-        super(training, "Novice", talents);
+        super(training, "Guerreiro", talents);
+    }
+
+    level2(){
+        return {
+            health: 5
+        }
+    }
+
+    level5(){
+        return {
+            health: 5,
+            defense: 1
+        }
+    }
+
+    level8(){
+        return {
+            health: 5
+        }
     }
 }
 
 class Rogue extends Path{
-    constructor(training, level, rogueTalent2 = "", rogueTalent8 = ""){
+    constructor(training, level, choices){
+        let rogueTalent2 = choices.rogueTalent2 || null;
+        let rogueTalent8 = choices.rogueTalent8 || null;
         let talents = {
             "Recuperação Ligeira": "O ladino pode utilizar uma ação para curar uma quantidade de dano igual à sua taxa de cura e então se mover até metade de seu Deslocamento sem desencadear ataques livres. Uma vez que utilizou este talento, o mesmo não pode mais ser utilizado até que o ladino tenha completado um descanso.",
             "Trapaça": "Uma vez por rodada, o ladino pode fazer uma jogada de ataque ou desafio com 1 dádiva. Caso o ladino ataque com 1 dádiva deste talento, o ataque causa 1d6 de dano adicional."
@@ -141,7 +168,24 @@ class Rogue extends Path{
                     break;
             }
         }
-        super(training, "Novice", talents);
+        super(training, "Ladino", talents, choices);
+    }
+    level2(){
+        return {
+            health: 3
+        }
+    }
+
+    level5(){
+        return {
+            health: 3
+        }
+    }
+
+    level8(){
+        return {
+            health: 3
+        }
     }
 }
 
@@ -160,12 +204,33 @@ class Magician extends Path{
         if(level >= 8){
             talents["Recuperar Magia Aprimorado"] = "Quando utilizar Recuperar Magia, o personagem recupera duas conjurações em vez de uma.";
         }
-        super(training, "Novice", talents);
+        super(training, "Mágico", talents);
+    }
+    level2(){
+        return {
+            health: 2,
+            magicChoices: 2
+        }
+    }
+
+    level5(){
+        return {
+            health: 2,
+            power: 1,
+            magicChoices: 1
+        }
+    }
+
+    level8(){
+        return {
+            health: 2,
+            magicChoices: 1
+        }
     }
 }
 
 class Priest extends Path{
-    constructor(training, level){
+    constructor(training, level, choices){
         let talents = {
             "Recuperação Compartilhada": "O personagem pode utilizar uma ação para curar dano igual à sua taxa de cura. Então, escolha uma criatura além do personagem que esteja a curta distância. O alvo também cura dano igual à taxa de cura dele. Uma vez que utilizou este talento, o mesmo não pode mais ser utilizado até que o sacerdote complete um descanso."
         }
@@ -179,6 +244,537 @@ class Priest extends Path{
             talents["Oração Inspiradora"] = "Quando o sacerdote utilizar Oração em uma criatura que não seja ele mesmo, ele faz suas jogadas de ataque e de desafio com 1 dádiva por 1 rodada.";
             talents["Recuperação Compartilhada Aprimorada"] = "O sacerdote pode utilizar Recuperação Compartilhada duas vezes.";
         }
-        super(training, "Novice", talents);
+        super(training, "Sacerdote", talents, choices);
+    }
+    level2(){
+        return {
+            health: 4,
+            magicChoices: 2
+        }
+    }
+
+    level5(){
+        return {
+            health: 4,
+            power: 1,
+            magicChoices: 1
+        }
+    }
+
+    level8(){
+        return {
+            health: 4,
+            magicChoices: 1
+        }
+    }
+}
+
+// Expert Paths
+
+//Trilhas da Fé:
+class Clerigo extends Path{
+    constructor(training, level){
+        let talents = {
+            "Convicção": "O clérigo faz jogadas de desafio de Vontade com 1 dádiva para resistir aos efeitos das características assustador e horripilante",
+            "Ícone de Fé": "O clérigo escolhe uma tradição que já descobriu e que seja associada a sua religião. Quando conjurar uma magia de ataque daquela tradição enquanto estiver empunhando ou vestindo um símbolo sagrado, o clérigo faz as jogadas de ataque com 1 dádiva e a criatura alvo faz a jogada de desafio para resistir ao ataque com 1 perdição."
+        };
+        if(level >= 6){
+            talents["Símbolo Fortalecido"] = "Quando o clérigo conjura uma magia da tradição que escolheu para Ícone da Fé que causa dano ou cura dano, a magia causa ou cura 1d6 de dano adicional.";
+        }
+        if(level >= 9){
+            talents["Poder Divino"] = "Os benefícios de Ícone da Fé se aplicam a conjuração de quaisquer magias de ataque que sejam de uma tradição associada a religião do clérigo.";
+        }
+        super(training, "Clérigo", talents);
+    }
+    level3(){
+        return {
+            health: 4,
+            power: 1,
+            magicChoices: 1,
+            choice: {
+                language: "new",
+                profession: "academic",
+                profession2: "religious"
+            }
+        }
+    }
+    level6(){
+        return {
+            health: 4,
+            magicChoices: 1
+        }
+    }
+    level9(){
+        return {
+            health: 4,
+            power: 1,
+            magicChoices: 1
+        }
+    }
+}
+
+class Druida extends Path{
+    constructor(training, level){
+        let talents = {
+            "Mistérios Druídicos": "O druida aprendeu os antigos mistérios druídicos como parte de sua iniciação. Ele pode fazer todos os seguintes:<ul><li>Identificar qualquer animal ou planta que ele possa ver.</li><li>Saber se a água ou comida, que ele vê, é segura para o consumo.</li> <li>Predizer corretamente o clima com 24 horas de antecedência, desde que esteja a céu aberto.</li><li>Mover-se até seu Deslocamento total por terreno difícil, desde que esse seja criado por características naturais de terreno.</li><li>Deixar pegadas quando estiver se movendo por terreno natural apenas quando desejar.</li></ul>"
+        };
+        if(level >= 6){
+            talents["Caminhante das Árvores"] = " Uma vez por rodada, enquanto está se movendo, o druida pode entrar em um espaço ocupado por uma árvore viva e imediatamente sair em um espaço adjacente ao espaço ocupado por outra árvore à média distância do espaço da árvore que entrou. O druida pode escolher sair da árvore que entrou, se movendo para um espaço livre.";
+        }
+        if(level >= 9){
+            talents["Resistir aos Elementos"] = "O druida nunca corre o risco de ficar fatigado por exposição. Você toma metade do dano de eletricidade, fogo, frio e trovões.";
+        }
+        super(training, "Druida", talents);
+    }
+    level3(){
+        return {
+            health: 4,
+            power: 1,
+            magicChoices: 1,
+            choices: {
+                language: "new",
+                profession: "religious",
+                profession: "wilderness"
+            }
+        }
+    }
+    level6(){
+        return {
+            health: 4,
+            magicChoices: 1
+        }
+    }
+    level9(){
+        return {
+            health: 4,
+            power: 1,
+            magicChoices: 1
+        }
+    }
+}
+
+class Oraculo extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+class Paladino extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+//Trilhas do Poder:
+
+class Artifice extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+class Bruxa extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+class Feiticeiro extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+class Mago extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+//Trilhas da Trapaça:
+
+class Assassino extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+class Batedor extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+class Ladrao extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+class Warlock extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+//Trilhas da Guerra:
+
+class AtadorDeFeiticos extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+class Combatente extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+class Furioso extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
+    }
+}
+
+class Patrulheiro extends Path{
+    constructor(training, level){
+        let talents = {
+            "": ""
+        };
+        if(level >= 6){
+            talents[""] = "";
+        }
+        if(level >= 9){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level3(){
+        return {
+            
+        }
+    }
+    level6(){
+        return {
+            
+        }
+    }
+    level9(){
+        return {
+            
+        }
     }
 }
