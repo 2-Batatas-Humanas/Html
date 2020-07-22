@@ -1134,3 +1134,1525 @@ class SummerChild extends Path{
     }
 }
 // Trilhas de Mestre:
+
+//Trilhas de Magia:
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+//Trilhas de Habilidade:
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class extends Path {
+    constructor(training, level){
+        let talents = {
+            "": ""
+        }
+        if(level == 10){
+            talents[""] = "";
+        }
+        super(training, "", talents);
+    }
+    level7(){
+        return {
+            
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
