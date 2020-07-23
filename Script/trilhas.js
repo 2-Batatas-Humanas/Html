@@ -1898,7 +1898,503 @@ class extends Path {
 
 //Trilhas de Habilidade:
 
-class extends Path {
+class Acrobata extends Path {
+    constructor(training, level){
+        let talents = {
+            "Acrobacias": "O acrobata adquire todos os seguintes benefícios:<ul><li>Pode se mover por espaços ocupados por outras criaturas.</li><li>Move-se com seu Deslocamento completo por todo tipo de terreno difícil, mesmo escalando ou nadando.</li><li>Dado que o seu Deslocamento seja maior que 0, ele pode se levantar sem utilizar um movimento.</li><li>Quando sofre dano por aterrisar depois de uma queda, pode utilizar uma ação desencadeada para fazer uma jogada de desafio de Agilidade. Caso seja bem-sucedido, ele reduz o dano da queda pelo total da jogada. Caso o dano seja reduzido para 0, ele cai de pé.</li></ul>"
+        }
+        if(level == 10){
+            talents["Mobilidade"] = "Quando faz um turno rápido, o acrobata pode utilizar uma ação e se mover. O movimento dele, em qualquer turno, nunca desencadeia ataques livres."; 
+        }
+        super(training, "Acrobata", talents);
+    }
+    level7(){
+        return {
+            health: 3,
+            speed:2,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 3
+        }
+    }
+    
+}
+
+class AtiradorDeElite extends Path {
+    constructor(training, level){
+        let talents = {
+            "Mira Mortal": "O atirador de elite pode utilizar uma ação para mirar em uma criatura que possa ver a média distância. Ele faz uma jogada de ataque de Percepção contra a Agilidade do alvo. Caso seja bem-sucedido, ele observa uma abertura. Durante uma 1 rodada, quando ataca o alvo com uma arma de combate à distância, o atirador de elite faz suas jogadas de ataque com 3 dádivas e seu ataque causa 3d6 de dano adicional."
+        }
+        if(level == 10){
+            talents["Disparo Perfeito"] = "Quando o atirador de elite ataca com uma arma de combate à distância e fracassa, ele pode utilizar uma ação desencadeada para transformar o fracasso em sucesso.";
+        }
+        super(training, "Atirador de Elite", talents);
+    }
+    level7(){
+        return {
+            health: 4,
+            perception: 1,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 4
+        }
+    }
+    
+}
+
+class Bruto extends Path {
+    constructor(training, level){
+        let talents = {
+            "Musculatura": "O bruto faz jogadas de ataque e de desafio de Força com 1 dádiva."
+        }
+        if(level == 10){
+            talents["Tendões Vigorosos"] = "O bruto adiciona seu modificador de Força as jogadas de dano de ataques utilizando armas básicas, militares ou pesadas.";
+        }
+        super(training, "Bruto", talents);
+    }
+    level7(){
+        return {
+            health: 8
+        }
+    }
+    level10(){
+        return {
+            health: 8
+        }
+    }
+    
+}
+
+class Campeao extends Path {
+    constructor(training, level){
+        let talents = {
+            "Posição de Batalha": "O campeão pode utilizar uma ação ou ação desencadeada em seu turno para entrar em posição de batalha e se manter nessa posição até que se mova ou fique inconsciente. Enquanto estiver nesta posição, ele faz jogadas de ataque com 1 dádiva e as criaturas que o atacam fazem suas jogadas de ataque com 1 perdição."
+        }
+        if(level == 10){
+            talents["Determinação do Campeão"] = "Quando o campeão ficaria incapacitado, ele pode utilizar uma ação desencadeada para fazer uma jogada de desafio de Força. Caso seja bem-sucedido, ele cura uma quantidade de dano igual à sua taxa de cura e, por uma rodada, seus ataques com armas causam 1d6 de dano adicional.";
+        }
+        super(training, "Campeão", talents);
+    }
+    level7(){
+        return {
+            health: 5,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 5
+        }
+    }
+    
+}
+
+class Capelao extends Path {
+    constructor(training, level){
+        let talents = {
+            "Canto de Batalha": "O capelão pode utilizar uma ação ou ação desencadeada em seu turno para cantar por 1 rodada. A cada rodada, em seu turno, ele pode utilizar uma ação desencadeada para estender os efeitos por mais uma rodada. O efeito termina imediatamente caso ele seja impedido de falar. Até que o efeito termine, o capelão e todos os outros membros do grupo a curta distância, que possam ouvi-lo, fazem suas jogadas de ataque com 1 dádiva e não podem ser encantados e assustados. Ele pode utilizar este talento três vezes. Os usos são restaurados quando ele completa um descanso."
+        }
+        if(level == 10){
+            talents["Canto Encorajador"] = "Os ataques com armas de criaturas que estão se beneficiando de seu Canto de Batalha causam 1d6 de dano adicional.";
+            talents["Auxílio"] = "O capelão pode utilizar uma ação para tocar uma criatura e gastar um uso de Canto de Batalha. Caso o alvo esteja incapacitado, ele cura 1 de dano. Caso o capelão se concentre por 1 minuto, e neste tempo fale com a criatura e cuide de seus ferimentos, o alvo cura uma quantidade de dano igual à sua taxa de cura.";
+        }
+        super(training, "Capelão", talents);
+    }
+    level7(){
+        return {
+            health: 4,
+            language: "new",
+            profession: "military",
+            profession2: "religious"
+        }
+    }
+    level10(){
+        return {
+            
+        }
+    }
+    
+}
+
+class Carrasco extends Path {
+    constructor(training, level){
+        let talents = {
+            "Executar": "Uma vez por rodada, quando utiliza uma ação para fazer um ataque com uma arma contra um alvo dentro de seu alcance, o carrasco faz o ataque com 1 dádiva e, se for bem-sucedido, causa 1d6 de dano adicional. Caso o dano do ataque faça com que o alvo fique ferido, o alvo deve ser bem-sucedido em uma jogada de desafio de Força ou sofre um dano adicional igual à sua Saúde. Quando utiliza este talento, as criaturas fazem jogadas de ataque contra o carrasco com 1 dádiva por 1 rodada."
+        }
+        if(level == 10){
+            talents["Golpe Certeiro"] = "Quando o carrasco é bem-sucedido em uma jogada de ataque utilizando uma arma, ele pode utilizar uma ação desencadeada para causar o dano máximo da arma.";
+        }
+        super(training, "Carrasco", talents);
+    }
+    level7(){
+        return {
+            health: 3,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 3
+        }
+    }
+    
+}
+
+class Cavaleiro extends Path {
+    constructor(training, level){
+        let talents = {
+            "Cavalgar em Combate": "Enquanto estiver montado em uma criatura, o cavaleiro faz suas jogadas de ataque com 1 dádiva contra alvos que são menores que sua montaria."
+        }
+        if(level == 10){
+            talents["Investida Devastadora"] = "Os ataques feitos durante uma ação usada para investir causam 1d6 de dano adicional, ou 2d6 caso esteja sobre uma montaria.";
+            talents["Mestre Cavaleiro"] = "A montaria do cavaleiro ganha um bônus de +2 na Defesa e no Deslocamento.";
+        }
+        super(training, "Cavaleiro", talents);
+    }
+    level7(){
+        return {
+            health: 5,
+            choice: {
+                language: "new",
+                profession: "common",
+                profession2: "military",
+                profession3: "wilderness"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 5
+        }
+    }
+    
+}
+
+class Conquistador extends Path {
+    constructor(training, level){
+        let talents = {
+            "Comandar Ataque": "O conquistador pode usar uma ação em seu turno para escolher uma criatura a curta distância. Caso o alvo possa ouvir e entender o conquistador, ele pode utilizar uma ação desencadeada para atacar. A criatura faz a jogada de ataque com 1 dádiva.",
+            "Dirigir as Tropas": "O conquistador pode utilizar uma ação ou ação desencadeada para escolher uma criatura a curta distância. Caso o alvo possa ouvir e entender o conquistador, ele se move até metade de seu Deslocamento."
+        }
+        if(level == 10){
+            talents["Liderança no Campo de Batalha"] = "Quando o conquistador obtém um sucesso em uma jogada de ataque, ele pode escolher uma criatura a curta distância. Antes do fim da rodada, o alvo faz seu próximo ataque com 1 dádiva. Além disso, criaturas causam 1d6 de dano adicional em ataques fornecidos pelo talento Comandar Ataque do conquistador.";
+        }
+        super(training, "Conquistador", talents);
+    }
+    level7(){
+        return {
+            health: 5,
+            choice: {
+                language: "new",
+                profession: "military"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 5
+        }
+    }
+    
+}
+
+class Defensor extends Path {
+    constructor(training, level){
+        let talents = {
+            "Defender": "O defensor pode utilizar uma ação ou ação desencadeada em seu turno para escolher uma criatura ao seu alcance. Até o fim da rodada, criaturas que atacam o alvo fazem suas jogadas de ataque com 1 perdição. Caso o alvo se mova para fora do alcance do defensor ou fique inconsciente, o efeito termina imediatamente."
+        }
+        if(level == 10){
+            talents["Golpe de Contenção"] = "Uma vez por rodada, quando o defensor obtém um sucesso em um ataque com uma arma de combate corpo a corpo, o alvo fica imobilizado até o fim da rodada.";
+            talents["Golpe de Retribuição"] = "Quando uma criatura ao alcance do defensor faz um ataque contra uma criatura que não seja o defensor, ele pode utilizar uma ação desencadeada para fazer um ataque contra a criatura desencadeante.";
+        }
+        super(training, "Defensor", talents);
+    }
+    level7(){
+        return {
+            health: 6
+        }
+    }
+    level10(){
+        return {
+            health: 6
+        }
+    }
+    
+}
+
+class Dervixe extends Path {
+    constructor(training, level){
+        let talents = {
+            "Ambidestria": "O dervixe pode usar armas de uma mão como armas de mão inábil.",
+            "Aparar com a Mão Inábil": "Enquanto utiliza uma arma em cada mão e nenhuma delas é um escudo, o dervixe ganha um bônus de +1 em sua Defesa."
+        }
+        if(level == 10){
+            talents["Maestria com Duas Armas"] = "Quando o personagem ataca com duas armas, ele faz a jogada de ataque com 1 dádiva. Caso o dervixe ataque um alvo com ambas as armas, o ataque causa um 1d6 de dano adicional.";
+        }
+        super(training, "Dervixe", talents);
+    }
+    level7(){
+        return {
+            health: 5,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 5
+        }
+    }
+    
+}
+
+class Diplomata extends Path {
+    constructor(training, level){
+        let talents = {
+            "Mestre da Diplomacia": "Em ocasiões sociais, o diplomata faz jogadas de ataque de Intelecto e Vontade com 1 dádiva.",
+            "Deter a Mão": "Quando uma criatura obtém sucesso em uma jogada de ataque contra o diplomata, ele pode utilizar uma ação desencadeada para pedir misericórdia. Caso a criatura possa ouvir e entender o que ele diz, o diplomata faz uma jogada de ataque de Vontade contra a Vontade da criatura desencadeante. Caso obtenha sucesso, o diplomata transforma o sucesso da criatura desencadeante em um fracasso, e ela fica encantada por 1 minuto ou até que seja atacada. Caso fracasse, a criatura desencadeante fica imune a este talento até que complete um descanso."
+        }
+        if(level == 10){
+            talents["Palavras Tranquilizadoras"] = "O diplomata pode utilizar uma ação para confortar uma criatura a seu alcance. Remova uma das seguintes aflições da criatura: encantado, compelido, pasmo ou assustado.";
+            talents["Alianças Inesperadas"] = "Quando o diplomata obtém um sucesso em uma jogada de ataque utilizando o talento Deter a Mão, a criatura desencadeadora também fica compelida por 1 minuto ou até ser atacada.";
+        }
+        super(training, "Diplomata", talents);
+    }
+    level7(){
+        return {
+            health: 3,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 3
+        }
+    }
+    
+}
+
+class Duelista extends Path {
+    constructor(training, level){
+        let talents = {
+            "Desafio": "O duelista pode utilizar uma ação ou ação desencadeada em seu turno para desafiar uma criatura alvo a média distância que possa vê-lo e ouvi-lo. O duelista faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso obtenha sucesso, o alvo se torna desafiado até que o duelista fique inconsciente ou a criatura fique incapacitada. O efeito também termina se o duelista utilizar o talento novamente ou atacar um alvo diferente. Caso fracasse, o alvo se torna imune a este talento até que complete um descanso. Quando um alvo desafiado faz um ataque contra uma criatura que não seja o duelista, ele faz a jogada de ataque com 1 perdição",
+            "Ripostar": "Quando a criatura desafiada pelo duelista executa um ataque contra ele, o duelista pode utilizar uma ação desencadeada para impor uma perdição ao ataque. Caso a criatura desencadeante fracasse, ele executa um contra-ataque. O duelista ataca a criatura alvo com uma arma de combate corpo a corpo que esteja empunhando. Caso seja uma arma rápida, ele faz essa jogada de ataque com 1 dádiva."
+        }
+        if(level == 10){
+            talents["Maestria em Duelos"] = "Os ataques do duelista causam 1d6 de dano adicional contra alvos desafiados com o talento Desafio.";
+        }
+        super(training, "Duelista", talents);
+    }
+    level7(){
+        return {
+            health: 4,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 4
+        }
+    }
+    
+}
+
+class Encouracado extends Path {
+    constructor(training, level){
+        let talents = {
+            "Couraçado": "O encouraçado tem um bônus de +1 para sua Defesa, enquanto estiver utilizando armadura pesada.",
+            "Imóvel": "Enquanto está consciente e parado sobre uma superfície sólida, ele não pode ser movido contra sua vontade"
+        }
+        if(level == 10){
+            talents["Resistência a Armas"] = "Enquanto estiver vestindo uma armadura pesada, o encouraçado sofre metade do dano por armas.";
+        }
+        super(training, "Encouraçado", talents);
+    }
+    level7(){
+        return {
+            health: 5,
+            choice: {
+                language: "new",
+                profession: "criminal"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 5
+        }
+    }
+    
+}
+
+class Engenheiro extends Path {
+    constructor(training, level){
+        let talents = {
+            "Eidolon": "O engenheiro cria um construto que tem forma humanoide, mas pode ter qualquer aparência desejada. O eidolon tem 3,5 metros de altura e pesa 900kg. O engenheiro pode ter apenas um de cada vez. Caso seja destruído, ele pode construir um novo para substituí-lo. Para isso, é necessário que trabalhe por pelo menos 8 horas utilizando as partes que criou ou coletou do eidolon anterior. Ao fim deste período, o engenheiro tem um novo. O eidolon não está vivo. Ele nunca é afetado por privação ou exposição e ignora quaisquer efeitos de envelhecimento. Quando se torna incapacitado, ele para de ser uma criatura e se torna um objeto. O eidolon está sob o controle do engenheiro. Ele decide o que o eidolon faz a cada turno."
+        }
+        if(level == 10){
+            talents["Cabine"] = "O engenheiro instala uma cabine em seu eidolon. A cabine é um compartimento com capacidade de Tamanho 1, equipada com controles e um assento confortável. Qualquer criatura de Tamanho apropriado pode entrar nela, desde que não esteja ocupada. Uma vez dentro, a criatura pode controlar o eidolon. Enquanto estiver dentro dele, o piloto trata como suas a Defesa e a Saúde do construto, se move de acordo com seu Deslocamento e pode utilizar as opções de ataque e ações dele ao invés das suas. A cabine tem oxigênio por 4 horas. A criatura dentro dela pode utilizar uma ação para abrir a escotilha, ventilar o interior e fechá-la novamente para ganhar mais 4 horas de oxigênio. Ela pode deixar a escotilha aberta por quanto tempo quiser, mas o eidolon não funciona com a escotilha aberta.";
+            talents["Eidolon Poderoso"] = "O engenheiro aumenta a Saúde do eidolon em 25 e a Defesa em 2.";
+        }
+        super(training, "Engenheiro", talents);
+    }
+    level7(){
+        return {
+            health: 3,
+            choice: {
+                language: "new",
+                profession: "academic"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 3
+        }
+    }
+    
+}
+
+class Envenenador extends Path {
+    constructor(training, level){
+        let talents = {
+            "Maestria em Venenos": "O envenenador poder utilizar uma ação e um kit de alquimia para criar uma dose de veneno (consulte o Capítulo 6 para mais detalhes). Ele precisa passar pelo menos 1 minuto se concentrando, durante esse período ele utiliza o kit e ingredientes especiais no valor de 5 co. Criaturas fazem jogadas de desafio de Força com 3 perdições para resistir aos venenos criados e sofrem 3d6 de dano adicional de seus venenos."
+        }
+        if(level == 10){
+            talents["Toque Venenoso"] = "O envenenador pode utilizar uma ação ou ação desencadeada para atacar uma criatura a seu alcance com uma agulha escondida em um anel ou na ponta de seu dedo. Ele faz uma jogada de ataque de Força ou Agilidade contra a Agilidade do alvo. Caso seja bem-sucedido, o alvo sofre 1 de dano mais 2d6 de dano adicional do veneno na agulha. Um alvo que sofre o dano adicional deve ter sucesso em uma jogada de desafio de Força ou fica envenenado por 1 minuto. Enquanto está envenenado desta maneira, ele também fica pasmo e lento. Caso o alvo já esteja envenenado por este meio, ele sofre 3d6 de dano adicional. Ao fim de cada rodada, um alvo envenenado desta maneira deve fazer uma jogada de desafio de Força. Caso fracasse, ele sofre 1d6 de dano adicional. Uma vez que causou dano com Toque Venenoso, o envenenador não pode utilizar este talento novamente até que passe 1 minuto trabalhando com um kit de alquimia para preparar outra agulha.";
+        }
+        super(training, "Envenenador", talents);
+    }
+    level7(){
+        return {
+            health: 2,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 3
+        }
+    }
+    
+}
+
+class Exorcista extends Path {
+    constructor(training, level){
+        let talents = {}
+        if(level == 10){
+            talents["Expurgar os Impuros"] = "O exorcista faz jogadas de ataque contra demônios, diabos, fadas, espíritos e mortos-vivos com 1 dádiva. Tais criaturas fazem jogadas de desafio para resistir aos ataques do exorcista com 1 perdição.";
+            talents["Vontade de Ferro"] = "O exorcista não pode ficar encantado, compelido ou amedrontado. Quando o exorcista faz uma jogada de desafio para resistir ao ganho de Insanidade, ele o faz com 1 dádiva.";
+        }
+        super(training, "Exorcista", talents);
+    }
+    level7(){
+        return {
+            health: 4,
+            power: 1,
+            choice: {
+                language: "new",
+                profession: "religious"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 4
+        }
+    }
+    
+}
+
+class Explorador extends Path {
+    constructor(training, level){
+        let talents = {
+            "Sentidos Sobrenaturais": "O personagem faz todas as jogadas de Percepção com 1 dádiva.",
+            "Perseverança": "Quando fica doente, fatigado, debilitado ou envenenado, o explorador pode fazer uma jogada de desafio de Força e remover a aflição, caso seja bem-sucedido. Caso fracasse, o explorador não pode utilizar este talento novamente até que complete um descanso.",
+            "Repousar": "O explorador pode passar 1 hora repousando. Ao fim deste período, ele e cada membro do grupo que repousou junto cura dano igual à taxa de cura do explorador. Uma vez que utilizou este talento, ele não pode mais ser utilizado até que complete um descanso."
+        }
+        if(level == 10){
+            talents["Determinado"] = "Quando o explorador faz jogadas de ataque ou de desafio e obtém um resultado de 5 ou menos em um dado, ele pode jogar outro d20 e adicionar o resultado ao primeiro.";
+        }
+        super(training, "Explorador", talents);
+    }
+    level7(){
+        return {
+            health: 3,
+            perception: 1,
+            speed: 2,
+            choice: {
+                language: "new",
+                profession: "wilderness"
+            }
+        }
+    }
+    level10(){
+        return {
+            health: 3
+        }
+    }
+    
+}
+
+class FazTudo extends Path {
+    constructor(training, level){
+        let talents = {
+            "Aptidão": "O faz-tudo tem uma quantidade de pontos de aptidão igual ao nível do grupo. Quando faz um ataque ou uma jogada de desafio, ele pode utilizar 1 ponto deste talento para fazer a jogada com 2 dádivas. Toda vez que obtém dois resultados 6 em uma mesma jogada de dádiva, ele ganha 1 ponto de aptidão, até seu máximo. O faz-tudo restaura seus pontos de aptidão quando completa um descanso.",
+            "Profissão Flexível": "Quando o faz-tudo executa uma tarefa relacionada a uma profissão que não tem, ele pode fazer uma jogada de desafio de Intelecto. Caso seja bem-sucedido, considera-se que ele tem a profissão por 1 minuto. Caso fracasse, ele não pode utilizar este talento novamente até que complete um descanso.",
+            "Epifania Mágica": "Quando o faz-tudo vê uma criatura conjurar uma magia de nível 0 que ele não aprendeu, ele pode gastar 1 ponto de aptidão para aprender a magia, recebendo uma quantidade de conjurações da magia determinada pelo seu Poder. Ele mantém o conhecimento da magia até que complete um descanso ou gaste a última conjuração dela."
+        }
+        if(level == 10){
+            talents["Prodígio"] = "Quando completa um descanso, o faz-tudo aumenta 1 ponto em um de seus atributos. O efeito dura até que ele utilize o talento novamente.";
+            talents["Habilidade Incomum"] = "O faz-tudo trata qualquer resultado de 1 em dádivas como se tivesse obtido um 3. Ele também trata qualquer resultado de 6 em perdições como 3.";
+        }
+        super(training, "Faz-Tudo", talents);
+    }
+    level7(){
+        return {
+            health: 3,
+            profession: "any",
+            language: "new"
+        }
+    }
+    level10(){
+        return {
+            health: 3
+        }
+    }
+     
+}
+
+class Gladiador extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1921,7 +2417,7 @@ class extends Path {
     
 }
 
-class extends Path {
+class Infiltrador extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1944,7 +2440,7 @@ class extends Path {
     
 }
 
-class extends Path {
+class Inquisidor extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1967,7 +2463,7 @@ class extends Path {
     
 }
 
-class extends Path {
+class Lamina extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1990,7 +2486,7 @@ class extends Path {
     
 }
 
-class extends Path {
+class MercadorDaMorte extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -2013,7 +2509,7 @@ class extends Path {
     
 }
 
-class extends Path {
+class MestreDasArmas extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -2036,7 +2532,7 @@ class extends Path {
     
 }
 
-class extends Path {
+class Milagreiro extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -2059,7 +2555,7 @@ class extends Path {
     
 }
 
-class extends Path {
+class Mirmidao extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -2082,7 +2578,7 @@ class extends Path {
     
 }
 
-class extends Path {
+class Pistoleiro extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -2105,7 +2601,7 @@ class extends Path {
     
 }
 
-class extends Path {
+class Saqueador extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -2128,7 +2624,7 @@ class extends Path {
     
 }
 
-class extends Path {
+class Sentinela extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -2151,7 +2647,7 @@ class extends Path {
     
 }
 
-class extends Path {
+class Templario extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -2174,7 +2670,7 @@ class extends Path {
     
 }
 
-class extends Path {
+class Vingador extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -2197,421 +2693,7 @@ class extends Path {
     
 }
 
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
-}
-
-class extends Path {
+class Zelota extends Path {
     constructor(training, level){
         let talents = {
             "": ""
