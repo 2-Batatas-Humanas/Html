@@ -1443,6 +1443,7 @@ function processChoices(charact, chs){
                 break;
             case "1 intellect+1 will+!caste att":
                 newCharacter.status.intellect = 1;
+                newCharacter.status.perception += 1;
                 newCharacter.status.will = 1;
                 break;
         }
@@ -1450,6 +1451,17 @@ function processChoices(charact, chs){
     switch(charact.ancestry){
         case "human":
             newCharacter.status[chs.raisedAttribute] = 1;
+            switch(chs.raisedAttribute){
+                case "strength":
+                    newCharacter.status.health += 1;
+                    break;
+                case "agility":
+                    newCharacter.status.defense = 11;
+                    break;
+                case "intellect":
+                    newCharacter.status.perception += 1;
+                    break;
+            }
             break;
         case "clockwork":
             switch(chs.purposeChange){
@@ -1458,9 +1470,18 @@ function processChoices(charact, chs){
                 case "2 agility/intellect":
                 case "2 attribute":
                     newCharacter.status[chs.purposeChoice] += 2;
+                    switch(chs.purposeChoice){
+                        case "strength":
+                            newCharacter.status.health += 2;
+                            break;
+                        case "intellect":
+                            newCharacter.status.perception += 2;
+                            break;
+                    }
                     break;
                 case "2 strength":
                     newCharacter.status.strength += 2;
+                    newCharacter.status.health += 2;
                     break;
             }
             break;
@@ -1469,6 +1490,7 @@ function processChoices(charact, chs){
                 switch(chs.casteChoice){
                     case "profession laborer+2 strength+1 will":
                         newCharacter.status.strength += 2;
+                        newCharacter.status.health += 2;
                         newCharacter.status.will += 1;
                         break;
                     case "profession guide+1 agility+1 perception":
@@ -1478,6 +1500,7 @@ function processChoices(charact, chs){
                     case "profession soldier+2 strength+13 defense":
                         newCharacter.status.strength += 2;
                         newCharacter.status.defense = 13;
+                        newCharacter.status.health += 2;
                         break;
                 }
             }
@@ -1499,6 +1522,70 @@ function processChoices(charact, chs){
             break;
     }
     newCharacter.status[choices.novicePathAttributes[0]] += 1;
+    switch(choices.novicePathAttributes[0]){
+        case "strength":
+            newCharacter.status.health += 1;
+            break;
+        case "agility":
+            if(charact.ancestry != "clockwork" && charact.ancestry != "yerath"){
+                switch(charact.ancestry){
+                    case "human":
+                        if(!newCharacter.status.defense){
+                            newCharacter.status.defense = 10;
+                        }
+                        break;
+                    case "dwarf":
+                        newCharacter.status.defense = 9;
+                        break;
+                    case "changeling":
+                        newCharacter.status.defense = 10;
+                        break;
+                    case "goblin":
+                        newCharacter.status.defense = 12;
+                        break;
+                    case "orc":
+                        newCharacter.status.defense = 10;
+                        break;
+                }
+                newCharacter.status.defense += 1;
+            }
+            break;
+        case "intellect":
+            newCharacter.status.perception += 1;
+            break;
+    }
     newCharacter.status[choices.novicePathAttributes[1]] += 1;
+    switch(choices.novicePathAttributes[1]){
+        case "strength":
+            newCharacter.status.health += 1;
+            break;
+        case "agility":
+            if(charact.ancestry != "clockwork" && charact.ancestry != "yerath"){
+                switch(charact.ancestry){
+                    case "human":
+                        if(!newCharacter.status.defense){
+                            newCharacter.status.defense = 10;
+                        }
+                        break;
+                    case "dwarf":
+                        newCharacter.status.defense = 9;
+                        break;
+                    case "changeling":
+                        newCharacter.status.defense = 10;
+                        break;
+                    case "goblin":
+                        newCharacter.status.defense = 12;
+                        break;
+                    case "orc":
+                        newCharacter.status.defense = 10;
+                        break;
+                }
+                newCharacter.status.defense += 1;
+            }
+            break;
+        case "intellect":
+            newCharacter.status.perception += 1;
+            break;
+    }
     return newCharacter;
 }
