@@ -278,7 +278,7 @@ class Human extends Character{
         status, professions, paths, bag, traditions){
         super(name, personality, age, religion, background,
             10+status.strength, 10+status.agility, 10+status.intellect, 10+status.will,
-            10+status.intellect, 10+status.agility, 10+status.strength, size, 10,
+            10+status.perception, status.defense || 10, 10+status.health, size, status.speed || 10,
             status.power, status.damage, status.insanity, status.corruption, status.level,
             professions, paths, bag, traditions);
         this._build = build;
@@ -336,8 +336,8 @@ class Changeling extends Character{
         apparentAge, apparentBuild, apparentAppearence, quirk, status, professions, paths, bag, traditions){  
         super(name, personality, trueAge, religion, background,
             status.strength+9, status.agility+10, status.intellect+10, status.will+10,
-            status.intellect+11, status.agility+10, status.strength+10,
-            1, 10, status.power, status.damage, status.insanity, status.corruption, status.level,
+            status.perception+11, status.defense || 10, status.health+10,
+            status.size || 1, status.speed || 10, status.power, status.damage, status.insanity, status.corruption, status.level,
             professions, paths, bag, traditions);
         
         this._apparentGender = apparentGender;
@@ -428,8 +428,8 @@ class Clockwork extends Character{
         professions, paths, bag, traditions){  
         super(name, personality, age, religion, background,
             status.strength+9, status.agility+8, status.intellect+9, status.will+9,
-            status.intellect+9, 13, status.strength+9,
-            1, 8, status.power, status.damage, status.insanity, status.corruption, status.level,
+            status.perception+9, status.defense || 13, status.health+9,
+            status.size || 1, status.speed || 8, status.power, status.damage, status.insanity, status.corruption, status.level,
             professions, paths, bag, traditions);
         
         this._purpose = purpose;
@@ -499,8 +499,8 @@ class Dwarf extends Character{
         professions, paths, bag, traditions){  
         super(name, personality, age, religion, background,
             status.strength+10, status.agility+9, status.intellect+10, status.will+10,
-            status.intellect+11, status.agility+9, status.strength+14,
-            0.5, 8, status.power, status.damage, status.insanity, status.corruption, status.level,
+            status.perception+11, status.defense || 9, status.health+14,
+            status.size || 0.5, status.speed || 8, status.power, status.damage, status.insanity, status.corruption, status.level,
             professions, paths, bag, traditions);
         
         this._build = build
@@ -573,8 +573,8 @@ class Goblin extends Character{
         professions, paths, bag, traditions){  
         super(name, personality, age, religion, background,
             status.strength+8, status.agility+12, status.intellect+10, status.will+9,
-            status.intellect+11, status.agility+12, status.strength+8,
-            0.5, 10, status.power, status.damage, status.insanity, status.corruption, status.level,
+            status.perception+11, status.defense || 12, status.health+8,
+            status.size || 0.5, status.speed || 10, status.power, status.damage, status.insanity, status.corruption, status.level,
             professions, paths, bag, traditions);
         
         this._build = build
@@ -646,8 +646,8 @@ class Orc extends Character{
         professions, paths, bag, traditions){  
         super(name, personality, age, religion, background,
             status.strength+11, status.agility+10, status.intellect+9, status.will+9,
-            status.intellect+10, status.agility+10, status.strength+11,
-            1, 12, status.power, status.damage, status.insanity, status.corruption+1, status.level,
+            status.perception+10, status.defense || 10, status.health+11,
+            status.size || 1, status.speed || 12, status.power, status.damage, status.insanity, status.corruption+1, status.level,
             professions, paths, bag, traditions);
         
         this._build = build
@@ -898,7 +898,6 @@ function getCharacterObject(characterToBeObject){
         "religion": characterToBeObject.religion,
         "background": characterToBeObject.background,
         "name": characterToBeObject.name,
-        "status": characterToBeObject.status,
         "professions": characterToBeObject.professions,
         "bag": characterToBeObject.bag,
         "traditions": characterToBeObject.traditions,
@@ -946,12 +945,44 @@ function getCharacterObject(characterToBeObject){
         newObject.size = characterToBeObject.size;
         newObject.appearance = characterToBeObject.appearance;
         newObject.build = characterToBeObject.build;
+        newObject.status = {
+            strength: characterToBeObject.strength - 10,
+            agility: characterToBeObject.agility - 10,
+            intellect: characterToBeObject.intellect - 10,
+            will: characterToBeObject.will - 10,
+            perception: characterToBeObject.perception - 10,
+            health: characterToBeObject.health - 10,
+            defense: characterToBeObject.defense,
+            damage: characterToBeObject.damage,
+            size: characterToBeObject.size,
+            speed: characterToBeObject.speed,
+            corruption: characterToBeObject.corruption,
+            insanity: characterToBeObject.insanity,
+            level: characterToBeObject.level,
+            power: characterToBeObject.power
+        }
     }
     else if(characterToBeObject instanceof Dwarf){
         newObject.ancestry = "dwarf";
         newObject.appearance = characterToBeObject.appearance;
         newObject.build = characterToBeObject.build;
         newObject.hatred = characterToBeObject.hatred;
+        newObject.status = {
+            strength: characterToBeObject.strength - 10,
+            agility: characterToBeObject.agility - 9,
+            intellect: characterToBeObject.intellect - 10,
+            will: characterToBeObject.will - 10,
+            perception: characterToBeObject.perception - 11,
+            health: characterToBeObject.health - 14,
+            defense: characterToBeObject.defense,
+            damage: characterToBeObject.damage,
+            size: characterToBeObject.size,
+            speed: characterToBeObject.speed,
+            corruption: characterToBeObject.corruption,
+            insanity: characterToBeObject.insanity,
+            level: characterToBeObject.level,
+            power: characterToBeObject.power
+        }
     }
     else if(characterToBeObject instanceof Changeling){
         newObject.ancestry = "changeling";
@@ -961,27 +992,107 @@ function getCharacterObject(characterToBeObject){
         newObject.apparentBuild = characterToBeObject.apparentBuild;
         newObject.apparentAppearence = characterToBeObject.apparentAppearence;
         newObject.quirk = characterToBeObject.quirk;
+        newObject.status = {
+            strength: characterToBeObject.strength - 9,
+            agility: characterToBeObject.agility - 10,
+            intellect: characterToBeObject.intellect - 10,
+            will: characterToBeObject.will - 10,
+            perception: characterToBeObject.perception - 11,
+            health: characterToBeObject.health - 9,
+            defense: characterToBeObject.defense,
+            damage: characterToBeObject.damage,
+            size: characterToBeObject.size,
+            speed: characterToBeObject.speed,
+            corruption: characterToBeObject.corruption,
+            insanity: characterToBeObject.insanity,
+            level: characterToBeObject.level,
+            power: characterToBeObject.power
+        }
     }
     else if(characterToBeObject instanceof Clockwork){
         newObject.ancestry = "clockwork";
         newObject.appearance = characterToBeObject.appearance;
         newObject.purpose = characterToBeObject.purpose;
         newObject.form = characterToBeObject.form;
+        newObject.status = {
+            strength: characterToBeObject.strength - 9,
+            agility: characterToBeObject.agility - 8,
+            intellect: characterToBeObject.intellect - 9,
+            will: characterToBeObject.will - 9,
+            perception: characterToBeObject.perception - 9,
+            health: characterToBeObject.health - 9,
+            defense: characterToBeObject.defense,
+            damage: characterToBeObject.damage,
+            size: characterToBeObject.size,
+            speed: characterToBeObject.speed,
+            corruption: characterToBeObject.corruption,
+            insanity: characterToBeObject.insanity,
+            level: characterToBeObject.level,
+            power: characterToBeObject.power
+        }
     }
     else if(characterToBeObject instanceof Goblin){
         newObject.ancestry = "goblin";
         newObject.build = characterToBeObject.build;
         newObject.distinctiveAppearance = characterToBeObject.distinctiveAppearance;
         newObject.oddHabit = characterToBeObject.oddHabit;
+        newObject.status = {
+            strength: characterToBeObject.strength - 8,
+            agility: characterToBeObject.agility - 12,
+            intellect: characterToBeObject.intellect - 10,
+            will: characterToBeObject.will - 9,
+            perception: characterToBeObject.perception - 11,
+            health: characterToBeObject.health - 8,
+            defense: characterToBeObject.defense,
+            damage: characterToBeObject.damage,
+            size: characterToBeObject.size,
+            speed: characterToBeObject.speed,
+            corruption: characterToBeObject.corruption,
+            insanity: characterToBeObject.insanity,
+            level: characterToBeObject.level,
+            power: characterToBeObject.power
+        }
     }
     else if(characterToBeObject instanceof Orc){
         newObject.ancestry = "orc";
         newObject.appearance = characterToBeObject.appearance;
         newObject.build = characterToBeObject.build;
+        newObject.status = {
+            strength: characterToBeObject.strength - 11,
+            agility: characterToBeObject.agility - 10,
+            intellect: characterToBeObject.intellect - 9,
+            will: characterToBeObject.will - 9,
+            perception: characterToBeObject.perception - 10,
+            health: characterToBeObject.health - 11,
+            defense: characterToBeObject.defense,
+            damage: characterToBeObject.damage,
+            size: characterToBeObject.size,
+            speed: characterToBeObject.speed,
+            corruption: characterToBeObject.corruption,
+            insanity: characterToBeObject.insanity,
+            level: characterToBeObject.level,
+            power: characterToBeObject.power
+        }
     }
     else if(characterToBeObject instanceof Yerath){
         newObject.ancestry = "yerath";
         newObject.caste = characterToBeObject.caste;
+        newObject.status = {
+            strength: characterToBeObject.strength - 9,
+            agility: characterToBeObject.agility - 10,
+            intellect: characterToBeObject.intellect - 10,
+            will: characterToBeObject.will - 9,
+            perception: characterToBeObject.perception - 10,
+            health: characterToBeObject.health - 9,
+            defense: characterToBeObject.defense,
+            damage: characterToBeObject.damage,
+            size: characterToBeObject.size,
+            speed: characterToBeObject.speed,
+            corruption: characterToBeObject.corruption,
+            insanity: characterToBeObject.insanity,
+            level: characterToBeObject.level,
+            power: characterToBeObject.power
+        }
     }
     
     return newObject;
