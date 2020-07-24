@@ -1068,7 +1068,7 @@ function getCharacterObject(characterToBeObject){
             damage: characterToBeObject.damage,
             size: characterToBeObject.size,
             speed: characterToBeObject.speed,
-            corruption: characterToBeObject.corruption,
+            corruption: characterToBeObject.corruption - 1,
             insanity: characterToBeObject.insanity,
             level: characterToBeObject.level,
             power: characterToBeObject.power
