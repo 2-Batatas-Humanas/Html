@@ -1137,7 +1137,7 @@ class SummerChild extends Path{
 
 //Trilhas de Magia:
 
-class extends Path {
+class Abjurador extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1145,7 +1145,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Abjurador", talents);
     }
     level7(){
         return {
@@ -1156,11 +1156,10 @@ class extends Path {
         return {
             
         }
-    }
-    
+    } 
 }
 
-class extends Path {
+class Adivinho extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1168,7 +1167,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Adivinho", talents);
     }
     level7(){
         return {
@@ -1180,10 +1179,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Aeromante extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1191,7 +1189,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Aeromante", talents);
     }
     level7(){
         return {
@@ -1203,10 +1201,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Apocaliptista extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1214,7 +1211,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Apocaliptista", talents);
     }
     level7(){
         return {
@@ -1226,10 +1223,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Arcanista extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1237,7 +1233,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Arcanista", talents);
     }
     level7(){
         return {
@@ -1249,10 +1245,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Astromante extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1260,7 +1255,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Astromante", talents);
     }
     level7(){
         return {
@@ -1272,10 +1267,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Bardo extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1283,7 +1277,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Bardo", talents);
     }
     level7(){
         return {
@@ -1295,10 +1289,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class CavaleiroMago extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1306,7 +1299,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Cavaleiro Mago", talents);
     }
     level7(){
         return {
@@ -1318,10 +1311,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Cronomante extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1329,7 +1321,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Cronomante", talents);
     }
     level7(){
         return {
@@ -1341,10 +1333,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Curandeiro extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1352,7 +1343,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Curandeiro", talents);
     }
     level7(){
         return {
@@ -1364,10 +1355,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Destruidor extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1375,7 +1365,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Destruidor", talents);
     }
     level7(){
         return {
@@ -1387,10 +1377,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Encantador extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1398,7 +1387,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Encantador", talents);
     }
     level7(){
         return {
@@ -1410,10 +1399,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Erudito extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1421,7 +1409,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Erudito", talents);
     }
     level7(){
         return {
@@ -1433,10 +1421,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Geomante extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1444,7 +1431,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Geomante", talents);
     }
     level7(){
         return {
@@ -1456,10 +1443,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Hidromante extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1467,7 +1453,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Hidromante", talents);
     }
     level7(){
         return {
@@ -1479,10 +1465,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class HomemSelvagem extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1490,7 +1475,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Homem Selvagem", talents);
     }
     level7(){
         return {
@@ -1502,10 +1487,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Ilusionista extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1513,7 +1497,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Ilusionista", talents);
     }
     level7(){
         return {
@@ -1525,10 +1509,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Invocador extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1536,7 +1519,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Invocador", talents);
     }
     level7(){
         return {
@@ -1548,10 +1531,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Magus extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1559,7 +1541,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Magus", talents);
     }
     level7(){
         return {
@@ -1571,10 +1553,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class MestreDasFeras extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1582,7 +1563,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Mestre das Feras", talents);
     }
     level7(){
         return {
@@ -1594,10 +1575,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Metamorfo extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1605,7 +1585,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Metamorfo", talents);
     }
     level7(){
         return {
@@ -1617,10 +1597,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Necromante extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1628,7 +1607,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Necromante", talents);
     }
     level7(){
         return {
@@ -1640,10 +1619,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Piromante extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1651,7 +1629,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Piromante", talents);
     }
     level7(){
         return {
@@ -1663,10 +1641,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Rogador extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1674,7 +1651,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Rogador", talents);
     }
     level7(){
         return {
@@ -1686,10 +1663,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Runista extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1697,7 +1673,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Runista", talents);
     }
     level7(){
         return {
@@ -1709,10 +1685,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Taumaturgo extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1720,7 +1695,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Taumaturgo", talents);
     }
     level7(){
         return {
@@ -1732,10 +1707,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Tecnomante extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1743,7 +1717,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Tecnomante", talents);
     }
     level7(){
         return {
@@ -1755,10 +1729,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Tempestuoso extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1766,7 +1739,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Tempestuoso", talents);
     }
     level7(){
         return {
@@ -1778,10 +1751,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Tenebrista extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1789,7 +1761,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Tenebrista", talents);
     }
     level7(){
         return {
@@ -1801,10 +1773,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Teurgo extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1812,7 +1783,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Teurgo", talents);
     }
     level7(){
         return {
@@ -1824,10 +1795,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Transmutador extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1835,7 +1805,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Transmutador", talents);
     }
     level7(){
         return {
@@ -1847,10 +1817,9 @@ class extends Path {
             
         }
     }
-    
 }
 
-class extends Path {
+class Viajante extends Path {
     constructor(training, level){
         let talents = {
             "": ""
@@ -1858,7 +1827,7 @@ class extends Path {
         if(level == 10){
             talents[""] = "";
         }
-        super(training, "", talents);
+        super(training, "Viajante", talents);
     }
     level7(){
         return {
@@ -1870,30 +1839,6 @@ class extends Path {
             
         }
     }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
 }
 
 //Trilhas de Habilidade:
@@ -1923,7 +1868,6 @@ class Acrobata extends Path {
             health: 3
         }
     }
-    
 }
 
 class AtiradorDeElite extends Path {
@@ -1951,7 +1895,6 @@ class AtiradorDeElite extends Path {
             health: 4
         }
     }
-    
 }
 
 class Bruto extends Path {
@@ -1974,7 +1917,6 @@ class Bruto extends Path {
             health: 8
         }
     }
-    
 }
 
 class Campeao extends Path {
@@ -2001,7 +1943,6 @@ class Campeao extends Path {
             health: 5
         }
     }
-    
 }
 
 class Capelao extends Path {
@@ -2028,7 +1969,6 @@ class Capelao extends Path {
             
         }
     }
-    
 }
 
 class Carrasco extends Path {
@@ -2055,7 +1995,6 @@ class Carrasco extends Path {
             health: 3
         }
     }
-    
 }
 
 class Cavaleiro extends Path {
@@ -2085,7 +2024,6 @@ class Cavaleiro extends Path {
             health: 5
         }
     }
-    
 }
 
 class Conquistador extends Path {
@@ -2113,7 +2051,6 @@ class Conquistador extends Path {
             health: 5
         }
     }
-    
 }
 
 class Defensor extends Path {
@@ -2137,7 +2074,6 @@ class Defensor extends Path {
             health: 6
         }
     }
-    
 }
 
 class Dervixe extends Path {
@@ -2165,7 +2101,6 @@ class Dervixe extends Path {
             health: 5
         }
     }
-    
 }
 
 class Diplomata extends Path {
@@ -2194,7 +2129,6 @@ class Diplomata extends Path {
             health: 3
         }
     }
-    
 }
 
 class Duelista extends Path {
@@ -2222,7 +2156,6 @@ class Duelista extends Path {
             health: 4
         }
     }
-    
 }
 
 class Encouracado extends Path {
@@ -2250,7 +2183,6 @@ class Encouracado extends Path {
             health: 5
         }
     }
-    
 }
 
 class Engenheiro extends Path {
@@ -2278,7 +2210,6 @@ class Engenheiro extends Path {
             health: 3
         }
     }
-    
 }
 
 class Envenenador extends Path {
@@ -2305,7 +2236,6 @@ class Envenenador extends Path {
             health: 3
         }
     }
-    
 }
 
 class Exorcista extends Path {
@@ -2332,7 +2262,6 @@ class Exorcista extends Path {
             health: 4
         }
     }
-    
 }
 
 class Explorador extends Path {
@@ -2363,7 +2292,6 @@ class Explorador extends Path {
             health: 3
         }
     }
-    
 }
 
 class FazTudo extends Path {
@@ -2390,351 +2318,365 @@ class FazTudo extends Path {
         return {
             health: 3
         }
-    }
-     
+    } 
 }
 
 class Gladiador extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Lutar Sujo": "Você pode usar uma ação ou ação desencadeada para fazer um ataque de Agilidade contra a Percepção de uma criatura alvo ao seu alcance. Caso obtenha sucesso, o alvo fica debilitado por 1 rodada. Caso fracasse, o alvo se torna imune aos efeitos do seu talento Lutar Sujo até que complete um descanso.",
+            "Ganhar a Qualquer Custo": "Criaturas debilitadas sofrem 1d6 de dano adicional dos ataques do gladiador."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Golpe Final"] = "O gladiador faz jogadas de ataque com 1 dádiva contra alvos sofrendo de alguma aflição, seus ataques causam 1d6 de dano adicional contra esses alvos.";
         }
-        super(training, "", talents);
+        super(training, "Gladiador", talents);
     }
     level7(){
         return {
-            
+            health: 5,
+            choice: {
+                language: "new",
+                profession: "martial"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 5
         }
     }
-    
 }
 
 class Infiltrador extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Sem Face": "O infiltrador pode tentar se esconder em qualquer lugar; ele pode estar sendo observado e não precisa estar severamente obscurecido ou com três quartos de cobertura. Ele se mantém escondido utilizando este talento até que utilize uma ação ou ação desencadeada, depois da qual precisa esperar pelo menos 1 minuto antes de utilizar este talento novamente. Enquanto está escondido, as pessoas com quem conversa, 1 minuto depois do fim da conversa, não conseguem se lembrar de detalhes sobre ele, e esquecem totalmente de ter falado com ele 1 hora depois. Por fim, durante a primeira rodada de qualquer combate no qual está escondido, ele faz jogadas de ataque e desafio com 1 dádiva. Caso faça um turno rápido nesta rodada, ele pode utilizar uma ação e se mover."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Golpe Traiçoeiro"] = "Os ataques com armas do infiltrador causam 1d6 de dano adicional a alvos surpresos ou dos quais o infiltrador está escondido.";
+            talents["Sumir"] = "Quando está obscurecido ou encoberto de alguma maneira, o infiltrador pode utilizar uma ação desencadeada para utilizar o talento Sem Face.";
         }
-        super(training, "", talents);
+        super(training, "Infiltrador", talents);
     }
     level7(){
         return {
-            
+            health: 3,
+            perception: 1,
+            choice: {
+                language: "new",
+                profession: "criminal"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 3
         }
     }
-    
 }
 
 class Inquisidor extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Ameaça Terrível": "O inquisidor pode utilizar uma ação para fazer uma ameaça terrível contra uma criatura alvo que esteja sujeita ao talento Escrutínio e a curta distância. O inquisidor faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso obtenha sucesso, o alvo fica assustado enquanto pode ver o inquisidor. O efeito termina quando o alvo causa dano ao inquisidor ou quando completa um descanso.",
+            "Mestre Torturador": "O inquisidor pode usar uma ação para começar a torturar uma criatura indefesa ou fisicamente contida ao seu alcance. Caso se concentre por pelo menos 1 hora, tempo no qual ele utiliza suas ferramentas de torturador no alvo, o inquisidor faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso tenha sucesso, ele pode perguntar ao alvo 1d6 questões (o Mestre faz a jogada e mantém o número em segredo), o alvo deve responder verdadeiramente e da melhor maneira possível. Caso não saiba a resposta, ele inventa algo que acha que gostaria de saber, caberá ao inquisidor interpretar se o que ele diz é verdade ou não. Caso fracasse, o alvo se torna imune a este talento até que complete um descanso.",
+            "Escrutínio": "O inquisidor pode utilizar uma ação para estudar uma criatura que possa ver a média distância. Ele faz uma jogada de ataque de Percepção contra o Intelecto do alvo. Caso seja bem-sucedido, o alvo está sujeito ao seu escrutínio até que complete um descanso, o inquisidor não possa mais vê-lo ou use o talento novamente. Caso fracasse, o alvo se torna imune a este talento até que complete um descanso. Enquanto uma criatura está sujeita ao seu escrutínio, o inquisidor sabe exatamente quando ela diz uma mentira, e quando atacá-la, ele o faz com 1 dádiva."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Julgamento do Inquisidor"] = "Seus ataques com armas contra criaturas sujeitas ao seu Escrutínio causam 1d6 de dano adicional.";
         }
-        super(training, "", talents);
+        super(training, "Inquisidor", talents);
     }
     level7(){
         return {
-            
+            health: 3,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 3
         }
     }
-    
 }
 
 class Lamina extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Hemorragia": "Seus ataques com adagas, facas ou armas de mão inábil similares podem deixar ferimentos hemorrágicos. Quando o total da jogada de ataque é 20 ou mais com uma destas armas, e ultrapassa o número alvo em pelo menos 5, o alvo sofre um ferimento hemorrágico que dura até que o dano seja curado ou até que uma criatura utilize uma ação para estancar o ferimento, portanto o removendo. Enquanto sofre com o ferimento, o alvo está fatigado e sofre 1d6 de dano adicional ao fim de cada rodada."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Lâmina Rápida"] = "A lâmina pode utilizar uma ação desencadeada em seu turno para atacar com uma adaga ou faca.";
         }
-        super(training, "", talents);
+        super(training, "Lâmina", talents);
     }
     level7(){
         return {
-            
+            health: 4,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 4
         }
     }
-    
 }
 
 class MercadorDaMorte extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Golpe Brutal": "Quando o mercador da morte incapacita uma criatura com um ataque utilizando uma arma pesada, ele pode utilizar uma ação desencadeada para atacar com a mesma arma a qualquer momento antes do fim do turno."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Criar Pilhas de Mortos"] = "O mercador da morte pode utilizar uma ação para deslizar sua arma pesada em um arco letal ao seu redor. Ele escolhe uma quantidade de criaturas dentro de 1 metro em torno de si mesmo. Um alvo com Saúde 20 ou menor sofre uma quantidade de dano igual à sua Saúde.";
         }
-        super(training, "", talents);
+        super(training, "Mercador da Morte", talents);
     }
     level7(){
         return {
-            
+            health: 6
         }
     }
     level10(){
         return {
-            
+            health: 6
         }
     }
-    
 }
 
 class MestreDasArmas extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Arma Favorita": "Quando completa um descanso, o mestre das armas escolhe uma arma para a qual tenha todos os requisitos. Esta arma se torna sua arma favorita até que use o talento novamente. Enquanto empunha sua arma favorita, o mestre das armas ganha um bônus de +1 em sua Defesa. Quando ataca com a arma favorita, o mestre das armas faz a jogada de ataque com 1 dádiva."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Especialização em Arma"] = "Quando o mestre das armas ataca com a sua arma favorita, ele causa 1d6 de dano adicional.";
         }
-        super(training, "", talents);
+        super(training, "Mestre das Armas", talents);
     }
     level7(){
         return {
-            
+            health: 5,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 5
         }
     }
-    
 }
 
 class Milagreiro extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Estigmas": "O milagreiro pode utilizar uma ação para invocar o poder de um deus. Ele recebe 1 de Insanidade e sofre -5 de penalidade em sua Saúde que dura até que ele complete um descanso. O milagreiro assume a aparência de um deus que serve e mantém essa aparência por uma quantidade de minutos igual a 1 + seu Poder. Quando assume essa aparência, cada criatura a curta distância que pode ver o milagreiro, exceto membros de seu grupo, deve ter sucesso em uma jogada de desafio de Vontade com 1 perdição ou fica assustado até que o efeito termine. Da mesma maneira, até que o efeito termine, o milagreiro faz jogadas de desafio e de ataque com 1 dádiva e cura 1d6 de dano ao fim de cada rodada.",
+            "Línguas": "Quando o milagreiro fala, qualquer criatura que saiba pelo menos um idioma entende o que ele diz. Além disso, ele pode escolher falar em uma voz retumbante que pode ser ouvida a até 1,6 km de distância."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Fazedor de Milagres"] = "O milagreiro pode utilizar uma ação para tocar uma criatura e sofrer uma penalidade de -5 em sua Saúde que dura até que complete um descanso. Ele escolhe um dos seguintes efeitos:<ul><li>O alvo cura dano igual à sua taxa de cura.</li><li>Remove uma aflição doente do alvo.</li><li>Remove uma aflição envenenado do alvo.</li><li>Remove uma maldição do alvo.</li><li>Remove 1d3 pontos de Insanidade do alvo.</li></ul>";
         }
-        super(training, "", talents);
+        super(training, "Milagreiro", talents);
     }
     level7(){
         return {
-            
+            health: 6
         }
     }
     level10(){
         return {
-            
+            health: 6
         }
     }
-    
 }
 
 class Mirmidao extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Escudo Poderoso": "Quando o mirmidão é bem-sucedido em uma jogada de ataque utilizando um escudo, ele também pode mover o alvo 1d6 metros para longe de si.",
+            "Bloqueio com Escudo": "Quando a criatura ataca com uma arma, o mirmidão pode utilizar uma ação desencadeada para bloquear o ataque com um escudo empunhado. A criatura desencadeante faz sua jogada de ataque com 1 perdição."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Maestria com Escudo"] = "Quando empunha um escudo, o mirmidão tem bônus de +1 em sua Defesa. Quando ataca com um escudo, o mirmidão faz a jogada de ataque com 1 dádiva, seu ataque causa 1d6 de dano adicional e ele não perde a propriedade defensiva do escudo.";
         }
-        super(training, "", talents);
+        super(training, "Mirmidão", talents);
     }
     level7(){
         return {
-            
+            health: 5,
+            choice: {
+                language: "new",
+                profession: "military"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 5
         }
     }
-    
 }
 
 class Pistoleiro extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Revólver": "O pistoleiro pode utilizar um kit de ferramentas e 1 co de materiais especiais para transformar uma pistola comum em um revólver. Ele leva oito horas para completar a transformação. Outras criaturas, que não o pistoleiro, fazem suas jogadas de ataque com esta arma com 3 perdições. O revólver funciona como uma pistola, com exceção de que ela não tem a propriedade falha no disparo. Quando carrega essa arma, o pistoleiro pode colocar até seis balas no tambor. Ele pode atacar com a arma uma vez para cada bala no tambor, antes de precisar recarregá-la."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Acertar na Mosca"] = "O pistoleiro faz suas jogadas de ataque com pistolas ou com sua pistola de seis tiros com 1 dádiva, os ataques com essas armas causam 1d6 de dano adicional.";
+            talents["Recarga Rápida"] = "O pistoleiro pode recarregar sua arma como uma atividade menor em vez de como uma ação.";
         }
-        super(training, "", talents);
+        super(training, "Pistoleiro", talents);
     }
     level7(){
         return {
-            
+            health: 3,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 3
         }
     }
-    
 }
 
 class Saqueador extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Investida Poderosa": "Quando o saqueador utiliza uma ação para investir, seu movimento não desencadeia ataques livres. Da mesma maneira, o ataque feito durante seu movimento causa de 1d6 de dano adicional."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Sede de Sangue"] = "Quando uma criatura fica incapacitada pelo ataque de um saqueador, ele pode utilizar uma ação desencadeada para investir.";
+            talents["Força Através da Dor"] = "Enquanto está ferido, o saqueador faz jogadas de ataque e desafio de Força com 1 dádiva.";
         }
-        super(training, "", talents);
+        super(training, "Saqueador", talents);
     }
     level7(){
         return {
-            
+            health: 5,
+            speed: 2
         }
     }
     level10(){
         return {
-            
+            health: 5
         }
     }
-    
 }
 
 class Sentinela extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Perfeitamente Consciente": "A sentinela possui sentidos superiores que nunca a deixam na mão. Enquanto está consciente, ela não pode ficar atordoada ou surpresa. Faz todas as jogadas de desafio de Percepção com 1 dádiva. Por fim, a sentinela pode ver um contorno sutil ao redor de criaturas e objetos invisíveis dentro de seu campo de visão, de maneira que são considerados apenas parcialmente obscurecidos para ela."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Montar Guarda"] = "A sentinela pode utilizar uma ação para guardar uma área dentro de uma esfera de raio de 5 metros centrada em um ponto a seu alcance. O efeito dura até que utilize este talento novamente, saia da área ou fique inconsciente. Enquanto estiver na área, ela tem os seguintes benefícios:<ul><li>Faz jogadas de ataque com 1 dádiva.</li><li>Sabe a localização de cada criatura na área e a criatura não pode se esconder dela.</li><li>Não pode ser encantada, compelida, assustada, surpresa ou adormecida por magia.</li><li>Não pode ser movida para fora da área.</li></ul>";
         }
-        super(training, "", talents);
+        super(training, "Sentinela", talents);
     }
     level7(){
         return {
-            
+            health: 5,
+            perception: 1
         }
     }
     level10(){
         return {
-            
+            health: 5
         }
-    }
-    
+    } 
 }
 
 class Templario extends Path {
     constructor(training, level){
-        let talents = {
-            "": ""
-        }
+        let talents = {};
         if(level == 10){
-            talents[""] = "";
+            talents["Guardião do Templo"] = "Os ataques do templário contra alvos dentro da área de seu Templo de Fé causam 1d6 de dano adicional.";
         }
-        super(training, "", talents);
+        super(training, "Templário", talents);
     }
     level7(){
         return {
-            
+            health: 4,
+            perception: 1,
+            spell: "Templo da Fé",
+            choice: {
+                language: "new",
+                profession: "religious"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 4
         }
     }
-    
 }
 
 class Vingador extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Juramento de Vingança": "Quando uma criatura que o vingador pode ver causa dano a ele ou a outra criatura, o vingador pode utilizar uma ação desencadeada para jurar vingança contra a criatura desencadeante. O alvo fica marcado por 1 minuto, até que fique incapacitado ou até que o vingador fique inconsciente. Até que o efeito acabe, o vingador não pode utilizar esse talento novamente, mas obtém os seguintes benefícios:<ul><li>O vingador faz jogadas de ataque contra alvos marcados com 1 dádiva.</li><li>Alvos marcados ficam assustados quando entram no alcance do vingador.</li><li>Caso um alvo marcado se afaste do vingador, ele pode utilizar uma ação desencadeada para se mover até seu Deslocamento em direção ao alvo.</li></ul>"
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Fúria do Vingador"] = "Os ataques do vingador causam 1d6 de dano adicional contra alvos marcados com Juramento de Vingança.";
         }
-        super(training, "", talents);
+        super(training, "Vingador", talents);
     }
     level7(){
         return {
-            
+            health: 5,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 5
         }
     }
-    
 }
 
 class Zelota extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Zelo": "Quando fracassa em uma jogada de ataque ou desafio, ele pode ganhar 1d3 de Insanidade para ignorar o fracasso e repetir a jogada. Ele deve utilizar o resultado da segunda jogada. Depois de utilizar este talento, ele não pode ficar encantado, compelido ou assustado até o fim do turno",
+            "Loucura Violenta": "Toda vez que enlouquece, ele sempre manifesta o resultado violência"
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Poder Divino"] = "Quando utiliza Zelo, o zelota faz a segunda jogada com 1 dádiva. Além disso, caso seja uma jogada de ataque, ela causa 1d6 de dano adicional.";
         }
-        super(training, "", talents);
+        super(training, "Zelota", talents);
     }
     level7(){
         return {
-            
+            health: 6,
+            choice: {
+                language: "new",
+                profession: "religious"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 6
         }
     }
-    
-}
-
-class extends Path {
-    constructor(training, level){
-        let talents = {
-            "": ""
-        }
-        if(level == 10){
-            talents[""] = "";
-        }
-        super(training, "", talents);
-    }
-    level7(){
-        return {
-            
-        }
-    }
-    level10(){
-        return {
-            
-        }
-    }
-    
 }
