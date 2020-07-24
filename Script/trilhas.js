@@ -20,6 +20,9 @@ class Path{
     get choices(){
         return this._choices;
     }
+    set choices(choices){
+        this._choices = choices;
+    }
     get talents(){
         return this._talents;
     }
