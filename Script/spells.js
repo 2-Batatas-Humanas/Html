@@ -14,7 +14,7 @@ currentPower = 0;
 traditionSpellsChoices = 0;
 
 function loadChoices(){
-    if(!character.traditions){
+    if(!character.status){
         let id = "possibleChoices";
         character.traditions = {};
         character.additionalAttCharacts = {
@@ -54,98 +54,84 @@ function loadChoices(){
         }
     }
     else {
-
+        traditionSpellsChoices = parseInt(localStorage.getItem("magic")) + displayTradsAndSpells();
+        if(character.novicePath.type == "magician"){
+            receiveLevel0Spells = true;
+        }
+        currentPower = character.status.power;
     }
-    currentPower = character.additionalAttCharacts.power;
-
 }
 
-function loadTraditions(){
-    let intellectTrads = document.querySelector("#intellectTraditions");
-    let willTrads = document.querySelector("#willTraditions");
+function findTradition(code){
     let trads = Object.keys(traditions);
-    let numTrads = 0;
+    let found = false;
     trads.forEach(function(trad){
-        let newDiv = document.createElement("div");
-        newDiv.className = "tradition";
-        if(traditions[trad].darkMagic){
-            newDiv.classList.add("darkMagic");
+        if(traditions[trad].id == code){
+            found = trad;
+            return
         }
-        if(!(possibleTraditions.includes(trad))){
-            newDiv.classList.add("traditionInavailable");
-        }
-        newDiv.id = "trad" + numTrads;
-        newDiv.setAttribute("onclick", `loadSpells("${trad}", (this.id).slice(4))`);
-        let p = document.createElement("p");
-        p.innerHTML = trad;
-        p.id = "tradName" + numTrads;
-        newDiv.appendChild(p);
-        if(traditions[trad].attribute === "intellect"){
-            newDiv.classList.add("intellect");
-            intellectTrads.appendChild(newDiv);
-        } else{
-            newDiv.classList.add("will");
-            willTrads.appendChild(newDiv);
-        }
-        numTrads++;
     });
+    return found;
+}
+
+function findSpell(tradCode, code){
+    let trad = findTradition(tradCode);
+    let spells = Object.keys(traditions[trad].spells);
+    let found = false;
+    spells.forEach(function(spell){
+        if(traditions[trad].spells[spell].id == code){
+            found = spell;
+            return
+        }
+    });
+    return found;
+}
+
+function openTradition(code){
+    let div = document.querySelector("#" + code);
+    if(div.innerHTML == ""){
+        let name = findTradition(code);
+        let spells = Object.keys(traditions[name].spells);
+        spells.forEach(function(spell){
+            let button = document.createElement("button");
+            button.innerHTML = spell;
+            button.className = "spell";
+            button.setAttribute("onclick", `openSpell("${code}", "${traditions[name].spells[spell].id}")`);
+            div.appendChild(button); 
+            let spellDiv = document.createElement("div");
+            spellDiv.id = code + traditions[name].spells[spell].id;
+            div.appendChild(spellDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
 }
 
 const addToDiv = function(att, name, spellObj, id){
-    if(spellObj[att]){
+    if(spellObj[att] || spellObj[att] === 0){
         addPToDiv(id, name + ": " + spellObj[att]);
     }
 }
 
-function loadSpells(trad, numTrad){
-    if(!possibleTraditions.includes(trad)){
-        return
-    }
-    let spellsDiv = document.querySelector("#spells");
-    spellsDiv.innerHTML = "";
-    let removeButton = document.createElement("button");
-    removeButton.id = "removeButton";
-    removeButton.innerHTML = "X";
-    removeButton.onclick = function() {
-        let div = document.querySelector("#spells");
-        let h2 = document.querySelector("#currentTradition");
-        div.innerHTML = "";
-        h2.innerHTML = "";
-    }
-    spellsDiv.appendChild(removeButton);
-    let h2 = document.querySelector("#currentTradition");
-    h2.innerHTML = trad;
-    let addTraditionButton = document.createElement("button");
-    addTraditionButton.setAttribute("onclick", `addTradition("${trad}", ${numTrad})`);
-    addTraditionButton.innerHTML = "Adicionar Tradição";
-    h2.appendChild(addTraditionButton);
-    let spells = Object.keys(traditions[trad].spells);
-    let numSpells = 0;
-    spells.forEach(function(spell){
-        let newDiv = document.createElement("div");
-        let id = "spell" + numTrad + numSpells;
-        newDiv.id = id;
-        newDiv.className = "spell";
-        spellsDiv.appendChild(newDiv);
-        const spellObj = traditions[trad].spells[spell];
-        addPToDiv(id, "<b>" + spell + "</b>");
-        if(!receiveLevel0Spells || spellObj.level != 0){
-            let addSpellButton = document.createElement("button");
-            addSpellButton.id = "spellBtn" + numSpells;
-            addSpellButton.setAttribute("onclick", `addSpell((this.id).slice(8), "${spell}", ${numTrad}, "${trad}")`);
-            addSpellButton.innerHTML = "Adicionar magia";
-            newDiv.appendChild(addSpellButton);
-        }
+function openSpell(tradCode, spellCode){
+    let div = document.querySelector("#" + tradCode + spellCode);
+    if(div.innerHTML == ""){
+        let trad = findTradition(tradCode);
+        let spell = findSpell(tradCode, spellCode);
+        let p = document.createElement("p");
+        p.innerHTML = spell;
+        div.appendChild(p);
         const atts = ["description", "target", "area", "duration", "attackRoll20", "requisites", "type", "level"];
         const names = ["Descrição", "Alvo", "Área", "Duração", "Ataque 20+", "Requisitos", "Tipo", "Nível"];
         for(let i = 0; i < atts.length; i++){
-            addToDiv(atts[i], names[i], spellObj, id);
+            addToDiv(atts[i], names[i], traditions[trad].spells[spell], tradCode + spellCode);
         }
-        numSpells++;
-    });
+    } else{
+        div.innerHTML = "";
+    }
 }
 
-function addTradition(tradName, numTrad){
+function addTradition(){
     if(traditionsChosen.includes(tradName)){
         alert("Você já adicionou essa tradição!");
         return
@@ -226,6 +212,26 @@ function removeSpell(numSpell, numTrad){
     let li = document.querySelector("#liSpell" + numTrad + numSpell);
     spellsChosen = spellsChosen.filter((val) => {if((li.innerHTML).slice(0, li.innerHTML.indexOf("<") - 3) != val) return true})
     ul.removeChild(li);
+}
+
+function displayTradsAndSpells(){
+    traditionSpellsChoices = 1000;
+    currentPower = 10;
+    let tradNum = -1;
+    let totalSpells = 0;
+    let trads = Object.keys(character.traditions);
+    trads.forEach(function(value){
+        addTradition(value, tradNum);
+        let spellNum = -1;
+        let spells = Object.keys(character.traditions[value]);
+        spells.forEach(function(val){
+            addSpell(spellNum, val, tradNum, value);
+            spellNum--;
+            totalSpells++;
+        });
+        tradNum--;
+    });
+    return -tradNum + totalSpells -1;
 }
 
 function nextPage(){
