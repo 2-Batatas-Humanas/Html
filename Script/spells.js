@@ -119,7 +119,15 @@ function openSpell(tradCode, spellCode){
         let trad = findTradition(tradCode);
         let spell = findSpell(tradCode, spellCode);
         let p = document.createElement("p");
+        let button = document.createElement("button");
+        button.style.borderRadius = "50%";
+        button.style.marginLeft = "20px";
+        let image = document.createElement("img");
+        image.src = "Images/plusSign.png";
+        image.width = 15;
+        button.appendChild(image);
         p.innerHTML = spell;
+        p.appendChild(button);
         div.appendChild(p);
         const atts = ["description", "target", "area", "duration", "attackRoll20", "requisites", "type", "level"];
         const names = ["Descrição", "Alvo", "Área", "Duração", "Ataque 20+", "Requisitos", "Tipo", "Nível"];
