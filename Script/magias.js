@@ -72,7 +72,7 @@ traditions = {
             },
             "Visão": {
                 id: 9,
-                description: "Enquanto durar a magia, o conjurador recebe os seguintes benefícios:\n• Pode ver em áreas obscurecidas por sombras e escuridão como se estivessem iluminadas.\n• Pode ver através de efeitos de cobertura, disfarce ou itens com invisibilidade.\n• Vê auras ao redor de objetos sob efeito de magia e reconhece, imediatamente, qualquer coisa criada por uma magia de ilusão como tal.\n • Vê criaturas sob efeitos de magias de Transformação pelo que elas realmente são.\n • Pode utilizar uma ação para focar sua visão para ver através de obstáculos sólidos, enquanto está concentrado. O conjurador pode ver através de 1 metro de madeira, 30 cm de pedra ou 2,5 cm de metal.",
+                description: "Enquanto durar a magia, o conjurador recebe os seguintes benefícios:<ul><li>Pode ver em áreas obscurecidas por sombras e escuridão como se estivessem iluminadas.</li><li>Pode ver através de efeitos de cobertura, disfarce ou itens com invisibilidade.</li><li>Vê auras ao redor de objetos sob efeito de magia e reconhece, imediatamente, qualquer coisa criada por uma magia de ilusão como tal.</li><li>Vê criaturas sob efeitos de magias de Transformação pelo que elas realmente são.</li><li>Pode utilizar uma ação para focar sua visão para ver através de obstáculos sólidos, enquanto está concentrado. O conjurador pode ver através de 1 metro de madeira, 30 cm de pedra ou 2,5 cm de metal.</li></ul>",
                 duration: "1 hora; consulte o efeito",
                 type: "UT",
                 level: 4
