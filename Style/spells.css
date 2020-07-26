@@ -1,18 +1,14 @@
+/*
+    Tamanho do texto normal:
+*/
+
 html, body {
     font-size: 20px;
 }
 
-.caption {
-    width: 15px;
-    height: 15px;
-}
-
-#caption {
-    display: flex;
-    padding: 5px;
-    align-items: center;
-    flex-flow: row;
-}
+/*
+    Tradições e Magias(h1)
+*/
 
 h1 {
     font-size: 40px;
@@ -20,29 +16,45 @@ h1 {
     color:  rgb(24, 102, 34);
 }
 
-#firstP {
-    color: gold;
+/*
+    Legenda:
+*/
+
+#caption {
+    max-width: fit-content;
+    border: 2px solid lightseagreen;
 }
 
-#removeButton {
-    margin-left: 95vw;
-    background-color: red;
+#captionTitle {
+    color: lightseagreen;
 }
 
-#currentTradition {
-    font-size: 30px;
-    text-align: center;
-    font-weight: 500;
-}
+/*
+    Display flex no div com id="traditions" para ter
+    as tradições de intelecto e vontade separadas e
+    uma ao lado da outra
+*/
 
-#spells, #intellectTraditions, #willTraditions {
+#traditions {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+
 }
-#intellectTraditions, #willTraditions {
-    flex: 1;
+
+/*
+    Div das Tradições de Intelecto e de Vontade
+*/
+
+#traditions > * {
+    width: 46%;
+    text-align: center;
+    border: 2px solid;
+    margin: 1%;
 }
+
+/*
+    Cor da letra dos h3's referentes às tradições de intelecto/vontade
+*/
 
 #intellect {
     color: blue;
@@ -52,17 +64,20 @@ h1 {
     color: green;
 }
 
+/*
+    Botões das Tradições:
+*/
+
 .tradition {
     background-color: rgb(216, 204, 138);
     cursor: pointer;
     padding: 5px;
-    margin: 5px;
-    flex: 1;
-    text-align: center;
+    margin: 1%;
+    width: 90%;
 }
 
 .darkMagic {
-    background-color: indigo;
+    color: rgb(243, 3, 3);
 }
 
 .traditionInavailable {
@@ -78,11 +93,20 @@ h1 {
     border: 2px solid green;
 }
 
+/*
+    Botões das Magias
+*/
+
 .spell {
     border: 2px solid lightseagreen;
+    width: 60%;
     padding: 5px;
     margin: 5px;
 }
+
+/*
+    Botão de Próxima Página
+*/
 
 #nextPageButton {
     margin-left: 90vw;
