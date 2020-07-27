@@ -14,7 +14,7 @@ traditions = {
             },
             "Epifania": {
                 id: 1,
-                description: "<b>Desencadeada</b>O conjurador pode utilizar uma ação desencadeada para conjurar a magia quando faz uma jogada de desafio ou de ataque. Ele joga o d20 duas vezes e utiliza o maior resultado do dado.",
+                description: "<b>Desencadeada</b> O conjurador pode utilizar uma ação desencadeada para conjurar a magia quando faz uma jogada de desafio ou de ataque. Ele joga o d20 duas vezes e utiliza o maior resultado do dado.",
                 type: "UT",
                 level: 0
             },
