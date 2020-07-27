@@ -105,6 +105,20 @@ h1 {
 }
 
 /*
+    Tradições e Magias escolhidas:
+*/
+
+#chosen {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#chosen > div {
+    border: 3px solid greenyellow;
+    margin: 10px;
+}
+
+/*
     Botão de Próxima Página
 */
 
