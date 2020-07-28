@@ -431,7 +431,7 @@ function createInventory(){
             character.inventory.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
             character.inventory.items["Tocha"] = deepCopy(item.personalGear["Tocha"]);
             if(choices.numTorch > 1){
-                character.inventory.items["Tocha"].quantity = numTorch;
+                character.inventory.items["Tocha"].quantity = choices.numTorch;
             }
             if(choices.wealthWeaponChoice == "club"){
                 character.inventory.weapons["Porrete"] = deepCopy(item.weapon["Porrete"]);
