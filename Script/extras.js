@@ -326,9 +326,6 @@ function nextPage(){
             choices.kit = document.querySelector("#kit").value;
         }
     }
-    if(choices.backgroundChange == "2d6 cp"){
-        choices.backgroundMoney = document.querySelector("#background").value;
-    }
     switch(choices.backgroundChange){
         case "2d6 cp":
             choices.backgroundMoney = document.querySelector("#background").value;
@@ -355,15 +352,399 @@ function nextPage(){
         choices.purposeChoice = document.querySelector("#purpose").value;
     }
 
-    choices.interestingThings = [document.querySelector("#interestingThing").value];
+    character.interestingThings = [document.querySelector("#interestingThing").value];
     if(character.ancestry == "yerath" && choices.backgroundChange == "extra interesting thing"){
-        choices.interestingThings.push(document.querySelector("#secondInterestingThing").value);
+        character.interestingThings.push(document.querySelector("#secondInterestingThing").value);
     }
+    createInventory();
+    character = processChoices(character, choices);
     localStorage.setItem("character", JSON.stringify(character));
-    localStorage.setItem("choices", JSON.stringify(choices));
+    localStorage.removeItem("choices");
     if(character.novicePath.type == "magician" || character.novicePath.type == "priest"){
         window.location.href = "spells.html";
     } else{
         window.location.href = "market.html";
     }
+}
+
+function createInventory(){
+    character.inventory = {
+        weapons: {},
+        ammo: {},
+        armors: {},
+        interestingThings: [],
+        bags: [],
+        items: {},
+        hirelings: {},
+        animals: {},
+        money: {
+            bits: 0,
+            copperPennies: parseInt(choices.backgroundMoney) || 0,
+            silverShillings: parseInt(choices.level1Money),
+            goldCrowns: 0
+        }
+    };
+    character.inventory.interestingThings.push(character.interestingThings[0]);
+    if(character.ancestry == "yerath" && choices.backgroundChange == "extra interesting thing"){
+        character.inventory.interestingThings.push(character.interestingThings[1]);
+    }
+    switch(character.wealth){
+        case "destitute":
+            character.inventory.bags.push("Bolsa");
+            character.inventory.armors["Trapos"] = deepCopy(item.armor["Roupas"]);
+            character.inventory.money.bits = parseInt(choices.initialWealthMoney);
+
+            if(choices.wealthWeaponChoice == "club"){
+                character.inventory.weapons["Porrete"] = deepCopy(item.weapon["Porrete"]);
+            } else{// Sling
+                character.inventory.weapons["Funda"] = deepCopy(item.weapon["Funda"]);
+                character.inventory.ammo["Pedras"] = {
+                    quantity: 20
+                }
+            }
+            break;
+        case "poor":
+            character.inventory.bags.push("Saco");
+            character.inventory.money.bits = parseInt(choices.initialWealthMoney);
+            character.inventory.armors["Roupas comuns remendadas"] = deepCopy(item.armor["Roupas"]);
+            character.inventory.items["Pão"] = {};
+            character.inventory.items["Odre"] = deepCopy(item.personalGear["Odre"]);
+            character.inventory.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
+            character.inventory.items["Vela"] = deepCopy(item.personalGear["Vela"]);
+
+            if(choices.wealthWeaponChoice == "staff"){
+                character.inventory.weapons["Cajado"] = deepCopy(item.weapon["Cajado"]);
+            } else{// Sling
+                character.inventory.weapons["Funda"] = deepCopy(item.weapon["Funda"]);
+                character.inventory.ammo["Pedras"] = {
+                    quantity: 20
+                }
+            }
+            break;
+        case "gettingBy":
+            character.inventory.bags.push("Mochila");
+            character.inventory.money.copperPennies += parseInt(choices.initialWealthMoney);
+            character.inventory.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
+            character.inventory.armors["Roupas comuns"] = deepCopy(item.armor["Roupas"]);
+            character.inventory.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
+            character.inventory.items["Odre"] = deepCopy(item.personalGear["Odre"]);
+            character.inventory.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
+            character.inventory.items["Tocha"] = deepCopy(item.personalGear["Tocha"]);
+            if(choices.numTorch > 1){
+                character.inventory.items["Tocha"].quantity = numTorch;
+            }
+            if(choices.wealthWeaponChoice == "club"){
+                character.inventory.weapons["Porrete"] = deepCopy(item.weapon["Porrete"]);
+            } else if(choices.wealthWeaponChoice == "staff"){
+                character.inventory.weapons["Cajado"] = deepCopy(item.weapon["Cajado"]);
+            } else{// Sling
+                character.inventory.weapons["Funda"] = deepCopy(item.weapon["Funda"]);
+                character.inventory.ammo["Pedras"] = {
+                    quantity: 20
+                }
+            }
+            break;
+        case "comfortable":
+            character.inventory.bags.push("Mochila");
+            character.inventory.money.copperPennies += parseInt(choices.initialWealthMoney);
+            character.inventory.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
+            character.inventory.armors["Roupas de qualidade"] = deepCopy(item.armor["Roupas"]);
+            character.inventory.items["Manto"] = deepCopy(item.clothingAndAccessory["Manto"]);
+            character.inventory.items["Odre"] = deepCopy(item.personalGear["Odre"]);
+            character.inventory.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
+            character.inventory.items["Corda (20 metros)"] = deepCopy(item.personalGear["Corda (20 metros)"]);
+            character.inventory.items["Poção de Cura"] = deepCopy(item.potion["Cura"]);
+            character.inventory.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
+            character.inventory.items["Tocha"] = deepCopy(item.personalGear["Tocha"]);
+            character.inventory.items["Tocha"].quantity = 2;
+            character.inventory.items["Kit de cura"] = deepCopy(item.tool["Kit de Curandeiro (6 usos)"]);
+            if(choices.kit == "tools"){
+                character.inventory.items["Kit de ferramentas"] = deepCopy(item.tool["Kit de Ferramentas"]);
+            } else{
+                character.inventory.items["Kit de escrita"] = deepCopy(item.tool["Kit de Escrita"]);
+            }
+            character.inventory.weapons["Escudo pequeno"] = deepCopy(item.weapon["Escudo pequeno"]);
+            character.inventory.items["Feitiço nível 0"] = deepCopy(item.incantation["Nível 0"]);
+
+            if(choices.wealthWeaponChoice == "club"){
+                character.inventory.weapons["Porrete"] = deepCopy(item.weapon["Porrete"]);
+            } else if(choices.wealthWeaponChoice == "staff"){
+                character.inventory.weapons["Cajado"] = deepCopy(item.weapon["Cajado"]);
+            } else{// Sling
+                character.inventory.weapons["Funda"] = deepCopy(item.weapon["Funda"]);
+                character.inventory.ammo["Pedras"] = {
+                    quantity: 20
+                }
+            }
+            break;
+        case "wealthy":
+            character.inventory.bags.push("Mochila");
+            character.inventory.money.silverShillings += parseInt(choices.initialWealthMoney);
+            character.inventory.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
+            character.inventory.armors["Roupas de cortesão"] = deepCopy(item.armor["Roupas"]);
+            character.inventory.items["Manto"] = deepCopy(item.clothingAndAccessory["Manto"]);
+            character.inventory.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
+            character.inventory.items["Odre"] = deepCopy(item.personalGear["Odre"]);
+            character.inventory.items["Corda (20 metros)"] = deepCopy(item.personalGear["Corda (20 metros)"]);
+            character.inventory.items["Poção de Cura"] = deepCopy(item.potion["Cura"]);
+            character.inventory.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
+            character.inventory.items["Lanterna"] = deepCopy(item.personalGear["Lanterna"]);
+            character.inventory.items["Frasco de óleo"] = deepCopy(item.personalGear["Óleo, frasco"]);
+            character.inventory.items["Frasco de óleo"].quantity = 2;
+            character.inventory.weapons["Escudo pequeno"] = deepCopy(item.weapon["Escudo pequeno"]);
+            character.inventory.items["Kit de cura"] = deepCopy(item.tool["Kit de Curandeiro (6 usos)"]);
+            character.inventory.items["Kit de ferramentas"] = deepCopy(item.tool["Kit de Ferramentas"]);
+            character.inventory.items["Kit de escrita"] = deepCopy(item.tool["Kit de Escrita"]);
+            character.inventory.items["Feitiço nível 0"] = deepCopy(item.incantation["Nível 0"]);
+            break;
+        case "rich":
+            character.inventory.bags.push("Mochila");
+            character.inventory.money.silverShillings += parseInt(choices.initialWealthMoney);
+            character.inventory.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
+            character.inventory.armors["Roupas de nobre"] = deepCopy(item.armor["Roupas"]);
+            character.inventory.items["Manto"] = deepCopy(item.clothingAndAccessory["Manto"]);
+            character.inventory.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
+            character.inventory.items["Odre"] = deepCopy(item.personalGear["Odre"]);
+            character.inventory.items["Poção de Cura"] = deepCopy(item.potion["Cura"]);
+            character.inventory.hirelings["Servo pessoal"] = deepCopy(item.hireling["Plebeu"]);
+            character.inventory.hirelings["Guarda"] = deepCopy(item.hireling["Mercenário"]);
+            character.inventory.animals["Cavalo"] = deepCopy(item.animal["Cavalo, mula, pônei"]);
+            character.inventory.animals["Cavalo"].quantity = 3;
+            character.inventory.items["Sela"] = deepCopy(item.animalGear["Sela"]);
+            character.inventory.items["Sela"].quantity = 3;
+            break;
+    }
+    
+    switch(choices.backgroundChange){
+        case "treasure map":
+            character.inventory.items["Mapa do Tesouro"] = {};
+            break;
+        case "battlehammer/warhammer":
+            if(choices.battleWarHammer == "battlehammer"){
+                character.inventory.weapons["Machado de batalha"] = deepCopy(item.weapon["Machado de batalha, mangual, estrela da manhã, picareta, ou espada"]);
+            } else{
+                character.inventory.weapons["Martelo de guerra"] = deepCopy(item.weapon["Espada bastarda ou martelo de guerra"]);
+            }
+            break;
+        case "key to ancient dwarf treasure vault":
+            character.inventory.items["Chave para um antigo cofre de tesouros dos anões"] = {};
+            break;
+        case "knife":
+            if(!character.inventory.weapons["Adaga ou faca"]){
+                character.inventory.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
+            } else{
+                character.inventory.weapons["Adaga ou faca"].quantity = 2;
+            }
+            break;
+        case "lock of hair":
+            character.inventory.items["Cacho do cabelo da Rainha das Fadas"] = {};
+            break;
+        case "signet ring":
+            character.inventory.items["Anel com sinete"] = {};
+            break;
+        case "medal":
+            character.inventory.items["Medalha por Coragem"] = {};
+            break;
+        case "sword":
+            character.inventory.weapons["Espada bastarda ou martelo de guerra"] = deepCopy(item.weapon["Espada bastarda ou martelo de guerra"]);
+            break;
+        case "random enchanted object":
+            character.inventory.items[choices.newObject] = {
+                description: choices.magicProperty
+            };
+            break;
+        case "incantation rank 0 spell":
+            if(!character.inventory.items["Feitiço nível 0"]){
+                character.inventory.items["Feitiço nível 0"] = deepCopy(item.incantation["Nível 0"]);
+            } else {
+                character.inventory.items["Feitiço nível 0 2"] = deepCopy(item.incantation["Nível 0"]);
+            }
+            break;
+    }
+}
+
+function processChoices(charact, chs){
+    let newCharacter = deepCopy(charact);
+    newCharacter.status = {
+        strength: 0,
+        agility: 0,
+        intellect: 0,
+        will: 0,
+        perception: 0,
+        defense: null,
+        health: 0,
+        size: null,
+        speed: null,
+        damage: 0,
+        power: 0,
+        insanity: 0,
+        corruption: 0,
+        level: 1
+    }
+    if(chs.backgroundChange){
+        switch(chs.backgroundChange){
+            case "1d6 insanity":
+            case "1d6 insanity+profession":
+            case "1d3 insanity":
+                newCharacter.status.insanity = chs.backgroundInsanity;
+                break;
+            case "1d3 corruption":
+                newCharacter.status.corruption = chs.backgroundCorruption;
+                break;
+            case "1 corruption":
+                newCharacter.status.corruption = 1;
+                break;
+            case "1 insanity":
+                newCharacter.status.insanity = 1;
+                break;
+            case "2 corruption":
+                newCharacter.status.corruption = 2;
+                break;
+            case "1 intellect+1 will+!caste att":
+                newCharacter.status.intellect = 1;
+                newCharacter.status.perception += 1;
+                newCharacter.status.will = 1;
+                break;
+        }
+    }
+    switch(charact.ancestry){
+        case "human":
+            newCharacter.status[chs.raisedAttribute] = 1;
+            switch(chs.raisedAttribute){
+                case "strength":
+                    newCharacter.status.health += 1;
+                    break;
+                case "agility":
+                    newCharacter.status.defense = 11;
+                    break;
+                case "intellect":
+                    newCharacter.status.perception += 1;
+                    break;
+            }
+            break;
+        case "clockwork":
+            switch(chs.purposeChange){
+                case "2 strength/agility":
+                case "2 intellect/will":
+                case "2 agility/intellect":
+                case "2 attribute":
+                    newCharacter.status[chs.purposeChoice] += 2;
+                    switch(chs.purposeChoice){
+                        case "strength":
+                            newCharacter.status.health += 2;
+                            break;
+                        case "intellect":
+                            newCharacter.status.perception += 2;
+                            break;
+                    }
+                    break;
+                case "2 strength":
+                    newCharacter.status.strength += 2;
+                    newCharacter.status.health += 2;
+                    break;
+            }
+            break;
+        case "yerath":
+            if(chs.backgroundChange != "1 intellect+1 will+!caste att"){
+                switch(chs.casteChoice){
+                    case "profession laborer+2 strength+1 will":
+                        newCharacter.status.strength += 2;
+                        newCharacter.status.health += 2;
+                        newCharacter.status.will += 1;
+                        break;
+                    case "profession guide+1 agility+1 perception":
+                        newCharacter.status.agility += 1;
+                        newCharacter.status.perception += 1;
+                        break;
+                    case "profession soldier+2 strength+13 defense":
+                        newCharacter.status.strength += 2;
+                        newCharacter.status.defense = 13;
+                        newCharacter.status.health += 2;
+                        break;
+                }
+            }
+    }
+    switch(charact.novicePath.type){
+        case "warrior":
+            newCharacter.status.health += 5;
+            break;
+        case "rogue":
+            newCharacter.status.health += 3;
+            break;
+        case "magician":
+            newCharacter.status.health += 2;
+            newCharacter.status.power += 1;
+            break;
+        case "priest":
+            newCharacter.status.power += 1;
+            newCharacter.status.health += 4;
+            break;
+    }
+    newCharacter.status[choices.novicePathAttributes[0]] += 1;
+    switch(choices.novicePathAttributes[0]){
+        case "strength":
+            newCharacter.status.health += 1;
+            break;
+        case "agility":
+            if(charact.ancestry != "clockwork" && charact.ancestry != "yerath"){
+                switch(charact.ancestry){
+                    case "human":
+                        if(!newCharacter.status.defense){
+                            newCharacter.status.defense = 10;
+                        }
+                        break;
+                    case "dwarf":
+                        newCharacter.status.defense = 9;
+                        break;
+                    case "changeling":
+                        newCharacter.status.defense = 10;
+                        break;
+                    case "goblin":
+                        newCharacter.status.defense = 12;
+                        break;
+                    case "orc":
+                        newCharacter.status.defense = 10;
+                        break;
+                }
+                newCharacter.status.defense += 1;
+            }
+            break;
+        case "intellect":
+            newCharacter.status.perception += 1;
+            break;
+    }
+    newCharacter.status[choices.novicePathAttributes[1]] += 1;
+    switch(choices.novicePathAttributes[1]){
+        case "strength":
+            newCharacter.status.health += 1;
+            break;
+        case "agility":
+            if(charact.ancestry != "clockwork" && charact.ancestry != "yerath"){
+                switch(charact.ancestry){
+                    case "human":
+                        if(!newCharacter.status.defense){
+                            newCharacter.status.defense = 10;
+                        }
+                        break;
+                    case "dwarf":
+                        newCharacter.status.defense = 9;
+                        break;
+                    case "changeling":
+                        newCharacter.status.defense = 10;
+                        break;
+                    case "goblin":
+                        newCharacter.status.defense = 12;
+                        break;
+                    case "orc":
+                        newCharacter.status.defense = 10;
+                        break;
+                }
+                newCharacter.status.defense += 1;
+            }
+            break;
+        case "intellect":
+            newCharacter.status.perception += 1;
+            break;
+    }
+    return newCharacter;
 }
