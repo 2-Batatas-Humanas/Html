@@ -2687,12 +2687,22 @@ traditions = {
             },
             "Ressurreição":{
                 id: 10,
-                description:"O conjurador toca o alvo. Ele deve se concentrar por 1 hora, durante esse tempo o conjurador deve manter contato físico com o alvo. Caso a concentração não seja interrompida, ele talvez possa voltar à vida. Caso a alma do alvo resida no Submundo, ela retorna ao corpo e ele volta à vida. O alvo cura 1 ponto de dano e fica fatigado e debilitado, até que complete um descanso. Caso a alma do alvo resida no Inferno, o conjurador faz uma jogada de desafio de Vontade com uma quantidade de perdições igual à Corrupção do alvo. Caso seja bem-sucedido, ele volta à vida como descrito acima. Caso fracasse, a alma está completamente perdida. Ela não pode retornar ao corpo por meio de outras conjurações desta mesma magia.",
+                description:"O conjurador toca o alvo. Ele deve se concentrar por 1 hora, durante esse tempo o conjurador deve manter contato físico com o alvo. Caso a concentração não seja interrompida, ele talvez possa voltar à vida. Caso a alma do alvo resida no Submundo, ela retorna ao corpo e ele volta à vida. O alvo cura 1 ponto de dano e fica fatigado e debilitado, até que complete um descanso. Caso a alma do alvo resida no Inferno, o conjurador faz uma jogada de desafio de Vontade com uma quantidade de perdições igual à Corrupção do alvo. Caso seja bem-sucedido, ele volta à vida como descrito acima. Caso fracasse, a alma está completamente perdida. Ela não pode retornar ao corpo por meio de outras conjurações desta mesma magia.<br><b>Sacrifício<b> O conjurador pode gastar uma conjuração desta magia para conjurar cura total",
                 sacrifice:"O conjurador pode gastar uma conjuração desta magia para conjurar cura total.",
                 target:"Uma criatura morta a não mais de 24 horas ao alcance do conjurador.",
                 type:"UT",
                 level: "5"
             }              
+        }
+    },
+    "Special": {
+        id: "s",
+        "Sentir Magia": {
+            id: 1,
+            description: "Você sabe se existe algum efeito mágico na área e de qual ponto ele é originário.",
+            area: "Uma esfera de 5 metros de raio centrada em um ponto dentro do seu espaço e que permite saber se há algum efeito mágico na área e de que ponto se origina",
+            type: "UT",
+            level: 0
         }
     }
 }
