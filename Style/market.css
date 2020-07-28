@@ -13,15 +13,23 @@ html, body {
 h1 {
     text-align: center;
     font-size: 50px;
-    margin-top: 50px;
 }
 
 /*
-    Bag Div CSS
+    Main Div
 */
 
-#bagDiv {
+#mainDiv {
+    margin-bottom: 20px;
+}
+
+/*
+    Inventory Div
+*/
+
+#inventoryDiv {
     border: 2px solid black;
+    margin-bottom: 10px;
 }
 
 /*
@@ -58,7 +66,8 @@ h2 {
 #marketDiv {
     border: 2px solid black;
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
+    width: 50%;
 }
 
 /*
@@ -68,80 +77,29 @@ h2 {
 .market {
     border: 1px solid blue;
     margin: 10px;
-}
-
-/*
-    Top most container for both bag and market:
-*/
-
-#flexContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 50vh;
-
+    max-width: fit-content;
 }
 
 /*
     Market itens CSS
 */
 
-#flexWeapon, #flexAmmo, #flexArmor, #flexPersonalGear, #flexClothingAcessory, #flexTool, #flexFood, #flexAnimal, #flexAnimalGear, #flexHireling, #flexPotion, #flexIncantation {
-    display: flex;
-    flex-flow: row wrap;
-}
+
 
 .marketStuff {
     padding: 5px;
     margin: 5px;
+    border: 2px solid purple;
 }
 
-.weapon {
-    border: 1px solid red;
+.weaponCategory, .armorCategory, .personalGear, .clothingAcessory, .tool, .food, .animal, .animalGear, .hireling, .potion, .incantation {
+    color: darkgreen;
+    margin: 5px 0;
 }
 
-.ammo {
-    border: 1px solid orangered;
-}
-
-.armor {
-    border: 1px solid blue;
-}
-
-.personalGear {
-    border: 1px solid green;
-}
-
-.clothingAcessory {
-    border: 1px solid purple;
-}
-
-.tool {
-    border: 1px solid palevioletred;
-}
-
-.food {
-    border: 1px solid yellowgreen;
-}
-
-.animal {
-    border: 1px solid brown;
-}
-
-.animalGear {
-    border: 1px solid gray;
-}
-
-.hireling {
-    border: 1px solid darkgoldenrod;
-}
-
-.potion {
-    border: 1px solid slateblue;
-}
-
-.incantation {
-    border: 1px solid maroon;
+.weapon, .armor {
+    color: red;
+    margin: 2px 0;
 }
 
 .topic {
@@ -176,20 +134,6 @@ h2 {
     display: flex;
     flex-flow: row wrap;
 }
-
-/*
-    Navigation(Top)
-*/
-
-nav {
-    position: fixed;
-    background-color: snow;
-    border: 2px solid lawngreen;
-    padding: 5px;
-    top: 0;
-    right: 20vw;
-}
-
 /*
     Help
 */
@@ -199,6 +143,7 @@ nav {
     width: 95vw;
     flex-flow: row wrap;
     align-items: space-between;
+    margin-bottom: 50vh;
 }
 
 /*
@@ -208,6 +153,7 @@ nav {
 #priceHelp {
     border: 2px solid black;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 
 /*
