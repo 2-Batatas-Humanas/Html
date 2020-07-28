@@ -11,91 +11,62 @@
     </head>
     <body>
         <h1>Mercado</h1>
-        <nav>
-            <a href="#topicWeapon">Armas</a>
-            <a href="#topicAmmo">Munição</a>
-            <a href="#topicArmor">Armaduras</a>
-            <a href="#topicPersonalGear">Equipamento Pessoal</a>
-            <a href="#topicClothingAcessory">Vestuário e Acessórios</a>
-            <a href="#topicTool">Ferramentas</a>
-            <a href="#topicFood">Comidas</a>
-            <a href="#topicAnimal">Animais</a>
-            <a href="#topicAnimalGear">Equipamento para Animais</a>
-            <a href="#topicHireling">Serviçais</a>
-            <a href="#topicPotion">Poções</a>
-            <a href="#topicIncantation">Feitiços</a>
-            <a href="#priceHelp">Legenda dos Preços</a>
-        </nav>
-        <div id="help">
-            <div id="priceHelp">
-                <p>Preços:</p>
-                <p>10 milavos (ma) = 1 centavo de cobre (cc)</p>
-                <p>10 centavos de cobre (cc) = 1 xelim de prata (xp)</p>
-                <p>10 xelins de prata (xp) = 1 coroa de ouro (co)</p>
-            </div>
-            <div id="propertyHelp">
-                <p>Propriedades das armas:</p>
-                <div id="weaponsProperties"></div>
-            </div>
-        </div>
-        <script>loadWeaponsProperties()</script>
-        <h2 id="marketh2">Itens no mercado:</h2>
-        <h2 id="bagType">Itens no inventário:</h2>
-        <div id="flexContainer">
-            <div id="bagDiv"></div>
+        <div id="mainDiv">
+            <h2>Itens no inventário:</h2>
+            <div id="inventoryDiv"></div>
+            <h2>Itens no mercado:</h2>
             <div id="marketDiv">
                 <div class="market">
-                    <p class="topic" id="topicWeapon">Armas:</p>
-                    <div id="flexWeapon"></div>        
+                    <button class="topic" id="topicWeapon" onclick="openWeapons()">Armas</button>
+                    <div id="flexWeapon"></div>     
                 </div>
                 <div class="market">
-                    <p class="topic" id="topicAmmo">Munição:</p>
+                    <button class="topic" id="topicAmmo" onclick="openAmmo()">Munição</button>
                     <div id="flexAmmo"></div>
                 </div>
                 <div class="market">
-                    <p class="topic" id="topicArmor">Armaduras:</p>
+                    <button class="topic" id="topicArmor" onclick="openArmors()">Armaduras</button>
                     <div id="flexArmor"></div>
                 </div>
                 <div class="market">
-                    <p class="topic" id="topicPersonalGear">Equipamento Pessoal:</p>
+                    <button class="topic" id="topicPersonalGear" onclick="openPersonalGears()">Equipamento Pessoal</button>
                     <div id="flexPersonalGear"></div>
                 </div>
                 <div class="market">
-                    <p class="topic" id="topicClothingAcessory">Vestuário e Acessórios:</p>
+                    <button class="topic" id="topicClothingAcessory" onclick="openClothingAcessorys()">Vestuário e Acessórios</button>
                     <div id="flexClothingAcessory"></div>
                 </div>
                 <div class="market">
-                    <p class="topic" id="topicTool">Ferramentas:</p>
+                    <button class="topic" id="topicTool" onclick="openTools()">Ferramentas</button>
                     <div id="flexTool"></div>
                 </div>
                 <div class="market">
-                    <p class="topic" id="topicFood">Comidas:</p>
+                    <button class="topic" id="topicFood" onclick="openFoods()">Comidas</button>
                     <div id="flexFood"></div>
                 </div>
                 <div class="market">
-                    <p class="topic" id="topicAnimal">Animais:</p>
+                    <button class="topic" id="topicAnimal" onclick="openAnimals()">Animais</button>
                     <div id="flexAnimal"></div>
                 </div>
                 <div class="market">
-                    <p class="topic" id="topicAnimalGear">Equipamento para Animais:</p>
+                    <button class="topic" id="topicAnimalGear" onclick="openAnimalGears()">Equipamento para Animais</button>
                     <div id="flexAnimalGear"></div>
                 </div>
                 <div class="market">
-                    <p class="topic" id="topicHireling">Serviçais:</p>
+                    <button class="topic" id="topicHireling" onclick="openHirelings()">Serviçais</button>
                     <div id="flexHireling"></div>
                 </div>
                 <div class="market">
-                    <p class="topic" id="topicPotion">Poções:</p>
+                    <button class="topic" id="topicPotion" onclick="openPotions()">Poções</button>
                     <div id="flexPotion"></div>
                 </div>
                 <div class="market">
-                    <p class="topic" id="topicIncantation">Feitiços:</p>
+                    <button class="topic" id="topicIncantation" onclick="openIncantations()">Feitiços</button>
                     <div id="flexIncantation"></div>
                 </div>
             </div>
         </div>
-        <script>setBag()</script>
-        <script>stockMarket()</script>
+        <script>setInventory()</script>
         <div id="moneyDiv">
             <div id="characterMoney">
                 <p>Seu dinheiro atual:</p>
@@ -106,7 +77,7 @@
                     <li>Coroas de Ouro(co): </li> <output id="goldCrownsCurrent">0</output>
                 </ul>
             </div>
-            <div id="shoppingDiv" ondragover="return false" ondrop="putItemInShoppingBag(event)">
+            <div id="shoppingDiv" ondragover="return false" ondrop="putItemInShoppingInventory(event)">
                 <p>Itens no carrinho:</p>
                 <div id="shoppingBag">
                     <p>Coloque os itens aqui:</p>
@@ -125,8 +96,20 @@
                     <li>Coroas de Ouro(co): </li> <output id="goldCrownsPrice">0</output>
                 </ul>
             </div>
-            
         </div>
+        <div id="help">
+            <div id="priceHelp">
+                <p>Preços:</p>
+                <p>10 milavos (ma) = 1 centavo de cobre (cc)</p>
+                <p>10 centavos de cobre (cc) = 1 xelim de prata (xp)</p>
+                <p>10 xelins de prata (xp) = 1 coroa de ouro (co)</p>
+            </div>
+            <div id="propertyHelp">
+                <p>Propriedades das armas:</p>
+                <div id="weaponsProperties"></div>
+            </div>
+        </div>
+        <script>loadWeaponsProperties()</script>
         <script>processMoney()</script>
     </body>
 </html>
