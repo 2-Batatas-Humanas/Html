@@ -299,8 +299,8 @@ function createCharacter(){
                     background: document.querySelector("#background").value,
                 };
                 escolhas = {
-                    purposeChange: document.querySelector("#purposeChange"),
-                    formChange: document.querySelector("#formChange")
+                    purposeChange: document.querySelector("#purposeChange").value,
+                    formChange: document.querySelector("#formChange").value
                 };
                 var backgroundChange = document.querySelector("#backgroundChange").value;
                 if(personagem.name == "" || personagem.personality == "" || personagem.age == "" || personagem.religion == "" || personagem.appearance == "" || personagem.background == "" || personagem.locationKey == ""){
