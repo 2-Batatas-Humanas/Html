@@ -48,7 +48,16 @@ function loadCharacterData() {
         novicePath.innerHTML = "Sacerdote";
     }
     //Expert Path
+
+    if(character.expertPath){
+        let expertPath = document.querySelector("#expertPath");
+        expertPath.innerHTML = character.expertPath.pathName;
+    }
     //Master Path
+    if(character.masterPath){
+        let masterPath = document.querySelector("#masterPath");
+        masterPath.innerHTML = character.masterPath.pathName;
+    }
 
     let insanity = document.querySelector("#insanity");
     insanity.value = character.insanity;
@@ -262,8 +271,18 @@ function loadInfo(){
         infoDiv.appendChild(noviceTraining);
         
         // Expert Training
+        if(character.expertPath){
+            let expertTraining = document.createElement("p");
+            expertTraining.innerHTML = "Treinamento da trilha de especialista: " + character.expertPath.training;
+            infoDiv.appendChild(expertTraining);
+        }
 
         // Master Training
+        if(character.masterPath){
+            let masterTraining = document.createElement("p");
+            masterTraining.innerHTML = "Treinamento da trilha de mestre: " + character.masterPath.training;
+            infoDiv.appendChild(masterTraining);
+        }
 
     } else{
         infoDiv.innerHTML = "";
@@ -288,7 +307,6 @@ function loadTalents(){
         }
         let noviceTalents = document.createElement("p");
         noviceTalents.innerHTML = "Talentos de Trilha de Aprendiz:";
-        talents.appendChild(noviceTalents);
         let noviceList = document.createElement("ul");
         let allNoviceTalents = Object.keys(character.talents.novicePath);
         allNoviceTalents.forEach(function(value){
@@ -297,6 +315,33 @@ function loadTalents(){
             noviceList.appendChild(noviceTalent);
         });
         noviceTalents.appendChild(noviceList);
+        talents.appendChild(noviceTalents);
+        if(!isEmpty(character.talents.expertPath)){
+            let expertTalents = document.createElement("p");
+            expertTalents.innerHTML = "Talentos de Trilha de Especialista:";
+            let expertList = document.createElement("ul");
+            let allExpertTalents = Object.keys(character.talents.expertPath);
+            allExpertTalents.forEach(function(value){
+                let expertTalent = document.createElement("li");
+                expertTalent.innerHTML = value + ": " + character.talents.expertPath[value];
+                expertList.appendChild(expertTalent);
+            });
+            expertTalents.appendChild(expertList);
+            talents.appendChild(expertTalents);
+        }
+        if(!isEmpty(character.talents.masterPath)){
+            let masterTalents = document.createElement("p");
+            masterTalents.innerHTML = "Talentos de Trilha de Aprendiz:";
+            let masterList = document.createElement("ul");
+            let allMasterTalents = Object.keys(character.talents.masterPath);
+            allMasterTalents.forEach(function(value){
+                let masterTalent = document.createElement("li");
+                masterTalent.innerHTML = value + ": " + character.talents.masterPath[value];
+                masterList.appendChild(masterTalent);
+            });
+            masterTalents.appendChild(masterList);
+            talents.appendChild(masterTalents);
+        }
     } else{
         talents.innerHTML = "";
     }
@@ -306,7 +351,8 @@ function loadEquipment(){
     let equipments = document.querySelector("#equipments");
     if(equipments.innerHTML == ""){
         let weapons = document.createElement("button");
-        weapons.innerHTML = ">Armas";
+        weapons.innerHTML = "Armas";
+        weapons.className = "itemCategory";
         weapons.onclick = loadWeapons;
         weaponsDiv = document.createElement("div");
         weaponsDiv.id = "weapons";
@@ -314,16 +360,18 @@ function loadEquipment(){
         equipments.appendChild(weaponsDiv);
 
         let armors = document.createElement("button");
-        armors.innerHTML = ">Armaduras";
+        armors.innerHTML = "Armaduras";
+        armors.className = "itemCategory";
         armors.onclick = loadArmors;
         armorsDiv = document.createElement("div");
         armorsDiv.id = "armors";
         equipments.appendChild(armors);
         equipments.appendChild(armorsDiv);
 
-        if(!isEmpty(character.bag.ammo)){
+        if(!isEmpty(character.inventory.ammo)){
             let ammo = document.createElement("button");
-            ammo.innerHTML = ">Munição";
+            ammo.innerHTML = "Munição";
+            ammo.className = "itemCategory";
             ammo.onclick = loadAmmo;
             ammoDiv = document.createElement("div");
             ammoDiv.id = "ammo";
@@ -332,16 +380,18 @@ function loadEquipment(){
         }
 
         let items = document.createElement("button");
-        items.innerHTML = ">Itens";
+        items.innerHTML = "Itens";
+        items.className = "itemCategory";
         items.onclick = loadItems;
         itemsDiv = document.createElement("div");
         itemsDiv.id = "items";
         equipments.appendChild(items);
         equipments.appendChild(itemsDiv);
 
-        if(!isEmpty(character.bag.animals)){
+        if(!isEmpty(character.inventory.animals)){
             let animals = document.createElement("button");
-            animals.innerHTML = ">Animais";
+            animals.innerHTML = "Animais";
+            animals.className = "itemCategory";
             animals.onclick = loadAnimals;
             animalsDiv = document.createElement("div");
             animalsDiv.id = "animals";
@@ -349,9 +399,10 @@ function loadEquipment(){
             equipments.appendChild(animalsDiv);
         }
 
-        if(!isEmpty(character.bag.hirelings)){
+        if(!isEmpty(character.inventory.hirelings)){
             let hirelings = document.createElement("button");
-            hirelings.innerHTML = ">Serviçais";
+            hirelings.innerHTML = "Serviçais";
+            hirelings.className = "itemCategory";
             hirelings.onclick = loadHirelings;
             hirelingsDiv = document.createElement("div");
             hirelingsDiv.id = "hirelings";
@@ -360,7 +411,8 @@ function loadEquipment(){
         }
 
         let money = document.createElement("button");
-        money.innerHTML = ">Dinheiro";
+        money.innerHTML = "Dinheiro";
+        money.className = "itemCategory";
         money.onclick = loadMoney;
         moneyDiv = document.createElement("div");
         moneyDiv.id = "money";
@@ -374,33 +426,36 @@ function loadEquipment(){
 function loadWeapons(){
     let weapons = document.querySelector("#weapons");
     if(weapons.innerHTML == ""){
-        let keys = Object.keys(character.bag.weapons);
+        let keys = Object.keys(character.inventory.weapons);
         keys.forEach(function(value){
             let name = document.createElement("p");
             name.innerHTML = value;
+            if(character.inventory.weapons[value].quantity){
+                name.innerHTML += " x" + character.inventory.weapons[value].quantity;
+            }
             weapons.appendChild(name);
 
             let weaponList = document.createElement("ul");
 
             let type = document.createElement("li");
-            type.innerHTML = "Tipo: " + character.bag.weapons[value].type;
+            type.innerHTML = "Tipo: " + character.inventory.weapons[value].type;
             weaponList.appendChild(type);
 
             let damage = document.createElement("li");
-            damage.innerHTML = "Dano: " + character.bag.weapons[value].damage;
+            damage.innerHTML = "Dano: " + character.inventory.weapons[value].damage;
             weaponList.appendChild(damage);
 
             let hands = document.createElement("li");
-            hands.innerHTML = "Mãos: " + character.bag.weapons[value].hands;
+            hands.innerHTML = "Mãos: " + character.inventory.weapons[value].hands;
             weaponList.appendChild(hands);
 
             let properties = document.createElement("li");
             properties.innerHTML = "Propriedades:";
             weaponList.appendChild(properties);
             let propertiesList = document.createElement("ul");
-            for(let i = 0; i < character.bag.weapons[value].properties.length; i++){
+            for(let i = 0; i < character.inventory.weapons[value].properties.length; i++){
                 let property = document.createElement("li");
-                property.innerHTML = character.bag.weapons[value].properties[i];
+                property.innerHTML = character.inventory.weapons[value].properties[i];
                 propertiesList.appendChild(property);
             }
             weaponList.appendChild(propertiesList);
@@ -414,7 +469,7 @@ function loadWeapons(){
 function loadArmors(){
     let armors = document.querySelector("#armors");
     if(armors.innerHTML == ""){
-        let keys = Object.keys(character.bag.armors);
+        let keys = Object.keys(character.inventory.armors);
         let armorNum = 0;
         keys.forEach(function(value){
             let name = document.createElement("p");
@@ -424,16 +479,17 @@ function loadArmors(){
             let armorList = document.createElement("ul");
 
             let type = document.createElement("li");
-            type.innerHTML = "Tipo: " + character.bag.armors[value].type;
+            type.innerHTML = "Tipo: " + character.inventory.armors[value].type;
             armorList.appendChild(type);
 
             let defense = document.createElement("li");
-            defense.innerHTML = "Defesa: " + character.bag.armors[value].defense;
+            defense.innerHTML = "Defesa: " + character.inventory.armors[value].defense;
             armorList.appendChild(defense);
 
             let description = document.createElement("li");
             let descButton = document.createElement("button");
             descButton.innerHTML = "Descrição";
+            descButton.className = "description";
             let descSpan = document.createElement("span");
             descSpan.id = "armorSpan" + armorNum;
             descButton.setAttribute("onclick", `loadArmorDesc(${armorNum}, "${value}")`);
@@ -452,7 +508,7 @@ function loadArmors(){
 function loadArmorDesc(armorNum, name){
     let descSpan = document.querySelector("#armorSpan" + armorNum);
     if(descSpan.innerHTML == ""){
-        descSpan.innerHTML = character.bag.armors[name].description;
+        descSpan.innerHTML = character.inventory.armors[name].description;
     } else{
         descSpan.innerHTML = "";
     }
@@ -461,10 +517,10 @@ function loadArmorDesc(armorNum, name){
 function loadAmmo(){
     let ammo = document.querySelector("#ammo");
     if(ammo.innerHTML == ""){
-        let keys = Object.keys(character.bag.ammo);
+        let keys = Object.keys(character.inventory.ammo);
         keys.forEach(function(value){
             let ammunition = document.createElement("p");
-            ammunition.innerHTML = value + ": " + character.bag.ammo[value].quantity;
+            ammunition.innerHTML = value + ": " + character.inventory.ammo[value].quantity;
             ammo.appendChild(ammunition);
         })
     } else{
@@ -475,19 +531,23 @@ function loadAmmo(){
 function loadItems(){
     let items = document.querySelector("#items");
     if(items.innerHTML == ""){
-        let keys = Object.keys(character.bag.items);
+        let keys = Object.keys(character.inventory.items);
         let itemNum = 0;
         keys.forEach(function(value){
             let name = document.createElement("p");
             name.innerHTML = value;
-            items.appendChild(name);
+            if(character.inventory.items[value].quantity){
+                name.innerHTML += " x" + character.inventory.items[value].quantity;
+            }
 
-            if(character.bag.items[value].description){
+            if(character.inventory.items[value].description){
                 let descriptionButton = document.createElement("button");
                 descriptionButton.innerHTML = "Descrição";
+                descriptionButton.className = "description";
                 descriptionButton.setAttribute("onclick", `loadItemDesc(${itemNum}, "${value}")`);
-                items.appendChild(descriptionButton);
+                name.appendChild(descriptionButton);
             }
+            items.appendChild(name);
             
             let descriptionDiv = document.createElement("div");
             descriptionDiv.id = "description" + itemNum;
@@ -504,7 +564,7 @@ function loadItemDesc(itemNum, name){
     let descDiv = document.querySelector("#description" + itemNum);
     if(descDiv.innerHTML == ""){
         let desc = document.createElement("p");
-        desc.innerHTML = character.bag.items[name].description;
+        desc.innerHTML = character.inventory.items[name].description;
         descDiv.appendChild(desc);
     } else{
         descDiv.innerHTML = "";
@@ -523,16 +583,16 @@ function loadMoney(){
     let money = document.querySelector("#money");
     if(money.innerHTML == ""){
         let bits = document.createElement("p");
-        bits.innerHTML = "Milavos(MA): " + character.bag.money.bits;
+        bits.innerHTML = "Milavos(MA): " + character.inventory.money.bits;
         money.appendChild(bits);
         let copperPennies = document.createElement("p");
-        copperPennies.innerHTML = "Centavos de Cobre(CC): " + character.bag.money.copperPennies;
+        copperPennies.innerHTML = "Centavos de Cobre(CC): " + character.inventory.money.copperPennies;
         money.appendChild(copperPennies);
         let silverShillings = document.createElement("p");
-        silverShillings.innerHTML = "Xelins de Prata(XP): " + character.bag.money.silverShillings;
+        silverShillings.innerHTML = "Xelins de Prata(XP): " + character.inventory.money.silverShillings;
         money.appendChild(silverShillings);
         let goldCrowns = document.createElement("p");
-        goldCrowns.innerHTML = "Coroas de Ouro(CO): " + character.bag.money.goldCrowns;
+        goldCrowns.innerHTML = "Coroas de Ouro(CO): " + character.inventory.money.goldCrowns;
         money.appendChild(goldCrowns);
     } else{
         money.innerHTML = "";
@@ -547,38 +607,34 @@ function loadSpells(){
     }
     if(spells.innerHTML == ""){
         let keys = Object.keys(character.traditions);
-        let tradNum = 0;
         keys.forEach(function(trad){
             let tradButton = document.createElement("button");
-            tradButton.innerHTML = ">" + trad;
-            tradButton.setAttribute("onclick", `loadTradition(${tradNum}, "${trad}")`);
+            tradButton.className = "tradition";
+            tradButton.innerHTML = trad;
+            tradButton.setAttribute("onclick", `loadTradition("${trad}")`);
             spells.appendChild(tradButton);
             let tradDiv = document.createElement("div");
-            tradDiv.id = "tradition" + tradNum;
+            tradDiv.id = traditions[trad].id;
             spells.appendChild(tradDiv);
-            tradNum++;
-        })
+        });
     } else{
         spells.innerHTML = "";
     }
 }
 
-function loadTradition(tradNum, trad){
-    console.log(tradNum);
-    let tradition = document.querySelector("#tradition" + tradNum);
+function loadTradition(trad){
+    let tradition = document.querySelector("#" + traditions[trad].id);
     if(tradition.innerHTML == ""){
-        let keys = Object.keys(character.traditions[trad]);
-        let spellNum = 0;
-        keys.forEach(function(spell){
+        character.traditions[trad].forEach(function(spell){
             let spellButton = document.createElement("button");
-            spellButton.innerHTML = "-" + spell;
-            spellButton.setAttribute("onclick", `loadSpell(${spellNum}, "${spell}", "${trad}")`);
+            spellButton.innerHTML = spell;
+            spellButton.className = "spell";
+            spellButton.setAttribute("onclick", `loadSpell("${trad}", "${spell}")`);
             tradition.appendChild(spellButton);
             let spellDiv = document.createElement("div");
-            spellDiv.id = "spell" + spellNum;
+            spellDiv.id = traditions[trad].id + traditions[trad].spells[spell].id;
             tradition.appendChild(spellDiv);
-            spellNum++;
-        })
+        });
     } else{
         tradition.innerHTML = "";
     }
@@ -590,14 +646,15 @@ const addToDiv = function(att, name, spellObj, id){
     }
 }
 
-function loadSpell(spellNum, spell, trad){
-    let id = "spell" + spellNum;
+const atts = ["description", "target", "area", "duration", "attackRoll20", "requisites", "type", "level"];
+const names = ["Descrição", "Alvo", "Área", "Duração", "Ataque 20+", "Requisitos", "Tipo", "Nível"];
+
+function loadSpell(trad, spell){
+    let id = traditions[trad].id + traditions[trad].spells[spell].id;
     let spellDiv = document.querySelector("#" + id);
     if(spellDiv.innerHTML == ""){
-        const atts = ["description", "target", "area", "duration", "attackRoll20", "requisites", "type", "level"];
-        const names = ["Descrição", "Alvo", "Área", "Duração", "Ataque 20+", "Requisitos", "Tipo", "Nível"];
         for(let i = 0; i < atts.length; i++){
-            addToDiv(atts[i], names[i], character.traditions[trad][spell], id);
+            addToDiv(atts[i], names[i], traditions[trad].spells[spell], id);
         }
     } else{
         spellDiv.innerHTML = "";
