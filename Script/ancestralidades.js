@@ -1,7 +1,7 @@
 class Character{
     constructor(name, personality, age, religion, background, strength, agility, intellect, will,
         perception, defense, health, size, speed, power, damage, insanity, corruption, level,
-        professions, paths, bag, traditions){
+        professions, paths, inventory, traditions){
         this._name = name;
         this._personality = personality;
         this._age = age;
@@ -68,7 +68,7 @@ class Character{
             this._talents.masterPath = this.masterPath.talents;
         }
 
-        this._bag = bag;
+        this._inventory = inventory;
 
         this._traditions = traditions;
     }
@@ -252,8 +252,8 @@ class Character{
         this._talents[type][name] = description;
     }
 
-    get bag(){
-        return this._bag;
+    get inventory(){
+        return this._inventory;
     }
 
     get novicePath(){
@@ -275,12 +275,12 @@ class Character{
 
 class Human extends Character{
     constructor(name, personality, age, religion, background, size, build, appearance,
-        status, professions, paths, bag, traditions){
+        status, professions, paths, inventory, traditions){
         super(name, personality, age, religion, background,
             10+status.strength, 10+status.agility, 10+status.intellect, 10+status.will,
             10+status.perception, status.defense || 10, 10+status.health, size, status.speed || 10,
             status.power, status.damage, status.insanity, status.corruption, status.level,
-            professions, paths, bag, traditions);
+            professions, paths, inventory, traditions);
         this._build = build;
         this._appearance = appearance;
     }
@@ -333,12 +333,12 @@ class Human extends Character{
 
 class Changeling extends Character{
     constructor(name, personality, trueAge, religion, background, apparentGender, apparentAncestry,
-        apparentAge, apparentBuild, apparentAppearence, quirk, status, professions, paths, bag, traditions){  
+        apparentAge, apparentBuild, apparentAppearence, quirk, status, professions, paths, inventory, traditions){  
         super(name, personality, trueAge, religion, background,
             status.strength+9, status.agility+10, status.intellect+10, status.will+10,
             status.perception+11, status.defense || 10, status.health+10,
             status.size || 1, status.speed || 10, status.power, status.damage, status.insanity, status.corruption, status.level,
-            professions, paths, bag, traditions);
+            professions, paths, inventory, traditions);
         
         this._apparentGender = apparentGender;
         this._apparentAncestry = apparentAncestry;
@@ -425,12 +425,12 @@ class Changeling extends Character{
 
 class Clockwork extends Character{
     constructor(name, personality, age, religion, background, purpose, form, appearance, locationKey, status,
-        professions, paths, bag, traditions){  
+        professions, paths, inventory, traditions){  
         super(name, personality, age, religion, background,
             status.strength+9, status.agility+8, status.intellect+9, status.will+9,
             status.perception+9, status.defense || 13, status.health+9,
             status.size || 1, status.speed || 8, status.power, status.damage, status.insanity, status.corruption, status.level,
-            professions, paths, bag, traditions);
+            professions, paths, inventory, traditions);
         
         this._purpose = purpose;
         this._form = form;
@@ -496,12 +496,12 @@ class Clockwork extends Character{
 
 class Dwarf extends Character{
     constructor(name, personality, age, religion, background, build, appearance, hatred, status,
-        professions, paths, bag, traditions){  
+        professions, paths, inventory, traditions){  
         super(name, personality, age, religion, background,
             status.strength+10, status.agility+9, status.intellect+10, status.will+10,
             status.perception+11, status.defense || 9, status.health+14,
             status.size || 0.5, status.speed || 8, status.power, status.damage, status.insanity, status.corruption, status.level,
-            professions, paths, bag, traditions);
+            professions, paths, inventory, traditions);
         
         this._build = build
         this._appearance = appearance;
@@ -570,12 +570,12 @@ class Dwarf extends Character{
 
 class Goblin extends Character{
     constructor(name, personality, age, religion, background, build, distinctiveAppearance, oddHabit, status,
-        professions, paths, bag, traditions){  
+        professions, paths, inventory, traditions){  
         super(name, personality, age, religion, background,
             status.strength+8, status.agility+12, status.intellect+10, status.will+9,
             status.perception+11, status.defense || 12, status.health+8,
             status.size || 0.5, status.speed || 10, status.power, status.damage, status.insanity, status.corruption, status.level,
-            professions, paths, bag, traditions);
+            professions, paths, inventory, traditions);
         
         this._build = build
         this._distinctiveAppearance = distinctiveAppearance;
@@ -643,12 +643,12 @@ class Goblin extends Character{
 
 class Orc extends Character{
     constructor(name, personality, age, religion, background, build, appearance, status,
-        professions, paths, bag, traditions){  
+        professions, paths, inventory, traditions){  
         super(name, personality, age, religion, background,
             status.strength+11, status.agility+10, status.intellect+9, status.will+9,
             status.perception+10, status.defense || 10, status.health+11,
             status.size || 1, status.speed || 12, status.power, status.damage, status.insanity, status.corruption+1, status.level,
-            professions, paths, bag, traditions);
+            professions, paths, inventory, traditions);
         
         this._build = build
         this._appearance = appearance;
@@ -707,12 +707,12 @@ class Orc extends Character{
 
 class Yerath extends Character{
     constructor(name, caste, age, religion, personality, background, status,
-        professions, paths, bag, traditions){
+        professions, paths, inventory, traditions){
         super(name, personality, age, religion, background, 
             status.strength+9, status.agility+10, status.intellect+10, status.will+9,
             status.perception+10, status.defense || 12, status.health+9,
             status.size || 1, status.speed || 10, status.power, status.damage, status.insanity, status.corruption, status.level,
-            professions, paths, bag, traditions);
+            professions, paths, inventory, traditions);
         this._caste = caste;
         super.addSpeakedLanguage("Yerath");
         super.addTalent("ancestry", "Braços Extras", "Você tem um segundo par de braços que terminam em mãos. É apenas possível usá-los para carregar objetos pequenos e leves ou para realizar atividades menores. Você também tem como usar seus dedos normalmente. No seu turno, você pode usar uma ação desencadeada para recarregar uma arma.");
@@ -769,7 +769,7 @@ function getCharacter(object){
         case "human":
             characterCreated = new Human(object.name, object.personality, object.age, object.religion,
                 object.background, object.size, object.build, object.appearance, object.status,
-                object.professions, paths, object.bag, object.traditions);
+                object.professions, paths, object.inventory, object.traditions);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -786,7 +786,7 @@ function getCharacter(object){
         case "dwarf":
             characterCreated = new Dwarf(object.name, object.personality, object.age, object.religion,
                 object.background, object.build, object.appearance, object.hatred, object.status,
-                object.professions, paths, object.bag, object.traditions);
+                object.professions, paths, object.inventory, object.traditions);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -804,7 +804,7 @@ function getCharacter(object){
             characterCreated = new Changeling(object.name, object.personality, object.age,
                 object.religion, object.background, object.apparentGender, object.apparentAncestry,
                 object.apparentAge, object.apparentBuild, object.apparentAppearance, 
-                object.quirk, object.status, object.professions, paths, object.bag, object.traditions);
+                object.quirk, object.status, object.professions, paths, object.inventory, object.traditions);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -819,9 +819,9 @@ function getCharacter(object){
             });
             return characterCreated;
         case "clockwork":
-            characterCreated = new Clockwork(object.name, personality, object.age, object.religion,
+            characterCreated = new Clockwork(object.name, object.personality, object.age, object.religion,
                 object.background, object.purpose, object.form, object.appearance,
-                object.locationKey, object.status, object.professions, paths, object.bag, object.traditions);
+                object.locationKey, object.status, object.professions, paths, object.inventory, object.traditions);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -838,7 +838,7 @@ function getCharacter(object){
         case "goblin":
             characterCreated = new Goblin(object.name, object.personality, object.age, object.religion,
                 object.background, object.build, object.distinctiveAppearance, object.oddHabit, object.status,
-                object.professions, paths, object.bag, object.traditions);
+                object.professions, paths, object.inventory, object.traditions);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -855,7 +855,7 @@ function getCharacter(object){
         case "orc":
             characterCreated = new Orc(object.name, object.personality, object.age, object.religion,
                 object.background, object.build, object.appearance, object.status,
-                object.professions, paths, object.bag, object.traditions);
+                object.professions, paths, object.inventory, object.traditions);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -872,7 +872,7 @@ function getCharacter(object){
         case "yerath":
             characterCreated = new Yerath(object.name, object.caste, object.age, object.religion,
                 object.personality, object.background, object.status,
-                object.professions, paths, object.bag, object.traditions);
+                object.professions, paths, object.inventory, object.traditions);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -899,7 +899,7 @@ function getCharacterObject(characterToBeObject){
         "background": characterToBeObject.background,
         "name": characterToBeObject.name,
         "professions": characterToBeObject.professions,
-        "bag": characterToBeObject.bag,
+        "inventory": characterToBeObject.inventory,
         "traditions": characterToBeObject.traditions,
     };
     // Novice Path
@@ -1098,25 +1098,66 @@ function getCharacterObject(characterToBeObject){
     return newObject;
 }
 
-/*
-console.log("Ancestry examples:");
 
-var human = new Human("Example 1", "Crazy", 20, "None", "Came from a mafia", 0.5, "Very very weak", "Handsome af", {
-    strength: 0,
-    agility: 1,
-    intellect: 0,
-    will: 0,
-    perception: 0,
+/*
+var human = new Human("Harry Potter", "Powerful", 16, "None", "Orphan, wants to kill Voldermort", 1, "Thin and tall", "Dark hair", {
+    strength: 2,
+    agility: 3,
+    intellect: 4,
+    will: 3,
+    perception: 3,
     defense: null,
-    health: 0,
+    health: 5,
     size: null,
     speed: null,
-    damage: 0,
-    power: 0,
-    insanity: 0,
-    corruption: 0,
-    level: 1
+    damage: 3,
+    power: 3,
+    insanity: 1,
+    corruption: 1,
+    level: 5
+}, ["Student", "Auror"], {
+    novice: {
+        type: "magician",
+        training: "Hogwarts"
+    },
+    expert: {
+        type: "wizard",
+        training: "Hogwarts"
+    }
+},{
+    weapons: {
+        "Varinha": {
+            type: "À distância",
+            damage: "1d3"
+        }
+    },
+    armors: {
+        "Invisibility Cloak": {
+            defense: 1,
+            description: "You become invisible the moment you wear it"
+        }
+    },
+    items: {
+        "Livro de transfiguração": {
+
+        },
+        "Livro do Príncipe Meio-Sangue": {
+            description: "Tem dicas muito úteis para poções, além de feitiços."
+        }
+    },
+    animals: {
+        "Hedwig": {
+            properties: {
+                perception: 12,
+                intelligence: 10
+            }
+        }
+    },
+    interestingThings: ["Pedra Filosofal"]
+}, {
+    "Defense Against the Dark Arts": ["Stupefy", "Expelliarmus"]
 });
+
 
 var changeling = new Changeling("Example 2", "Cool", 30, "Dama da noite", "Kidnapped and used for slavor", "female", "orc", 12, "Strong af", "Ugly as hell", "Doesn't have fingernails or hair when changing their form", {
     strength: 0,
@@ -1219,7 +1260,6 @@ var yerath = new Yerath("HarleyQuinn", "Soldier", 12, "Herself", "Buzzly", "Bee 
     corruption: 0,
     level: 1
 });
-
 console.log(human);
 console.log(changeling);
 console.log(clockwork);
