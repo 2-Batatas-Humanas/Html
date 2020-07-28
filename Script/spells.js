@@ -5,11 +5,69 @@ traditionsChosen = [];
 spellsChosen = [];
 
 function loadChoices(){
+    let id = "possibleChoices";
+    addPToDiv(id, "O poder do seu personagem é: " + character.status.power);
     if(isEmpty(character.traditions)){
-        
+        character.traditions = {};
+        switch(character.status.level){
+            case 1:
+                if(character.novicePath.type == "magician"){
+                    addPToDiv(id, "Você faz 4 escolhas; para cada escolha você adiciona uma tradição ou uma magia.");
+                    addPToDiv(id, "Tendo a trilha de aprendiz Mágico, você tem direito às magias de nível 0 automaticamente quando você pega uma tradição.");
+                    character.traditions["Special"] = ["Sentir Magia"];
+                }
+                else if(character.novicePath.type == "priest"){
+                    addPToDiv(id, "Você faz 2 escolhas; para cada escolha você adiciona uma tradição associada com sua religião ou uma magia.");
+                    switch(character.novicePath.choices.religion){
+                        case "Culto do Novo Deus":
+                            addPToDiv(id, "As Tradições associadas com sua religião são: Celestial, Teurgia, Vida");
+                            break;
+                        case "Ancestrais Anões":
+                            addPToDiv(id, "As Tradições associadas com sua religião são: Batalha, Terra, Vida");
+                            break;
+                        case "Fé Antiga":
+                            addPToDiv(id, "As Tradições associadas com sua religião são: Natureza, Primitiva, Vida");
+                            break;
+                        case "Bruxaria":
+                            addPToDiv(id, "As Tradições associadas com sua religião são: Encantamento, Maldição, Vida");
+                            break;
+                    }
+                }
+                else {
+                    addPToDiv(id, "Não sei como você veio parar aqui, mas pode pegar magias se você quiser :)");
+                }
+                break;
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                addPToDiv(id, "Desculpa, essa parte não foi feita ainda :(");
+                break
+        }
     }
     else {
-       
+        displayTradsAndSpells();
+        if(character.novicePath.type == "magician"){
+            addPToDiv(id, "Tendo a trilha de aprendiz Mágico, você tem direito às magias de nível 0 automaticamente quando você pega uma tradição.");
+        }
+        switch(character.status.level){
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                addPToDiv(id, "Desculpa, essa parte não foi feita ainda :(");
+                break
+        }
     }
 }
 
@@ -48,6 +106,14 @@ function openTradition(code){
             button.innerHTML = spell;
             button.className = "spell";
             button.setAttribute("onclick", `openSpell("${code}", "${traditions[name].spells[spell].id}")`);
+            let image = document.createElement("img");
+            image.id = "overallImage" +  traditions[name].id + traditions[name].spells[spell].id;
+            image.width = 15;
+            image.style.marginLeft = "10px";
+            if(spellsChosen.includes(spell)){
+                image.src = "Images/checkSign.jpg";
+            }
+            button.appendChild(image)
             div.appendChild(button); 
             let spellDiv = document.createElement("div");
             spellDiv.id = code + traditions[name].spells[spell].id;
@@ -73,18 +139,23 @@ function openSpell(tradCode, spellCode){
         p.innerHTML = spell;
         if(!spellsChosen.includes(spell)){
             let button = document.createElement("button");
+            button.id = "button" + traditions[trad].id + traditions[trad].spells[spell].id;
             button.style.borderRadius = "50%";
             button.style.marginLeft = "20px";
             button.setAttribute("onclick", `addSpell("${trad}", "${spell}")`);
             let image = document.createElement("img");
+            image.id = "image" + traditions[trad].id + traditions[trad].spells[spell].id;
             image.src = "Images/plusSign.png";
             image.width = 15;
             button.appendChild(image);
             p.appendChild(button);
         } else{
             let button = document.createElement("button");
+            button.id = "button" + traditions[trad].id + traditions[trad].spells[spell].id;
             button.style.marginLeft = "20px";
+            button.setAttribute("onclick", `removeSpell("${trad}", "${spell}")`)
             let image = document.createElement("img");
+            image.id = "image" + traditions[trad].id + traditions[trad].spells[spell].id;
             image.src = "Images/checkSign.jpg";
             button.onmouseenter = function (){
                 image.src = "Images/crossSign.png";
@@ -104,6 +175,15 @@ function openSpell(tradCode, spellCode){
         }
     } else{
         div.innerHTML = "";
+    }
+}
+
+function changeTraditionImage(trad){
+    let image = document.querySelector("#image" + traditions[trad].id);
+    if(traditionsChosen.includes(trad)){
+        image.src = "Images/star.jpg";
+    } else{
+        image.src = "";
     }
 }
 
@@ -132,6 +212,7 @@ function addTradition(trad){
     div.appendChild(tradDiv);
     
     traditionsChosen.push(trad);
+    changeTraditionImage(trad);
 }
 
 function removeTradition(trad){
@@ -146,7 +227,45 @@ function removeTradition(trad){
         while(spellsChosen.includes(spell)){
             spellsChosen.splice(spellsChosen.indexOf(spell), 1);
         }
+        changeSpellImage(trad, spell, "remove");
     });
+    changeTraditionImage(trad);
+}
+
+function changeSpellImage(trad, spell, type){
+    let image = document.querySelector("#image" + traditions[trad].id + traditions[trad].spells[spell].id);
+    let button = document.querySelector("#button" + traditions[trad].id + traditions[trad].spells[spell].id);
+    let overallImage = document.querySelector("#overallImage" + traditions[trad].id + traditions[trad].spells[spell].id);
+    if(image && button){
+        if(type == "add"){
+            image.src = "Images/checkSign.jpg";
+            button.style.borderRadius = "0%";
+            button.onmouseenter = function (){
+                image.src = "Images/crossSign.png";
+            };
+            button.onmouseleave = function (){
+                image.src = "Images/checkSign.jpg";
+            }
+            button.setAttribute("onclick", `removeSpell("${trad}", "${spell}")`)
+            button.blur()
+            overallImage.src = "Images/checkSign.jpg";
+        } else{
+            image.src = "Images/plusSign.png";
+            button.onmouseenter = () => {};
+            button.onmouseleave = () => {};
+            button.style.borderRadius = "50%";
+            button.setAttribute("onclick", `addSpell("${trad}", "${spell}")`);
+            button.blur()
+            overallImage.src = "";
+        }
+    }
+    else if(overallImage){
+        if(type == "add"){
+            overallImage.src = "Images/checkSign.jpg";
+        } else{
+            overallImage.src = "";
+        }
+    }
 }
 
 function addSpell(trad, spell){
@@ -172,6 +291,7 @@ function addSpell(trad, spell){
     ul.appendChild(li);
     
     spellsChosen.push(spell);
+    changeSpellImage(trad, spell, "add");
 }
 
 function removeSpell(trad, spell){
@@ -188,11 +308,27 @@ function removeSpell(trad, spell){
         }
     }
     spellsChosen.splice(spellsChosen.indexOf(spell), 1);
+    changeSpellImage(trad, spell, "remove");
 }
 
 function displayTradsAndSpells(){
-    
+    let trads = Object.keys(character.traditions);
+    trads.forEach(function(trad){
+        character.traditions[trad].forEach(function(spell){
+            addSpell(trad, spell);
+        });
+    });
 }
 
 function nextPage(){
+    if(traditionsChosen.length > 0){
+        traditionsChosen.forEach(function(trad){
+            character.traditions[trad] = [];
+            spellsChosen.forEach(function(spell){
+                character.traditions[trad].push(spell);
+            });
+        })
+    }
+    localStorage.setItem("character", JSON.stringify(character));
+    window.location.href = "character.html";
 }
