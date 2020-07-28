@@ -586,10 +586,10 @@ function processChoices(charact, chs){
             case "1d6 insanity":
             case "1d6 insanity+profession":
             case "1d3 insanity":
-                newCharacter.status.insanity = chs.backgroundInsanity;
+                newCharacter.status.insanity = parseInt(chs.backgroundInsanity);
                 break;
             case "1d3 corruption":
-                newCharacter.status.corruption = chs.backgroundCorruption;
+                newCharacter.status.corruption = parseInt(chs.backgroundCorruption);
                 break;
             case "1 corruption":
                 newCharacter.status.corruption = 1;
@@ -601,15 +601,15 @@ function processChoices(charact, chs){
                 newCharacter.status.corruption = 2;
                 break;
             case "1 intellect+1 will+!caste att":
-                newCharacter.status.intellect = 1;
+                newCharacter.status.intellect += 1;
                 newCharacter.status.perception += 1;
-                newCharacter.status.will = 1;
+                newCharacter.status.will += 1;
                 break;
         }
     }
     switch(charact.ancestry){
         case "human":
-            newCharacter.status[chs.raisedAttribute] = 1;
+            newCharacter.status[chs.raisedAttribute] += 1;
             switch(chs.raisedAttribute){
                 case "strength":
                     newCharacter.status.health += 1;
