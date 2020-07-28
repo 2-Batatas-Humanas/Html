@@ -1,348 +1,184 @@
 character = JSON.parse(localStorage.getItem("character"));
 if(!character) console.log("Couldn't load character");
-choices = JSON.parse(localStorage.getItem("choices"));
-if(!choices) thereChoices = false;
-else thereChoices = true;
 
-if(thereChoices){
-    character.bag = {
-        weapons: {},
-        ammo: {},
-        armors: {},
-        items: {},
-        hirelings: {},
-        animals: {},
-        money: {
-            bits: 0,
-            copperPennies: parseInt(choices.backgroundMoney) || 0,
-            silverShillings: parseInt(choices.level1Money),
-            goldCrowns: 0
-        }
-    };
-    character.bag.items[choices.interestingThings[0]] = {};
-    if(character.ancestry == "yerath" && choices.backgroundChange == "extra interesting thing"){
-        character.bag.items[choices.interestingThings[1]] = {};
-    }
-    switch(character.wealth){
-        case "destitute":
-            character.bag.type = "Bolsa";
-            character.bag.armors["Trapos"] = deepCopy(item.armor["Roupas"]);
-            character.bag.money.bits = parseInt(choices.initialWealthMoney);
+// Getting Character Inventory
 
-            if(choices.wealthWeaponChoice == "club"){
-                character.bag.weapons["Porrete"] = deepCopy(item.weapon["Porrete"]);
-            } else{// Sling
-                character.bag.weapons["Funda"] = deepCopy(item.weapon["Funda"]);
-                character.bag.ammo["Pedras"] = {
-                    price: item.ammo["Pedras"],
-                    quantity: 20
-                }
-            }
-            break;
-        case "poor":
-            character.bag.type = "Saco";
-            character.bag.money.bits = parseInt(choices.initialWealthMoney);
-            character.bag.armors["Roupas comuns remendadas"] = deepCopy(item.armor["Roupas"]);
-            character.bag.items["Pão"] = {};
-            character.bag.items["Odre"] = deepCopy(item.personalGear["Odre"]);
-            character.bag.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
-            character.bag.items["Vela"] = deepCopy(item.personalGear["Vela"]);
+function setInventory(){
+    let id = "inventoryDiv";
+    if(!isEmpty(character.inventory.weapons)){
+        createHtmlList(id, "inventory", ["Armas:"]);
 
-            if(choices.wealthWeaponChoice == "staff"){
-                character.bag.weapons["Cajado"] = deepCopy(item.weapon["Cajado"]);
-            } else{// Sling
-                character.bag.weapons["Funda"] = deepCopy(item.weapon["Funda"]);
-                character.bag.ammo["Pedras"] = {
-                    price: item.ammo["Pedras"],
-                    quantity: 20
-                }
-            }
-            break;
-        case "gettingBy":
-            character.bag.type = "Mochila";
-            character.bag.money.copperPennies += parseInt(choices.initialWealthMoney);
-            character.bag.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
-            character.bag.armors["Roupas comuns"] = deepCopy(item.armor["Roupas"]);
-            character.bag.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
-            character.bag.items["Odre"] = deepCopy(item.personalGear["Odre"]);
-            character.bag.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
-            for(let i = 0; i < (choices.numTorch || 1); i++){
-                character.bag.items["Tocha " + (i + 1)] = deepCopy(item.personalGear["Tocha"]);
-            }
+        let weaponsId = "inventoryWeapons";
+        createHtmlList("inventory", weaponsId, []);
 
-            if(choices.wealthWeaponChoice == "club"){
-                character.bag.weapons["Porrete"] = deepCopy(item.weapon["Porrete"]);
-            } else if(choices.wealthWeaponChoice == "staff"){
-                character.bag.weapons["Cajado"] = deepCopy(item.weapon["Cajado"]);
-            } else{// Sling
-                character.bag.weapons["Funda"] = deepCopy(item.weapon["Funda"]);
-                character.bag.ammo["Pedras"] = {
-                    price: item.ammo["Pedras"],
-                    quantity: 20
-                }
-            }
-            break;
-        case "comfortable":
-            character.bag.type = "Mochila";
-            character.bag.money.copperPennies += parseInt(choices.initialWealthMoney);
-            character.bag.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
-            character.bag.armors["Roupas de qualidade"] = deepCopy(item.armor["Roupas"]);
-            character.bag.items["Manto"] = deepCopy(item.clothingAndAccessory["Manto"]);
-            character.bag.items["Odre"] = deepCopy(item.personalGear["Odre"]);
-            character.bag.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
-            character.bag.items["Corda (20 metros)"] = deepCopy(item.personalGear["Corda (20 metros)"]);
-            character.bag.items["Poção de Cura"] = deepCopy(item.potion["Cura"]);
-            character.bag.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
-            character.bag.items["Tocha"] = deepCopy(item.personalGear["Tocha"]);
-            character.bag.items["Tocha 2"] = deepCopy(item.personalGear["Tocha"]);
-            character.bag.items["Kit de cura"] = deepCopy(item.tool["Kit de Curandeiro (6 usos)"]);
-            if(choices.kit == "tools"){
-                character.bag.items["Kit de ferramentas"] = deepCopy(item.tool["Kit de Ferramentas"]);
-            } else{
-                character.bag.items["Kit de escrita"] = deepCopy(item.tool["Kit de Escrita"]);
-            }
-            character.bag.weapons["Escudo pequeno"] = deepCopy(item.weapon["Escudo pequeno"]);
-            character.bag.items["Feitiço nível 0"] = deepCopy(item.incantation["Nível 0"]);
-
-            if(choices.wealthWeaponChoice == "club"){
-                character.bag.weapons["Porrete"] = deepCopy(item.weapon["Porrete"]);
-            } else if(choices.wealthWeaponChoice == "staff"){
-                character.bag.weapons["Cajado"] = deepCopy(item.weapon["Cajado"]);
-            } else{// Sling
-                character.bag.weapons["Funda"] = deepCopy(item.weapon["Funda"]);
-                character.bag.ammo["Pedras"] = {
-                    price: item.ammo["Pedras"],
-                    quantity: 20
-                }
-            }
-            break;
-        case "wealthy":
-            character.bag.type = "Mochila";
-            character.bag.money.silverShillings += parseInt(choices.initialWealthMoney);
-            character.bag.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
-            character.bag.armors["Roupas de cortesão"] = deepCopy(item.armor["Roupas"]);
-            character.bag.items["Manto"] = deepCopy(item.clothingAndAccessory["Manto"]);
-            character.bag.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
-            character.bag.items["Odre"] = deepCopy(item.personalGear["Odre"]);
-            character.bag.items["Corda (20 metros)"] = deepCopy(item.personalGear["Corda (20 metros)"]);
-            character.bag.items["Poção de Cura"] = deepCopy(item.potion["Cura"]);
-            character.bag.items["Pederneira"] = deepCopy(item.personalGear["Pederneira"]);
-            character.bag.items["Lanterna"] = deepCopy(item.personalGear["Lanterna"]);
-            character.bag.items["Frasco de óleo"] = deepCopy(item.personalGear["Óleo, frasco"]);
-            character.bag.items["Frasco de óleo 2"] = deepCopy(item.personalGear["Óleo, frasco"]);
-            character.bag.weapons["Escudo pequeno"] = deepCopy(item.weapon["Escudo pequeno"]);
-            character.bag.items["Kit de cura"] = deepCopy(item.tool["Kit de Curandeiro (6 usos)"]);
-            character.bag.items["Kit de ferramentas"] = deepCopy(item.tool["Kit de Ferramentas"]);
-            character.bag.items["Kit de escrita"] = deepCopy(item.tool["Kit de Escrita"]);
-            character.bag.items["Feitiço nível 0"] = deepCopy(item.incantation["Nível 0"]);
-            break;
-        case "rich":
-            character.bag.type = "Cavalos e servo";
-            character.bag.money.silverShillings += parseInt(choices.initialWealthMoney);
-            character.bag.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
-            character.bag.armors["Roupas de nobre"] = deepCopy(item.armor["Roupas"]);
-            character.bag.items["Manto"] = deepCopy(item.clothingAndAccessory["Manto"]);
-            character.bag.items["Rações para uma semana"] = deepCopy(item.food["Ração"]);
-            character.bag.items["Odre"] = deepCopy(item.personalGear["Odre"]);
-            character.bag.items["Poção de Cura"] = deepCopy(item.potion["Cura"]);
-            character.bag.hirelings["Servo pessoal"] = deepCopy(item.hireling["Plebeu"]);
-            character.bag.hirelings["Guarda"] = deepCopy(item.hireling["Mercenário"]);
-            character.bag.animals["Cavalo"] = deepCopy(item.animal["Cavalo, mula, pônei"]);
-            character.bag.animals["Cavalo"].hasSaddle = true;
-            character.bag.items["Sela"] = deepCopy(item.animalGear["Sela"]);
-            character.bag.animals["Cavalo 2"] = deepCopy(item.animal["Cavalo, mula, pônei"]);
-            character.bag.animals["Cavalo 2"].hasSaddle = true;
-            character.bag.items["Sela 2"] = deepCopy(item.animalGear["Sela"]);
-            character.bag.animals["Cavalo 3"] = deepCopy(item.animal["Cavalo, mula, pônei"]);
-            character.bag.animals["Cavalo 3"].hasSaddle = true;
-            character.bag.items["Sela 3"] = deepCopy(item.animalGear["Sela"]);
-            break;
-    }
-    
-    switch(choices.backgroundChange){
-        case "treasure map":
-            character.bag.items["Mapa do Tesouro"] = {};
-            break;
-        case "battlehammer/warhammer":
-            if(choices.battleWarHammer == "battlehammer"){
-                character.bag.weapons["Machado de batalha"] = deepCopy(item.weapon["Machado de batalha, mangual, estrela da manhã, picareta, ou espada"]);
-            } else{
-                character.bag.weapons["Martelo de guerra"] = deepCopy(item.weapon["Espada bastarda ou martelo de guerra"]);
-            }
-            break;
-        case "key to ancient dwarf treasure vault":
-            character.bag.items["Chave para um antigo cofre de tesouros dos anões"] = {};
-            break;
-        case "knife":
-            if(!character.bag.weapons["Adaga ou faca"]){
-                character.bag.weapons["Adaga ou faca"] = deepCopy(item.weapon["Adaga ou faca"]);
-            } else{
-                character.bag.weapons["Adaga ou faca 2"] = deepCopy(item.weapon["Adaga ou faca"]);
-            }
-            break;
-        case "lock of hair":
-            character.bag.items["Cacho do cabelo da Rainha das Fadas"] = {};
-            break;
-        case "signet ring":
-            character.bag.items["Anel com sinete"] = {};
-            break;
-        case "medal":
-            character.bag.items["Medalha por Coragem"] = {};
-            break;
-        case "sword":
-            character.bag.weapons["Espada bastarda ou martelo de guerra"] = deepCopy(item.weapon["Espada bastarda ou martelo de guerra"]);
-            break;
-        case "random enchanted object":
-            character.bag.weapons[choices.newObject] = {
-                description: choices.magicProperty
-            };
-            break;
-        case "incantation rank 0 spell":
-            if(!character.bag.items["Feitiço nível 0"]){
-                character.bag.items["Feitiço nível 0"] = deepCopy(item.incantation["Nível 0"]);
-            } else {
-                character.bag.items["Feitiço nível 0 2"] = deepCopy(item.incantation["Nível 0"]);
-            }
-            break;
-    }
-}
-
-function setBag(){
-    let id = "bagDiv";
-    if(!isEmpty(character.bag.weapons)){
-        createHtmlList(id, "bag", ["Armas:"]);
-
-        let weaponsId = "bagWeapons";
-        createHtmlList("bag", weaponsId, []);
-
-        let weapons = Object.keys(character.bag.weapons);
+        let weapons = Object.keys(character.inventory.weapons);
         let wpnCount = 0;
         weapons.forEach(function(weapon){
-            appendLiElement(weaponsId, weapon);
+            if(character.inventory.weapons[weapon].quantity){
+                appendLiElement(weaponsId, weapon + " x" + character.inventory.weapons[weapon].quantity);
+            } else{
+                appendLiElement(weaponsId, weapon);
+            }
             createHtmlList(weaponsId, "weapon" + wpnCount,
-            ["Tipo: " + character.bag.weapons[weapon].type, "Dano: " + character.bag.weapons[weapon].damage, "Mãos: " + character.bag.weapons[weapon].hands, "Propriedades:"]);
-            createHtmlList("weapon" + wpnCount, "propertiesWeapon" + wpnCount, character.bag.weapons[weapon].properties);
+            ["Tipo: " + character.inventory.weapons[weapon].type, "Dano: " + character.inventory.weapons[weapon].damage, "Mãos: " + character.inventory.weapons[weapon].hands, "Propriedades:"]);
+            createHtmlList("weapon" + wpnCount, "propertiesWeapon" + wpnCount, character.inventory.weapons[weapon].properties);
             wpnCount++;
         });
     }
 
-    if(!isEmpty(character.bag.ammo)){
-        appendLiElement("bag", "Munição:");
-        createHtmlList("bag", "bagAmmo", []);
-        let ammo = Object.keys(character.bag.ammo);
+    if(!isEmpty(character.inventory.ammo)){
+        appendLiElement("inventory", "Munição:");
+        createHtmlList("inventory", "inventoryAmmo", []);
+        let ammo = Object.keys(character.inventory.ammo);
         ammo.forEach(function(val){
-            appendLiElement("bagAmmo", val + ": " + character.bag.ammo[val].quantity);
+            appendLiElement("inventoryAmmo", val + ": " + character.inventory.ammo[val].quantity);
         });
     }
-    if(!isEmpty(character.bag.armors)){
-        appendLiElement("bag", "Armaduras:")
+    if(!isEmpty(character.inventory.armors)){
+        appendLiElement("inventory", "Armaduras:")
 
-        let armorId = "bagArmors";
-        createHtmlList("bag", armorId, []);
+        let armorId = "inventoryArmors";
+        createHtmlList("inventory", armorId, []);
 
-        let armors = Object.keys(character.bag.armors);
+        let armors = Object.keys(character.inventory.armors);
         let armorCount = 0;
         armors.forEach(function(armor){
             appendLiElement(armorId, armor);
             createHtmlList(armorId, "armor" + armorCount,
-            ["Tipo: " + character.bag.armors[armor].type, "Defesa: " + character.bag.armors[armor].defense, "Descrição: " + character.bag.armors[armor].description]);
+            ["Tipo: " + character.inventory.armors[armor].type, "Defesa: " + character.inventory.armors[armor].defense, "Descrição: " + character.inventory.armors[armor].description]);
             armorCount++;
         });
     }
-    if(!isEmpty(character.bag.items)){
-        appendLiElement("bag", "Itens:");
+    if(!isEmpty(character.inventory.items)){
+        appendLiElement("inventory", "Itens:");
 
-        let itemsId = "bagItems";
-        createHtmlList("bag", itemsId, []);
+        let itemsId = "inventoryItems";
+        createHtmlList("inventory", itemsId, []);
 
-        let items = Object.keys(character.bag.items);
+        let items = Object.keys(character.inventory.items);
         items.forEach(function(item){
-            if(!character.bag.items[item].description){
-                appendLiElement(itemsId, item);
+            if(!character.inventory.items[item].description){
+                if(character.inventory.items[item].quantity){
+                    appendLiElement(itemsId, item + " x" + character.inventory.items[item].quantity);
+                } else{
+                    appendLiElement(itemsId, item);
+                }
             } else{
-                let desc = `<details>
-                        <summary>${item}</summary>
-                        <p>Descrição: ${character.bag.items[item].description}</p>
-                    </details>`
-                appendLiElement(itemsId, desc);
+                if(character.inventory.items[item].quantity){
+                    let desc = `<details>
+                            <summary>${item} x${character.inventory.items[item].quantity}</summary>
+                            <p>Descrição: ${character.inventory.items[item].description}</p>
+                        </details>`
+                    appendLiElement(itemsId, desc);
+                } else{
+                    let desc = `<details>
+                            <summary>${item}</summary>
+                            <p>Descrição: ${character.inventory.items[item].description}</p>
+                        </details>`
+                    appendLiElement(itemsId, desc);
+                }
 
             }
         });
     }
-    if(!isEmpty(character.bag.hirelings)){
-        appendLiElement("bag", "Serviçais:");
+    if(!isEmpty(character.inventory.interestingThings)){
+        appendLiElement("inventory", "Coisas Interessantes:");
 
-        let hirelingsId = "bagHirelings";
-        createHtmlList("bag", hirelingsId, []);
+        let id = "interestingThings";
+        createHtmlList("inventory", id, []);
 
-        let hirelings = Object.keys(character.bag.hirelings);
+        for(let i = 0;i < character.inventory.interestingThings.length; i++){
+            appendLiElement(id, character.inventory.interestingThings[i]);
+        }
+    }
+    if(!isEmpty(character.inventory.hirelings)){
+        appendLiElement("inventory", "Serviçais:");
+
+        let hirelingsId = "inventoryHirelings";
+        createHtmlList("inventory", hirelingsId, []);
+
+        let hirelings = Object.keys(character.inventory.hirelings);
         hirelings.forEach(function(hireling){
-            let desc = `<details><summary>${hireling}</summary>`;
-            switch(character.bag.hirelings[hireling].price){
-                case 50:
-                    desc += `<p>Preço por semana: ${(character.bag.hirelings[hireling].price)/10} Centavos de cobre(cc)</p>`
-                    break;
-                case 100:
-                case 500:
-                    desc += `<p>Preço por semana: ${(character.bag.hirelings[hireling].price)/100} Xelins de Prata(xp)</p>`   
+            if(character.inventory.hirelings[hireling].quantity){
+                let desc = `<details><summary>${hireling} x${character.inventory.hirelings[hireling].quantity}</summary>`;
+                if(character.inventory.hirelings[hireling].price * parseInt(character.inventory.hirelings[hireling].quantity >= 1000)){
+                    desc += `<p>Preço total por semana: ${(character.inventory.hirelings[hireling].price * parseInt(character.inventory.hirelings[hireling].quantity))/1000} Coroas de Ouro(co)</p>`;
+                }
+                else if(character.inventory.hirelings[hireling].price * parseInt(character.inventory.hirelings[hireling].quantity) >= 100){
+                    desc += `<p>Preço total por semana: ${(character.inventory.hirelings[hireling].price * parseInt(character.inventory.hirelings[hireling].quantity))/100} Xelins de Prata(xp)</p>`;
+                }
+                else {
+                    desc += `<p>Preço total por semana: ${(character.inventory.hirelings[hireling].price * parseInt(character.inventory.hirelings[hireling].quantity))/10} Centavos de cobre(cc)</p>`
+                }
+            } else{
+                let desc = `<details><summary>${hireling}</summary>`;
+                switch(character.inventory.hirelings[hireling].price){
+                    case 50:
+                        desc += `<p>Preço por semana: ${(character.inventory.hirelings[hireling].price)/10} Centavos de cobre(cc)</p>`
+                        break;
+                    case 100:
+                    case 500:
+                        desc += `<p>Preço por semana: ${(character.inventory.hirelings[hireling].price)/100} Xelins de Prata(xp)</p>`   
+                }
             }
-            desc += `<p>Descrição: ${character.bag.hirelings[hireling].description}</p></details>`
+            desc += `<p>Descrição: ${character.inventory.hirelings[hireling].description}</p></details>`
             appendLiElement(hirelingsId, desc);            
         });
     }
-    if(!isEmpty(character.bag.animals)){
-        appendLiElement("bag", "Animais:");
+    if(!isEmpty(character.inventory.animals)){
+        appendLiElement("inventory", "Animais:");
 
-        let animalsId = "bagAnimals";
-        createHtmlList("bag", animalsId, []);
+        let animalsId = "inventoryAnimals";
+        createHtmlList("inventory", animalsId, []);
 
-        let animals = Object.keys(character.bag.animals);
+        let animals = Object.keys(character.inventory.animals);
         animals.forEach(function(animal){
-            let desc = `<details><summary>${animal}</summary>`;
-            if(character.bag.animals[animal].hasSaddle){
-                desc += `<p>Esse animal possui uma sela acoplada</p>`;
+            if(character.inventory.animals[animal].quantity){
+                let desc = `<details><summary>${animal} x${character.inventory.animals[animal].quantity}</summary>`;
+            } else{
+                let desc = `<details><summary>${animal}</summary>`;
             }
-            if(character.bag.animals[animal].properties){
+            if(character.inventory.animals[animal].properties){
                 desc += `<p>Características do animal</p><ul>`
-                for(charac in Object.keys(character.bag.animals[animal].properties)){
+                for(charac in Object.keys(character.inventory.animals[animal].properties)){
                     switch(charac){
                         case "size":
-                            desc += `<li>Tamanho: ${character.bag.animals[animal].properties[charac]}</li>`;
+                            desc += `<li>Tamanho: ${character.inventory.animals[animal].properties[charac]}</li>`;
                             break;
                         case "perception":
-                            desc += `<li>Percepção: ${character.bag.animals[animal].properties[charac]}</li>`;
+                            desc += `<li>Percepção: ${character.inventory.animals[animal].properties[charac]}</li>`;
                             break;
                         case "defense":
-                            desc += `<li>Defesa: ${character.bag.animals[animal].properties[charac]}</li>`;
+                            desc += `<li>Defesa: ${character.inventory.animals[animal].properties[charac]}</li>`;
                             break;
                         case "health":
-                            desc += `<li>Saúde: ${character.bag.animals[animal].properties[charac]}</li>`;
+                            desc += `<li>Saúde: ${character.inventory.animals[animal].properties[charac]}</li>`;
                             break;
                         case "strength":
-                            desc += `<li>Força: ${character.bag.animals[animal].properties[charac]}</li>`;
+                            desc += `<li>Força: ${character.inventory.animals[animal].properties[charac]}</li>`;
                             break;
                         case "agility":
-                            desc += `<li>Agilidade: ${character.bag.animals[animal].properties[charac]}</li>`;
+                            desc += `<li>Agilidade: ${character.inventory.animals[animal].properties[charac]}</li>`;
                             break;
                         case "intellect":
-                            desc += `<li>Intelecto: ${character.bag.animals[animal].properties[charac]}</li>`;
+                            desc += `<li>Intelecto: ${character.inventory.animals[animal].properties[charac]}</li>`;
                             break;
                         case "will":
-                            desc += `<li>Vontade: ${character.bag.animals[animal].properties[charac]}</li>`;
+                            desc += `<li>Vontade: ${character.inventory.animals[animal].properties[charac]}</li>`;
                             break;
                         case "speed":
-                            desc += `<li>Deslocamento: ${character.bag.animals[animal].properties[charac]}</li>`;
+                            desc += `<li>Deslocamento: ${character.inventory.animals[animal].properties[charac]}</li>`;
                             break;
                         case "attackOptions":
                             desc += `<li>Opção de ataque: Arma Natural</li><ul>
-                                <li>Tipo: ${character.bag.animals[animal].properties[charac]["Arma Natural"].type}</li>
-                                <li>Modificador de ataque: ${character.bag.animals[animal].properties[charac]["Arma Natural"].attack}</li>
-                                <li>Dano se acertar: ${character.bag.animals[animal].properties[charac]["Arma Natural"].damage}</li>
+                                <li>Tipo: ${character.inventory.animals[animal].properties[charac]["Arma Natural"].type}</li>
+                                <li>Modificador de ataque: ${character.inventory.animals[animal].properties[charac]["Arma Natural"].attack}</li>
+                                <li>Dano se acertar: ${character.inventory.animals[animal].properties[charac]["Arma Natural"].damage}</li>
                             </ul>`
                             break;
                         case "specialAttack":
                             desc += `<li>Ataque especial: Distrair</li><ul>
-                                <li>Descrição: ${character.bag.animals[animal].properties[charac]["Distrair"].description}</li>
+                                <li>Descrição: ${character.inventory.animals[animal].properties[charac]["Distrair"].description}</li>
                             </ul>`;
                             break;
                     }
@@ -355,46 +191,104 @@ function setBag(){
     }
 }
 
+// Getting character Money
+
 function processMoney(){
     let bits = document.querySelector("#bitsCurrent");
     let copperPennies = document.querySelector("#copperPenniesCurrent");
     let silverShillings = document.querySelector("#silverShillingsCurrent");
     let goldCrowns = document.querySelector("#goldCrownsCurrent");
-    if(character.bag.money.bits >= 10){
-        let auxValue = character.bag.money.bits;
+    if(character.inventory.money.bits >= 10){
+        let auxValue = character.inventory.money.bits;
         bits.value = auxValue % 10;
-        character.bag.money.bits = auxValue % 10;
-        character.bag.money.copperPennies += Math.floor(auxValue / 10);
+        character.inventory.money.bits = auxValue % 10;
+        character.inventory.money.copperPennies += Math.floor(auxValue / 10);
 
     } else{
-        bits.value = character.bag.money.bits;
+        bits.value = character.inventory.money.bits;
     }
-    if(character.bag.money.copperPennies >= 10){
-        let auxValue = character.bag.money.copperPennies;
+    if(character.inventory.money.copperPennies >= 10){
+        let auxValue = character.inventory.money.copperPennies;
         copperPennies.value = auxValue % 10;
-        character.bag.money.copperPennies = auxValue % 10;
-        character.bag.money.silverShillings += Math.floor(auxValue / 10);
+        character.inventory.money.copperPennies = auxValue % 10;
+        character.inventory.money.silverShillings += Math.floor(auxValue / 10);
     } else{
-        copperPennies.value = character.bag.money.copperPennies;
+        copperPennies.value = character.inventory.money.copperPennies;
     }
-    if(character.bag.money.silverShillings >= 10){
-        let auxValue = character.bag.money.silverShillings;
+    if(character.inventory.money.silverShillings >= 10){
+        let auxValue = character.inventory.money.silverShillings;
         silverShillings.value = auxValue % 10;
-        character.bag.money.silverShillings = auxValue % 10;
-        character.bag.money.goldCrowns += Math.floor(auxValue / 10);
+        character.inventory.money.silverShillings = auxValue % 10;
+        character.inventory.money.goldCrowns += Math.floor(auxValue / 10);
     } else{
-        silverShillings.value = character.bag.money.silverShillings;
+        silverShillings.value = character.inventory.money.silverShillings;
     }
-    goldCrowns.value = character.bag.money.goldCrowns;
+    goldCrowns.value = character.inventory.money.goldCrowns;
 }
 
-function stockMarket(){
-    let div = document.querySelector("#flexWeapon");// Get the flexbox div
+// Open Weapons
+const weaponCategories = ["Corpo a Corpo", "À Distância", "Escudos(Força 9+)", "Militares Corpo a Corpo(Força 11+)", "Rápidas Corpo a Corpo(Força ou Agilidade 11+)", "Pesadas Corpo a Corpo(Força 13+)"];
+const weaponCategoriesCodes = ["wc1", "wc2", "wc3", "wc4", "wc5", "wc6"];
 
-    let weapons = Object.keys(item.weapon);// Get all the weapons
-    weapons.forEach(function(wpn){// For each weapon(wpn)
+function openWeapons(){
+    let div = document.querySelector("#flexWeapon");// Get the flexbox div
+    if(div.innerHTML == ""){
+        weaponCategories.forEach(function(cat){
+            let button = document.createElement("button");
+            button.className = "weaponCategory";
+            button.innerHTML = cat;
+            button.setAttribute("onclick", `openWeaponCategory("${cat}")`);
+            div.appendChild(button);
+            let catDiv = document.createElement("div");
+            catDiv.id = weaponCategoriesCodes[weaponCategories.indexOf(cat)];
+            div.appendChild(catDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+// Find all weapons from a category
+
+function findWeaponsByCategory(category){
+    const weapons = [];
+    const allWeapons = Object.keys(item.weapon);
+    allWeapons.forEach(function(value){
+        if(item.weapon[value].type == category){
+            weapons.push(value);
+        }
+    });
+    return weapons;
+}
+
+// Open a weapon category
+
+function openWeaponCategory(category){
+    let div = document.querySelector("#" + weaponCategoriesCodes[weaponCategories.indexOf(category)]);
+    if(div.innerHTML == ""){
+        const weapons = findWeaponsByCategory(category);
+        weapons.forEach(function(value){
+            let button = document.createElement("button");
+            button.className = "weapon";
+            button.innerHTML = value;
+            button.setAttribute("onclick", `openWeapon("${value}")`);
+            div.appendChild(button);
+            let weaponDiv = document.createElement("div");
+            weaponDiv.id = item.weapon[value].id;
+            div.appendChild(weaponDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+// Open a weapon
+
+function openWeapon(weapon){
+    let div = document.querySelector("#" + item.weapon[weapon].id);
+    if(div.innerHTML == ""){
         let auxDiv = document.createElement("div");// Create a new div
-        auxDiv.className = "weapon marketStuff";// Div classes => weapon and marketStuff
+        auxDiv.className = "marketStuff";// Div classes => weapon and marketStuff
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
@@ -403,15 +297,15 @@ function stockMarket(){
 
         let auxP = document.createElement("p");// Create a p for the weapon's name
         auxP.draggable = true;
-        auxP.setAttribute("data-value", wpn);
-        auxP.setAttribute("data-price", item.weapon[wpn].price);
+        auxP.setAttribute("data-value", weapon);
+        auxP.setAttribute("data-price", item.weapon[weapon].price);
         auxP.setAttribute("data-type", "weapon");
-        auxP.innerHTML = wpn;// Put the name in the p
+        auxP.innerHTML = weapon;// Put the name in the p
         auxDiv.appendChild(auxP);// Append the p in the div
 
         let auxUl = document.createElement("ul");// Create a ul for the weapon's properties
 
-        let price = item.weapon[wpn].price;// Get the price to be normalized
+        let price = item.weapon[weapon].price;// Get the price to be normalized
         let priceType = "";
         if(price >= 1000){// Normalizing price
             price /= 1000
@@ -433,71 +327,138 @@ function stockMarket(){
         }
         // Setting weapon properties:
         auxUl.innerHTML = `
-            <li>Tipo: ${item.weapon[wpn].type}</li>
-            <li>Dano: ${item.weapon[wpn].damage}</li>
-            <li>Mãos: ${item.weapon[wpn].hands}</li>
-            <li>Propriedades: <a href="#help"> ${item.weapon[wpn].properties.toString()}</a></li>
+            <li>Tipo: ${item.weapon[weapon].type}</li>
+            <li>Dano: ${item.weapon[weapon].damage}</li>
+            <li>Mãos: ${item.weapon[weapon].hands}</li>
+            <li>Propriedades: <a href="#help"> ${item.weapon[weapon].properties.toString()}</a></li>
             <li>Preço: ${price} ${priceType}</li>
-            <li>Disponibilidade: ${item.weapon[wpn].availability}</li>
+            <li>Disponibilidade: ${item.weapon[weapon].availability}</li>
         `
         auxDiv.appendChild(auxUl);// Append ul
-        div.appendChild(auxDiv);// Append div in flexbox div
-    });
-
-    div = document.querySelector("#flexAmmo");
-    
-    let ammo = Object.keys(item.ammo);
-    ammo.forEach(function(val){
-        let auxDiv = document.createElement("div");
-        auxDiv.className = "ammo marketStuff";
-        auxDiv.ondragstart = (event) => {
-            event.dataTransfer.setData("Values", event.target.dataset.value);
-            event.dataTransfer.setData("Prices", event.target.dataset.price);
-            event.dataTransfer.setData("Types", event.target.dataset.type);
-        };
-
-        let auxP = document.createElement("p");
-        auxP.draggable = true;
-        auxP.setAttribute("data-value", val);
-        auxP.setAttribute("data-price", item.ammo[val]);
-        auxP.setAttribute("data-type", "ammo");
-        auxP.innerHTML = val + "(5)";
-        auxDiv.appendChild(auxP);
-
-        let auxUl = document.createElement("ul");
-        let price = item.ammo[val];
-        let priceType = "";
-        if(price >= 1000){
-            price /= 1000
-            priceType = "Coroa(s) de Ouro(co)";
-        }
-        else if(price >= 100){
-            price /= 100
-            priceType = "Xelin(s) de Prata(xp)";
-        }
-        else if(price >= 10){
-            price /= 10
-            priceType = "Centavo(s) de Cobre(cc)";
-        }
-        else if(price === null){
-            price = "";
-        }
-        else{
-            priceType = "Milavos(ma)";
-        }
-        auxUl.innerHTML = `
-            <li>Preço: ${price} ${priceType}</li>
-        `
-        auxDiv.appendChild(auxUl);
         div.appendChild(auxDiv);
-    });
+    } else{
+        div.innerHTML = "";
+    }
+}
 
-    div = document.querySelector("#flexArmor");
-    
-    let armors = Object.keys(item.armor);
-    armors.forEach(function(armor){
+// Open ammo
+
+function openAmmo(){
+    let div = document.querySelector("#flexAmmo");
+    if(div.innerHTML == ""){
+        let ammo = Object.keys(item.ammo);
+        ammo.forEach(function(val){
+            let auxDiv = document.createElement("div");
+            auxDiv.className = "marketStuff";
+            auxDiv.ondragstart = (event) => {
+                event.dataTransfer.setData("Values", event.target.dataset.value);
+                event.dataTransfer.setData("Prices", event.target.dataset.price);
+                event.dataTransfer.setData("Types", event.target.dataset.type);
+            };
+
+            let auxP = document.createElement("p");
+            auxP.draggable = true;
+            auxP.setAttribute("data-value", val);
+            auxP.setAttribute("data-price", item.ammo[val]);
+            auxP.setAttribute("data-type", "ammo");
+            auxP.innerHTML = val + "(5)";
+            auxDiv.appendChild(auxP);
+
+            let auxUl = document.createElement("ul");
+            let price = item.ammo[val];
+            let priceType = "";
+            if(price >= 1000){
+                price /= 1000
+                priceType = "Coroa(s) de Ouro(co)";
+            }
+            else if(price >= 100){
+                price /= 100
+                priceType = "Xelin(s) de Prata(xp)";
+            }
+            else if(price >= 10){
+                price /= 10
+                priceType = "Centavo(s) de Cobre(cc)";
+            }
+            else if(price === null){
+                price = "";
+            }
+            else{
+                priceType = "Milavos(ma)";
+            }
+            auxUl.innerHTML = `
+                <li>Preço: ${price} ${priceType}</li>
+            `
+            auxDiv.appendChild(auxUl);
+            div.appendChild(auxDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+// Open Armors
+const armorCategories = ["Roupas", "Armadura Leve(Força 11+)", "Armadura Média(Força 13+)", "Armadura Pesada(Força 15+)"];
+const armorCategoriesCodes = ["ac1", "ac2", "ac3", "ac4"];
+
+function openArmors(){
+    let div = document.querySelector("#flexArmor");
+    if(div.innerHTML == ""){
+        armorCategories.forEach(function(cat){
+            let button = document.createElement("button");
+            button.className = "armorCategory";
+            button.innerHTML = cat;
+            button.setAttribute("onclick", `openArmorCategory("${cat}")`);
+            div.appendChild(button);
+            let catDiv = document.createElement("div");
+            catDiv.id = armorCategoriesCodes[armorCategories.indexOf(cat)];
+            div.appendChild(catDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+// Finding armors by category
+
+function findArmorsByCategory(category){
+    const armors = [];
+    const allArmors = Object.keys(item.armor);
+    allArmors.forEach(function(value){
+        if(item.armor[value].type == category){
+            armors.push(value);
+        }
+    });
+    return armors;
+}
+
+// Open armor category
+
+function openArmorCategory(category){
+    let div = document.querySelector("#" + armorCategoriesCodes[armorCategories.indexOf(category)]);
+    if(div.innerHTML == ""){
+        const armors = findArmorsByCategory(category);
+        armors.forEach(function(value){
+            let button = document.createElement("button");
+            button.className = "armor";
+            button.innerHTML = value;
+            button.setAttribute("onclick", `openArmor("${value}")`);
+            div.appendChild(button);
+            let armorDiv = document.createElement("div");
+            armorDiv.id = item.armor[value].id;
+            div.appendChild(armorDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+// Open an Armor
+
+function openArmor(armor){
+    let div = document.querySelector("#" + item.armor[armor].id);
+    if(div.innerHTML == ""){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "armor marketStuff";
+        auxDiv.className = "marketStuff";
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
@@ -542,14 +503,39 @@ function stockMarket(){
         `
         auxDiv.appendChild(auxUl);
         div.appendChild(auxDiv);
-    });
+    } else{
+        div.innerHTML = "";
+    }
+}
 
-    div = document.querySelector("#flexPersonalGear");
-    
-    let personalGears = Object.keys(item.personalGear);
-    personalGears.forEach(function(gear){
+// Open Personal Gears
+
+function openPersonalGears(){
+    let div = document.querySelector("#flexPersonalGear");
+    if(div.innerHTML == ""){
+        let personalGears = Object.keys(item.personalGear);
+        personalGears.forEach(function(gear){
+            let button = document.createElement("button");
+            button.innerHTML = gear;
+            button.className = "personalGear";
+            button.setAttribute("onclick", `openPersonalGear("${gear}")`);
+            div.appendChild(button);
+            let gearDiv = document.createElement("div");
+            gearDiv.id = item.personalGear[gear].id;
+            div.appendChild(gearDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+// Open Personal Gear
+
+function openPersonalGear(gear){
+    let div = document.querySelector("#" + item.personalGear[gear].id);
+    if(div.innerHTML == ""){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "personalGear marketStuff";
+        auxDiv.className = "marketStuff";
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
@@ -594,14 +580,37 @@ function stockMarket(){
         `
         auxDiv.appendChild(auxUl);
         div.appendChild(auxDiv);
-    });
+    } else{
+        div.innerHTML = "";
+    }
+}
 
-    div = document.querySelector("#flexClothingAcessory");
-    
-    let clothingAcessories = Object.keys(item.clothingAndAccessory);
-    clothingAcessories.forEach(function(val){
+// Open Clothings or Acessories
+
+function openClothingAcessorys(){
+    let div = document.querySelector("#flexClothingAcessory");
+    if(div.innerHTML == ""){
+        let clothingAcessories = Object.keys(item.clothingAndAccessory);
+        clothingAcessories.forEach(function(val){
+            let button = document.createElement("button");
+            button.innerHTML = val;
+            button.className = "clothingAcessory";
+            button.setAttribute("onclick", `openClothingAcessory("${val}")`);
+            div.appendChild(button);
+            let clothingDiv = document.createElement("div");
+            clothingDiv.id = item.clothingAndAccessory[val].id;
+            div.appendChild(clothingDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+function openClothingAcessory(val){
+    let div = document.querySelector("#" + item.clothingAndAccessory[val].id);
+    if(div.innerHTML == ""){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "clothingAcessory marketStuff";
+        auxDiv.className = "marketStuff";
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
@@ -643,14 +652,35 @@ function stockMarket(){
         `
         auxDiv.appendChild(auxUl);
         div.appendChild(auxDiv);
-    });
+    } else{
+        div.innerHTML = "";
+    }
+}
 
-    div = document.querySelector("#flexTool");
-    
-    let tools = Object.keys(item.tool);
-    tools.forEach(function(tool){
+function openTools(){
+    let div = document.querySelector("#flexTool");
+    if(div.innerHTML == ""){
+        let tools = Object.keys(item.tool);
+        tools.forEach(function(tool){
+            let button = document.createElement("button");
+            button.innerHTML = tool;
+            button.className = "tool";
+            button.setAttribute("onclick", `openTool("${tool}")`);
+            div.appendChild(button);
+            let toolDiv = document.createElement("div");
+            toolDiv.id = item.tool[tool].id;
+            div.appendChild(toolDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+function openTool(tool){
+    let div = document.querySelector("#" + item.tool[tool].id);
+    if(div.innerHTML == ""){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "tool marketStuff";
+        auxDiv.className = "marketStuff";
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
@@ -695,14 +725,35 @@ function stockMarket(){
         `
         auxDiv.appendChild(auxUl);
         div.appendChild(auxDiv);
-    });
+    } else{
+        div.innerHTML = "";
+    }
+}
 
-    div = document.querySelector("#flexFood");
-    
-    let foods = Object.keys(item.food);
-    foods.forEach(function(food){
+function openFoods(){
+    let div = document.querySelector("#flexFood");
+    if(div.innerHTML == ""){
+        let foods = Object.keys(item.food);
+        foods.forEach(function(food){
+            let button = document.createElement("button");
+            button.innerHTML = food;
+            button.className = "food";
+            button.setAttribute("onclick", `openFood("${food}")`);
+            div.appendChild(button);
+            let foodDiv = document.createElement("div");
+            foodDiv.id = item.food[food].id;
+            div.appendChild(foodDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+function openFood(food){
+    let div = document.querySelector("#" + item.food[food].id);
+    if(div.innerHTML == ""){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "food marketStuff";
+        auxDiv.className = "marketStuff";
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
@@ -744,14 +795,35 @@ function stockMarket(){
         `
         auxDiv.appendChild(auxUl);
         div.appendChild(auxDiv);
-    });
+    } else{
+        div.innerHTML = "";
+    }
+}
 
-    div = document.querySelector("#flexAnimal");
-    
-    let animals = Object.keys(item.animal);
-    animals.forEach(function(animal){
+function openAnimals(){
+    let div = document.querySelector("#flexAnimal");
+    if(div.innerHTML == ""){
+        let animals = Object.keys(item.animal);
+        animals.forEach(function(animal){
+            let button = document.createElement("button");
+            button.innerHTML = animal;
+            button.className = "animal";
+            button.setAttribute("onclick", `openAnimal("${animal}")`);
+            div.appendChild(button);
+            let animalDiv = document.createElement("div");
+            animalDiv.id = item.animal[animal].id;
+            div.appendChild(animalDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+function openAnimal(animal){
+    let div = document.querySelector("#" + item.animal[animal].id);
+    if(div.innerHTML == ""){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "animal marketStuff";
+        auxDiv.className = "marketStuff";
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
@@ -830,14 +902,35 @@ function stockMarket(){
         `
         auxDiv.appendChild(auxUl);
         div.appendChild(auxDiv);
-    });
+    } else{
+        div.innerHTML = "";
+    }
+}
 
-    div = document.querySelector("#flexAnimalGear");
-    
-    let animalGears = Object.keys(item.animalGear);
-    animalGears.forEach(function(gear){
+function openAnimalGears(){
+    let div = document.querySelector("#flexAnimalGear");
+    if(div.innerHTML == ""){
+        let animalGears = Object.keys(item.animalGear);
+        animalGears.forEach(function(gear){
+            let button = document.createElement("button");
+            button.innerHTML = gear;
+            button.className = "animalGear";
+            button.setAttribute("onclick", `openAnimalGear("${gear}")`);
+            div.appendChild(button);
+            let gearDiv = document.createElement("div");
+            gearDiv.id = item.animalGear[gear].id;
+            div.appendChild(gearDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+function openAnimalGear(gear){
+    let div = document.querySelector("#" + item.animalGear[gear].id);
+    if(div.innerHTML == ""){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "animalGear marketStuff";
+        auxDiv.className = "marketStuff";
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
@@ -879,14 +972,35 @@ function stockMarket(){
         `
         auxDiv.appendChild(auxUl);
         div.appendChild(auxDiv);
-    });
+    } else{
+        div.innerHTML = "";
+    }
+}
 
-    div = document.querySelector("#flexHireling");
-    
-    let hirelings = Object.keys(item.hireling);
-    hirelings.forEach(function(val){
+function openHirelings(){
+    let div = document.querySelector("#flexHireling");
+    if(div.innerHTML == ""){
+        let hirelings = Object.keys(item.hireling);
+        hirelings.forEach(function(val){
+            let button = document.createElement("button");
+            button.innerHTML = val;
+            button.className = "hireling";
+            button.setAttribute("onclick", `openHireling("${val}")`);
+            div.appendChild(button);
+            let hirelingDiv = document.createElement("div");
+            hirelingDiv.id = item.hireling[val].id;
+            div.appendChild(hirelingDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+function openHireling(val){
+    let div = document.querySelector("#" + item.hireling[val].id);
+    if(div.innerHTML == ""){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "hireling marketStuff";
+        auxDiv.className = "marketStuff";
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
@@ -928,14 +1042,35 @@ function stockMarket(){
         `
         auxDiv.appendChild(auxUl);
         div.appendChild(auxDiv);
-    });
-    
-    div = document.querySelector("#flexPotion");
-    
-    let potions = Object.keys(item.potion);
-    potions.forEach(function(potion){
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+function openPotions(){
+    let div = document.querySelector("#flexPotion");
+    if(div.innerHTML == ""){
+        let potions = Object.keys(item.potion);
+        potions.forEach(function(potion){
+            let button = document.createElement("button");
+            button.innerHTML = potion;
+            button.className = "potion";
+            button.setAttribute("onclick", `openPotion("${potion}")`);
+            div.appendChild(button);
+            let potionDiv = document.createElement("div");
+            potionDiv.id = item.potion[potion].id;
+            div.appendChild(potionDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+function openPotion(potion){
+    let div = document.querySelector("#" + item.potion[potion].id);
+    if(div.innerHTML == ""){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "potion marketStuff";
+        auxDiv.className = "marketStuff";
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
@@ -978,14 +1113,35 @@ function stockMarket(){
         `
         auxDiv.appendChild(auxUl);
         div.appendChild(auxDiv);
-    });
+    } else{
+        div.innerHTML = "";
+    }
+}
 
-    div = document.querySelector("#flexIncantation");
-    
-    let incantations = Object.keys(item.incantation);
-    incantations.forEach(function(val){
+function openIncantations(){
+    let div = document.querySelector("#flexIncantation");
+    if(div.innerHTML == ""){
+        let incantations = Object.keys(item.incantation);
+        incantations.forEach(function(val){
+            let button = document.createElement("button");
+            button.innerHTML = val;
+            button.className = "incantation";
+            button.setAttribute("onclick", `openIncantation("${val}")`);
+            div.appendChild(button);
+            let incantationDiv = document.createElement("div");
+            incantationDiv.id = "i" + item.incantation[val].level;
+            div.appendChild(incantationDiv);
+        });
+    } else{
+        div.innerHTML = "";
+    }
+}
+
+function openIncantation(val){
+    let div = document.querySelector("#i" + item.incantation[val].level);
+    if(div.innerHTML == ""){
         let auxDiv = document.createElement("div");
-        auxDiv.className = "incantation marketStuff";
+        auxDiv.className = "marketStuff";
         auxDiv.ondragstart = (event) => {
             event.dataTransfer.setData("Values", event.target.dataset.value);
             event.dataTransfer.setData("Prices", event.target.dataset.price);
@@ -1027,13 +1183,16 @@ function stockMarket(){
         `
         auxDiv.appendChild(auxUl);
         div.appendChild(auxDiv);
-    });
+    } else{
+        div.innerHTML = "";
+    }
 }
+
 
 shoppingItemsNum = 0;
 totalPrice = 0;
 
-function putItemInShoppingBag(event){
+function putItemInShoppingInventory(event){
     let name = event.dataTransfer.getData("Values");
     let price = parseInt(event.dataTransfer.getData("Prices"));
     let type = event.dataTransfer.getData("Types");
@@ -1046,7 +1205,7 @@ function putItemInShoppingBag(event){
     let removeButton = document.createElement("button");
     removeButton.style.color = "red";
     removeButton.innerHTML = "X";
-    removeButton.setAttribute("onclick", `removeItemFromShoppingBag(${shoppingItemsNum})`);
+    removeButton.setAttribute("onclick", `removeItemFromShoppingInventory(${shoppingItemsNum})`);
 
     shoppingList.appendChild(shoppingItem);
     shoppingItem.appendChild(removeButton);
@@ -1055,7 +1214,7 @@ function putItemInShoppingBag(event){
     shoppingItemsNum++;
 }
 
-function removeItemFromShoppingBag(itemNum){
+function removeItemFromShoppingInventory(itemNum){
     let shoppingList = document.querySelector("#shoppingList");
     let shoppingItem = document.querySelector("#item" + itemNum);
     shoppingList.removeChild(shoppingItem);
@@ -1215,28 +1374,28 @@ function buyItems(){
     } else{
         let difference = totalWallet - totalCost;
         if(difference >= 1000){
-            character.bag.money.goldCrowns = Math.floor(difference / 1000);
-            character.bag.money.silverShillings = Math.floor((difference % 1000) / 100);
-            character.bag.money.copperPennies = Math.floor((difference % 100) / 10);
-            character.bag.money.bits = difference % 10;
+            character.inventory.money.goldCrowns = Math.floor(difference / 1000);
+            character.inventory.money.silverShillings = Math.floor((difference % 1000) / 100);
+            character.inventory.money.copperPennies = Math.floor((difference % 100) / 10);
+            character.inventory.money.bits = difference % 10;
         }
         else if(difference >= 100){
-            character.bag.money.goldCrowns = 0;
-            character.bag.money.silverShillings = Math.floor(difference / 100);
-            character.bag.money.copperPennies = Math.floor((difference % 100) / 10);
-            character.bag.money.bits = difference % 10;
+            character.inventory.money.goldCrowns = 0;
+            character.inventory.money.silverShillings = Math.floor(difference / 100);
+            character.inventory.money.copperPennies = Math.floor((difference % 100) / 10);
+            character.inventory.money.bits = difference % 10;
         }
         else if(difference >= 10){
-            character.bag.money.goldCrowns = 0;
-            character.bag.money.silverShillings = 0;
-            character.bag.money.copperPennies = Math.floor(difference / 10);
-            character.bag.money.bits = difference % 10
+            character.inventory.money.goldCrowns = 0;
+            character.inventory.money.silverShillings = 0;
+            character.inventory.money.copperPennies = Math.floor(difference / 10);
+            character.inventory.money.bits = difference % 10
         }
         else {
-            character.bag.money.goldCrowns = 0;
-            character.bag.money.silverShillings = 0;
-            character.bag.money.copperPennies = 0;
-            character.bag.money.bits = difference;
+            character.inventory.money.goldCrowns = 0;
+            character.inventory.money.silverShillings = 0;
+            character.inventory.money.copperPennies = 0;
+            character.inventory.money.bits = difference;
         }
         let items = Object.keys(priceItemList);
         items.forEach(function(val){
@@ -1245,347 +1404,112 @@ function buyItems(){
             newItem = newItem.slice(0, pos);
             switch(priceItemList[val].type){
                 case "weapon":
-                    if(character.bag.weapons[newItem]){
-                        for(var i = 2; i < 100; i++){
-                            if(!character.bag.weapons[newItem + " " + i.toString()]){
-                                break;
-                            }
-                        }
-                        character.bag.weapons[newItem + " " + i.toString()] = deepCopy(item.weapon[newItem]);
+                    if(character.inventory.weapons[newItem]){
+                        character.inventory.weapons[newItem] = deepCopy(item.weapon[newItem]);
+                        character.inventory.weapons[newItem].quantity = (character.inventory.weapons[newItem].quantity || 1) + 1;
                     } else{
-                        character.bag.weapons[newItem] = deepCopy(item.weapon[newItem]);
+                        character.inventory.weapons[newItem] = deepCopy(item.weapon[newItem]);
                     }
                     break;
                 case "ammo":
-                    if(character.bag.ammo[newItem]){
-                        character.bag.ammo[newItem].quantity += 5;
+                    if(character.inventory.ammo[newItem]){
+                        character.inventory.ammo[newItem].quantity += 5;
                     } else{
-                        character.bag.ammo[newItem] = {
-                            price: item.ammo[newItem],
+                        character.inventory.ammo[newItem] = {
                             quantity: 5
                         }
                     }
                     break;
                 case "armor":
-                    if(character.bag.armors[newItem]){
-                        for(var i = 2; i < 100; i++){
-                            if(!character.bag.armors[newItem + " " + i.toString()]){
-                                break;
-                            }
-                        }
-                        character.bag.armors[newItem + " " + i.toString()] = deepCopy(item.armor[newItem]);
+                    if(character.inventory.armors[newItem]){
+                        character.inventory.armors[newItem] = deepCopy(item.armor[newItem]);
+                        character.inventory.armors[newItem].quantity = (character.inventory.armors[newItem].quantity || 1) + 1;
                     } else{
-                        character.bag.armors[newItem] = deepCopy(item.armor[newItem]);
+                        character.inventory.armors[newItem] = deepCopy(item.armor[newItem]);
                     }
                     break;
                 case "personalGear":
                     if(newItem == "Mochila"){
-                        character.bag.type = "Mochila";
+                        character.inventory.bags.push("Mochila");
                     }
                     else{
-                        if(character.bag.items[newItem]){
-                            for(var i = 2; i < 100; i++){
-                                if(!character.bag.items[newItem + " " + i.toString()]){
-                                    break;
-                                }
-                            }
-                            character.bag.items[newItem + " " + i.toString()] = deepCopy(item.personalGear[newItem]);
+                        if(character.inventory.items[newItem]){
+                            character.inventory.items[newItem] = deepCopy(item.personalGear[newItem]);
+                            character.inventory.items[newItem].quantity = (character.inventory.items[newItem].quantity || 1) + 1;
                         } else{
-                            character.bag.items[newItem] = deepCopy(item.personalGear[newItem]);
+                            character.inventory.items[newItem] = deepCopy(item.personalGear[newItem]);
                         }
                     }
                     break;
                 case "clothingAcessory":
-                    if(character.bag.items[newItem]){
-                        for(var i = 2; i < 100; i++){
-                            if(!character.bag.items[newItem + " " + i.toString()]){
-                                break;
-                            }
-                        }
-                        character.bag.items[newItem + " " + i.toString()] = deepCopy(item.clothingAndAccessory[newItem]);
+                    if(character.inventory.items[newItem]){
+                        character.inventory.items[newItem] = deepCopy(item.clothingAndAccessory[newItem]);
+                        character.inventory.items[newItem].quantity = (character.inventory.items[newItem].quantity || 1) + 1;
                     } else{
-                        character.bag.items[newItem] = deepCopy(item.clothingAndAccessory[newItem]);
+                        character.inventory.items[newItem] = deepCopy(item.clothingAndAccessory[newItem]);
                     }
                     break;
                 case "tool":
-                    if(character.bag.items[newItem]){
-                        for(var i = 2; i < 100; i++){
-                            if(!character.bag.items[newItem + " " + i.toString()]){
-                                break;
-                            }
-                        }
-                        character.bag.items[newItem + " " + i.toString()] = deepCopy(item.tool[newItem]);
+                    if(character.inventory.items[newItem]){
+                        character.inventory.items[newItem] = deepCopy(item.tool[newItem]);
+                        character.inventory.items[newItem].quantity = (character.inventory.items[newItem].quantity || 1) + 1;
                     } else{
-                        character.bag.items[newItem] = deepCopy(item.tool[newItem]);
+                        character.inventory.items[newItem] = deepCopy(item.tool[newItem]);
                     }
                     break;
                 case "food":
-                    if(character.bag.items[newItem]){
-                        for(var i = 2; i < 100; i++){
-                            if(!character.bag.items[newItem + " " + i.toString()]){
-                                break;
-                            }
-                        }
-                        character.bag.items[newItem + " " + i.toString()] = deepCopy(item.food[newItem]);
+                    if(character.inventory.items[newItem]){
+                        character.inventory.items[newItem] = deepCopy(item.food[newItem]);
+                        character.inventory.items[newItem].quantity = (character.inventory.items[newItem].quantity || 1) + 1;
                     } else{
-                        character.bag.items[newItem] = deepCopy(item.food[newItem]);
+                        character.inventory.items[newItem] = deepCopy(item.food[newItem]);
                     }
                     break;
                 case "animal":
-                    if(character.bag.animals[newItem]){
-                        for(var i = 2; i < 100; i++){
-                            if(!character.bag.animals[newItem + " " + i.toString()]){
-                                break;
-                            }
-                        }
-                        character.bag.animals[newItem + " " + i.toString()] = deepCopy(item.animal[newItem]);
+                    if(character.inventory.animals[newItem]){
+                        character.inventory.animals[newItem] = deepCopy(item.animal[newItem]);
+                        character.inventory.animals[newItem].quantity = (character.inventory.animals[newItem].quantity || 1) + 1;
                     } else{
-                        character.bag.animals[newItem] = deepCopy(item.animal[newItem]);
+                        character.inventory.animals[newItem] = deepCopy(item.animal[newItem]);
                     }
                     break;
                 case "animalGear":
-                    if(character.bag.items[newItem]){
-                        for(var i = 2; i < 100; i++){
-                            if(!character.bag.items[newItem + " " + i.toString()]){
-                                break;
-                            }
-                        }
-                        character.bag.items[newItem + " " + i.toString()] = deepCopy(item.animalGear[newItem]);
+                    if(character.inventory.items[newItem]){
+                        character.inventory.items[newItem] = deepCopy(item.animalGear[newItem]);
+                        character.inventory.items[newItem].quantity = (character.inventory.items[newItem].quantity || 1) + 1;
                     } else{
-                        character.bag.items[newItem] = deepCopy(item.animalGear[newItem]);
+                        character.inventory.items[newItem] = deepCopy(item.animalGear[newItem]);
                     }
                     break;
                 case "hireling":
-                    if(character.bag.hirelings[newItem]){
-                        for(var i = 2; i < 100; i++){
-                            if(!character.bag.hirelings[newItem + " " + i.toString()]){
-                                break;
-                            }
-                        }
-                        character.bag.hirelings[newItem + " " + i.toString()] = deepCopy(item.hireling[newItem]);
+                    if(character.inventory.hirelings[newItem]){
+                        character.inventory.hirelings[newItem] = deepCopy(item.hireling[newItem]);
+                        character.inventory.hirelings[newItem].quantity = (character.inventory.hirelings[newItem].quantity || 1) + 1;
                     } else{
-                        character.bag.hirelings[newItem] = deepCopy(item.hireling[newItem]);
+                        character.inventory.hirelings[newItem] = deepCopy(item.hireling[newItem]);
                     }
                     break;
                 case "potion":
-                    newItem = newItem.slice(6, newItem.length());
-                    if(character.bag.items[newItem]){
-                        for(var i = 2; i < 100; i++){
-                            if(!character.bag.items[newItem + " " + i.toString()]){
-                                break;
-                            }
-                        }
-                        character.bag.items[newItem + " " + i.toString()] = deepCopy(item.potion[newItem]);
+                    newItem = newItem.slice(6, newItem.length);
+                    if(character.inventory.items[newItem]){
+                        character.inventory.items[newItem] = deepCopy(item.potion[newItem]);
+                        character.inventory.items[newItem].quantity = (character.inventory.items[newItem].quantity || 1) + 1;
                     } else{
-                        character.bag.items[newItem] = deepCopy(item.potion[newItem]);
+                        character.inventory.items[newItem] = deepCopy(item.potion[newItem]);
                     }
                     break;
                 case "incantation":
-                    newItem = newItem.slice(8, newItem.length());
-                    if(character.bag.items[newItem]){
-                        for(var i = 2; i < 100; i++){
-                            if(!character.bag.items[newItem + " " + i.toString()]){
-                                break;
-                            }
-                        }
-                        character.bag.items[newItem + " " + i.toString()] = deepCopy(item.incantation[newItem]);
+                    newItem = newItem.slice(8, newItem.length);
+                    if(character.inventory.items[newItem]){
+                        character.inventory.items[newItem] = deepCopy(item.incantation[newItem]);
+                        character.inventory.items[newItem].quantity = (character.inventory.items[newItem].quantity || 1) + 1;
                     } else{
-                        character.bag.items[newItem] = deepCopy(item.incantation[newItem]);
+                        character.inventory.items[newItem] = deepCopy(item.incantation[newItem]);
                     }
                     break;
             }
         });
-        if(thereChoices){
-            character = processChoices(character, choices);
-            localStorage.removeItem("choices");
-        }
         localStorage.setItem("character", JSON.stringify(character));
         window.location.href = "character.html";
     }
-}
-
-function processChoices(charact, chs){
-    let newCharacter = deepCopy(charact);
-    newCharacter.status = {
-        strength: 0,
-        agility: 0,
-        intellect: 0,
-        will: 0,
-        perception: 0,
-        defense: null,
-        health: 0,
-        size: null,
-        speed: null,
-        damage: 0,
-        power: 0,
-        insanity: 0,
-        corruption: 0,
-        level: 1
-    }
-    if(chs.backgroundChange){
-        switch(chs.backgroundChange){
-            case "1d6 insanity":
-            case "1d6 insanity+profession":
-            case "1d3 insanity":
-                newCharacter.status.insanity = chs.backgroundInsanity;
-                break;
-            case "1d3 corruption":
-                newCharacter.status.corruption = chs.backgroundCorruption;
-                break;
-            case "1 corruption":
-                newCharacter.status.corruption = 1;
-                break;
-            case "1 insanity":
-                newCharacter.status.insanity = 1;
-                break;
-            case "2 corruption":
-                newCharacter.status.corruption = 2;
-                break;
-            case "1 intellect+1 will+!caste att":
-                newCharacter.status.intellect = 1;
-                newCharacter.status.perception += 1;
-                newCharacter.status.will = 1;
-                break;
-        }
-    }
-    switch(charact.ancestry){
-        case "human":
-            newCharacter.status[chs.raisedAttribute] = 1;
-            switch(chs.raisedAttribute){
-                case "strength":
-                    newCharacter.status.health += 1;
-                    break;
-                case "agility":
-                    newCharacter.status.defense = 11;
-                    break;
-                case "intellect":
-                    newCharacter.status.perception += 1;
-                    break;
-            }
-            break;
-        case "clockwork":
-            switch(chs.purposeChange){
-                case "2 strength/agility":
-                case "2 intellect/will":
-                case "2 agility/intellect":
-                case "2 attribute":
-                    newCharacter.status[chs.purposeChoice] += 2;
-                    switch(chs.purposeChoice){
-                        case "strength":
-                            newCharacter.status.health += 2;
-                            break;
-                        case "intellect":
-                            newCharacter.status.perception += 2;
-                            break;
-                    }
-                    break;
-                case "2 strength":
-                    newCharacter.status.strength += 2;
-                    newCharacter.status.health += 2;
-                    break;
-            }
-            break;
-        case "yerath":
-            if(chs.backgroundChange != "1 intellect+1 will+!caste att"){
-                switch(chs.casteChoice){
-                    case "profession laborer+2 strength+1 will":
-                        newCharacter.status.strength += 2;
-                        newCharacter.status.health += 2;
-                        newCharacter.status.will += 1;
-                        break;
-                    case "profession guide+1 agility+1 perception":
-                        newCharacter.status.agility += 1;
-                        newCharacter.status.perception += 1;
-                        break;
-                    case "profession soldier+2 strength+13 defense":
-                        newCharacter.status.strength += 2;
-                        newCharacter.status.defense = 13;
-                        newCharacter.status.health += 2;
-                        break;
-                }
-            }
-    }
-    switch(charact.novicePath.type){
-        case "warrior":
-            newCharacter.status.health += 5;
-            break;
-        case "rogue":
-            newCharacter.status.health += 3;
-            break;
-        case "magician":
-            newCharacter.status.health += 2;
-            newCharacter.status.power += 1;
-            break;
-        case "priest":
-            newCharacter.status.power += 1;
-            newCharacter.status.health += 4;
-            break;
-    }
-    newCharacter.status[choices.novicePathAttributes[0]] += 1;
-    switch(choices.novicePathAttributes[0]){
-        case "strength":
-            newCharacter.status.health += 1;
-            break;
-        case "agility":
-            if(charact.ancestry != "clockwork" && charact.ancestry != "yerath"){
-                switch(charact.ancestry){
-                    case "human":
-                        if(!newCharacter.status.defense){
-                            newCharacter.status.defense = 10;
-                        }
-                        break;
-                    case "dwarf":
-                        newCharacter.status.defense = 9;
-                        break;
-                    case "changeling":
-                        newCharacter.status.defense = 10;
-                        break;
-                    case "goblin":
-                        newCharacter.status.defense = 12;
-                        break;
-                    case "orc":
-                        newCharacter.status.defense = 10;
-                        break;
-                }
-                newCharacter.status.defense += 1;
-            }
-            break;
-        case "intellect":
-            newCharacter.status.perception += 1;
-            break;
-    }
-    newCharacter.status[choices.novicePathAttributes[1]] += 1;
-    switch(choices.novicePathAttributes[1]){
-        case "strength":
-            newCharacter.status.health += 1;
-            break;
-        case "agility":
-            if(charact.ancestry != "clockwork" && charact.ancestry != "yerath"){
-                switch(charact.ancestry){
-                    case "human":
-                        if(!newCharacter.status.defense){
-                            newCharacter.status.defense = 10;
-                        }
-                        break;
-                    case "dwarf":
-                        newCharacter.status.defense = 9;
-                        break;
-                    case "changeling":
-                        newCharacter.status.defense = 10;
-                        break;
-                    case "goblin":
-                        newCharacter.status.defense = 12;
-                        break;
-                    case "orc":
-                        newCharacter.status.defense = 10;
-                        break;
-                }
-                newCharacter.status.defense += 1;
-            }
-            break;
-        case "intellect":
-            newCharacter.status.perception += 1;
-            break;
-    }
-    return newCharacter;
 }
