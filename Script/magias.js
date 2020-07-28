@@ -2697,12 +2697,14 @@ traditions = {
     },
     "Special": {
         id: "s",
-        "Sentir Magia": {
-            id: 1,
-            description: "Você sabe se existe algum efeito mágico na área e de qual ponto ele é originário.",
-            area: "Uma esfera de 5 metros de raio centrada em um ponto dentro do seu espaço e que permite saber se há algum efeito mágico na área e de que ponto se origina",
-            type: "UT",
-            level: 0
+        spells: {
+            "Sentir Magia": {
+                id: 1,
+                description: "Você sabe se existe algum efeito mágico na área e de qual ponto ele é originário.",
+                area: "Uma esfera de 5 metros de raio centrada em um ponto dentro do seu espaço e que permite saber se há algum efeito mágico na área e de que ponto se origina",
+                type: "UT",
+                level: 0
+            }
         }
     }
 }
