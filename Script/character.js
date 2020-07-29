@@ -418,6 +418,14 @@ function loadEquipment(){
         moneyDiv.id = "money";
         equipments.appendChild(money);
         equipments.appendChild(moneyDiv);
+        
+        let market = document.createElement("button");
+        market.innerText = "Ir para o Mercado";
+        market.className = "market";
+        market.onclick = function(){
+            window.location.href = "market.html";
+        }
+        equipments.appendChild(market);
     } else{
         equipments.innerHTML = "";
     }
@@ -554,7 +562,7 @@ function loadItems(){
             items.appendChild(descriptionDiv);
 
             itemNum++;
-        })
+        });
     } else{
         items.innerHTML = "";
     }
