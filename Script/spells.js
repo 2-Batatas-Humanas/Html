@@ -325,10 +325,13 @@ function nextPage(){
         traditionsChosen.forEach(function(trad){
             character.traditions[trad] = [];
             spellsChosen.forEach(function(spell){
-                character.traditions[trad].push(spell);
+                if(Object.keys(traditions[trad].spells).includes(spell)){
+                    character.traditions[trad].push(spell);
+                }
             });
-        })
+        });
     }
+    console.log(character.traditions);
     localStorage.setItem("character", JSON.stringify(character));
     window.location.href = "character.html";
 }
