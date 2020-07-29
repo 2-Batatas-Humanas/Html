@@ -115,6 +115,10 @@ html, body {
     margin: 7px 0;
 }
 
+.market {
+    color: fuchsia;
+}
+
 .description {
     font-size: smaller;
     color: darkviolet;
