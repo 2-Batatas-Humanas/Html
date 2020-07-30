@@ -45,6 +45,14 @@ function showAttributes(divId, strength, agility, intelligence, will){
     div.appendChild(p4);
 }
 
+function addImageToDiv(divId, src, width){
+    let div = document.querySelector("#" + divId);
+    let image = document.createElement("img");
+    image.src = src;
+    image.width = width;
+    div.appendChild(image);
+}
+
 // Creating Input:
 
 //Checkbox
