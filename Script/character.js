@@ -625,6 +625,13 @@ function loadSpells(){
             tradDiv.id = traditions[trad].id;
             spells.appendChild(tradDiv);
         });
+        let spellPage = document.createElement("button");
+        spellPage.innerHTML = "Alterar ou escolher novas magias";
+        spellPage.className = "spellPage";
+        spellPage.onclick = function(){
+            window.location.href = "spells.html";
+        };
+        spells.appendChild(spellPage);
     } else{
         spells.innerHTML = "";
     }
