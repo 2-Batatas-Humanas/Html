@@ -299,9 +299,11 @@ function removeSpell(trad, spell){
 function displayTradsAndSpells(){
     let trads = Object.keys(character.traditions);
     trads.forEach(function(trad){
-        character.traditions[trad].forEach(function(spell){
-            addSpell(trad, spell);
-        });
+        if(trad != "Especial"){
+            character.traditions[trad].forEach(function(spell){
+                addSpell(trad, spell);
+            });
+        }
     });
 }
 
