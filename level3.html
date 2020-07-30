@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Nível 3</title>
+        <link rel="stylesheet" type="text/css" href="Style/level3.css">
+        <script src="Script/funcoesAuxiliares.js"></script>
+        <script src="Script/trilhas.js"></script>
+        <script src="Script/ancestralidades.js"></script>
+        <script src="Script/level3.js"></script>
+    </head>
+    <body>
+        <h1>Bem vindo ao nível 3!</h1>
+        <label for="expertPath">Por favor, escolha sua trilha de especialista: </label>
+        <select id="expertPath">
+            <optgroup label="Trilhas de Fé">
+                <option value="Clérigo">Clérigo</option>
+                <option value="Druida">Druida</option>
+                <option value="Oráculo">Oráculo</option>
+                <option value="Paladino">Paladino</option>
+            </optgroup>
+            <optgroup label="Trilhas do Poder">
+                <option value="Artífice">Artífice</option>
+                <option value="Bruxa">Bruxa</option>
+                <option value="Feiticeiro">Feiticeiro</option>
+                <option value="Mago">Mago</option>
+            </optgroup>
+            <optgroup label="Trilhas da Trapaça">
+                <option value="Assassino">Assassino</option>
+                <option value="Batedor">Batedor</option>
+                <option value="Ladrão">Ladrão</option>
+                <option value="Warlock">Warlock</option>
+            </optgroup>
+            <optgroup label="Trilhas da Guerra">
+                <option value="Atador de Feitiços">Atador de Feitiços</option>
+                <option value="Combatente">Combatente</option>
+                <option value="Furioso">Furioso</option>
+                <option value="Patrulheiro">Patrulheiro</option>
+            </optgroup>
+            <optgroup label="Trilhas fora do Livro Base">
+                <option value="Highlander">Highlander</option>
+                <option value="Silhouette">Silhouette</option>
+                <option value="SummerChild">SummerChild</option>
+                <option value="Soulthief">Soulthief</option>
+            </optgroup>
+        </select>
+        <button onclick="setExpertPath()">Ok</button>
+        <div id="expertDiv"></div>
+        <button id="nextPage" onclick="nextPage()">Próximo</button>
+    </body>
+</html>
