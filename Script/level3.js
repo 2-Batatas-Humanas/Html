@@ -318,6 +318,44 @@ function nextPage(){
     character.status.power += additions.power;
     character.status.perception += additions.perception;
     character.status.speed += additions.speed;
+    switch(att1){
+        case "strength":
+            character.status.strength++;
+            character.status.health++;
+            break;
+        case "agility":
+            character.status.agility++;
+            if(character.ancestry != "clockwork" || character.ancestry != "yerath"){
+                character.status.defense++;
+            }
+            break;
+        case "intellect":
+            character.status.intellect++;
+            character.status.perception++;
+            break;
+        case "will":
+            character.status.will++;
+            break;
+    }
+    switch(att2){
+        case "strength":
+            character.status.strength++;
+            character.status.health++;
+            break;
+        case "agility":
+            character.status.agility++;
+            if(character.ancestry != "clockwork" || character.ancestry != "yerath"){
+                character.status.defense++;
+            }
+            break;
+        case "intellect":
+            character.status.intellect++;
+            character.status.perception++;
+            break;
+        case "will":
+            character.status.will++;
+            break;
+    }
     localStorage.setItem("character", JSON.stringify(character));
     let langProfChoice = document.querySelector("#langProfChoice");
     if(langProfChoice){
