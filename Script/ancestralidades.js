@@ -992,13 +992,14 @@ function getCharacterObject(characterToBeObject){
     }
     
     // Expert Path
-
-    newObject.expertPath = {
-        type: characterToBeObject.expertPath.pathName,
-        training: characterToBeObject.expertPath.training
-    }
-    if(characterToBeObject.expertPath.choices){
-        newObject.expertPath.choices = characterToBeObject.expertPath.choices;
+    if(characterToBeObject.expertPath){
+        newObject.expertPath = {
+            type: characterToBeObject.expertPath.pathName,
+            training: characterToBeObject.expertPath.training
+        }
+        if(characterToBeObject.expertPath.choices){
+            newObject.expertPath.choices = characterToBeObject.expertPath.choices;
+        }
     }
 
     // Master Path
