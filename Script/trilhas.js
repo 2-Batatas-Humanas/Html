@@ -1136,6 +1136,46 @@ class SummerChild extends Path{
         }
     }
 }
+
+class Soulthief extends Path{
+    constructor(training, level){
+        let talents = {
+            "Roubar Alma(Filch Soul)": "Quando você completa um descanso, você tem um número de almas vindas do Submundo igual a 1 + seu poder. As almas ficam dentro de você até você completar um descanso ou até você liberar elas. Quando você ganha uma alma, você também ganha uma profissão determinada aleatoricamente que fica com você enquanto você tiver a alma.",
+            "Ajuda Espiritual(Spiritual Aid)": "Você pode usar uma ação ou uma ação desencadeada no seu turno para liberar uma alma e ser auxiliado por ela. Escolha uma dos seguintes benefícios:<ul><li>Recupere uma conjuração de uma magia de nível igual ao seu poder - 1 que você aprendeu.</li><li>Cure dano igual ao dobro da sua taxa de cura.</li><li>Faça sua próxima jogada de ataque dentro de 1 rodada com 2 dádivas.</li><li>Mova-se até seu deslocamento sem acionar nenhum ataque de oportunidade.</li></ul>"
+        }
+        if(level >= 6){
+            talents["Saque do Submundo"] = "Quando você fica inconsciente, você pode usar esse talento para liberar sua alma e descer até o Submundo. Se você estiver inconsciente por ter sido incapacitado, você precisa rolar uma dado adicional na jogada do destino e usar o menor número. Se você estiver inconsciente por qualquer outra razão, você precisa jogar um d6 ao final de cada rodada que você permanece inconsciente. Se você tirar um 1, você fica desabilitado e faz jogadas do destino como se estivesse incapacitado. Quando você não estiver mais inconsciente, você recupera outra alma, você pode usar esse talento três vezes e ganha os usos novamente quando completa um descanso";
+        }
+        if(level >= 9){
+            talents["Alma Agitada"] = "No seu turno, se você estiver consciente e pode usar ações, você pode liberar uma alma para aumentar o número de ações que você pode fazer em 1. Por uma rodada, você impõe 1 perdição em jogadas de ataque feitas contra você. Uma vez que você usa esse talento, você precisa esperar 1 minuto para usar de novo.";
+        }
+        super(training, "Soulthief", talents);
+    }
+    level3(){
+        return {
+            health: 3,
+            power: 1,
+            magicChoices: 1,
+            choice: {
+                language: "Alto Arcaico",
+                profession: "any"
+            }
+        }
+    }
+    level6(){
+        return {
+            health: 3
+        }
+    }
+    level9(){
+        return {
+            health: 3,
+            power: 1
+        }
+    }
+}
+
+
 // Trilhas de Mestre:
 
 //Trilhas de Magia:
