@@ -9,64 +9,49 @@ function loadChoices(){
     addPToDiv(id, "O poder do seu personagem é: " + character.status.power);
     if(isEmpty(character.traditions)){
         character.traditions = {};
-        switch(character.status.level){
-            case 1:
-                if(character.novicePath.type == "magician"){
-                    addPToDiv(id, "Você faz 4 escolhas; para cada escolha você adiciona uma tradição ou uma magia.");
-                    addPToDiv(id, "Tendo a trilha de aprendiz Mágico, você tem direito às magias de nível 0 automaticamente quando você pega uma tradição.");
-                    character.traditions["Special"] = ["Sentir Magia"];
-                }
-                else if(character.novicePath.type == "priest"){
-                    addPToDiv(id, "Você faz 2 escolhas; para cada escolha você adiciona uma tradição associada com sua religião ou uma magia.");
-                    switch(character.novicePath.choices.religion){
-                        case "Culto do Novo Deus":
-                            addPToDiv(id, "As Tradições associadas com sua religião são: Celestial, Teurgia, Vida");
-                            break;
-                        case "Ancestrais Anões":
-                            addPToDiv(id, "As Tradições associadas com sua religião são: Batalha, Terra, Vida");
-                            break;
-                        case "Fé Antiga":
-                            addPToDiv(id, "As Tradições associadas com sua religião são: Natureza, Primitiva, Vida");
-                            break;
-                        case "Bruxaria":
-                            addPToDiv(id, "As Tradições associadas com sua religião são: Encantamento, Maldição, Vida");
-                            break;
-                    }
-                }
-                else {
-                    addPToDiv(id, "Não sei como você veio parar aqui, mas pode pegar magias se você quiser :)");
-                }
-                break;
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-                addPToDiv(id, "Desculpa, essa parte não foi feita ainda :(");
-                break
+    }
+    else {
+        displayTradsAndSpells();  
+    }
+    if(character.level == 1){
+        if(character.novicePath.type == "magician"){
+            addPToDiv(id, "Você faz 4 escolhas; para cada escolha você adiciona uma tradição ou uma magia.");
+            addPToDiv(id, "Tendo a trilha de aprendiz Mágico, você tem direito às magias de nível 0 automaticamente quando você pega uma tradição.");
+            character.traditions["Special"] = ["Sentir Magia"];
+        }
+        else if(character.novicePath.type == "priest"){
+            addPToDiv(id, "Você faz 2 escolhas; para cada escolha você adiciona uma tradição associada com sua religião ou uma magia.");
+        }
+        else {
+            addPToDiv(id, "Não sei porque você veio parar aqui, mas pode pegar magias se você quiser :)");
         }
     }
     else {
-        displayTradsAndSpells();
-        if(character.novicePath.type == "magician"){
-            addPToDiv(id, "Tendo a trilha de aprendiz Mágico, você tem direito às magias de nível 0 automaticamente quando você pega uma tradição.");
+        let text = localStorage.getItem("magic");
+        if(text){
+            localStorage.removeItem("magic");
+            addPToDiv(id, text);
+        } else{
+            addPToDiv(id, "Pode pegar magias a vontade :)");
         }
-        switch(character.status.level){
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-                addPToDiv(id, "Desculpa, essa parte não foi feita ainda :(");
-                break
+    }
+    if(character.novicePath.type == "magician"){
+        addPToDiv(id, "Tendo a trilha de aprendiz Mágico, você tem direito às magias de nível 0 automaticamente quando você pega uma tradição.");
+    }
+    else if(character.novicePath.type == "priest"){
+        switch(character.novicePath.choices.religion){
+            case "Culto do Novo Deus":
+                addPToDiv(id, "As Tradições associadas com sua religião são: Celestial, Teurgia, Vida");
+                break;
+            case "Ancestrais Anões":
+                addPToDiv(id, "As Tradições associadas com sua religião são: Batalha, Terra, Vida");
+                break;
+            case "Fé Antiga":
+                addPToDiv(id, "As Tradições associadas com sua religião são: Natureza, Primitiva, Vida");
+                break;
+            case "Bruxaria":
+                addPToDiv(id, "As Tradições associadas com sua religião são: Encantamento, Maldição, Vida");
+                break;
         }
     }
 }
