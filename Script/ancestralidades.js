@@ -56,7 +56,66 @@ class Character{
 
         if(paths.expert){
             switch(paths.expert.type){
-
+                case "Clérigo":
+                    this._expertPath = new Clerigo(paths.expert.training, level);
+                    break;
+                case "Druida":
+                    this._expertPath = new Druida(paths.expert.training, level);
+                    break;
+                case "Oráculo":
+                    this._expertPath = new Oraculo(paths.expert.training, level);
+                    break;
+                case "Paladino":
+                    this._expertPath = new Paladino(paths.expert.training, level);
+                    break;
+                case "Artífice":
+                    this._expertPath = new Artifice(paths.expert.training, level);
+                    break;
+                case "Bruxa":
+                    this._expertPath = new Bruxa(paths.expert.training, level);
+                    break;
+                case "Feiticeiro":
+                    this._expertPath = new Feiticeiro(paths.expert.training, level);
+                    break;
+                case "Mago":
+                    this._expertPath = new Mago(paths.expert.training, level);
+                    break;
+                case "Assassino":
+                    this._expertPath = new Assassino(paths.expert.training, level);
+                    break;
+                case "Batedor":
+                    this._expertPath = new Batedor(paths.expert.training, level);
+                    break;
+                case "Ladrão":
+                    this._expertPath = new Ladrao(paths.expert.training, level, paths.expert.choices);
+                    break;
+                case "Warlock":
+                    this._expertPath = new Warlock(paths.expert.training, level);
+                    break;
+                case "Atador de Feitiços":
+                    this._expertPath = new AtadorDeFeiticos(paths.expert.training, level);
+                    break;
+                case "Combatente":
+                    this._expertPath = new Combatente(paths.expert.training, level, choices);
+                    break;
+                case "Furioso":
+                    this._expertPath = new Furioso(paths.expert.training, level);
+                    break;
+                case "Patrulheiro":
+                    this._expertPath = new Patrulheiro(paths.expert.training, level);
+                    break;
+                case "Highlander":
+                    this._expertPath = new Highlander(paths.expert.training, level);
+                    break;
+                case "Silhouette":
+                    this._expertPath = new Silhouette(paths.expert.training, level);
+                    break;
+                case "SummerChild":
+                    this._expertPath = new SummerChild(paths.expert.training, level);
+                    break;
+                case "Soulthief":
+                    this._expertPath = new Soulthief(paths.expert.training, level);
+                    break;
             }
             this._talents.expertPath = this.expertPath.talents;
         }
@@ -933,6 +992,14 @@ function getCharacterObject(characterToBeObject){
     }
     
     // Expert Path
+
+    newObject.expertPath = {
+        type: characterToBeObject.expertPath.pathName,
+        training: characterToBeObject.expertPath.training
+    }
+    if(characterToBeObject.expertPath.choices){
+        newObject.expertPath.choices = characterToBeObject.expertPath.choices;
+    }
 
     // Master Path
 
