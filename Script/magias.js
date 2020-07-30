@@ -2810,14 +2810,38 @@ traditions = {
                 type: "UT",
                 level: 0
             },
-            "Fogo da Bruxa": {
-                id: "M1",
+            "Fogo das Bruxas": {
+                id: "M2",
                 description: "A bruxa se torna invisível e uma bola de fogo verde surge centrada em um ponto a seu alcance. Quando o efeito termina, a bruxa é teleportada para um espaço aberto de sua escolha dentro de 1 metro da bola de fogo. Quando a bruxa conjura esta magia e, toda vez que utilizar uma ação para se concentrar nela novamente, ela pode mover a bola de fogo até 10 metros e atacar uma criatura a até 1 metro dela. A bruxa faz uma jogada de ataque de Intelecto ou de Vontade contra a Agilidade do alvo. Caso seja bem-sucedida, o alvo sofre 2d6 de dano.",
                 target: "Pessoal",
                 duration: "Concentração, por até 1 minuto de duração",
                 attackRoll20: "O alvo sofre 1d6 de dano adicional.",
                 type: "AT",
                 level: 1
+            },
+            "Enfeitiçar Arma": {
+                id: "M3",
+                description: "O personagem imbui o alvo com energia mágica que permanece pela duração da magia. Quando ataca com a arma alvo, o personagem faz a jogada de ataque com 1 dádiva. O alvo funciona como seu implemento (consulte o Capítulo 7). O personagem pode utilizar uma ação para teleportar o alvo até sua mão, dado que o alvo esteja a até 1,6 km do personagem. O personagem pode utilizar uma ação para tocar o alvo e remover todo o dano causado a ele, mesmo que tenha sido destruído, desde que tenha, pelo menos, um fragmento dele.",
+                target: "Uma arma dentro do alcance",
+                duration: "4 horas",
+                type: "UT",
+                level: 0
+            },
+            "Exorcismo": {
+                id: "M4",
+                description: "Caso o alvo tenha sido encantado, compelido ou assustado, a aflição é removida. Caso o alvo esteja possuído, o exorcista deve se concentrar por 1 minuto, durante este tempo o alvo deve ficar dentro do alcance e fazer uma jogada de ataque de Vontade contra a Vontade da criatura possuidora. Caso obtenha sucesso, a possessão termina, a criatura que possuía o alvo aparece em um espaço aberto a curta distância e fica pasma por 1 rodada.",
+                target: "Uma criatura encantada, compelida, assustada ou possuída a curta distância",
+                attackRoll20: "A criatura possuidora, em vez de pasma, fica atordoada por 1 rodada.",
+                type: "AT",
+                level: 1
+            },
+            "Templo da Fé": {
+                id: "M5",
+                description: "Poder sagrado inunda a área e permanece enquanto dura a magia. Quando uma criatura de fora se move para dentro da área, o templário pode utilizar uma ação desencadeada para se mover até o máximo de seu Deslocamento e atacar com uma arma. Caso seja bem-sucedido, a criatura também fica imobilizada por 1 rodada.",
+                area: "Uma esfera com raio de 5 metros, centrada em um ponto dentro do alcance do templário. Se o ponto é em uma estatueta, relicário ou altar relacionado a religião do templário, o raio se estende até 10 metros.",
+                duration: "1 minuto ou até que o templário abandone a área",
+                type: "UT",
+                level: 0
             }
         }
     }
