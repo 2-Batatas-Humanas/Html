@@ -71,11 +71,9 @@ html, body {
 
 #photo {
     width: 160px;
-    height: 160px;
+    height: auto;
     margin-left: 25px;
     margin-top: 25px;
-    border: 2px solid black;
-    text-align: center;
 }
 
 #addImage {
