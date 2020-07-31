@@ -212,7 +212,7 @@ class Magician extends Path{
     level2(){
         return {
             health: 2,
-            magicChoices: 2
+            magic:"A O mágico faz duas escolhas: descobrir uma tradição ou aprender uma magia, para cada escolha."
         }
     }
 
@@ -220,14 +220,14 @@ class Magician extends Path{
         return {
             health: 2,
             power: 1,
-            magicChoices: 1
+            magic:"O mágico descobre uma tradição ou aprende uma magia."
         }
     }
 
     level8(){
         return {
             health: 2,
-            magicChoices: 1
+            magic:"O mágico descobre uma tradição ou aprende uma magia."
         }
     }
 }
@@ -252,7 +252,7 @@ class Priest extends Path{
     level2(){
         return {
             health: 4,
-            magicChoices: 2
+            magic:"O sacerdote faz duas escolhas: descobre uma nova tradição associado com sua religião ou aprende uma magia, para cada escolha."
         }
     }
 
@@ -260,14 +260,14 @@ class Priest extends Path{
         return {
             health: 4,
             power: 1,
-            magicChoices: 1
+            magic:"O sarcedote aprende uma magia de suas tradições."
         }
     }
 
     level8(){
         return {
             health: 4,
-            magicChoices: 1
+            magic:"O sarcedote aprende uma magia de suas tradições."
         }
     }
 }
@@ -293,7 +293,7 @@ class Clerigo extends Path{
         return {
             health: 4,
             power: 1,
-            magicChoices: 1,
+            magic:"O clérigo descobre uma tradição associada a sua religião como mostrado na tabela de Tradições Religiosas no Capítulo 3 ou aprende uma magia.",
             choice: {
                 language: "new",
                 profession: "academic",
@@ -304,14 +304,14 @@ class Clerigo extends Path{
     level6(){
         return {
             health: 4,
-            magicChoices: 1
+            magic:"O clérigo aprende uma magia."
         }
     }
     level9(){
         return {
             health: 4,
             power: 1,
-            magicChoices: 1
+            magic:"O clérigo aprende uma magia."
         }
     }
 }
@@ -333,7 +333,7 @@ class Druida extends Path{
         return {
             health: 4,
             power: 1,
-            magicChoices: 1,
+            magic:"O druida descobre a tradição Natureza, Primitiva ou Vida, ou aprende uma magia dessas tradições.",
             choices: {
                 language: "new",
                 profession: "religious",
@@ -344,14 +344,14 @@ class Druida extends Path{
     level6(){
         return {
             health: 4,
-            magicChoices: 1
+            magic:"O druída aprende uma magia."
         }
     }
     level9(){
         return {
             health: 4,
             power: 1,
-            magicChoices: 1
+            magic:"O druida aprende uma magia."
         }
     }
 }
@@ -373,7 +373,7 @@ class Oraculo extends Path{
         return {
             health: 3,
             power: 1,
-            magicChoices: 1,
+            magic:"O oráculo descobre uma tradição associada a sua religião como mostrado na tabela Tradições Religiosas no Capítulo 3 ou aprende uma magia.", 
             choice: {
                 language: "new",
                 profession: "any"
@@ -383,14 +383,14 @@ class Oraculo extends Path{
     level6(){
         return {
             health: 3,
-            magicChoices: 1
+            magic:"O oráculo aprende uma magia." 
         }
     }
     level9(){
         return {
             health: 3,
             power: 1,
-            magicChoices: 1
+            magic:"O oráculo aprende uma magia."
         }
     }
 }
@@ -414,20 +414,20 @@ class Paladino extends Path{
         return {
             health: 4,
             power: 1,
-            magicChoices: 1
+            magic:"O paladino descobre uma tradição associada a sua religião como mostrado na tabela Tradições Religiosas no Capítulo 3 ou aprende uma magia."
         }
     }
     level6(){
         return {
             health: 4,
-            magicChoices: 1
+            magic:"O paladino aprende uma magia."
         }
     }
     level9(){
         return {
             health: 4,
             power: 1,
-            magicChoices: 1
+            magic:"O paladino aprende uma magia."
         }
     }
 }
@@ -451,7 +451,7 @@ class Artifice extends Path{
         return {
             health: 2,
             power: 1,
-            magicChoices: 1,
+            magic:"O artífice descobre uma tradição ou aprende uma magia.",
             choice: {
                 language: "new",
                 profession: "academic"
@@ -461,14 +461,14 @@ class Artifice extends Path{
     level6(){
         return {
             health: 2,
-            magicChoices: 1
+            magic:"O artífice descobre uma tradição ou aprende uma magia."
         }
     }
     level9(){
         return {
             health: 2,
             power: 1,
-            magicChoices: 1
+            magic:"O artífice descobre uma tradição ou aprende uma magia."
         }
     }
 }
@@ -490,7 +490,7 @@ class Bruxa extends Path{
         return {
             health: 2,
             power: 1,
-            magicChoices: 1,
+            magic:"A bruxa descobre uma tradição ou aprende uma magia.",
             choice: {
                 language: "new",
                 profession: "academic",
@@ -503,14 +503,14 @@ class Bruxa extends Path{
     level6(){
         return {
             health: 2,
-            magicChoices: 1
+            magic:" A bruxa descobre uma tradição ou aprende uma magia."
         }
     }
     level9(){
         return {
             health: 2,
             power: 1,
-            magicChoices: 1
+            magic:"A bruxa descobre uma tradição ou aprende uma magia."
         }
     }
 }
@@ -533,20 +533,20 @@ class Feiticeiro extends Path{
         return {
             health: 2,
             power: 1,
-            magicChoices: 1
+            magic:" O feiticeiro descobre uma tradição ou aprende uma magia."
         }
     }
     level6(){
         return {
             health: 2,
-            magicChoices: 1
+            magic:"O feiticeiro descobre uma tradição ou aprende uma magia."
         }
     }
     level9(){
         return {
             health: 2,
             power: 1,
-            magicChoices: 1
+            magic:"O feiticeiro descobre uma tradição ou aprende uma magia."
         }
     }
 }
@@ -568,7 +568,7 @@ class Mago extends Path{
         return {
             health: 2,
             power: 1,
-            magicChoices: 1,
+            magic:"O mago descobre uma tradição ou aprende uma magia.",
             choice: {
                 language: "new",
                 profession: "academic"
@@ -578,14 +578,14 @@ class Mago extends Path{
     level6(){
         return {
             health: 2,
-            magicChoices: 1,
+            magic:"O mago descobre uma tradição ou aprende uma magia.",
         }
     }
     level9(){
         return {
             health: 2,
             power: 1,
-            magicChoices: 1,
+            magic:"O mago descobre uma tradição ou aprende uma magia.",
         }
     }
 }
@@ -829,7 +829,7 @@ class Warlock extends Path{
         return {
             health: 2,
             power: 1,
-            magicChoices: 1,
+            magic:"O warlock descobre uma tradição ou aprende uma magia.",
             choice: {
                 language: "new",
                 profession: "criminal"
@@ -839,14 +839,14 @@ class Warlock extends Path{
     level6(){
         return {
             health: 2,
-            magicChoices: 1
+            magic:"O warlock descobre uma tradição ou aprende uma magia."
         }
     }
     level9(){
         return {
             health: 2,
             power: 1,
-            magicChoices: 1
+            magic:"O warlock descobre uma tradição ou aprende uma magia."
         }
     }
 }
@@ -868,21 +868,21 @@ class AtadorDeFeiticos extends Path{
         return {
             health: 3,
             power: 1,
-            magicChoices: 1,
+            magic:"O atador de feitiços descobre uma tradição ou aprende uma magia.",
             spell: "Enfeitiçar Arma"
         }
     }
     level6(){
         return {
             health: 3,
-            magicChoices: 1
+            magic:"O atador de feitiços descobre uma tradição ou aprende uma magia."
         }
     }
     level9(){
         return {
             health: 3,
             power: 1,
-            magicChoices: 1
+            magic:"O atador de feitiços descobre uma tradição ou aprende uma magia."
         }
     }
 }
@@ -1031,7 +1031,7 @@ class Highlander extends Path{
         }
         if(level >= 9){
             talents["Maestria em Armas Pesadas(Heavy Weapon Mastery)"] = "Quando empunhando uma arma pesada, você tem mais 1 de defesa. Além disso, seus ataques com armas pesadas causam 1d6 de dano extra";
-            talents["Bater o Pé no Chão(Plant your Feet)"] = "Quando um um efeito iria te mover sem te teleportar, você pode escolher não se mover.";
+            talents["Bater o Pé no Chão(Plant your Feet)"] = "Qua0ndo um um efeito iria te mover sem te teleportar, você pode escolher não se mover.";
         }
         super(training, "Highlander", talents);
     }
@@ -1076,7 +1076,7 @@ class Silhouette extends Path{
         return {
             health: 3,
             power: 1,
-            magicChoices: 1,
+            magic:"Você descobre a tradição da Sombra ou você aprende uma magia de sombra.",
             choice: {
                 language: "new",
                 profession: "any"
@@ -1086,14 +1086,14 @@ class Silhouette extends Path{
     level6(){
         return {
             health: 3,
-            magicChoices: 1
+            magic:"Você aprende uma magia."
         }
     }
     level9(){
         return {
             health: 3,
             power: 1,
-            magicChoices: 1
+            magic:"Você aprende uma magia."
         }
     }
 }
@@ -1115,7 +1115,7 @@ class SummerChild extends Path{
         return {
             health: 4,
             power: 1,
-            magicChoices: 1,
+            magic:"Escolha uma das seguintes opções:<b>Descubra as tradições de encantamento, fey ou fogo.<b>Aprenda uma magia de encantamento, fey ou fogo.",
             choice: {
                 language: "new",
                 profession: "artist"
@@ -1125,14 +1125,14 @@ class SummerChild extends Path{
     level6(){
         return {
             health: 4,
-            magicChoices: 1
+            magic:"Você aprende uma magia."
         }
     }
     level9(){
         return {
             health: 4,
             power: 1,
-            magicChoices: 1
+            magic:"Você aprende uma magia."
         }
     }
 }
@@ -1155,7 +1155,7 @@ class Soulthief extends Path{
         return {
             health: 3,
             power: 1,
-            magicChoices: 1,
+            magic:"Você descobre a tradição de alma ou aprende uma magia de alma.",
             choice: {
                 language: "Alto Arcaico",
                 profession: "any"
