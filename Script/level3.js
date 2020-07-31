@@ -112,11 +112,11 @@ function getSpecifications(adds, path){
     }
     if(adds.perception){
         additions.perception = adds.perception;
-        addPToDiv(id, "Seu poder aumentou em " + adds.perception);
+        addPToDiv(id, "Sua percepção aumentou em " + adds.perception);
     }
     if(adds.speed){
         additions.speed = adds.speed;
-        addPToDiv(id, "Seu poder aumentou em " + adds.speed);
+        addPToDiv(id, "Seu deslocamento aumentou em " + adds.speed);
     }
 
     if(path == "Ladrão"){
