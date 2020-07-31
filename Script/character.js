@@ -194,7 +194,23 @@ function loadCharacterData() {
             image.src = "Images/heliodora.jpeg";
             break;
         default:
-
+            if(character instanceof Human){
+                image.src = "Images/humanoGenerico.jpg"
+            } else if(character instanceof Dwarf){
+                image.src = "Images/anaoGenerico.jpg"
+            } else if(character instanceof Clockwork){
+                image.src = "Images/automatoGenerico.jpg"
+            } else if(character instanceof Changeling){
+                image.src = "Images/changelingGenerico.jpg"
+            } else if(character instanceof Goblin){
+                image.src = "Images/goblinGenerico.jpg"
+            } else if(character instanceof Orc){
+                image.src = "Images/orcGenerico.jpg"
+            } else if(character instanceof Yerath){
+                image.src = "Images/yerathGenerico.png"
+            } else{
+                image.src = "Images/desconhecido.jpg"
+            }
     }
 
 }
