@@ -2847,6 +2847,29 @@ traditions = {
     }
 }
 
+function bubbleSort(arr){
+    let indexArray = [];
+    for(let i = 0; i < arr.length; i++){
+        indexArray.push(i);
+    }
+    let changed = true;
+    while(changed){
+        changed = false;
+        for(let i = 0; i < arr.length - 1; i++){
+            if(arr[i] > arr[i + 1]){
+                let a = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = a;
+                let b = indexArray[i];
+                indexArray[i] = indexArray[i + 1];
+                indexArray[i + 1] = b;
+                changed = true;
+            }
+        }
+    }
+    return indexArray;
+}
+
 class Spell{
     constructor(tradition, name, characterPower){
         if(tradition in traditions && name in traditions[tradition].spells){
@@ -2901,6 +2924,18 @@ class Spell{
                 return 2;
         }
             return 1;
+    }
+    static orderSpellsByTradition(trad, spells){
+        let levelArray = [];
+        for(let i = 0; i < spells.length; i++){
+            levelArray[i] = parseInt(traditions[trad].spells[spells[i]].level);
+        }
+        let rightOrder = bubbleSort(levelArray);
+        let orderedArray = [];
+        for(let i = 0; i < spells.length; i++){
+            orderedArray[i] = spells[rightOrder[i]];
+        }
+        return orderedArray;
     }
 }
 
