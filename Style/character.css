@@ -91,7 +91,7 @@ html, body {
 */
 
 #mostImportantCharacteristics input {
-    width: 15px;
+    width: 30px;
 }
 
 #mostImportantCharacteristics > * {
@@ -122,6 +122,14 @@ html, body {
 .description {
     font-size: smaller;
     color: darkviolet;
+}
+
+.restoreUsesButton {
+    color: firebrick;
+}
+
+.useButton {
+    color: sienna;
 }
 
 .tradition {
