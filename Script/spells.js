@@ -13,11 +13,10 @@ function loadChoices(){
     else {
         displayTradsAndSpells();  
     }
-    if(character.level == 1){
+    if(character.status.level == 1){
         if(character.novicePath.type == "magician"){
             addPToDiv(id, "Você faz 4 escolhas; para cada escolha você adiciona uma tradição ou uma magia.");
-            addPToDiv(id, "Tendo a trilha de aprendiz Mágico, você tem direito às magias de nível 0 automaticamente quando você pega uma tradição.");
-            character.traditions["Special"] = ["Sentir Magia"];
+            character.traditions["Especial"] = ["Sentir Magia"];
         }
         else if(character.novicePath.type == "priest"){
             addPToDiv(id, "Você faz 2 escolhas; para cada escolha você adiciona uma tradição associada com sua religião ou uma magia.");
@@ -316,9 +315,9 @@ function nextPage(){
                     character.traditions[trad].push(spell);
                 }
             });
+            character.traditions[trad] = Spell.orderSpellsByTradition(trad, character.traditions[trad]);
         });
     }
-    console.log(character.traditions);
     localStorage.setItem("character", JSON.stringify(character));
     window.location.href = "character.html";
 }
