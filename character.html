@@ -17,6 +17,9 @@
                     <div id="photo">
                         <p id="addImage">+</p>
                     </div>
+                    <label>Vida atual:</label>
+                    <meter id="healthNow" min="0"></meter>
+                    <output id="numberHealthNow"></output>
                 </div>
                 <div id="text">
                     <p id="name"></p>
@@ -30,27 +33,27 @@
             <div id="mostImportantCharacteristics">
                 <div id="insanityDiv">
                     <p>Insanidade</p>
-                    <input id="insanity" type="text">
+                    <input oninput="changeInsanity(this.value)" id="insanity" type="number" min="0">
                 </div>
                 <div id="corruptionDiv">
                     <p>Corrupção</p>
-                    <input id="corruption" type="text">
+                    <input oninput="changeCorruption(this.value)" id="corruption" type="number" min="0">
                 </div>
                 <div id="powerDiv">
                     <p>Poder</p>
-                    <input id="power" type="text">
+                    <input id="power" type="number" min="0" readonly>
                 </div>
                 <div id="defenseDiv">
                     <p>Defesa</p>
-                    <input id="defense" type="text">
+                    <input oninput="changeDefense(this.value)" id="defense" type="number" min="0">
                 </div>
                 <div id="damageDiv">
                     <p>Dano</p>
-                    <input id="damage" type="text">
+                    <input oninput="changeDamage(this.value)" id="damage" type="number" min="0">
                 </div>
                 <div id="healingRateDiv">
                     <p>Taxa de Cura</p>
-                    <input id="healingRate" type="text">
+                    <input id="healingRate" type="number" min="0" readonly>
                 </div>
             </div>
             <div id="extras">
