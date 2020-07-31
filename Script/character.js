@@ -3,11 +3,42 @@ if(!characterLocalStorage){
     alert("Crie um personagem primeiro!");
     window.location.href = "index.html";
 }
+
+// For people who have more than 1 character:
+currentCharacter = "1";
+character2LocalStorage = localStorage.getItem("character2");
+
+function changeCurrentCharacter(){
+    if(currentCharacter == "1"){
+        localStorage.setItem("current", "2");
+    } else{
+        localStorage.setItem("current", "1");
+    }
+    window.location.reload();
+}
+
 character = getCharacter(characterLocalStorage);
 
-console.log(character)
-
 function loadCharacterData() {
+    if(character2LocalStorage){
+        currentCharacter = localStorage.getItem("current");
+        if(currentCharacter){
+            if(currentCharacter == "2"){
+                characterLocalStorage = JSON.parse(character2LocalStorage);
+                character = getCharacter(characterLocalStorage);
+            }
+        } else{
+            localStorage.setItem("current", "1");
+            currentCharacter = "1";
+        }
+        let divExtras = document.querySelector("#extras");
+        let button = document.createElement("button");
+        button.innerHTML = "Trocar Personagem";
+        button.className = "changeCharacterButton";
+        button.onclick = changeCurrentCharacter;
+        divExtras.appendChild(button);
+    }
+    console.log(character);
     let name = document.querySelector("#name");
     name.innerHTML = character.name;
     let level = document.querySelector("#level");
@@ -71,6 +102,8 @@ function loadCharacterData() {
     damage.value = character.damage;
     let healingRate = document.querySelector("#healingRate");
     healingRate.value = character.healingRate;
+
+    showHealth()
 
     let strength = document.querySelector("#strength");
     strength.innerHTML += character.strength + "(";
@@ -158,6 +191,17 @@ function loadInfo(){
         let background = document.createElement("p");
         background.innerHTML = "Antecedente: " + character.background;
         infoDiv.appendChild(background);
+        let size = document.createElement("p");
+        size.innerHTML = "Tamanho: ";
+        if(character.size == 0.5){
+            size.innerHTML += "1/2";
+        } else if(character.size == 0.25){
+            size.innerHTML += "1/4";
+        }
+        else {
+            size.innerHTML += character.size;
+        }
+        infoDiv.appendChild(size);
         if(character instanceof Human){
             let appearance = document.createElement("p");
             appearance.innerHTML = "Aparência: " + character.appearance;
@@ -625,6 +669,11 @@ function loadSpells(){
             tradDiv.id = traditions[trad].id;
             spells.appendChild(tradDiv);
         });
+        let restoreUses = document.createElement("button");
+        restoreUses.innerHTML = "Restaurar usos de todas as magias";
+        restoreUses.className = "restoreUsesButton";
+        restoreUses.onclick = restoreAllUses;
+        spells.appendChild(restoreUses);
         let spellPage = document.createElement("button");
         spellPage.innerHTML = "Alterar ou escolher novas magias";
         spellPage.className = "spellPage";
@@ -656,7 +705,7 @@ function loadTradition(trad){
 }
 
 const addToDiv = function(att, name, spellObj, id){
-    if(spellObj[att]){
+    if(spellObj[att] || spellObj[att] === 0){
         addPToDiv(id, name + ": " + spellObj[att]);
     }
 }
@@ -671,10 +720,97 @@ function loadSpell(trad, spell){
         for(let i = 0; i < atts.length; i++){
             addToDiv(atts[i], names[i], traditions[trad].spells[spell], id);
         }
+        addPToDiv(id, "Máximo de usos: " + Spell.getMaxUses(character.power, traditions[trad].spells[spell].level));
+        let remainingUses = document.createElement("p");
+        remainingUses.innerHTML = "Usos Restantes: " + (Spell.getMaxUses(character.power, traditions[trad].spells[spell].level) - character.magicUses[spell]);
+        remainingUses.id = "remainingUses" + traditions[trad].id + traditions[trad].spells[spell].id;
+        spellDiv.appendChild(remainingUses);
+        let useButton = document.createElement("button");
+        useButton.innerHTML = "Usar magia";
+        useButton.className = "useButton";
+        useButton.setAttribute("onclick", `useSpell("${trad}", "${spell}")`);
+        spellDiv.appendChild(useButton);
+        let restoreUsesButton = document.createElement("button");
+        restoreUsesButton.innerHTML = "Restaurar Usos";
+        restoreUsesButton.className = "restoreUsesButton";
+        restoreUsesButton.setAttribute("onclick", `restoreUsesSpell("${trad}", "${spell}")`);
+        spellDiv.appendChild(restoreUsesButton);
     } else{
         spellDiv.innerHTML = "";
     }
 }
+
+function useSpell(trad, spell){
+    if(character.magicUses[spell] < Spell.getMaxUses(character.power, traditions[trad].spells[spell].level)){
+        character.useSpell(spell);
+        let remainingUses = document.querySelector("#remainingUses" + traditions[trad].id + traditions[trad].spells[spell].id);
+        remainingUses.innerHTML = "Usos Restantes: " + (Spell.getMaxUses(character.power, traditions[trad].spells[spell].level) - character.magicUses[spell]);
+    } else{
+        alert("Você não tem mais usos dessa magia. Use o botão Restaurar Usos");
+    }
+}
+
+function restoreUsesSpell(trad, spell){
+    character.restoreUsesSpell(spell);
+    let remainingUses = document.querySelector("#remainingUses" + traditions[trad].id + traditions[trad].spells[spell].id);
+    remainingUses.innerHTML = "Usos Restantes: " + (Spell.getMaxUses(character.power, traditions[trad].spells[spell].level) - character.magicUses[spell]);
+}
+
+function restoreAllUses(){
+    let spells = Object.keys(character.magicUses);
+    spells.forEach(function(spell){
+        character.restoreUsesSpell(spell);
+    });
+    let trads = Object.keys(character.traditions);
+    trads.forEach(function(trad){
+        character.traditions[trad].forEach(function(spell){
+            let remainingUses = document.querySelector("#remainingUses" + traditions[trad].id + traditions[trad].spells[spell].id);
+            if(remainingUses){
+                remainingUses.innerHTML = "Usos Restantes: " + (Spell.getMaxUses(character.power, traditions[trad].spells[spell].level) - character.magicUses[spell]);
+            }
+        });
+    })
+
+}
+
+// Changing Characteristics Values:
+
+function changeInsanity(insanity){
+    character.insanity = parseInt(insanity);
+}
+
+function changeCorruption(corruption){
+    character.corruption = parseInt(corruption);
+}
+
+function changeDefense(defense){
+    character.defense = parseInt(defense);
+}
+
+function changeDamage(damage){
+    if(parseInt(damage) <= character.health){
+        character.damage = parseInt(damage);
+        showHealth();
+    } else{
+        let damage = document.querySelector("#damage");
+        damage.value = character.damage;
+    }
+}
+
+// Showing character actual health(health - damage)
+
+function showHealth(){
+    let healthNow = document.querySelector("#healthNow");
+    let numberHealthNow = document.querySelector("#numberHealthNow");
+    healthNow.low = character.health/5;
+    healthNow.high = character.health/2 + 1;
+    healthNow.optimum = character.health;
+    healthNow.max = character.health;
+    healthNow.value = character.health - character.damage;
+    numberHealthNow.innerHTML = character.health - character.damage;
+}
+
+// Adding Level:
 
 function addLevel(){
     switch(character.level){
@@ -698,5 +834,15 @@ function addLevel(){
             break;
         case 9:
             break;
+    }
+}
+
+// Saving changes to character before it leaves the page:
+
+onbeforeunload = function(){
+    if(currentCharacter == "1"){
+        localStorage.setItem("character", JSON.stringify(getCharacterObject(character)));
+    } else{
+        localStorage.setItem("character2", JSON.stringify(getCharacterObject(character)));
     }
 }
