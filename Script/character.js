@@ -174,6 +174,29 @@ function loadCharacterData() {
     speed.innerHTML += character.speed;
     let health = document.querySelector("#health");
     health.innerHTML += character.health;
+
+    let image = document.querySelector("#characterImage");
+
+    switch(character.name){
+        case "Sucata":
+            image.src = "Images/sucata.jpeg";
+            break;
+        case "Kaigara":
+            image.src = "Images/kaigara.jpeg";
+            break;
+        case "Kida":
+            image.src = "Images/kida.jpeg";
+            break;
+        case "Aitusa":
+            image.src = "Images/aitusa.jpeg";
+            break;
+        case "Heliodora":
+            image.src = "Images/heliodora.jpeg";
+            break;
+        default:
+
+    }
+
 }
 
 function loadInfo(){
