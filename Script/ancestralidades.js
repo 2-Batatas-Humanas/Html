@@ -141,7 +141,17 @@ class Character{
             });
             this._magicUses = uses;
         } else {
-            this._magicUses = magicUses;
+            let uses = magicUses;
+            let trads = Object.keys(this.traditions);
+            let tradsObj = this.traditions;
+            trads.forEach(function(trad){
+                tradsObj[trad].forEach(function(spell){
+                    if(!uses[spell]){
+                        uses[spell] = 0;
+                    }
+                });
+            });
+            this._magicUses = uses;
         }
     }
     // Most likely immutable properties
