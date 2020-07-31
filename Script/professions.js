@@ -191,7 +191,7 @@ function nextPage(){
                 character.professions.push(warriorProf);
                 break;
             case "rogue":
-                if(choices.rogueProfLangChoice){
+                if(choices.rogueProfLangChoice === "profession"){
                     let rogueProf = document.querySelector("#novicePathProf").value
                     if(rogueProf === ""){
                         alert("Coloque o nome da profissão da trilha de aprendiz");
