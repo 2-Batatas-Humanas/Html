@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Modificar Personagem</title>
+        <link rel="stylesheet" type="text/css" href="Style/modify.css">
+        <script src="Script/magias.js"></script>
+        <script src="Script/funcoesAuxiliares.js"></script>
+        <script src="Script/trilhas.js"></script>
+        <script src="Script/ancestralidades.js"></script>
+        <script src="Script/modify.js"></script>
+    </head>
+    <body>
+        <div id="mainDiv">
+            <div id="part1">
+                <label for="name">Nome:</label>
+                <input type="text" id="name">
+                <br>
+                <label for="insanity">Insanidade:</label>
+                <input type="number" id="insanity">
+                <br>
+                <label for="corruption">Corrupção:</label>
+                <input type="number" id="corruption">
+                <br>
+                <label for="defense">Defesa:</label>
+                <input type="number" id="defense">
+                <br>
+                <label for="damage">Dano:</label>
+                <input type="number" id="damage">
+                <br>
+                <label for="strength">Força:</label>
+                <input type="number" id="strength">
+                <br>
+                <label for="agility">Agilidade:</label>
+                <input type="number" id="agility">
+                <br>
+                <label for="intellect">Intelecto:</label>
+                <input type="number" id="intellect">
+                <br>
+                <label for="will">Vontade:</label>
+                <input type="number" id="will">
+                <br>
+                <label for="perception">Percepção:</label>
+                <input type="number" id="perception">
+                <br>
+                <label for="speed">Deslocamento:</label>
+                <input type="number" id="speed">
+                <br>
+                <label for="health">Saúde:</label>
+                <input type="number" id="health">
+                <br>
+            </div>
+            <div id="part2">
+                <label for="changeOptions">Mudar outras coisas: </label>
+                <select id="changeOptions" onchange="changeOption(this)">
+                    <option value="info">Informações Gerais</option>
+                    <option value="talents">Talentos</option>
+                    <option value="equipment">Equipamento</option>
+                </select>
+                <div id="changeDiv">
+                    <label for="age">Idade:</label>
+                    <input id="age" type="number">
+                    <br>
+                    <label for="personality">Personalidade:</label>
+                    <input id="personality" type="text">
+                    <br>
+                    <label for="religion">Religião</label>
+                    <input id="religion" type="text">
+                    <br>
+                    <label for="background">Antecedente:</label>
+                    <input id="background" type="text">
+                    <br>
+                    <label for="size">Tamanho:</label>
+                    <select id="size">
+                        <option value="0.25">1/4</option>
+                        <option value="0.5">1/2</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                    <ul id="professions"></ul>
+                    <div id="language"></div>
+                </div>
+            </div>
+        </div>
+        <script>loadCharacterData()</script>
+    </body>
+</html>
