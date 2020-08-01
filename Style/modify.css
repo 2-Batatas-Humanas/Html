@@ -1,0 +1,23 @@
+input {
+    margin-bottom: 20px;
+}
+
+#changeDiv {
+    margin-top: 20px;
+}
+
+#mainDiv {
+    display: flex;
+    flex-flow: row wrap;
+    border: 2px solid black;
+}
+
+#part1 {
+    margin: 60px;
+    height: 80vh;
+}
+
+#part2 {
+    float: right;
+    margin: 60px;
+}
