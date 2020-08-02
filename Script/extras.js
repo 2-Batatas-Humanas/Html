@@ -643,6 +643,25 @@ function processChoices(charact, chs){
                     newCharacter.status.health += 2;
                     break;
             }
+            switch(chs.formChange){
+                case "-5 health+0.5 size":
+                    newCharacter.status.health -= 5;
+                    newCharacter.status.size = 0.5;
+                    break;
+                case "0.5 size":
+                    newCharacter.status.size = 0.5;
+                    break;
+                case "2 size+-2 speed+-2 defense":
+                    newCharacter.status.size = 2;
+                    newCharacter.status.speed = 6;
+                    newCharacter.status.defense = 11;
+                    break;
+                case "2 size+2 speed+-3 defense":
+                    newCharacter.status.size = 2;
+                    newCharacter.status.speed = 10;
+                    newCharacter.status.defense = 11;
+                    break;
+            }
             break;
         case "yerath":
             if(chs.backgroundChange != "1 intellect+1 will+!caste att"){
