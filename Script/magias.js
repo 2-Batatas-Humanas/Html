@@ -1146,8 +1146,8 @@ traditions = {
             "Bolas de Detonação": {
                 id: "M15",
                 description: "Você joga bolas de metal no chão, deixando elas livres para rolarem até o alvo. Faça uma jogada de ataque de intelecto com 1 dádiva contra a agilidade do alvo. Se for bem-sucedido, as bolas rolam para cobrir o corpo ou a superfície do alvo e ficam lá por 1 rodada. Enquanto coberto por bolas, o alvo fica desabilitado e lento. Quando o efeito acaba, as bolas explodem, dando 3d6 de dano ao alvo e tudo dentro de 1 metro dele. Uma criatura na área pode fazer um teste de desafio de agilidade e tomar somente metade do dano em um sucesso.",
-                target: "Uma criatura ou objecto no chão dentro de alcance médio",
-                attackRoll20: "O alvo toma 1d6 de dano",
+                target: "Uma criatura ou objecto no chão dentro de alcance curto",
+                attackRoll20: "O alvo toma 1d6 de dano adicional.",
                 type: "AT",
                 level: 2
             },
