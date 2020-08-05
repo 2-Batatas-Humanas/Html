@@ -18,6 +18,10 @@ input {
 }
 
 #part2 {
-    float: right;
     margin: 60px;
+    max-width: 60%;
+}
+
+img {
+    cursor: pointer;
 }
