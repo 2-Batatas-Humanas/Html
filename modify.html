@@ -57,32 +57,10 @@
                     <option value="talents">Talentos</option>
                     <option value="equipment">Equipamento</option>
                 </select>
-                <div id="changeDiv">
-                    <label for="age">Idade:</label>
-                    <input id="age" type="number">
-                    <br>
-                    <label for="personality">Personalidade:</label>
-                    <input id="personality" type="text">
-                    <br>
-                    <label for="religion">Religião</label>
-                    <input id="religion" type="text">
-                    <br>
-                    <label for="background">Antecedente:</label>
-                    <input id="background" type="text">
-                    <br>
-                    <label for="size">Tamanho:</label>
-                    <select id="size">
-                        <option value="0.25">1/4</option>
-                        <option value="0.5">1/2</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                    <ul id="professions"></ul>
-                    <div id="language"></div>
-                </div>
+                <div id="changeDiv"></div>
             </div>
         </div>
+        <button onclick="saveChanges()">Salvar todas as mudanças e voltar para o perfil</button>
         <script>loadCharacterData()</script>
     </body>
 </html>
