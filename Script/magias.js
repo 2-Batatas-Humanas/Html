@@ -2842,6 +2842,15 @@ traditions = {
                 duration: "1 minuto ou até que o templário abandone a área",
                 type: "UT",
                 level: 0
+            },
+            "Comandar Mortos-Vivos": {
+                id: "M6",
+                description: "O necromante faz uma jogada de ataque de Intelecto contra a Vontade do alvo. Caso obtenha sucesso, o alvo fica compelido pela duração da magia.",
+                target: "Um morto-vivo a curta distância",
+                duration: "1 minuto",
+                attackRoll20: "O necromante recupera a conjuração desta magia.",
+                type: "AT",
+                level: 1
             }
         }
     }
