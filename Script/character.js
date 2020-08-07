@@ -673,6 +673,12 @@ function loadHirelings(){
 function loadMoney(){
     let money = document.querySelector("#money");
     if(money.innerHTML == ""){
+        let modifyImage = document.createElement("img");
+        modifyImage.src = "Images/edit.png";
+        modifyImage.width = 20;
+        modifyImage.title = "Editar dinheiro";
+        modifyImage.onclick = modifyMoney;
+        money.appendChild(modifyImage);
         let bits = document.createElement("p");
         bits.innerHTML = "Milavos(MA): " + character.inventory.money.bits;
         money.appendChild(bits);
@@ -688,6 +694,102 @@ function loadMoney(){
     } else{
         money.innerHTML = "";
     }
+}
+
+function modifyMoney(){
+    /* Modifies the character current money
+    - Changes the money div: each coin gets a label and an input
+    - Ok button calls the changeMoney function
+    - Puts character current money to default value of input
+    */
+    let moneyDiv = document.querySelector("#money");// Money div, under money button
+    moneyDiv.innerHTML = "";// Empties div before creating labels and input
+
+    // Creating label and input for bits:
+    let bits = document.createElement("label");
+    bits.innerHTML = "Milavos(MA): ";
+    moneyDiv.appendChild(bits);
+
+    let bitsInput = document.createElement("input");
+    bitsInput.id = "bitsInput";
+    bitsInput.type = "number";
+    moneyDiv.appendChild(bitsInput);
+
+    moneyDiv.innerHTML += "<br>";// Breaking the line so all labels and input don't stick together 
+
+    // Creating label and input for copper pennies
+    let copperPennies = document.createElement("label");
+    copperPennies.innerHTML = "Centavos de Cobre(CC): ";
+    moneyDiv.appendChild(copperPennies);
+
+    let copperPenniesInput = document.createElement("input");
+    copperPenniesInput.id = "copperPenniesInput";
+    copperPenniesInput.type = "number";
+    moneyDiv.appendChild(copperPenniesInput);
+    
+    moneyDiv.innerHTML += "<br>";// Breaking the line so all labels and input don't stick together
+
+    // Creating label and input for silver shillings
+    let silverShillings = document.createElement("label");
+    silverShillings.innerHTML = "Xelins de Prata(XP): ";
+    moneyDiv.appendChild(silverShillings);
+
+    let silverShillingsInput = document.createElement("input");
+    silverShillingsInput.id = "silverShillingsInput";
+    silverShillingsInput.type = "number";
+    moneyDiv.appendChild(silverShillingsInput);
+
+    moneyDiv.innerHTML += "<br>";// Breaking the line so all labels and input don't stick together
+
+    // Creating label and input for gold crowns
+    let goldCrowns = document.createElement("label");
+    goldCrowns.innerHTML = "Coroas de Ouro(CO): ";
+    moneyDiv.appendChild(goldCrowns);
+
+    let goldCrownsInput = document.createElement("input");
+    goldCrownsInput.id = "goldCrownsInput";
+    goldCrownsInput.type = "number";
+    moneyDiv.appendChild(goldCrownsInput);
+
+    moneyDiv.innerHTML += "<br>";// Breaking the line so button gets its own line
+
+    // Creating the Ok button:
+    let submitButton = document.createElement("button");
+    submitButton.innerHTML = "Ok";
+    submitButton.onclick = changeMoney;// Calls the function changeMoney onclick
+    moneyDiv.appendChild(submitButton);
+
+    // Putting the character current money to default value to input:
+    bitsInput = document.querySelector("#bitsInput");
+    bitsInput.value = character.inventory.money.bits;
+
+    copperPenniesInput = document.querySelector("#copperPenniesInput");
+    copperPenniesInput.value = character.inventory.money.copperPennies;
+
+    silverShillingsInput = document.querySelector("#silverShillingsInput");
+    silverShillingsInput.value = character.inventory.money.silverShillings;
+
+    goldCrownsInput = document.querySelector("#goldCrownsInput");
+    goldCrownsInput.value = character.inventory.money.goldCrowns;
+}
+
+function changeMoney(){
+    /* Actually changes the character money and returns div to normal state
+    - Change character money
+    - Empties div(so loadMoney works correctly)
+    - Calls loadMoney function 
+    */
+    let moneyDiv = document.querySelector("#money");// Money Div, under money button
+
+    // Changing character money:
+    character.inventory.money.bits = document.querySelector("#bitsInput").value;
+    character.inventory.money.copperPennies = document.querySelector("#copperPenniesInput").value;
+    character.inventory.money.silverShillings = document.querySelector("#silverShillingsInput").value;
+    character.inventory.money.goldCrowns = document.querySelector("#goldCrownsInput").value;
+
+    moneyDiv.innerHTML = "";// Emptying money div
+
+    loadMoney();// Calling loadMoney function
 }
 
 function loadSpells(){
