@@ -432,7 +432,7 @@ class Changeling extends Character{
         apparentAge, apparentBuild, apparentAppearence, quirk, status, professions, paths, inventory, traditions, magicUses){  
         super(name, personality, trueAge, religion, background,
             status.strength+9, status.agility+10, status.intellect+10, status.will+10,
-            status.perception+11, status.defense || 10, status.health+10,
+            status.perception+11, status.defense || 10, status.health+9,
             status.size || 1, status.speed || 10, status.power, status.damage, status.insanity, status.corruption, status.level,
             professions, paths, inventory, traditions, magicUses);
         
