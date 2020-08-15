@@ -11,7 +11,11 @@ function loadChoices(){
         character.traditions = {};
     }
     else {
-        displayTradsAndSpells();  
+        displayTradsAndSpells();
+        let specialTrad = character.traditions["Especial"];
+        character.traditions = {
+            "Especial": specialTrad
+        };
     }
     if(character.status.level == 1){
         if(character.novicePath.type == "magician"){
