@@ -1182,21 +1182,28 @@ class Soulthief extends Path{
 class Abjurador extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Conjuração Protegida": "Quando o abjurador conjura uma magia de Proteção, ele recebe um bônus para sua Defesa igual 1 + o nível da magia por 1 minuto ou até que utilize o talento novamente."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Protegido"] = "Criaturas fazem jogadas de ataque contra o abjurador com 1 perdição e o abjurador faz jogadas de desafio com 1 dádiva para resistir a ataques.";
         }
         super(training, "Abjurador", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O abjurador descobre a tradição Proteção ou aprende uma magia de Proteção.",
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+          health: 2,
+          magic:"O abjurador aprende uma magia."  
         }
     } 
 }
@@ -1204,21 +1211,25 @@ class Abjurador extends Path {
 class Adivinho extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Presságios": "Quando o adivinho faz uma jogada de ataque ou de desafio, ele pode gastar a conjuração de uma magia de Adivinhação para fazer a jogada com uma quantidade de dádivas igual ao nível da magia."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Premonições"] = " A cada vez que completa um descanso, o adivinho recebe três premonições. Para cada uma delas, ele joga um d20 e anota o resultado. As premonições duram até que sejam gastas ou até que o adivinho complete outro descanso.<br>Quando uma criatura que o adivinho pode ver faz uma jogada de ataque ou de desafio, ele pode trocar o resultado da jogada pelo resultado de uma das suas premonições, gastando-a. Uma vez que gastou a premonição, aquele número é riscado. Enquanto o adivinho tem, pelo menos, uma premonição, ele não pode ser surpreendido se estiver consciente, criaturas que o atacam fazem jogadas de ataque com 1 perdição e ele faz jogadas de desafio para resistir a ataques com 1 dádiva.";
         }
         super(training, "Adivinho", talents);
     }
     level7(){
         return {
-            
+            defense: 1,
+            health: 1,
+            power: 1,
+            magic:"O adivinho descobre a tradição Adivinhação ou aprende uma magia de Adivinhação."
         }
     }
     level10(){
         return {
-            
+            health: 1,
+            magic:"O adivinho aprende uma magia."
         }
     }
 }
@@ -1226,21 +1237,29 @@ class Adivinho extends Path {
 class Aeromante extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Caminhar no Ar": " Toda vez que o aeromante conjura uma magia de Ar, depois de resolver seu efeito, ele pode voar por uma quantidade de metros igual 1 + o nível da magia. Ele pousa com segurança ao fim deste movimento."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Voo"] = "O aeromante pode voar.";
         }
         super(training, "Aeromante", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            speed: 2,
+            power: 1,
+            magic:"O aeromante descobre a tradição Ar ou aprende uma magia de Ar.",
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O aeromante aprende uma magia."
         }
     }
 }
@@ -1248,21 +1267,30 @@ class Aeromante extends Path {
 class Apocaliptista extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Conjuração Aterrorizante": "Quando conjura uma magia Proibida, o apocaliptista escolhe uma criatura a curta distância que possa vê-lo. O alvo deve ser bem-sucedido em uma jogada de desafio de Vontade ou fica assustado por uma quantidade de rodadas igual ao Poder do apocaliptista."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Acelerar o Apocalipse"] = "Quando conjura uma magia Proibida, o apocaliptista pode utilizar uma ação desencadeada para liberar uma onda de luz verde doentia de um ponto a seu alcance até uma quantidade de metros igual a 1+ o nível da magia conjurada. O terreno naquela área se torna terreno difícil, objetos de Tamanho 1/2 ou menores que não estão empunhados ou carregados sofrem dano igual à Saúde deles. Todas as criaturas na área, exceto o apocaliptista, devem ser bem-sucedidas em uma jogada de desafio de Força ou sofrem 1d6 de dano e caem prostrados.";
         }
         super(training, "Apocaliptista", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            corruption: 2,
+            power: 1,
+            magic:"O apocaliptista descobre a tradição Proibida ou aprende uma magia Proibida.",
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            corruption: 1,
+            magic:"O apocaliptista aprende uma magia."
         }
     }
 }
@@ -1270,21 +1298,29 @@ class Apocaliptista extends Path {
 class Arcanista extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Maestria Arcana": "O arcanista pode utilizar uma ação para gastar a conjuração de qualquer magia Arcana conhecida para conjurar uma magia conhecida diferente, do mesmo nível ou menor, sem gastar a conjuração daquela magia, mesmo que não tenha conjurações sobrando."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Arcano Rápido"] = "O arcanista pode utilizar uma ação desencadeada em seu turno para conjurar uma magia Arcana que aprendeu.";
+            talents["Recuperaçaõ Arcana"] = "Quando gasta a conjuração de uma magia Arcana, o arcanista joga um d6. Caso o resultado seja 6, ele recupera a conjuração daquela magia.";
         }
         super(training, "Arcanista", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O arcanista descobre a tradição Arcana ou aprende uma magia Arcana."
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O arcanista aprende uma magia."
         }
     }
 }
@@ -1292,21 +1328,30 @@ class Arcanista extends Path {
 class Astromante extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Brilho Interior": "Quando o astromante conjura uma magia Celestial, ele pode utilizar uma ação desencadeada para emitir luz de um ponto dentro de seu espaço até uma quantidade de metros igual a seu Poder. A luz se move com ele, permanecendo centrada no mesmo ponto, e dura por 1 minuto ou até que o astromante conjure outra magia Celestial."
+            "Luz Intensa": "As magias de ataques Celestiais do astromante causam 1d6 de dano adicional."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Coroa Cegante"] = "Quando o astromante utiliza seu talento Brilho Interior, cada criatura a até 1 metro dele deve ser bem-sucedida numa jogada de desafio de Força ou fica cega até o fim da rodada.";
+            talents["Poder do Sol"] = "Toda vez que o astromante conjura uma magia de ataque da tradição Celestial, ele faz a jogada de ataque com 1 dádiva e as criaturas alvo fazem jogadas de desafio para resistir a magia com 1 perdição.";
         }
         super(training, "Astromante", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O astromante descobre a tradição Celestial ou aprende uma magia Celestial.",
+            choice: {
+                language: "new",
+                profession: "any"
+            } 
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic: "O astromante aprende uma magia."
         }
     }
 }
@@ -1314,21 +1359,30 @@ class Astromante extends Path {
 class Bardo extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Conhecimento Esotérico": "O bardo sabe um pouco de tudo. Ele faz jogadas de desafio de Intelecto para lembrar-se de informações úteis com 1 dádiva."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Charme Debilitante"] = "Quando uma criatura fica encantada por uma magia conjurada pelo bardo, ele pode fazer com que a criatura fique debilitada até que a aflição encantada seja removida.";
+            talents["Canção Rápida"] = "O bardo pode utilizar uma ação desencadeada em seu turno para conjurar uma magia conhecida de Canção.";
         }
         super(training, "Bardo", talents);
     }
     level7(){
         return {
-            
+            health: 3,
+            power: 1,
+            magic:"O bardo descobre a tradição Canção ou aprende uma magia de Canção.",
+            choice; {
+                language: "new",
+                profession: "animator",
+                profession2: "musician"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 3,
+            magic:"O bardo aprende uma magia."
         }
     }
 }
@@ -1336,21 +1390,28 @@ class Bardo extends Path {
 class CavaleiroMago extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Escalada de Violência": "Quando o cavaleiro mago conjura uma magia, ele faz jogadas de ataque com 1 dádiva ao utilizar uma arma. Este efeito dura por 1 rodada."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Tática do Cavaleiro Mago"] = "Quando o cavaleiro mago ataca com uma magia, ele pode utilizar uma ação desencadeada para atacar com uma arma a qualquer momento antes do fim do seu turno.";
         }
         super(training, "Cavaleiro Mago", talents);
     }
     level7(){
         return {
-            
+          health: 2,
+          power: 1,
+          magic:"O cavaleiro mago descobre a tradição Batalha ou aprende uma magia de Batalha.",
+          choice: {
+              language: "new",
+              profession: "military"
+          }  
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O cavaleiro mago aprende uma magia."
         }
     }
 }
@@ -1358,21 +1419,28 @@ class CavaleiroMago extends Path {
 class Cronomante extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Aceleração": "Quando o cronomante conjura uma magia de Tempo, ele pode se mover uma quantidade de metros igual ao seu Poder. Este movimento não desencadeia ataques livres."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Precognição"] = "Quando o cronomante conjura uma magia de Tempo, ele pode utilizar uma ação desencadeada para ver alguns segundos no futuro, recebendo uma intuição. O cronomante mantém a intuição até gastá-la ou completar um descanso. Quando o cronomante fracassa em uma jogada de ataque ou desafio, ele pode gastar a intuição para repetir a jogada. O cronomante pode escolher o resultado de qualquer uma das duas jogadas.";
         }
         super(training, "Cronomante", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O cronomante descobre a tradição Tempo ou aprende uma magia de Tempo.",
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O cronomante aprende uma magia."
         }
     }
 }
@@ -1380,21 +1448,25 @@ class Cronomante extends Path {
 class Curandeiro extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Cura Distante": "Quando o curandeiro conjura uma magia de Vida que tem como alvo uma criatura a seu alcance, ao invés disso, ele pode escolher uma criatura a curta distância."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Cura Aprimorada"] = "Quando uma criatura cura dano a partir de uma magia de Cura conjurada pelo curandeiro, tal criatura cura uma quantidade de pontos adicionais iguais a sua taxa de cura.";
+            talents["Vitalidade Invencível"] = "O curandeiro nunca sofre dano por doença ou veneno, não sendo possível ficar doente ou envenenado. Além disso, ele cura todo o dano que já tenha recebido quando completa um descanso.";
         }
         super(training, "Curandeiro", talents);
     }
     level7(){
         return {
-            
+            health: 4,
+            power: 1,
+            magic:"O curandeiro descobre a tradição Vida ou aprende uma magia de Vida."
         }
     }
     level10(){
         return {
-            
+            health: 4,
+            magic:"O curandeiro aprende uma magia."
         }
     }
 }
@@ -1402,21 +1474,24 @@ class Curandeiro extends Path {
 class Destruidor extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Destruição Liberada": "Quando o destruidor conjura uma magia de Destruição, ele pode escolher não sofrer o dano. Ao invés disso, a energia destrutiva foge de um ponto em seu alcance até uma quantidade de metros igual ao Poder do destruidor. Cada criatura e objeto na área, com exceção do destruidor, sofre dano igual a 1 + o nível da magia conjurada. Criaturas bem-sucedidas em um teste de desafio de Força não sofrem dano."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Destruição Completa"] = "Quando o destruidor joga o dano de uma magia de Destruição conjurada por ele, troque os resultados 1 por 6.";
         }
         super(training, "Destruidor", talents);
     }
     level7(){
         return {
-            
+            health: 3,
+            power: 1,
+            magic:"O destruidor descobre a tradição Destruição ou aprende uma magia de Destruição."
         }
     }
     level10(){
         return {
-            
+            health: 3,
+            magic:"O destruidor aprende uma magia."  
         }
     }
 }
@@ -1424,21 +1499,30 @@ class Destruidor extends Path {
 class Encantador extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Defesa de Encantamento": "Se for encantado, compelido ou assustado no fim da rodada, o encantador pode fazer uma jogada de desafio de Intelecto e remover todas as aflições de si mesmo, caso obtenha sucesso."
+            "Charme Sutil": "Criaturas encantadas pelas magias conjuradas pelo encantador não se lembram de terem sido encantadas quando o efeito termina."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Contraencanto"] = "Quando uma criatura que o encantador pode ver a média distância se torna encantada ou compelida, ele pode utilizar uma ação desencadeada para fazer uma jogada de desafio. Caso obtenha sucesso, ele remove a aflição da criatura desencadeante.";
+            talents["Encantamento Persistente"] = "O encantador dobra a duração de todas as magias de encantamento que conjura que tenham duração de, pelo menos, 1 minuto.";
         }
         super(training, "Encantador", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power:1,
+            magic:"O encantador descobre a tradição Encantamento ou aprende uma magia de Encantamento.",
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"Aprende uma magia." 
         }
     }
 }
@@ -1446,7 +1530,7 @@ class Encantador extends Path {
 class Erudito extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Foco em Tradição": "O erudito escolhe duas tradições que já tenha descoberto. Quando ataca com uma magia de uma tradição escolhida ao ganhar este talento, ele o faz com 1 dádiva. As criaturas fazem suas jogadas de desafio para resistirem a ataques destas magias com 1 perdição."
         }
         if(level == 10){
             talents[""] = "";
@@ -1455,12 +1539,14 @@ class Erudito extends Path {
     }
     level7(){
         return {
-            
+            health: 2,
+            magic:"O erudito faz duas escolhas: descobrir uma tradição ou aprender uma magia, para cada escolha."
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O erudito aprende duas magias das tradições que escolheu para o Foco em Tradição."
         }
     }
 }
@@ -1468,21 +1554,24 @@ class Erudito extends Path {
 class Geomante extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Defesa Rochosa": "O geomante pode utilizar uma ação para gastar uma conjuração de uma magia de Terra de nível 1 ou maior. Então, ele joga um d6 para cada nível da magia e soma o total dos resultados. Este total se torna a Defesa Rochosa do geomante, uma reserva de pontos utilizados para absorver dano. Enquanto a reserva de Defesa Rochosa tem pontos, quando o geomante sofre dano, ele é subtraído da reserva primeiro e o restante dos pontos de vida do geomante. O efeito dura até que a reserva caia para 0 pontos, o geomante utilize este talento novamente ou complete um descanso."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Caminhante da Terra"] = "O geomante ignora os efeitos de se mover por terreno difícil feito de terra, areia ou pedra.<ul><li>Além disso, ele pode se mover por espaços ocupados por terra, areia ou pedra. Caso o geomante termine seu movimento dentro de um espaço sólido, ele é movido para trás até o espaço aberto mais próximo do ponto onde ele entrou.";
         }
         super(training, "Geomante", talents);
     }
     level7(){
         return {
-            
+            health: 4,
+            power: 1,
+            magic:"O geomante descobre a tradição Terra ou aprende uma magia de Terra."
         }
     }
     level10(){
         return {
-            
+            health: 4,
+            magic:"O geomante aprende uma magia."
         }
     }
 }
@@ -1490,21 +1579,25 @@ class Geomante extends Path {
 class Hidromante extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Fluxo": "Sempre que o hidromante conjura uma magia de Água, ele pode cobrir seu corpo com uma lâmina de água que dura por uma quantidade de rodadas igual ao nível da magia. Até que o efeito termine, o hidromante não pode ser agarrado ou imobilizado, podendo se mover livremente por espaços ocupados por outras criaturas."
+            "Nadador": "O hidromante ignora os efeitos de terreno difícil quando nada."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Forma Aquosa"] = "O hidromante pode utilizar uma ação e gastar a conjuração de uma magia de Água para assumir uma forma aquosa. Ele se mantém nesta forma por uma quantidade de rodadas igual ao seu Poder mais o nível da magia cuja conjuração foi gasta. O hidromante pode utilizar uma ação ou ação desencadeada em seu turno para retornar a sua forma normal. Até que o efeito termine, ele recebe os seguintes benefícios:<ul><li>• Faz todas as jogadas de Agilidade com 1 dádiva.</li><li>• Pode passar por aberturas grandes o bastante para a passagem de água.</li><li>• Sofre metade do dano por armas.<li></li>• Não pode ser agarrado, imobilizado, derrubado, nem ficar lento.</li><li>• Fica invisível enquanto submerso em água.</li></ul>";
         }
         super(training, "Hidromante", talents);
     }
     level7(){
         return {
-            
+            health: 3,
+            power: 1,
+            magic:"O hidromante descobre a tradição Água ou aprende uma magia de Água."
         }
     }
     level10(){
         return {
-            
+            health: 3,
+            magic:"O hidromante aprende uma mágia."
         }
     }
 }
@@ -1512,21 +1605,30 @@ class Hidromante extends Path {
 class HomemSelvagem extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Poder da Natureza": "Enquanto está sob efeito da magia de Natureza pele de árvore, o homem selvagem sofre metade do dano por fogo. Além disso, quando o homem selvagem ataca com um item imbuído com a magia bolotas mágicas, seu ataque causa 1d6 de dano adicional."
+            "Pele da Floresta": "Quando está obscurecido por folhagem, o homem selvagem pode utilizar uma ação desencadeada para gastar a conjuração de uma magia de Natureza. Ele fica invisível por uma quantidade de rodadas igual a 1 + o nível da magia cuja conjuração foi gasta."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Ligação com a Natureza"] = "O homem selvagem pode utilizar uma ação para se transformar em uma árvore, arbusto ou planta similar comumente encontrada no ambiente. Ele se mantém nessa forma até completar um descanso, durante este tempo ele é considerado um objeto de seu Tamanho e é indistinguível de uma planta comum. Ele se mantém consciente de seu ambiente e pode fazer jogadas de Percepção. Ele não pode fazer nada além de terminar o efeito, o que pode ser feito a qualquer momento com uma ação desencadeada. Ele volta a forma original caso fique incapacitado enquanto estiver nesta forma. Caso descanse enquanto está nessa forma, o homem selvagem cura todo dano ao fim do descanso.";
+            talents["Resiliência da Natureza"] = "Quando o homem selvagem conjura uma magia de Natureza, ele ganha um bônus para sua Saúde igual a seu Poder por 1 minuto. O bônus é cumulativo com outros usos deste talento.";
         }
         super(training, "Homem Selvagem", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O homem selvagem descobre a tradição Natureza ou aprende uma magia de Natureza.",
+            choice: {
+                language: "new",
+                profession: "savage"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O homem selvagem descobre uma tradição ou aprende uma magia."
         }
     }
 }
@@ -1534,21 +1636,28 @@ class HomemSelvagem extends Path {
 class Ilusionista extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Ilusões Convincentes": "Criaturas fazem jogadas de desafio de Percepção com 2 perdições para discernir ilusões criadas pelas magias do ilusionista. Além disso, quando o ilusionista ataca com uma magia de ilusão, ele faz a jogada de ataque com 1 dádiva."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Duplicatas Ilusórias"] = "Quando o ilusionista sofre dano por um ataque, ele pode utilizar uma ação desencadeada para jogar 1d6. Caso obtenha 6, ele reduz o dano a 0 e se teleporta para um espaço aberto a curta distância escolhido por ele.";
         }
         super(training, "Ilusionista", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O ilusionista descobre a tradição Ilusão ou aprende uma magia de Ilusão."
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O ilusionista aprende uma magia."
         }
     }
 }
@@ -1556,21 +1665,29 @@ class Ilusionista extends Path {
 class Invocador extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Invocar Monstro Minúsculo": "Quando o invocador conjura uma magia de invocação de nível 0, ele pode conjurar um monstro minúsculo em um espaço aberto a curta distância, em vez de utilizar o efeito normal da magia. A criatura invocada permanece por 1 minuto ou até ficar incapacitada."
+            "Monstros Assustadores": "O invocador pode dar a característica Assustador aos monstros invocados por magias de Invocação."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Monstros Poderosos"] = "Os monstros criados com magias de Invocação fazem jogadas de ataque com 1 dádiva e     xsww dsddcausam 1d6 de dano adicional. Além disso, os monstros invocados duram uma quantidade de minutos igual ao Poder do invocador.";
         }
         super(training, "Invocador", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic: "O invocador descobre a tradição Invocação ou aprende uma magia de Invocação.",
+            choice: {
+                laguange: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O invocador aprende uma magia."
         }
     }
 }
@@ -1578,21 +1695,28 @@ class Invocador extends Path {
 class Magus extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Cajado Mágico": "O magus cria um cajado que age como seu implemento. Quando ele ataca com o cajado, faz a jogada de ataque com 1 dádiva e o ataque causa 1d6 de dano adicional.<br> Caso o cajado do magus seja perdido ou quebrado, ele pode criar um substituto gastando 8 horas de trabalho utilizando um kit de alquimia e materiais especiais com custo de 1 co."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Cajado do Poder"] = " Enquanto empunha o Cajado do Poder, o magus recebe os seguintes benefícios:<ul><li>• O magus recebe um bônus de +1 para Defesa.</li><li>• Quando o magus conjura uma magia de ataque, ele faz a jogada de ataque com 1 dádiva e as criaturas alvo fazem suas jogadas de desafio para resistir a magia com 1 perdição.</li></ul>";
         }
         super(training, "Magus", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O magus descobre uma tradição ou aprende uma magia.",
+            choice: {
+                language: "new",
+                profession: "academic"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O magus descobre uma tradição ou aprende uma magia."
         }
     }
 }
@@ -1600,21 +1724,25 @@ class Magus extends Path {
 class MestreDasFeras extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Arma Favorita": "Quando completa um descanso, o mestre das armas escolhe uma arma para a qual tenha todos os requisitos. Esta arma se torna sua arma favorita até que use o talento novamente. Enquanto empunha sua arma favorita, o mestre das armas ganha um bônus de +1 em sua Defesa. Quando ataca com a arma favorita, o mestre das armas faz a jogada de ataque com 1 dádiva."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Especialização em Arma"] = "Quando o mestre das armas ataca com a sua arma favorita, ele causa 1d6 de dano adicional.";
         }
         super(training, "Mestre das Feras", talents);
     }
     level7(){
         return {
-            
+            health: 5,
+            choice: {
+                language:"new",
+                profession:"any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 5
         }
     }
 }
@@ -1622,21 +1750,28 @@ class MestreDasFeras extends Path {
 class Metamorfo extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Transformação Superior": "Quando o metamorfo conjura uma magia de Transformação e assume uma forma diferente, ele recebe um dos seguintes benefícios que permanece até que ele retorne a forma normal:<ul><li>• +1 bônus para Defesa.</li><li>• +2 bônus para Deslocamento.</li><li>• +4 bônus para Percepção.</li><li>• +5 bônus para Saúde.</li></ul>"
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Transformação Rápida"] = "O metamorfo pode utilizar uma ação desencadeada em seu turno para conjurar uma magia de Transformação que aprendeu.";
         }
         super(training, "Metamorfo", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O metamorfo descobre a tradição Transformação ou aprende uma magia de Transformação.",
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O metamorfo aprende uma magia."
         }
     }
 }
@@ -1644,21 +1779,28 @@ class Metamorfo extends Path {
 class Necromante extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Acostumado com a Morte": "O necromante nunca sofre dano por doença ou veneno e não pode ficar doente ou envenenado. Além disso, quando ele joga para determinar seu destino enquanto está incapacitado, ele pode jogar o dado mais uma vez e escolher qualquer um dos resultados."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Mestre da Pós-Vida"] = "O necromante nunca sofre dano por doença ou veneno e não pode ficar doente ou envenenado. Além disso, quando ele joga para determinar seu destino enquanto está incapacitado, ele pode jogar o dado mais uma vez e escolher qualquer um dos resultados.";
         }
         super(training, "Necromante", talents);
     }
     level7(){
         return {
-            
-        }
+            health: 1,
+            power: 1,
+            magic:"O necromante descobre a tradição Necromancia ou aprende uma magia de Necromancia.",
+            choice: {
+                language: "new",
+                profession: "academic"
+            }
+        }/
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O necromante aprende magia."
         }
     }
 }
@@ -1666,21 +1808,24 @@ class Necromante extends Path {
 class Piromante extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Benção das Chamas": "O piromante sofre metade do dano por fogo."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Imolação"] = "Quando uma criatura sofre dano por uma magia de Fogo conjurada pelo piromante, ela deve fazer uma jogada de desafio de Agilidade. Caso fracasse, pega fogo.";
         }
         super(training, "Piromante", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O piromante descobre a tradição Fogo ou aprende uma magia de Fogo.",
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O piromante aprende uma magia.",
         }
     }
 }
@@ -1688,21 +1833,27 @@ class Piromante extends Path {
 class Rogador extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Mau-olhado": "Quando uma criatura é amaldiçoada por uma magia conjurada pelo rogador, ele pode utilizar uma ação desencadeada para aplicar um dos seguintes efeitos ao alvo até que a maldição termine:<ul><li>• Desejo: O alvo fica encantado.</li><li>• Letargia: O alvo fica lento.</li><li>• Dor: O alvo sofre 2d6 de dano.</il></ul>"
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Maldição Exigente"] = "Alvos sob o efeito de uma magia de Maldição do rogador sofrem 1d6 de dano adicional de seus ataques.";
         }
         super(training, "Rogador", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2
+            magic: "O rogador aprende uma magia."
         }
     }
 }
@@ -1710,43 +1861,56 @@ class Rogador extends Path {
 class Runista extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Selos de Poder": "O runista pode utilizar uma ação para inscrever um selo na armadura que está vestindo ou arma que está empunhando. O selo dura por 1 minuto ou até que utilize o talento novamente. <br>Até que o efeito termine, toda vez que o runista utiliza magias de ataque de Runas, ataques com a arma que carrega o selo causam 1d6 de dano adicional por 1 rodada. Da mesma maneira, toda vez que ele conjura uma magia utilitária de Runas, ele recebe 1d3 de Defesa adicional que dura por 1 rodada."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Selos Poderosos"] = "Quando o runista utiliza o talento Selos de Poder, o selo dura por 1 hora ou até que ele utilize o talento novamente.";
         }
         super(training, "Runista", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O runista descobre a tradição Runa ou aprende uma magia de Runa.",
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O runista aprende uma magia."
         }
     }
-}
-
+}    
 class Taumaturgo extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Buscar o Caos": "Sempre que o taumaturgo faz uma jogada de ataque ou de desafio e o resultado é um número que não lhe agrada, ele pode utilizar uma ação desencadeada para usar este talento. Ele joga 2d20. O taumaturgo deve trocar o resultado original por um dos números obtidos e sofrer o outro resultado como dano. "
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Magia Fluída"] = "Quando conjura uma magia, o taumaturgo pode gastar a conjuração de outra magia que tenha um nível igual ou maior.";
         }
         super(training, "Taumaturgo", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O taumaturgo descobre a tradição Caos ou aprende uma magia de Caos.",
+            choice: {
+                laguange: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O taumaturgo aprende uma magia."
         }
     }
 }
@@ -1754,7 +1918,7 @@ class Taumaturgo extends Path {
 class Tecnomante extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Invenção": "Quando o tecnomante conjura uma magia de Tecnomancia, ele também cria um dispositivo que pode segurar em uma mão, este dispositivo está imbuído de poder mágico que dura até que seja gasto ou que o tecnomante complete um descanso. Quando faz uma jogada de ataque ou de desafio, ele pode utilizar o poder do dispositivo para fazer a jogada com 1 dádiva."
         }
         if(level == 10){
             talents[""] = "";
@@ -1763,12 +1927,19 @@ class Tecnomante extends Path {
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O tecnomante descobre a tradição Tecnomancia ou aprende uma magia de Tecnomancia.",
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O tecnomante aprende magia."
         }
     }
 }
@@ -1776,21 +1947,29 @@ class Tecnomante extends Path {
 class Tempestuoso extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Calvagar o Relâmpago": "Quando o tempestuoso conjura uma magia de Tempestade, ele pode utilizar uma ação desencadeada para voar até o valor de seu Deslocamento depois de resolver o efeito. Ele deve pousar ao fim do movimento ou cairá."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Poder da Tempestade"] = "Quando o tempestuoso conjura uma magia de Tempestade, ele pode utilizar uma ação desencadeada para voar até o valor de seu Deslocamento depois de resolver o efeito. Ele deve pousar ao fim do movimento ou cairá.";
         }
         super(training, "Tempestuoso", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            speed: 2,
+            power: 1,
+            magic:"O tempestuoso descobre a tradição Tempestade ou aprende uma magia de Tempestade.",
+            choice: {
+                language: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O tempestuoso aprende uma magia."
         }
     }
 }
@@ -1798,7 +1977,7 @@ class Tempestuoso extends Path {
 class Tenebrista extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Manto das Sombras": "Enquanto está em uma área iluminada, você é considerado como se estivesse em uma área obscurecida por sombras."
         }
         if(level == 10){
             talents[""] = "";
@@ -1807,12 +1986,19 @@ class Tenebrista extends Path {
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O tenebrista descobre a tradição Sombra ou aprende uma magia de Sombra.",
+            choice: {
+                languange: "new",
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"Aprende uma magia."
         }
     }
 }
@@ -1820,21 +2006,28 @@ class Tenebrista extends Path {
 class Teurgo extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Restauração Devota": "O teurgo pode utilizar uma ação para gastar a conjuração de uma magia de Teurgia de nível 1, ou maior, para curar dano igual a 1d6 por nível da magia gasta."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Invocação"] = "Quando conjura uma magia de Teurgia, o teurgo pode utilizar uma ação desencadeada para invocar poder de seu deus. Um pulso de energia se espalha por uma quantidade de metros igual 1 + o nível da magia, a partir de um ponto ao alcance do teurgo. Cada criatura na área escolhida deve ser bem-sucedida em uma jogada de desafio de Vontade ou fica assustada até o fim da rodada. Caso já esteja assustada, a criatura fica atordoada até o fim da rodada.";
         }
         super(training, "Teurgo", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O teurgo descobre a tradição Teurgia ou aprende uma magia de Teurgia.",
+            choice: {
+                language: "new",
+                profession: "religious"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O teurgo aprende uma magia"
         }
     }
 }
@@ -1842,7 +2035,7 @@ class Teurgo extends Path {
 class Transmutador extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Otimização": "Quando o transmutador completa um descanso, ele pode reduzir um atributo em 2 para aumentar outro em igual valor. Os efeitos duram até que complete um novo descanso."
         }
         if(level == 10){
             talents[""] = "";
@@ -1851,12 +2044,19 @@ class Transmutador extends Path {
     }
     level7(){
         return {
-            
+            health: 2,
+            power: 1,
+            magic:"O transmutador descobre a tradição Alteração ou aprende uma magia de Alteração.",
+            choice: {
+                language: "new"
+                profession: "any"
+            }
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O transmutador aprende uma magia."
         }
     }
 }
@@ -1864,25 +2064,29 @@ class Transmutador extends Path {
 class Viajante extends Path {
     constructor(training, level){
         let talents = {
-            "": ""
+            "Fuga Acelerada": "Quando uma criatura que o viajante pode ver o ataca, ele pode utilizar uma ação desencadeada para gastar a conjuração de uma magia de Teleporte de nível 1 ou maior. Ele se teleporta para um espaço aberto a uma quantidade metros igual a 1d6 por nível da magia cuja conjuração foi gasta e fica pasmo por 1 rodada. Caso o alvo não possa mais atacá-lo, a ação dele é desperdiçada."
         }
         if(level == 10){
-            talents[""] = "";
+            talents["Viagem Distante"] = "Quando uma criatura que o viajante pode ver o ataca, ele pode utilizar uma ação desencadeada para gastar a conjuração de uma magia de Teleporte de nível 1 ou maior. Ele se teleporta para um espaço aberto a uma quantidade metros igual a 1d6 por nível da magia cuja conjuração foi gasta e fica pasmo por 1 rodada. Caso o alvo não possa mais atacá-lo, a ação dele é desperdiçada.";
+            talents["Pertubação Especial"] = "Toda vez que o viajante conjura uma magia de Teleporte, ele se torna parcialmente obscurecido para todas as criaturas que podem vê-lo durante 1 minuto.";
         }
         super(training, "Viajante", talents);
     }
     level7(){
         return {
-            
+            health: 2,
+            speed: 2,
+            power: 1,
+            magic:"O viajante descobre a tradição Teleporte ou aprende uma magia de Teleporte."
         }
     }
     level10(){
         return {
-            
+            health: 2,
+            magic:"O viajante aprende uma magia."
         }
     }
 }
-
 //Trilhas de Habilidade:
 
 class Acrobata extends Path {
