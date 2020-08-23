@@ -43,14 +43,14 @@ function loadTalent(){
             talent.innerHTML += "Saltar para Longe: Quando uma criatura, que o goblin pode ver, fracassa em uma jogada de ataque contra a Defesa ou Agilidade do goblin, ele pode utilizar uma ação desencadeada para fugir";
             break;
         case "orc":
-            healthAdd.innerHTML += "5 na sua saúde.";
-            character.status.health += 5;
+            healthAdd.innerHTML += "6 na sua saúde.";
+            character.status.health += 6;
             talentName.innerHTML += "Fúria Crescente";
             talent.innerHTML += "Fúria Crescente: Quando o orc sofre dano, ele faz seu próximo ataque antes do fim da próxima rodada com 1 dádiva.";
             break;
         case "yerath":
-            healthAdd.innerHTML += "5 na sua saúde.";
-            character.status.health += 5;
+            healthAdd.innerHTML += "4 na sua saúde.";
+            character.status.health += 4;
             talentName.innerHTML += "Asas Ágeis";
             talent.innerHTML += "Asas Ágeis: Você pode usar uma ação desencadeada no seu turno para usar Voar.";
             break;    
