@@ -318,7 +318,7 @@ class Clerigo extends Path{
 class Druida extends Path{
     constructor(training, level){
         let talents = {
-            "Mistérios Druídicos": "O druida aprendeu os antigos mistérios druídicos como parte de sua iniciação. Ele pode fazer todos os seguintes:<ul><li>Identificar qualquer animal ou planta que ele possa ver.</li><li>Saber se a água ou comida, que ele vê, é segura para o consumo.</li> <li>Predizer corretamente o clima com 24 horas de antecedência, desde que esteja a céu aberto.</li><li>Mover-se até seu Deslocamento total por terreno difícil, desde que esse seja criado por características naturais de terreno.</li><li>Deixar pegadas quando estiver se movendo por terreno natural apenas quando desejar.</li></ul>"
+            "Mistérios Druídicos": "O druida aprendeu os antigos mistérios druídicos como parte de sua iniciação. Ele pode fazer todos os seguintes:<ul><li>Identificar qualquer animal ou planta que ele possa ver.</li><li>Saber se a água ou comida, que ele vê, é segura para o consumo.</li><li>Predizer corretamente o clima com 24 horas de antecedência, desde que esteja a céu aberto.</li><li>Mover-se até seu Deslocamento total por terreno difícil, desde que esse seja criado por características naturais de terreno.</li><li>Deixar pegadas quando estiver se movendo por terreno natural apenas quando desejar.</li></ul>"
         };
         if(level >= 6){
             talents["Caminhante das Árvores"] = " Uma vez por rodada, enquanto está se movendo, o druida pode entrar em um espaço ocupado por uma árvore viva e imediatamente sair em um espaço adjacente ao espaço ocupado por outra árvore à média distância do espaço da árvore que entrou. O druida pode escolher sair da árvore que entrou, se movendo para um espaço livre.";
@@ -1310,7 +1310,7 @@ class Arcanista extends Path {
         return {
             health: 2,
             power: 1,
-            magic:"O arcanista descobre a tradição Arcana ou aprende uma magia Arcana."
+            magic:"O arcanista descobre a tradição Arcana ou aprende uma magia Arcana.",
             choice: {
                 language: "new",
                 profession: "any"
@@ -1328,7 +1328,7 @@ class Arcanista extends Path {
 class Astromante extends Path {
     constructor(training, level){
         let talents = {
-            "Brilho Interior": "Quando o astromante conjura uma magia Celestial, ele pode utilizar uma ação desencadeada para emitir luz de um ponto dentro de seu espaço até uma quantidade de metros igual a seu Poder. A luz se move com ele, permanecendo centrada no mesmo ponto, e dura por 1 minuto ou até que o astromante conjure outra magia Celestial."
+            "Brilho Interior": "Quando o astromante conjura uma magia Celestial, ele pode utilizar uma ação desencadeada para emitir luz de um ponto dentro de seu espaço até uma quantidade de metros igual a seu Poder. A luz se move com ele, permanecendo centrada no mesmo ponto, e dura por 1 minuto ou até que o astromante conjure outra magia Celestial.",
             "Luz Intensa": "As magias de ataques Celestiais do astromante causam 1d6 de dano adicional."
         }
         if(level == 10){
@@ -1372,7 +1372,7 @@ class Bardo extends Path {
             health: 3,
             power: 1,
             magic:"O bardo descobre a tradição Canção ou aprende uma magia de Canção.",
-            choice; {
+            choice: {
                 language: "new",
                 profession: "animator",
                 profession2: "musician"
@@ -1499,7 +1499,7 @@ class Destruidor extends Path {
 class Encantador extends Path {
     constructor(training, level){
         let talents = {
-            "Defesa de Encantamento": "Se for encantado, compelido ou assustado no fim da rodada, o encantador pode fazer uma jogada de desafio de Intelecto e remover todas as aflições de si mesmo, caso obtenha sucesso."
+            "Defesa de Encantamento": "Se for encantado, compelido ou assustado no fim da rodada, o encantador pode fazer uma jogada de desafio de Intelecto e remover todas as aflições de si mesmo, caso obtenha sucesso.",
             "Charme Sutil": "Criaturas encantadas pelas magias conjuradas pelo encantador não se lembram de terem sido encantadas quando o efeito termina."
         }
         if(level == 10){
@@ -1557,7 +1557,7 @@ class Geomante extends Path {
             "Defesa Rochosa": "O geomante pode utilizar uma ação para gastar uma conjuração de uma magia de Terra de nível 1 ou maior. Então, ele joga um d6 para cada nível da magia e soma o total dos resultados. Este total se torna a Defesa Rochosa do geomante, uma reserva de pontos utilizados para absorver dano. Enquanto a reserva de Defesa Rochosa tem pontos, quando o geomante sofre dano, ele é subtraído da reserva primeiro e o restante dos pontos de vida do geomante. O efeito dura até que a reserva caia para 0 pontos, o geomante utilize este talento novamente ou complete um descanso."
         }
         if(level == 10){
-            talents["Caminhante da Terra"] = "O geomante ignora os efeitos de se mover por terreno difícil feito de terra, areia ou pedra.<ul><li>Além disso, ele pode se mover por espaços ocupados por terra, areia ou pedra. Caso o geomante termine seu movimento dentro de um espaço sólido, ele é movido para trás até o espaço aberto mais próximo do ponto onde ele entrou.";
+            talents["Caminhante da Terra"] = "O geomante ignora os efeitos de se mover por terreno difícil feito de terra, areia ou pedra.<br>Além disso, ele pode se mover por espaços ocupados por terra, areia ou pedra. Caso o geomante termine seu movimento dentro de um espaço sólido, ele é movido para trás até o espaço aberto mais próximo do ponto onde ele entrou.";
         }
         super(training, "Geomante", talents);
     }
@@ -1579,11 +1579,11 @@ class Geomante extends Path {
 class Hidromante extends Path {
     constructor(training, level){
         let talents = {
-            "Fluxo": "Sempre que o hidromante conjura uma magia de Água, ele pode cobrir seu corpo com uma lâmina de água que dura por uma quantidade de rodadas igual ao nível da magia. Até que o efeito termine, o hidromante não pode ser agarrado ou imobilizado, podendo se mover livremente por espaços ocupados por outras criaturas."
+            "Fluxo": "Sempre que o hidromante conjura uma magia de Água, ele pode cobrir seu corpo com uma lâmina de água que dura por uma quantidade de rodadas igual ao nível da magia. Até que o efeito termine, o hidromante não pode ser agarrado ou imobilizado, podendo se mover livremente por espaços ocupados por outras criaturas.",
             "Nadador": "O hidromante ignora os efeitos de terreno difícil quando nada."
         }
         if(level == 10){
-            talents["Forma Aquosa"] = "O hidromante pode utilizar uma ação e gastar a conjuração de uma magia de Água para assumir uma forma aquosa. Ele se mantém nesta forma por uma quantidade de rodadas igual ao seu Poder mais o nível da magia cuja conjuração foi gasta. O hidromante pode utilizar uma ação ou ação desencadeada em seu turno para retornar a sua forma normal. Até que o efeito termine, ele recebe os seguintes benefícios:<ul><li>• Faz todas as jogadas de Agilidade com 1 dádiva.</li><li>• Pode passar por aberturas grandes o bastante para a passagem de água.</li><li>• Sofre metade do dano por armas.<li></li>• Não pode ser agarrado, imobilizado, derrubado, nem ficar lento.</li><li>• Fica invisível enquanto submerso em água.</li></ul>";
+            talents["Forma Aquosa"] = "O hidromante pode utilizar uma ação e gastar a conjuração de uma magia de Água para assumir uma forma aquosa. Ele se mantém nesta forma por uma quantidade de rodadas igual ao seu Poder mais o nível da magia cuja conjuração foi gasta. O hidromante pode utilizar uma ação ou ação desencadeada em seu turno para retornar a sua forma normal. Até que o efeito termine, ele recebe os seguintes benefícios:<ul><li>Faz todas as jogadas de Agilidade com 1 dádiva.</li><li>Pode passar por aberturas grandes o bastante para a passagem de água.</li><li>Sofre metade do dano por armas.</li><li>Não pode ser agarrado, imobilizado, derrubado, nem ficar lento.</li><li>Fica invisível enquanto submerso em água.</li></ul>";
         }
         super(training, "Hidromante", talents);
     }
@@ -1605,7 +1605,7 @@ class Hidromante extends Path {
 class HomemSelvagem extends Path {
     constructor(training, level){
         let talents = {
-            "Poder da Natureza": "Enquanto está sob efeito da magia de Natureza pele de árvore, o homem selvagem sofre metade do dano por fogo. Além disso, quando o homem selvagem ataca com um item imbuído com a magia bolotas mágicas, seu ataque causa 1d6 de dano adicional."
+            "Poder da Natureza": "Enquanto está sob efeito da magia de Natureza pele de árvore, o homem selvagem sofre metade do dano por fogo. Além disso, quando o homem selvagem ataca com um item imbuído com a magia bolotas mágicas, seu ataque causa 1d6 de dano adicional.",
             "Pele da Floresta": "Quando está obscurecido por folhagem, o homem selvagem pode utilizar uma ação desencadeada para gastar a conjuração de uma magia de Natureza. Ele fica invisível por uma quantidade de rodadas igual a 1 + o nível da magia cuja conjuração foi gasta."
         }
         if(level == 10){
@@ -1647,7 +1647,7 @@ class Ilusionista extends Path {
         return {
             health: 2,
             power: 1,
-            magic:"O ilusionista descobre a tradição Ilusão ou aprende uma magia de Ilusão."
+            magic:"O ilusionista descobre a tradição Ilusão ou aprende uma magia de Ilusão.",
             choice: {
                 language: "new",
                 profession: "any"
@@ -1665,7 +1665,7 @@ class Ilusionista extends Path {
 class Invocador extends Path {
     constructor(training, level){
         let talents = {
-            "Invocar Monstro Minúsculo": "Quando o invocador conjura uma magia de invocação de nível 0, ele pode conjurar um monstro minúsculo em um espaço aberto a curta distância, em vez de utilizar o efeito normal da magia. A criatura invocada permanece por 1 minuto ou até ficar incapacitada."
+            "Invocar Monstro Minúsculo": "Quando o invocador conjura uma magia de invocação de nível 0, ele pode conjurar um monstro minúsculo em um espaço aberto a curta distância, em vez de utilizar o efeito normal da magia. A criatura invocada permanece por 1 minuto ou até ficar incapacitada.",
             "Monstros Assustadores": "O invocador pode dar a característica Assustador aos monstros invocados por magias de Invocação."
         }
         if(level == 10){
@@ -1698,7 +1698,7 @@ class Magus extends Path {
             "Cajado Mágico": "O magus cria um cajado que age como seu implemento. Quando ele ataca com o cajado, faz a jogada de ataque com 1 dádiva e o ataque causa 1d6 de dano adicional.<br> Caso o cajado do magus seja perdido ou quebrado, ele pode criar um substituto gastando 8 horas de trabalho utilizando um kit de alquimia e materiais especiais com custo de 1 co."
         }
         if(level == 10){
-            talents["Cajado do Poder"] = " Enquanto empunha o Cajado do Poder, o magus recebe os seguintes benefícios:<ul><li>• O magus recebe um bônus de +1 para Defesa.</li><li>• Quando o magus conjura uma magia de ataque, ele faz a jogada de ataque com 1 dádiva e as criaturas alvo fazem suas jogadas de desafio para resistir a magia com 1 perdição.</li></ul>";
+            talents["Cajado do Poder"] = " Enquanto empunha o Cajado do Poder, o magus recebe os seguintes benefícios:<ul><li>O magus recebe um bônus de +1 para Defesa.</li><li>Quando o magus conjura uma magia de ataque, ele faz a jogada de ataque com 1 dádiva e as criaturas alvo fazem suas jogadas de desafio para resistir a magia com 1 perdição.</li></ul>";
         }
         super(training, "Magus", talents);
     }
@@ -1750,7 +1750,7 @@ class MestreDasFeras extends Path {
 class Metamorfo extends Path {
     constructor(training, level){
         let talents = {
-            "Transformação Superior": "Quando o metamorfo conjura uma magia de Transformação e assume uma forma diferente, ele recebe um dos seguintes benefícios que permanece até que ele retorne a forma normal:<ul><li>• +1 bônus para Defesa.</li><li>• +2 bônus para Deslocamento.</li><li>• +4 bônus para Percepção.</li><li>• +5 bônus para Saúde.</li></ul>"
+            "Transformação Superior": "Quando o metamorfo conjura uma magia de Transformação e assume uma forma diferente, ele recebe um dos seguintes benefícios que permanece até que ele retorne a forma normal:<ul><li>+1 bônus para Defesa.</li><li>+2 bônus para Deslocamento.</li><li>+4 bônus para Percepção.</li><li>+5 bônus para Saúde.</li></ul>"
         }
         if(level == 10){
             talents["Transformação Rápida"] = "O metamorfo pode utilizar uma ação desencadeada em seu turno para conjurar uma magia de Transformação que aprendeu.";
@@ -1795,7 +1795,7 @@ class Necromante extends Path {
                 language: "new",
                 profession: "academic"
             }
-        }/
+        }
     }
     level10(){
         return {
@@ -1833,7 +1833,7 @@ class Piromante extends Path {
 class Rogador extends Path {
     constructor(training, level){
         let talents = {
-            "Mau-olhado": "Quando uma criatura é amaldiçoada por uma magia conjurada pelo rogador, ele pode utilizar uma ação desencadeada para aplicar um dos seguintes efeitos ao alvo até que a maldição termine:<ul><li>• Desejo: O alvo fica encantado.</li><li>• Letargia: O alvo fica lento.</li><li>• Dor: O alvo sofre 2d6 de dano.</il></ul>"
+            "Mau-olhado": "Quando uma criatura é amaldiçoada por uma magia conjurada pelo rogador, ele pode utilizar uma ação desencadeada para aplicar um dos seguintes efeitos ao alvo até que a maldição termine:<ul><li>Desejo: O alvo fica encantado.</li><li>Letargia: O alvo fica lento.</li><li>Dor: O alvo sofre 2d6 de dano.</li></ul>"
         }
         if(level == 10){
             talents["Maldição Exigente"] = "Alvos sob o efeito de uma magia de Maldição do rogador sofrem 1d6 de dano adicional de seus ataques.";
@@ -1852,7 +1852,7 @@ class Rogador extends Path {
     }
     level10(){
         return {
-            health: 2
+            health: 2,
             magic: "O rogador aprende uma magia."
         }
     }
@@ -2048,7 +2048,7 @@ class Transmutador extends Path {
             power: 1,
             magic:"O transmutador descobre a tradição Alteração ou aprende uma magia de Alteração.",
             choice: {
-                language: "new"
+                language: "new",
                 profession: "any"
             }
         }
