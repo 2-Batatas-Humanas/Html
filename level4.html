@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nível 4</title>
+        <link rel="icon" type="image/png" href="Images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="Style/level4.css">
+        <script src="Script/level4.js"></script>
+    </head>
+    <body>
+        <h1>Bem vindo ao nível 4!</h1>
+        <p id="health">O seu personagem ganhou um aumento de </p>
+        <label for="select">Escolha um: </label>
+        <select id="select">
+            <option value="magic">Aprender uma magia</option>
+            <option value="talent" id="talentName">Aprender </option>
+        </select>
+        <p id="talent"></p>
+        <button onclick="nextPage()">Ok</button>
+        <script>loadTalent()</script>
+    </body>
+</html>
