@@ -371,7 +371,7 @@ class Character{
 
 class Human extends Character{
     constructor(name, personality, age, religion, background, size, build, appearance,
-        status, professions, paths, inventory, traditions, magicUses){
+        status, professions, paths, inventory, traditions, magicUses, level4talent){
         super(name, personality, age, religion, background,
             10+status.strength, 10+status.agility, 10+status.intellect, 10+status.will,
             10+status.perception, status.defense || 10, 10+status.health, size, status.speed || 10,
@@ -379,6 +379,10 @@ class Human extends Character{
             professions, paths, inventory, traditions, magicUses);
         this._build = build;
         this._appearance = appearance;
+        if(level4talent){
+            super.addTalent("ancestry", "Determinado", "Quando obtém um 1 na jogada de um dado de uma dádiva, o jogador pode jogar novamente o dado e optar pelo novo número.");
+        }
+        this._level4talent = level4talent;
     }
     // Getting and setting new ancestry-specific properties:
     get build(){
@@ -425,11 +429,14 @@ class Human extends Character{
             this.level4();
         }
     }
+    get level4talent(){
+        return this._level4talent;
+    }
 }
 
 class Changeling extends Character{
     constructor(name, personality, trueAge, religion, background, apparentGender, apparentAncestry,
-        apparentAge, apparentBuild, apparentAppearence, quirk, status, professions, paths, inventory, traditions, magicUses){  
+        apparentAge, apparentBuild, apparentAppearence, quirk, status, professions, paths, inventory, traditions, magicUses, level4talent){  
         super(name, personality, trueAge, religion, background,
             status.strength+9, status.agility+10, status.intellect+10, status.will+10,
             status.perception+11, status.defense || 10, status.health+9,
@@ -447,6 +454,10 @@ class Changeling extends Character{
         super.addTalent("ancestry","Roubar Identidade","Pode utilizar uma ação para alterar sua aparência e copiar a de uma criatura viva que tenha visto a curta distância. O alvo precisa ter Tamanho 1 ou 1/2 e ter uma forma humanoide de carne e sangue. O corpo do changeling muda para que se pareça com o alvo; no entanto, roupas e bens permanecem inalterados. O efeito dura até que o talento seja utilizado novamente. Caso fique incapacitado ou toque um objeto feito de ferro, o changeling retorna à sua aparência normal imediatamente");
         super.addTalent("ancestry","Visão nas Sombras","Enxerga em áreas obscurecidas por sombras como se estivessem iluminadas");
         super.addTalent("ancestry","Vulnerabilidade a Ferro","Fica debilitado quando em contato com ferro");
+        if(level4talent){
+            super.addTalent("ancestry", "Vantagem do Doppelganger", "O jogador pode utilizar uma ação desencadeada em seu turno para utilizar Roubar Identidade. Desta maneira, suas jogadas de ataque contra o alvo de Roubar Identidade são feitas com 1 dádiva enquanto está com a aparência daquela criatura.");
+        }
+        this._level4talent = level4talent;
     }
     // Getting and setting new ancestry-specific properties:
     get apparentGender(){
@@ -517,11 +528,14 @@ class Changeling extends Character{
             this.level4();
         }
     }
+    get level4talent(){
+        return this._level4talent;
+    }
 }
 
 class Clockwork extends Character{
     constructor(name, personality, age, religion, background, purpose, form, appearance, locationKey, status,
-        professions, paths, inventory, traditions, magicUses){  
+        professions, paths, inventory, traditions, magicUses, level4talent){  
         super(name, personality, age, religion, background,
             status.strength+9, status.agility+8, status.intellect+9, status.will+9,
             status.perception+9, status.defense || 13, status.health+9,
@@ -537,6 +551,10 @@ class Clockwork extends Character{
         super.addTalent("ancestry","Chave","Um autômato tem uma chave em algum lugar de seu corpo que não pode alcançar. Quando a chave é virada e está rodando, ele é uma criatura. Quando a chave para, ele se torna um objeto. Essa chave para de rodar quando o autômato fica incapacitado. Ela também para ao final da rodada se o autômato teve um total de 0 ou menos em uma jogada de ataque ou de desafio. Enquanto é um objeto, não é possível utilizar ações, se mover, falar ou observar os arredores. Qualquer criatura que possa alcançar o autômato, pode utilizar uma ação para dar corda nele. Se o autômato não estiver incapacitado, se torna uma criatura novamente. Caso esteja incapacitado, o jogador joga 1d6. Para um resultado de 3 ou menos, não há efeito. Para 4 ou mais, o autômato cura 1 de dano e se torna uma criatura no fim da rodada. Embora seja um objeto enquanto está incapacitado, o autômato ainda está sujeito as regras para criaturas incapacitadas");
         super.addTalent("ancestry","Corpo Mecânico","Um autômato não come, bebe ou respira. Ele não envelhece e não pode ser transformado em uma criatura morta-viva. Seu corpo mecânico o impossibilita de nadar, então ele afunda quando submerso em líquido");
         super.addTalent("ancestry","Reparando Dano","Enquanto é uma criatura, o autômato se cura de dano como qualquer outra criatura. Caso seja um objeto, uma criatura pode utilizar uma ação para repará-lo com um kit de ferramentas. A criatura precisa trabalhar por no mínimo 4 horas. Ao fim deste período, ela faz um teste de intelecto com 1 perdição. Caso seja bem-sucedida, o autômato cura uma quantidade de dano igual sua taxa de cura");
+        if(level4talent){
+            super.addTalent("ancestry", "Acelerar as Engrenagens", "O autômato pode aumentar em 1 o número de ações que pode utilizar em um turno. Quando o turno termina, o jogador joga 1d6. Se o resultado for um número ímpar, o autômato se torna um objeto no fim do turno.");
+        }
+        this._level4talent = level4talent;
     }
     // Getting and setting new ancestry-specific properties:
     get purpose(){
@@ -588,11 +606,14 @@ class Clockwork extends Character{
             this.level4();
         }
     }
+    get level4talent(){
+        return this._level4talent;
+    }
 }
 
 class Dwarf extends Character{
     constructor(name, personality, age, religion, background, build, appearance, hatred, status,
-        professions, paths, inventory, traditions, magicUses){  
+        professions, paths, inventory, traditions, magicUses, level4talent){  
         super(name, personality, age, religion, background,
             status.strength+10, status.agility+9, status.intellect+10, status.will+10,
             status.perception+11, status.defense || 9, status.health+14,
@@ -610,6 +631,10 @@ class Dwarf extends Character{
         super.addTalent("ancestry","Constituição Robusta","Um anão toma metade do dano por veneno. Ele pode fazer jogadas de desafio com 1 dádiva para evitar ou remover a aflição envenenado");
         super.addTalent("ancestry","Criatura Odiada","O jogador escolhe uma criatura da tabela de Ódio. Este ódio concede 1 dádiva em jogadas de ataque do anão contra a criatura escolhida");
         super.addTalent("ancestry","Visão no Escuro","Enxerga em áreas obscurecidas por sombras e escuridão com um alcance médio como se estivessem iluminadas. Além desta distância, a escuridão é tratada como sombras e sombras como iluminado");
+        if(level4talent){
+            super.addTalent("ancestry", "Sacudir a Poeira", "O anão pode utilizar uma ação para curar uma quantidade de dano igual à sua taxa de cura e remover uma das seguintes aflições: fatigado, debilitado ou envenenado. Uma vez que utilizou este talento, ele não pode mais ser utilizado até que tenha completado um descanso.");
+        }
+        this._level4talent = level4talent;
     }
     // Getting and setting new ancestry-specific properties:
     get build(){
@@ -662,11 +687,14 @@ class Dwarf extends Character{
             this.level4();
         }
     }
+    get level4talent(){
+        return this._level4talent;
+    }
 }
 
 class Goblin extends Character{
     constructor(name, personality, age, religion, background, build, distinctiveAppearance, oddHabit, status,
-        professions, paths, inventory, traditions, magicUses){  
+        professions, paths, inventory, traditions, magicUses, level4talent){  
         super(name, personality, age, religion, background,
             status.strength+8, status.agility+12, status.intellect+10, status.will+9,
             status.perception+11, status.defense || 12, status.health+8,
@@ -683,6 +711,10 @@ class Goblin extends Character{
         super.addTalent("ancestry","Furtivo","Quando faz uma jogada para se esconder e mover-se silenciosamente, o goblin faz a jogada de desafio de Agilidade com 1 dádiva");
         super.addTalent("ancestry","Visão nas Sombras","Enxerga em áreas obscurecidas por sombras como se estivessem iluminadas");
         super.addTalent("ancestry","Vulnerabilidade a Ferro","Fica debilitado quando em contato com ferro");
+        if(level4talent){
+            super.addTalent("ancestry", "Saltar para Longe", "Quando uma criatura, que o goblin pode ver, fracassa em uma jogada de ataque contra a Defesa ou Agilidade do goblin, ele pode utilizar uma ação desencadeada para fugir");
+        }
+        this._level4talent = level4talent;
     }
     // Getting and setting new ancestry-specific properties:
     get build(){
@@ -735,11 +767,14 @@ class Goblin extends Character{
             this.level4();
         }
     }
+    get level4talent(){
+        return this._level4talent;
+    }
 }
 
 class Orc extends Character{
     constructor(name, personality, age, religion, background, build, appearance, status,
-        professions, paths, inventory, traditions, magicUses){  
+        professions, paths, inventory, traditions, magicUses, level4talent){  
         super(name, personality, age, religion, background,
             status.strength+11, status.agility+10, status.intellect+9, status.will+9,
             status.perception+10, status.defense || 10, status.health+11,
@@ -752,7 +787,10 @@ class Orc extends Character{
         super.addSpeakedLanguage("Dialeto Sombrio");
 
         super.addTalent("ancestry","Visão nas Sombras","Enxerga em áreas obscurecidas por sombras como se estivessem iluminadas");
-        
+        if(level4talent){
+            super.addTalent("ancestry", "Fúria Crescente", "Quando o orc sofre dano, ele faz seu próximo ataque antes do fim da próxima rodada com 1 dádiva.");
+        }
+        this._level4talent = level4talent;
     }
     // Getting and setting new ancestry-specific properties:
     get build(){
@@ -799,6 +837,9 @@ class Orc extends Character{
             this.level4();
         }
     }
+    get level4talent(){
+        return this._level4talent;
+    }
 }
 
 class Yerath extends Character{
@@ -808,12 +849,16 @@ class Yerath extends Character{
             status.strength+9, status.agility+10, status.intellect+10, status.will+9,
             status.perception+10, status.defense || 12, status.health+9,
             status.size || 1, status.speed || 10, status.power, status.damage, status.insanity, status.corruption, status.level,
-            professions, paths, inventory, traditions, magicUses);
+            professions, paths, inventory, traditions, magicUses, level4talent);
         this._caste = caste;
         super.addSpeakedLanguage("Yerath");
         super.addTalent("ancestry", "Braços Extras", "Você tem um segundo par de braços que terminam em mãos. É apenas possível usá-los para carregar objetos pequenos e leves ou para realizar atividades menores. Você também tem como usar seus dedos normalmente. No seu turno, você pode usar uma ação desencadeada para recarregar uma arma.");
         super.addTalent("ancestry", "Voar", "Você pode usar uma ação para desenrolar suas asas. Dessa forma você pode se mover voando até o final da rodada, mas você se move na metade do seu deslocamento. Enquanto suas asas estão desenroladas, jogadas de ataque feitas contra você tem uma dádiva.");
         super.addTalent("ancestry", "Gosma", "Você pode usar uma ação, ou uma ação desencadeada quando você toma dano, para esguichar a sua gosma em um cubo de 1 metro de raio originando de um ponto que você consegue alcançar. Qualquer criatura nesse espaço precisa conseguir um sucesso em um jogada de desafio de força ou ficam desabilitados por uma rodada. Uma vez que você que usar sua gosma, você precisa esperar um minuto antes de você usá-la de novo. Como parte desse talento, você pode usar o cheiro da gosma para comunicar um sentimento para outros yeraths, como medo, raiva, tristeza ou segurança. Qualquer yerath dentro de 5 metros pode sentir essa mensagem.");
+        if(level4talent){
+            super.addTalent("ancestry", "Asas Ágeis", "Você pode usar uma ação desencadeada no seu turno para usar Voar.");
+        }
+        this._level4talent = level4talent;
     }
     // Getting and setting new ancestry-specific properties:
     get caste(){
@@ -848,6 +893,9 @@ class Yerath extends Character{
             this.level4();
         }
     }
+    get level4talent(){
+        return this._level4talent;
+    }
 }
 
 function getCharacter(object){
@@ -865,7 +913,7 @@ function getCharacter(object){
         case "human":
             characterCreated = new Human(object.name, object.personality, object.age, object.religion,
                 object.background, object.size, object.build, object.appearance, object.status,
-                object.professions, paths, object.inventory, object.traditions, object.magicUses || null);
+                object.professions, paths, object.inventory, object.traditions, object.magicUses || null, object.level4talent || false);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -882,7 +930,7 @@ function getCharacter(object){
         case "dwarf":
             characterCreated = new Dwarf(object.name, object.personality, object.age, object.religion,
                 object.background, object.build, object.appearance, object.hatred, object.status,
-                object.professions, paths, object.inventory, object.traditions, object.magicUses || null);
+                object.professions, paths, object.inventory, object.traditions, object.magicUses || null, object.level4talent || false);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -900,7 +948,8 @@ function getCharacter(object){
             characterCreated = new Changeling(object.name, object.personality, object.age,
                 object.religion, object.background, object.apparentGender, object.apparentAncestry,
                 object.apparentAge, object.apparentBuild, object.apparentAppearance, 
-                object.quirk, object.status, object.professions, paths, object.inventory, object.traditions, object.magicUses || null);
+                object.quirk, object.status, object.professions, paths, object.inventory, object.traditions, object.magicUses || null,
+                object.level4talent || false);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -917,7 +966,8 @@ function getCharacter(object){
         case "clockwork":
             characterCreated = new Clockwork(object.name, object.personality, object.age, object.religion,
                 object.background, object.purpose, object.form, object.appearance,
-                object.locationKey, object.status, object.professions, paths, object.inventory, object.traditions, object.magicUses || null);
+                object.locationKey, object.status, object.professions, paths, object.inventory, object.traditions, object.magicUses || null,
+                object.level4talent || false);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -934,7 +984,8 @@ function getCharacter(object){
         case "goblin":
             characterCreated = new Goblin(object.name, object.personality, object.age, object.religion,
                 object.background, object.build, object.distinctiveAppearance, object.oddHabit, object.status,
-                object.professions, paths, object.inventory, object.traditions, object.magicUses || null);
+                object.professions, paths, object.inventory, object.traditions, object.magicUses || null,
+                object.level4talent || false);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -951,7 +1002,8 @@ function getCharacter(object){
         case "orc":
             characterCreated = new Orc(object.name, object.personality, object.age, object.religion,
                 object.background, object.build, object.appearance, object.status,
-                object.professions, paths, object.inventory, object.traditions, object.magicUses || null);
+                object.professions, paths, object.inventory, object.traditions, object.magicUses || null, 
+                object.level4talent || false);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -968,7 +1020,8 @@ function getCharacter(object){
         case "yerath":
             characterCreated = new Yerath(object.name, object.caste, object.age, object.religion,
                 object.personality, object.background, object.status,
-                object.professions, paths, object.inventory, object.traditions, object.magicUses || null);
+                object.professions, paths, object.inventory, object.traditions, object.magicUses || null,
+                object.level4talent || false);
             keys = Object.keys(object.languages);
             keys.forEach(function(language){
                 if(object.languages[language].speakable){
@@ -997,7 +1050,8 @@ function getCharacterObject(characterToBeObject){
         "professions": characterToBeObject.professions,
         "inventory": characterToBeObject.inventory,
         "traditions": characterToBeObject.traditions,
-        "magicUses": characterToBeObject.magicUses
+        "magicUses": characterToBeObject.magicUses,
+        "level4talent": characterToBeObject.level4talent || false
     };
     // Novice Path
     switch(characterToBeObject.novicePath.pathName){
@@ -1245,7 +1299,6 @@ var human = new Human("Harry Potter", "Powerful", 16, "None", "Orphan, wants to 
     },
     items: {
         "Livro de transfiguração": {
-
         },
         "Livro do Príncipe Meio-Sangue": {
             description: "Tem dicas muito úteis para poções, além de feitiços."
@@ -1263,8 +1316,6 @@ var human = new Human("Harry Potter", "Powerful", 16, "None", "Orphan, wants to 
 }, {
     "Defense Against the Dark Arts": ["Stupefy", "Expelliarmus"]
 });
-
-
 var changeling = new Changeling("Example 2", "Cool", 30, "Dama da noite", "Kidnapped and used for slavor", "female", "orc", 12, "Strong af", "Ugly as hell", "Doesn't have fingernails or hair when changing their form", {
     strength: 0,
     agility: 0,
@@ -1281,7 +1332,6 @@ var changeling = new Changeling("Example 2", "Cool", 30, "Dama da noite", "Kidna
     corruption: 0,
     level: 1
 });
-
 var clockwork = new Clockwork("Robot 1", "Fluid", 150, "Pai morte", "Came from a rich family", "kill everyone", "great form", "Strange", "Anckle", {
     strength: 0,
     agility: 0,
@@ -1298,7 +1348,6 @@ var clockwork = new Clockwork("Robot 1", "Fluid", 150, "Pai morte", "Came from a
     corruption: 0,
     level: 1
 });
-
 var dwarf = new Dwarf("Sneezy", "ATCHOU!", 50, "Winter is coming", "Snow white", "Weak", "Sick", "Orcs", {
     strength: 0,
     agility: 0,
@@ -1315,7 +1364,6 @@ var dwarf = new Dwarf("Sneezy", "ATCHOU!", 50, "Winter is coming", "Snow white",
     corruption: 0,
     level: 1
 });
-
 var goblin = new Goblin("Greeny", "Angry and sneaky", 15, "Lord Voldemort", "Robbery and assault", "Small", "Big nose", "Speak in lies", {
     strength: 0,
     agility: 0,
@@ -1332,7 +1380,6 @@ var goblin = new Goblin("Greeny", "Angry and sneaky", 15, "Lord Voldemort", "Rob
     corruption: 0,
     level: 1
 });
-
 var orc = new Orc("Construtor", "Kill.", 21, "None", "You received an education. You know how to read the Common Tongue.", "You are corpulent.", "You are ugly. You have thick tusks jutting from your broad jaw, a sloping forehead, and tiny eyes set deep in your skull.", {
     strength: 0,
     agility: 0,
@@ -1349,7 +1396,6 @@ var orc = new Orc("Construtor", "Kill.", 21, "None", "You received an education.
     corruption: 0,
     level: 1
 });
-
 var yerath = new Yerath("HarleyQuinn", "Soldier", 12, "Herself", "Buzzly", "Bee happy", {
     strength: 0,
     agility: 0,
