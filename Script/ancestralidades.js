@@ -199,8 +199,10 @@ class Character{
     }
     // Special case: all ancestries have healing rate = current health / 4 -> round down(floor)
     get healingRate(){
-        if(this._expertPath instanceof Combatente && this._level >= 6){
-            return Math.floor(this.health/3);
+        if(this._expertPath){
+            if(this._expertPath instanceof Combatente && this._level >= 6){
+                return Math.floor(this.health/3);
+            }
         }
         return Math.floor(this.health/4);
     }
