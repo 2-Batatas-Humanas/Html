@@ -968,6 +968,7 @@ function addLevel(){
             window.location.href = "level5.html";
             break;
         case 5:
+            window.location.href = "level6.html";
             break;
         case 6:
             break;
