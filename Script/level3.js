@@ -14,6 +14,8 @@ additions = {
     speed: 0
 }
 
+spell = null;
+
 function setExpertPath(){
     let select = document.querySelector("#expertPath");
     let expertPath;
@@ -136,18 +138,16 @@ function getSpecifications(adds, path){
         addImageToDiv(id, "Images/talentosCombatente.png", 250);
         addBrToDiv(id);
         createOptionsInput(id, "Escolha um dos talentos de Combatente acima: ", "combatenteTalent",
-        ["Especialização em Defesa", "Lutar com Duas Armas", "Lutar com Qualquer Coisa", "Ataque Poderoso", "Ataque Preciso", "Bater com Escudo", "Recarga Rápida", "Disparo Rápido"],
-        ["defenseEspecialization", "fightWithTwoWeapons", "haftAttack", "powerfulAttack", "preciseAttack", "shieldBash", "swiftReload", "swiftShot"]);
+        ["Especialização em Defesa", "Lutar com Qualquer Coisa", "Ataque Poderoso", "Ataque Preciso", "Bater com Escudo", "Recarga Rápida", "Disparo Rápido", "Lutar com Duas Armas"],
+        ["defenseEspecialization", "haftAttack", "powerfulAttack", "preciseAttack", "shieldBash", "swiftReload", "swiftShot", ]);
         addBrToDiv(id);
     }
 
     if(adds.spell){
-        character.traditions = character.traditions || {};
-        character.traditions["Especial"] = character.traditions["Especial"] || [];
-        if(!character.traditions["Especial"].includes(adds.spell)){
-            character.traditions["Especial"].push(adds.spell);
-        }
+        spell = adds.spell;
         addPToDiv(id, "Você recebeu a magia " + adds.spell + ". Ela está na parte especial na aba tradições.");
+    } else{
+        spell = null;
     }
 
     if(adds.magic){
@@ -355,6 +355,13 @@ function nextPage(){
         case "will":
             character.status.will++;
             break;
+    }
+    if(spell){
+        character.traditions = character.traditions || {};
+        character.traditions["Especial"] = character.traditions["Especial"] || [];
+        if(!character.traditions["Especial"].includes(adds.spell)){
+            character.traditions["Especial"].push(adds.spell);
+        }
     }
     localStorage.setItem("character", JSON.stringify(character));
     let langProfChoice = document.querySelector("#langProfChoice");
