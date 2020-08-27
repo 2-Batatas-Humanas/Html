@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <title>Nível 7</title>
+        <link rel="icon" type="image/png" href="Images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="Style/level7.css">
+        <script src="Script/trilhas.js"></script>
+        <script src="Script/magias.js"></script>
+        <script src="Script/funcoesAuxiliares.js"></script>
+        <script src="Script/level7.js"></script>
+    </head>
+    <body>
+        <h1>Bem-vindo ao nível 7!</h1>
+        <div>
+            <label id="changePathLabel" for="changePath">Escolher uma segunda trilha de especialista</label>
+            <input onchange="changePathType()" id="changePath" type="checkbox">
+        </div>
+        <div id="masterPathDiv">
+            <label for="masterPath">Escolha sua Trilha de Mestre:</label>
+            <select id="masterPath" onchange="changePath(this.value)">
+                <optgroup label="Trilhas de Magia">
+                    <option value="Abjurador">Abjurador - Magias de Proteção</option>
+                    <option value="Adivinho">Adivinho - Magias de Adivinhação</option>
+                    <option value="Aeromante">Aeromante - Magias de Ar</option>
+                    <option value="Apocaliptista">Apocaliptista - Magias Proibidas</option>
+                    <option value="Arcanista">Arcanista - Magias Arcanas</option>
+                    <option value="Astromante">Astromante - Magias Celestiais</option>
+                    <option value="Bardo">Bardo - Magias de Canção</option>
+                    <option value="Cavaleiro Mago">Cavaleiro Mago - Magias de Batalha</option>
+                    <option value="Cronomante">Cronomante - Magias de Tempo</option>
+                    <option value="Curandeiro">Curandeiro - Magias de Vida</option>
+                    <option value="Destruidor">Destruidor - Magias de Destruição</option>
+                    <option value="Encantador">Encantador - Magias de Encantamento</option>
+                    <option value="Erudito">Erudito - Magia</option>
+                    <option value="Geomante">Geomante - Magias de Terra</option>
+                    <option value="Hidromante">Hidromante - Magias de Água</option>
+                    <option value="Homem Selvagem">Homem Selvagem - Magias de Natureza</option>
+                    <option value="Ilusionista">Ilusionista - Magias de Ilusão</option>
+                    <option value="Invocador">Invocador - Magias de Invocação</option>
+                    <option value="Magus">Magus - Implementos</option>
+                    <option value="Mestre das Feras">Mestre das Feras - Magias Primitivas</option>
+                    <option value="Metamorfo">Metamorfo - Magias de Transformação</option>
+                    <option value="Necromante">Necromante - Magias de Necromancia</option>
+                    <option value="Piromante">Piromante - Magias de Fogo</option>
+                    <option value="Rogador">Rogador - Magias de Maldição</option>
+                    <option value="Runista">Runista - Magias de Runas</option>
+                    <option value="Taumaturgo">Taumaturgo - Magias de Caos</option>
+                    <option value="Tecnomante">Tecnomante - Magias de Tecnomancia</option>
+                    <option value="Tempestuoso">Tempestuoso - Magias de Tempestade</option>
+                    <option value="Tenebrista">Tenebrista - Magias de Sombras</option>
+                    <option value="Teurgo">Teurgo - Magias de Teurgia</option>
+                    <option value="Transmutador">Transmutador - Magias de Alteração</option>
+                    <option value="Viajante">Viajante - Magias de Teleporte</option>
+                </optgroup>
+                <optgroup label="Trilhas de Habilidade">
+                    <option value="Acrobata">Acrobata - Movimento e manobrabilidade</option>
+                    <option value="Atirador de Elite">Atirador de Elite - Arcos e bestas</option>
+                    <option value="Bruto">Bruto - Força e resistência</option>
+                    <option value="Campeão">Campeão - Lutar por causas</option>
+                    <option value="Capelão">Capelão - Liderança espiritual</option>
+                    <option value="Carrasco">Carrasco - Assassinato</option>
+                    <option value="Cavaleiro">Cavaleiro - Combate Montado</option>
+                    <option value="Conquistador">Conquistador - Tática</option>
+                    <option value="Defensor">Defensor - Proteger outros</option>
+                    <option value="Dervixe">Dervixe - Lutar com duas armas</option>
+                    <option value="Diplomata">Diplomata - Negociação e persuasão</option>
+                    <option value="Duelista">Duelista - Duelos</option>
+                    <option value="Encouraçado">Encouraçado - Armadura pesada</option>
+                    <option value="Engenheiro">Engenheiro - Criar servos mecânicos</option>
+                    <option value="Envenenador">Envenenador - Usar venenos</option>
+                    <option value="Exorcista">Exorcista - Exorcizar entidades malignas</option>
+                    <option value="Explorador">Explorador - Sobrevivência</option>
+                    <option value="Faz-Tudo">Faz-Tudo - Nenhuma maestria</option>
+                    <option value="Gladiador">Gladiador - Lutar sujo</option>
+                    <option value="Infiltrador">Infiltrador - Espionagem</option>
+                    <option value="Inquisidor">Inquisidor - Expor fraquezas e corrupção</option>
+                    <option value="Lâmina">Lâmina - Luta com facas</option>
+                    <option value="Mercador da Morte">Mercador da Morte - Armas Pesadas</option>
+                    <option value="Mestre das Armas">Mestre das Armas - Combater com armas</option>
+                    <option value="Milagreiro">Milagreiro - Fazer Milagres</option>
+                    <option value="Mirmidão">Mirmidão - Lutar com escudos</option>
+                    <option value="Pistoleiro">Pistoleiro - Pistolas e Rifles</option>
+                    <option value="Saqueador">Saqueador - Gerar carnificina</option>
+                    <option value="Sentinela">Sentinela - Percepção</option>
+                    <option value="Templário">Templário - Criar e proteger locais sagrados</option>
+                    <option value="Vingador">Vingador - Vingar-se</option>
+                    <option value="Zelota">Zelota - Insanidade</option>
+                </optgroup>
+            </select>
+            <div id="masterChoicesDiv"></div>
+        </div>
+        <div id="expertPathDiv" class="none">
+            <label for="expertPath">Escolha sua Segunda Trilha de Especialista:</label>
+            <select id="expertPath" onchange="changePathExpert(this.value)">
+                <optgroup label="Trilhas de Fé">
+                    <option value="Clérigo">Clérigo</option>
+                    <option value="Druida">Druida</option>
+                    <option value="Oráculo">Oráculo</option>
+                    <option value="Paladino">Paladino</option>
+                </optgroup>
+                <optgroup label="Trilhas do Poder">
+                    <option value="Artífice">Artífice</option>
+                    <option value="Bruxa">Bruxa</option>
+                    <option value="Feiticeiro">Feiticeiro</option>
+                    <option value="Mago">Mago</option>
+                </optgroup>
+                <optgroup label="Trilhas da Trapaça">
+                    <option value="Assassino">Assassino</option>
+                    <option value="Batedor">Batedor</option>
+                    <option value="Ladrão">Ladrão</option>
+                    <option value="Warlock">Warlock</option>
+                </optgroup>
+                <optgroup label="Trilhas da Guerra">
+                    <option value="Atador de Feitiços">Atador de Feitiços</option>
+                    <option value="Combatente">Combatente</option>
+                    <option value="Furioso">Furioso</option>
+                    <option value="Patrulheiro">Patrulheiro</option>
+                </optgroup>
+                <optgroup label="Trilhas fora do Livro Base">
+                    <option value="Highlander">Highlander</option>
+                    <option value="Silhouette">Silhouette</option>
+                    <option value="SummerChild">SummerChild</option>
+                    <option value="Soulthief">Soulthief</option>
+                </optgroup>
+            </select>
+            <div id="expertChoicesDiv"></div>
+        </div>
+        <button onclick="nextPage()">Próximo</button>
+    </body>
+</html>
