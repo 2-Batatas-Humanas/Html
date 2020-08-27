@@ -96,7 +96,7 @@ class Character{
                     this._expertPath = new AtadorDeFeiticos(paths.expert.training, level);
                     break;
                 case "Combatente":
-                    this._expertPath = new Combatente(paths.expert.training, level, choices);
+                    this._expertPath = new Combatente(paths.expert.training, level, paths.expert.choices);
                     break;
                 case "Furioso":
                     this._expertPath = new Furioso(paths.expert.training, level);
@@ -121,8 +121,264 @@ class Character{
         }
 
         if(paths.master){
-            switch(paths.master.type){
-
+            if(paths.master.expert){
+                switch(paths.master.type){
+                    case "Clérigo":
+                        this._masterPath = new Clerigo(paths.master.training, level);
+                        break;
+                    case "Druida":
+                        this._masterPath = new Druida(paths.master.training, level);
+                        break;
+                    case "Oráculo":
+                        this._masterPath = new Oraculo(paths.master.training, level);
+                        break;
+                    case "Paladino":
+                        this._masterPath = new Paladino(paths.master.training, level);
+                        break;
+                    case "Artífice":
+                        this._masterPath = new Artifice(paths.master.training, level);
+                        break;
+                    case "Bruxa":
+                        this._masterPath = new Bruxa(paths.master.training, level);
+                        break;
+                    case "Feiticeiro":
+                        this._masterPath = new Feiticeiro(paths.master.training, level);
+                        break;
+                    case "Mago":
+                        this._masterPath = new Mago(paths.master.training, level);
+                        break;
+                    case "Assassino":
+                        this._masterPath = new Assassino(paths.master.training, level);
+                        break;
+                    case "Batedor":
+                        this._masterPath = new Batedor(paths.master.training, level);
+                        break;
+                    case "Ladrão":
+                        this._masterPath = new Ladrao(paths.master.training, level, paths.master.choices);
+                        break;
+                    case "Warlock":
+                        this._masterPath = new Warlock(paths.master.training, level);
+                        break;
+                    case "Atador de Feitiços":
+                        this._masterPath = new AtadorDeFeiticos(paths.master.training, level);
+                        break;
+                    case "Combatente":
+                        this._masterPath = new Combatente(paths.master.training, level, paths.master.choices);
+                        break;
+                    case "Furioso":
+                        this._masterPath = new Furioso(paths.master.training, level);
+                        break;
+                    case "Patrulheiro":
+                        this._masterPath = new Patrulheiro(paths.master.training, level);
+                        break;
+                    case "Highlander":
+                        this._masterPath = new Highlander(paths.master.training, level);
+                        break;
+                    case "Silhouette":
+                        this._masterPath = new Silhouette(paths.master.training, level);
+                        break;
+                    case "SummerChild":
+                        this._masterPath = new SummerChild(paths.master.training, level);
+                        break;
+                    case "Soulthief":
+                        this._masterPath = new Soulthief(paths.master.training, level);
+                        break;
+                }
+            } else{
+                switch(paths.master.type){
+                    case "Abjurador":
+                        this._masterPath = new Abjurador(paths.master.training, level);
+                        break;
+                    case "Adivinho":
+                        this._masterPath = new Adivinho(paths.master.training, level);
+                        break;
+                    case "Aeromante":
+                        this._masterPath = new Aeromante(paths.master.training, level);
+                        break;
+                    case "Apocaliptista":
+                        this._masterPath = new Apocaliptista(paths.master.training, level);
+                        break;
+                    case "Arcanista":
+                        this._masterPath = new Arcanista(paths.master.training, level);
+                        break;
+                    case "Astromante":
+                        this._masterPath = new Astromante(paths.master.training, level);
+                        break;
+                    case "Bardo":
+                        this._masterPath = new Bardo(paths.master.training, level);
+                        break;
+                    case "Cavaleiro Mago":
+                        this._masterPath = new CavaleiroMago(paths.master.training, level);
+                        break;
+                    case "Cronomante":
+                        this._masterPath = new Cronomante(paths.master.training, level);
+                        break;
+                    case "Curandeiro":
+                        this._masterPath = new Curandeiro(paths.master.training, level);
+                        break;
+                    case "Destruidor":
+                        this._masterPath = new Destruidor(paths.master.training, level);
+                        break;
+                    case "Encantador":
+                        this._masterPath = new Encantador(paths.master.training, level);
+                        break;
+                    case "Erudito":
+                        this._masterPath = new Erudito(paths.master.training, level);
+                        break;
+                    case "Geomante":
+                        this._masterPath = new Geomante(paths.master.training, level);
+                        break;
+                    case "Hidromante":
+                        this._masterPath = new Hidromante(paths.master.training, level);
+                        break;
+                    case "Homem Selvagem":
+                        this._masterPath = new HomemSelvagem(paths.master.training, level);
+                        break;
+                    case "Ilusionista":
+                        this._masterPath = new Ilusionista(paths.master.training, level);
+                        break;
+                    case "Invocador":
+                        this._masterPath = new Invocador(paths.master.training, level);
+                        break;
+                    case "Magus":
+                        this._masterPath = new Magus(paths.master.training, level);
+                        break;
+                    case "Mestre das Feras":
+                        this._masterPath = new MestreDasFeras(paths.master.training, level);
+                        break;
+                    case "Metamorfo":
+                        this._masterPath = new Metamorfo(paths.master.training, level);
+                        break;
+                    case "Necromante":
+                        this._masterPath = new Necromante(paths.master.training, level);
+                        break;
+                    case "Piromante":
+                        this._masterPath = new Piromante(paths.master.training, level);
+                        break;
+                    case "Rogador":
+                        this._masterPath = new Rogador(paths.master.training, level);
+                        break;
+                    case "Runista":
+                        this._masterPath = new Runista(paths.master.training, level);
+                        break;
+                    case "Taumaturgo":
+                        this._masterPath = new Taumaturgo(paths.master.training, level);
+                        break;
+                    case "Tecnomante":
+                        this._masterPath = new Tecnomante(paths.master.training, level);
+                        break;
+                    case "Tempestuoso":
+                        this._masterPath = new Tempestuoso(paths.master.training, level);
+                        break;
+                    case "Tenebrista":
+                        this._masterPath = new Tenebrista(paths.master.training, level);
+                        break;
+                    case "Teurgo":
+                        this._masterPath = new Teurgo(paths.master.training, level);
+                        break;
+                    case "Transmutador":
+                        this._masterPath = new Transmutador(paths.master.training, level);
+                        break;
+                    case "Viajante":
+                        this._masterPath = new Viajante(paths.master.training, level);
+                        break;
+                    case "Acrobata":
+                        this._masterPath = new Acrobata(paths.master.training, level);
+                        break;
+                    case "Atirador de Elite":
+                        this._masterPath = new AtiradorDeElite(paths.master.training, level);
+                        break;
+                    case "Bruto":
+                        this._masterPath = new Bruto(paths.master.training, level);
+                        break;
+                    case "Campeão":
+                        this._masterPath = new Campeao(paths.master.training, level);
+                        break;
+                    case "Capelão":
+                        this._masterPath = new Capelao(paths.master.training, level);
+                        break;
+                    case "Carrasco":
+                        this._masterPath = new Carrasco(paths.master.training, level);
+                        break;
+                    case "Cavaleiro":
+                        this._masterPath = new Cavaleiro(paths.master.training, level);
+                        break;
+                    case "Conquistador":
+                        this._masterPath = new Conquistador(paths.master.training, level);
+                        break;
+                    case "Defensor":
+                        this._masterPath = new Defensor(paths.master.training, level);
+                        break;
+                    case "Dervixe":
+                        this._masterPath = new Dervixe(paths.master.training, level);
+                        break;
+                    case "Diplomata":
+                        this._masterPath = new Diplomata(paths.master.training, level);
+                        break;
+                    case "Duelista":
+                        this._masterPath = new Duelista(paths.master.training, level);
+                        break;
+                    case "Encouraçado":
+                        this._masterPath = new Encouracado(paths.master.training, level);
+                        break;
+                    case "Engenheiro":
+                        this._masterPath = new Engenheiro(paths.master.training, level);
+                        break;
+                    case "Envenenador":
+                        this._masterPath = new Envenenador(paths.master.training, level);
+                        break;
+                    case "Exorcista":
+                        this._masterPath = new Exorcista(paths.master.training, level);
+                        break;
+                    case "Explorador":
+                        this._masterPath = new Explorador(paths.master.training, level);
+                        break;
+                    case "Faz-Tudo":
+                        this._masterPath = new FazTudo(paths.master.training, level);
+                        break;
+                    case "Gladiador":
+                        this._masterPath = new Gladiador(paths.master.training, level);
+                        break;
+                    case "Infiltrador":
+                        this._masterPath = new Infiltrador(paths.master.training, level);
+                        break;
+                    case "Inquisidor":
+                        this._masterPath = new Inquisidor(paths.master.training, level);
+                        break;
+                    case "Lâmina":
+                        this._masterPath = new Lamina(paths.master.training, level);
+                        break;
+                    case "Mercador da Morte":
+                        this._masterPath = new MercadorDaMorte(paths.master.training, level);
+                        break;
+                    case "Mestre das Armas":
+                        this._masterPath = new MestreDasArmas(paths.master.training, level);
+                        break;
+                    case "Milagreiro":
+                        this._masterPath = new Milagreiro(paths.master.training, level);
+                        break;
+                    case "Mirmidão":
+                        this._masterPath = new Mirmidao(paths.master.training, level);
+                        break;
+                    case "Pistoleiro":
+                        this._masterPath = new Pistoleiro(paths.master.training, level);
+                        break;
+                    case "Saqueador":
+                        this._masterPath = new Saqueador(paths.master.training, level);
+                        break;
+                    case "Sentinela":
+                        this._masterPath = new Sentinela(paths.master.training, level);
+                        break;
+                    case "Templário":
+                        this._masterPath = new Templario(paths.master.training, level);
+                        break;
+                    case "Vingador":
+                        this._masterPath = new Vingador(paths.master.training, level);
+                        break;
+                    case "Zelota":
+                        this._masterPath = new Zelota(paths.master.training, level);
+                        break;
+                }
             }
             this._talents.masterPath = this.masterPath.talents;
         }
@@ -1100,7 +1356,18 @@ function getCharacterObject(characterToBeObject){
     }
 
     // Master Path
-
+    if(characterToBeObject.masterPath){
+        newObject.masterPath = {
+            type: characterToBeObject.masterPath.pathName,
+            training: characterToBeObject.masterPath.training
+        }
+        if(characterToBeObject.masterPath.expert){
+            newObject.masterPath.expert = true;
+        }
+        if(characterToBeObject.masterPath.choices){
+            newObject.masterPath.choices = characterToBeObject.masterPath.choices;
+        }
+    }
     // Languages
     newObject.languages = characterToBeObject.languages;
 
