@@ -414,7 +414,7 @@ function loadTalents(){
         }
         if(!isEmpty(character.talents.masterPath)){
             let masterTalents = document.createElement("p");
-            masterTalents.innerHTML = "Talentos de Trilha de Aprendiz:";
+            masterTalents.innerHTML = "Talentos de Trilha de Mestre:";
             let masterList = document.createElement("ul");
             let allMasterTalents = Object.keys(character.talents.masterPath);
             allMasterTalents.forEach(function(value){
@@ -971,6 +971,7 @@ function addLevel(){
             window.location.href = "level6.html";
             break;
         case 6:
+            window.location.href = "level7.html";
             break;
         case 7:
             break;
