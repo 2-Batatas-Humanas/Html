@@ -1,41 +1,68 @@
 // Emptying div:
 function emptyDiv(divId){
-    var div = document.querySelector("#" + divId);
+    let div = document.querySelector("#" + divId);
     div.innerHTML = "";
 }
 
 // Adding to HTML elements:
 function addPToDiv(divId, pText = ""){
-    var div = document.querySelector("#" + divId);
-    var p = document.createElement("p");
+    let div = document.querySelector("#" + divId);
+    let p = document.createElement("p");
     p.innerHTML = pText;
     div.appendChild(p);
 }
 
+function addHToDiv(divId, hText, hNumber){
+    let div = document.querySelector("#" + divId);
+    let h;
+    switch(hNumber){
+        case 1:
+            h = document.createElement("h1");
+            break;
+        case 2:
+            h = document.createElement("h2");
+            break;
+        case 3:
+            h = document.createElement("h3");
+            break;
+        case 4:
+            h = document.createElement("h4");
+            break;
+        case 5:
+            h = document.createElement("h5");
+            break;
+        case 6:
+            h = document.createElement("h6");
+            break;
+    }
+    h.innerHTML = hText;
+    div.appendChild(h);
+}
+
 function addBrToDiv(divId, howMany = 2){
-    var div = document.querySelector("#" + divId);
-    for(var i = 0; i < howMany; i++){
+    let div = document.querySelector("#" + divId);
+    for(let i = 0; i < howMany; i++){
         div.innerHTML += "<br>";
     }
 }
 
 // Showing attributes:
 function showAttributes(divId, strength, agility, intelligence, will){
-    var div = document.querySelector("#" + divId);
+    let div = document.querySelector("#" + divId);
 
-    var p1 = document.createElement("p");
+    let p1 = document.createElement("p");
     p1.id = "strength";
     p1.innerHTML = "Força: " + strength;
 
-    var p2 = document.createElement("p");
+    let p2 = document.createElement("p");
     p2.id = "agility";
     p2.innerHTML = "Agilidade: " + agility;
 
-    var p3 = document.createElement("p");
+    let p3 = document.createElement("p");
     p3.id = "intelligence";
     p3.innerHTML = "Intelecto: " + intelligence;
 
-    var p4 = document.createElement("p");
+    let p4 = document.createElement("p");
     p4.id = "will";
     p4.innerHTML = "Vontade: " + will;
 
@@ -57,13 +84,13 @@ function addImageToDiv(divId, src, width){
 
 //Checkbox
 function createCheckbox(divId, labelText, checkboxId){
-    var div = document.querySelector("#" + divId);
+    let div = document.querySelector("#" + divId);
 
-    var checkbox = document.createElement("input");
+    let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.id = checkboxId;
     
-    var label = document.createElement("label");
+    let label = document.createElement("label");
     label.for = checkboxId;
     label.innerHTML = labelText;
 
@@ -73,15 +100,15 @@ function createCheckbox(divId, labelText, checkboxId){
 
 //Textarea
 function createTextareaInput(divId, labelText, textareaId, placeholder = null){
-    var div = document.querySelector("#" + divId);
+    let div = document.querySelector("#" + divId);
 
-    var textarea = document.createElement("textarea");
+    let textarea = document.createElement("textarea");
     textarea.id = textareaId;
     if(placeholder){
         textarea.placeholder = placeholder;
     }
 
-    var label = document.createElement("label");
+    let label = document.createElement("label");
     label.for = textareaId;
     label.innerHTML = labelText;
 
@@ -91,20 +118,20 @@ function createTextareaInput(divId, labelText, textareaId, placeholder = null){
 
 //Select+options
 function createOptionsInput(divId, labelText, selectId, optionsList, optionsValuesList, oninput = null){
-    var div = document.querySelector("#" + divId);
+    let div = document.querySelector("#" + divId);
 
-    var select = document.createElement("select");
+    let select = document.createElement("select");
     select.id = selectId;
     if(oninput){
         select.setAttribute("oninput", oninput);
     }
 
-    var label = document.createElement("label");
+    let label = document.createElement("label");
     label.for = selectId;
     label.innerHTML = labelText;
 
-    var option;
-    for(var i = 0; i < optionsList.length; i++){
+    let option;
+    for(let i = 0; i < optionsList.length; i++){
         option = document.createElement("option");
         option.innerHTML = optionsList[i];
         option.value = optionsValuesList[i];
@@ -117,9 +144,9 @@ function createOptionsInput(divId, labelText, selectId, optionsList, optionsValu
 //Select+options+button
 function createOptionsInputWithButton(divId, labelText, selectId, optionsList, optionsValuesList, onclick, buttonLabel = null, oninput = null){
     createOptionsInput(divId, labelText, selectId, optionsList, optionsValuesList, oninput);
-    var div = document.querySelector("#" + divId);
+    let div = document.querySelector("#" + divId);
 
-    var button = document.createElement("button");
+    let button = document.createElement("button");
     button.setAttribute("onclick", onclick);
     if(buttonLabel){
         button.innerHTML = buttonLabel;
@@ -132,9 +159,9 @@ function createOptionsInputWithButton(divId, labelText, selectId, optionsList, o
 
 //Other inputs
 function createNewInput(divId, labelText, inputId, type, placeholder = null, value = null, min = null, max = null, step = null){
-    var div = document.querySelector("#" + divId);
+    let div = document.querySelector("#" + divId);
 
-    var input = document.createElement("input");
+    let input = document.createElement("input");
     input.id = inputId;
     input.type = type;
     if(placeholder){
@@ -152,7 +179,7 @@ function createNewInput(divId, labelText, inputId, type, placeholder = null, val
     if(step){
         input.step = step;
     }
-    var label = document.createElement("label");
+    let label = document.createElement("label");
     label.for = inputId;
     label.innerHTML = labelText;
 
@@ -228,7 +255,7 @@ function deepCopy(obj){
 
 // Check if object is empty:
 function isEmpty(obj) {
-    for(var key in obj) {
+    for(let key in obj) {
         if(obj.hasOwnProperty(key))
             return false;
     }
