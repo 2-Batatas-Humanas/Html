@@ -999,7 +999,7 @@ class Patrulheiro extends Path{
             choice: {
                 profession: "rastreador",
                 language: "new",
-                profession: "wilderness"
+                profession2: "wilderness"
             }
         }
     }
@@ -1277,7 +1277,7 @@ class Apocaliptista extends Path {
     level7(){
         return {
             health: 2,
-            corruption: 2,
+            corruption: 1,
             power: 1,
             magic:"O apocaliptista descobre a tradição Proibida ou aprende uma magia Proibida.",
             choice: {
@@ -1399,13 +1399,13 @@ class CavaleiroMago extends Path {
     }
     level7(){
         return {
-          health: 2,
-          power: 1,
-          magic:"O cavaleiro mago descobre a tradição Batalha ou aprende uma magia de Batalha.",
-          choice: {
-              language: "new",
-              profession: "military"
-          }  
+            health: 2,
+            power: 1,
+            magic:"O cavaleiro mago descobre a tradição Batalha ou aprende uma magia de Batalha.",
+            choice: {
+                language: "new",
+                profession: "military"
+            }  
         }
     }
     level10(){
@@ -1621,7 +1621,7 @@ class HomemSelvagem extends Path {
             magic:"O homem selvagem descobre a tradição Natureza ou aprende uma magia de Natureza.",
             choice: {
                 language: "new",
-                profession: "savage"
+                profession: "wilderness"
             }
         }
     }
@@ -1791,6 +1791,7 @@ class Necromante extends Path {
             health: 1,
             power: 1,
             magic:"O necromante descobre a tradição Necromancia ou aprende uma magia de Necromancia.",
+            spell: "Comandar Mortos-Vivos",
             choice: {
                 language: "new",
                 profession: "academic"
@@ -2497,6 +2498,7 @@ class Exorcista extends Path {
         return {
             health: 4,
             power: 1,
+            spell: "Exorcismo",
             choice: {
                 language: "new",
                 profession: "religious"
