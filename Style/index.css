@@ -1,31 +1,125 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-        <meta charset="utf-8">
-        <title>RPG</title>
-        <link type="text/css" rel="stylesheet" href="Style/index.css">
-        <link rel="icon" type="image/png" href="Images/favicon.png">
-    </head>
-    <body>
-        <div class= "topnav">
-            <a id="ancestry" href="ancestry.html">Criar personagem</a>
-            <a id="character" href="character.html">Ultilizar personagem</a>
-            <a id="spells" href="spells.html">Magias</a>
-            <a id="market" href="market.html">Mercado</a>
-            <a id="right">Login</a>
-        </div>
-        <div class="column">
-            <h1>Por que jogar?</h1>
-            <p>Shadow of the Demon Lord é um jogo de RPG que se passa nos últimos dias de um mundo de fantasia. A realidade se desfaz conforme o tempo e o espaço se desdobram, enfraquecendo as leis que governam o que é possível e o que não é. Como resultado dessa deterioração, surgem ameaças de além do universo, terríveis demônios nascidos do Vazio sem fim, ansiando pela destruição total de todas as coisas. Nos lugares onde andam livres pelas terras mortais, eles trazem morte e ruína para todos.</p>
-        </div> 
-                <ul><li><button class="button" style="vertical-align:middle">
-                    <span id="ancestry" href="ancestry.html">Crie seu personagem!</span>
-                </button></li>
-                <div class="column">
-                    <p>ou</p>
-                </div>
-                <li><button class="button b" style="vertical-align: middle;">
-                    <span id="#" href="#">Seja Mestre!</span>
-                </button></li></ul>    
-    </body>
-</html>
+.topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 7%;
+    min-height: 5%;
+    overflow: hidden;
+    background-attachment: fixed;
+    background-color: brown;
+}
+.topnav a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-decoration: none;
+    padding: 0.7% 2%;
+}
+#right{
+   float: right;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+body {
+    margin-top: 5%;
+    background: url("../Images/background_Index.jpg") no-repeat center fixed;
+    background-size: cover;
+}
+.column{
+    text-align: center;
+    color: lightgray;
+    align-content: center;
+    font-size: 18px;
+}
+.button {
+    position: relative;
+    left: 43%;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: goldenrod;
+    border: none;
+    color: #FFFFFF;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: medium;
+    padding: 10px;
+    width: 190px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: auto;
+}
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.button span::after {
+    content: '\00bb';
+    position: center;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+  
+.button:hover span {
+    padding-right: 25px;
+}
+  
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+.button b {
+    display: block;
+    border-radius: 4px;
+    background-color: darkgoldenrod;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 15px;
+    padding: 15px 32px;
+    width: 190px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: auto;
+}
+.button b span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+.button b span::after {
+    content: '\00bb';
+    position: center;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.button b:hover span {
+    padding-right: 25px;
+}
+.button b:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+.column {
+    text-align: center;
+    color: lightgray;
+    padding: 0px;
+    font-size: 18px;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.button {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
